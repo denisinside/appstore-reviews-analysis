@@ -98,3 +98,28 @@ single = analyzer.analyze_review(top_reviews["reviews"][0])
 The analyzer combines the original title and text through `prepare_review_text`. It never uses the numerical rating, changes the original review, or loads a model during ordinary parsing. The first sentiment call downloads the pinned [Cardiff XLM-RoBERTa sentiment checkpoint](https://huggingface.co/cardiffnlp/twitter-xlm-roberta-base-sentiment) (about 1.11 GB) into the Hugging Face cache and then reuses it in memory. The default revision is `f2f1202b1bdeb07342385c3f807f9c07cd8f5cf8`, exactly the checkpoint used in Model Arena. Each result contains `review_id`, `sentiment` (`positive`, `neutral`, or `negative`), `sentiment_scores` for all three classes, `sentiment_model` with model ID and revision, and `error`. Empty text yields a null sentiment and an error. Long text is truncated to 256 tokens. Inference is batched; failures in one batch are retried per review.
 
 Cardiff was selected for this experimental integration because it had the highest multilingual and Ukrainian Macro-F1 and the best Ukrainian and English negative-class recall among the three tested checkpoints. The Cardiff checkpoint does **not** declare a license on its model card, so permission for commercial use is **not confirmed**. Clarify usage rights before any commercial deployment. The [arena report](models_arena/sentiment/REPORT.md) also documents model errors and limits of the reference labels. The evaluation data stays in `models_arena` and is never used at inference time.
+
+## Optional keyword extraction
+
+Install the local multilingual keyword model dependencies separately:
+
+```powershell
+python -m pip install -e ".[keywords]"
+```
+
+For the full sentiment-to-keyword pipeline, install both optional groups: `python -m pip install -e ".[sentiment,keywords]"`.
+
+```python
+from appstore_reviews import KeywordExtractor, analyze_negative_keywords
+
+extractor = KeywordExtractor()
+one = extractor.extract_review(top_reviews["reviews"][0])
+batch = extractor.extract_reviews(top_reviews["reviews"])
+analysis = analyze_negative_keywords(top_reviews["reviews"])
+```
+
+`KeywordExtractor` can process any valid review, regardless of sentiment. It combines `title` and `text` (or a caller's `content` alias) with the existing `prepare_review_text` helper, uses the review's language to filter uninformative words, and ranks up to five source phrases per review. Results include `review_id`, `language`, `keywords` (`text` and similarity `score`), checkpoint identity, and an error field. Empty text returns an empty keyword list without loading a model. The optional checkpoint loads once and is reused across batch calls; ratings and Model Arena files are not used.
+
+`analyze_negative_keywords` runs the existing Cardiff sentiment analyzer first, sends only reviews predicted `negative` to the keyword extractor, then returns both per-review outputs and `common_keywords_by_language`. Each common phrase reports a count of unique review IDs, its share among successfully analyzed negative reviews in that language, mean similarity score, and example IDs. Surface normalization merges case, punctuation, and whitespace variants; it deliberately avoids semantic clustering that could merge different complaints. The output has separate language lists. This step is a local, explicit function call, not a background task.
+
+The default is [BAAI/bge-m3](https://huggingface.co/BAAI/bge-m3), pinned to revision `5617a9f61b028005a4858fdac845db406aefb181`, selected by the [keyword arena report](models_arena/keyword_extraction/REPORT.md). It is experimental: the benchmark shows better quality than the other tested methods overall, but source n-grams can still omit negation or important complaint details. The model card declares MIT; verify all applicable rights before commercial use. The end-to-end pipeline also uses the Cardiff sentiment checkpoint, whose commercial permission is unconfirmed as noted above. BGE-M3's weights are approximately 2.3 GB and are downloaded once to the Hugging Face cache on first use; the CPU benchmark took about five seconds per review after loading. These optional dependencies are not needed for RSS collection or statistical metrics.

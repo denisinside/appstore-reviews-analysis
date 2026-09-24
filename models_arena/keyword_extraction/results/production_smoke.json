@@ -1,0 +1,92 @@
+{
+  "model": {
+    "id": "BAAI/bge-m3",
+    "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+  },
+  "direct": [
+    {
+      "review_id": "11403128585",
+      "language": "en",
+      "keywords": [
+        {
+          "text": "created a playlist",
+          "score": 0.606976
+        },
+        {
+          "text": "bit annoying",
+          "score": 0.579536
+        },
+        {
+          "text": "playlist Spotify",
+          "score": 0.593681
+        },
+        {
+          "text": "songs that aren’t",
+          "score": 0.506593
+        },
+        {
+          "text": "skips",
+          "score": 0.451769
+        }
+      ],
+      "keyword_model": {
+        "id": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "error": null
+    },
+    {
+      "review_id": "14434505174",
+      "language": "uk",
+      "keywords": [
+        {
+          "text": "застосунку зникають пісні",
+          "score": 0.702328
+        },
+        {
+          "text": "Ютубмюзік",
+          "score": 0.549665
+        },
+        {
+          "text": "ваш застосунок блокує",
+          "score": 0.576853
+        },
+        {
+          "text": "зникають пісні",
+          "score": 0.678558
+        },
+        {
+          "text": "вилучені з плейлиста",
+          "score": 0.522516
+        }
+      ],
+      "keyword_model": {
+        "id": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "error": null
+    }
+  ],
+  "sentiments": [
+    {
+      "review_id": "10981944377",
+      "sentiment": "positive",
+      "error": null
+    },
+    {
+      "review_id": "11403128585",
+      "sentiment": "negative",
+      "error": null
+    },
+    {
+      "review_id": "14434505174",
+      "sentiment": "negative",
+      "error": null
+    }
+  ],
+  "negative_review_count": 2,
+  "common_keyword_languages": [
+    "en",
+    "uk"
+  ]
+}
