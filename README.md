@@ -51,6 +51,18 @@ analysis_text = prepare_review_text(reviews_ua["reviews"][0])
 
 This optional step combines the title and review body with a newline, applies Unicode NFC, and collapses repeated spaces, tabs, and line breaks within each part. It returns a string without adding a field or changing the original `title` and `text`. For example, `"и\u0306"` (two Unicode code points) becomes `"й"` (one code point) while retaining the same visible letter. Use `normalize_text` if you need to process one string separately.
 
+### Calculate statistical metrics
+
+```python
+from appstore_reviews import calculate_metrics
+
+metrics = calculate_metrics(top_reviews["reviews"])
+```
+
+The function accepts a list of review dictionaries and returns JSON-serializable statistics: `review_count`, `average_rating`, `rating_distribution` (counts and shares for ratings 1–5), `negative_rating_share` (ratings 1–2), `country_statistics`, `language_statistics`, and `rating_by_version`. Shares range from 0 to 1. A missing country, language, or app version appears as `null` in its group. For an empty list, averages and shares are `null`.
+
+Pass the deduplicated `reviews` list returned by Country or Top. Global metrics count each review once. Country statistics include a review in every `observed_countries` market, so country counts can sum to more than `review_count`. The function leaves the input unchanged and raises `ValueError` if a rating is missing or outside 1–5.
+
 All methods return JSON-serializable dictionaries. Discovery returns country statistics and errors without full review texts. Country returns reviews, collection status, page counts, and errors. Top returns a combined review list and separate country statistics. Every review has `review_id`, `app_id`, `country`, `observed_countries`, `title`, `text`, `rating`, `app_version`, `updated_at`, `language`, and `language_confidence`. Missing optional values are `null`; unknown languages are `und`. A failed country has `review_count: null` to distinguish it from a successful empty result.
 
 Discovery ranks fully checked countries ahead of partial and failed ones, then sorts by accessible unique review count, newest available review, and country code. Top selects only fully checked countries and reports partial status if the discovery or a selected country had errors.
@@ -63,6 +75,26 @@ Successful populated RSS pages and complete Discovery results are cached for 21,
 
 ## Limits
 
-Apple RSS exposes at most 10 pages per storefront, usually up to roughly 50 reviews per page. Counts are **accessible unique reviews**, not the app's total review counts. Pages may be empty between populated pages, so the collector checks every requested page. A numeric app ID that does not exist may still produce a valid empty feed; `success` means the feed was fetched, not that the app's existence was verified. Apple can return fewer reviews, missing fields, errors, or rate limits. The collector makes at most three concurrent requests and up to three attempts for transient failures; it does not bypass Apple limits. Language identification is a best-effort prediction based on the original title and text. No sentiment analysis or continuous monitoring is included.
+Apple RSS exposes at most 10 pages per storefront, usually up to roughly 50 reviews per page. Counts are **accessible unique reviews**, not the app's total review counts. Pages may be empty between populated pages, so the collector checks every requested page. A numeric app ID that does not exist may still produce a valid empty feed; `success` means the feed was fetched, not that the app's existence was verified. Apple can return fewer reviews, missing fields, errors, or rate limits. The collector makes at most three concurrent requests and up to three attempts for transient failures; it does not bypass Apple limits. Language identification is a best-effort prediction based on the original title and text. Continuous monitoring is not included. Sentiment analysis is an optional, separate step described below.
 
 Run offline tests with `python -m pytest -q`.
+
+## Optional sentiment analysis
+
+Install the additional dependencies only when you need sentiment inference:
+
+```powershell
+python -m pip install -e ".[sentiment]"
+```
+
+```python
+from appstore_reviews import SentimentAnalyzer
+
+analyzer = SentimentAnalyzer(device="cpu")
+results = analyzer.analyze_reviews(top_reviews["reviews"])
+single = analyzer.analyze_review(top_reviews["reviews"][0])
+```
+
+The analyzer combines the original title and text through `prepare_review_text`. It never uses the numerical rating, changes the original review, or loads a model during ordinary parsing. The first sentiment call downloads the pinned [Cardiff XLM-RoBERTa sentiment checkpoint](https://huggingface.co/cardiffnlp/twitter-xlm-roberta-base-sentiment) (about 1.11 GB) into the Hugging Face cache and then reuses it in memory. The default revision is `f2f1202b1bdeb07342385c3f807f9c07cd8f5cf8`, exactly the checkpoint used in Model Arena. Each result contains `review_id`, `sentiment` (`positive`, `neutral`, or `negative`), `sentiment_scores` for all three classes, `sentiment_model` with model ID and revision, and `error`. Empty text yields a null sentiment and an error. Long text is truncated to 256 tokens. Inference is batched; failures in one batch are retried per review.
+
+Cardiff was selected for this experimental integration because it had the highest multilingual and Ukrainian Macro-F1 and the best Ukrainian and English negative-class recall among the three tested checkpoints. The Cardiff checkpoint does **not** declare a license on its model card, so permission for commercial use is **not confirmed**. Clarify usage rights before any commercial deployment. The [arena report](models_arena/sentiment/REPORT.md) also documents model errors and limits of the reference labels. The evaluation data stays in `models_arena` and is never used at inference time.

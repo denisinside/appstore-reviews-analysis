@@ -1,0 +1,263 @@
+{
+  "app_id": "324684580",
+  "mode": "discovery",
+  "countries": [
+    {
+      "country": "fr",
+      "rank": 1,
+      "review_count": 500,
+      "newest_review_at": "2026-09-23T07:25:39Z",
+      "oldest_review_at": "2026-09-08T20:04:59Z",
+      "status": "success"
+    },
+    {
+      "country": "bg",
+      "rank": 2,
+      "review_count": 500,
+      "newest_review_at": "2026-09-21T16:27:43Z",
+      "oldest_review_at": "2024-08-27T20:54:38Z",
+      "status": "success"
+    },
+    {
+      "country": "nl",
+      "rank": 3,
+      "review_count": 450,
+      "newest_review_at": "2026-09-23T07:44:41Z",
+      "oldest_review_at": "2026-08-24T20:59:05Z",
+      "status": "success"
+    },
+    {
+      "country": "at",
+      "rank": 4,
+      "review_count": 450,
+      "newest_review_at": "2026-09-23T07:19:53Z",
+      "oldest_review_at": "2026-05-09T11:56:51Z",
+      "status": "success"
+    },
+    {
+      "country": "it",
+      "rank": 5,
+      "review_count": 450,
+      "newest_review_at": "2026-09-23T05:26:07Z",
+      "oldest_review_at": "2026-08-28T02:05:27Z",
+      "status": "success"
+    },
+    {
+      "country": "ie",
+      "rank": 6,
+      "review_count": 450,
+      "newest_review_at": "2026-09-22T22:44:30Z",
+      "oldest_review_at": "2026-05-15T19:14:31Z",
+      "status": "success"
+    },
+    {
+      "country": "lt",
+      "rank": 7,
+      "review_count": 450,
+      "newest_review_at": "2026-09-21T18:39:07Z",
+      "oldest_review_at": "2024-01-24T06:27:25Z",
+      "status": "success"
+    },
+    {
+      "country": "pl",
+      "rank": 8,
+      "review_count": 400,
+      "newest_review_at": "2026-09-23T07:16:37Z",
+      "oldest_review_at": "2026-08-13T22:21:46Z",
+      "status": "success"
+    },
+    {
+      "country": "pt",
+      "rank": 9,
+      "review_count": 400,
+      "newest_review_at": "2026-09-23T07:00:22Z",
+      "oldest_review_at": "2026-07-08T20:27:11Z",
+      "status": "success"
+    },
+    {
+      "country": "kz",
+      "rank": 10,
+      "review_count": 400,
+      "newest_review_at": "2026-09-23T06:22:50Z",
+      "oldest_review_at": "2026-02-09T04:49:34Z",
+      "status": "success"
+    },
+    {
+      "country": "be",
+      "rank": 11,
+      "review_count": 400,
+      "newest_review_at": "2026-09-23T06:04:16Z",
+      "oldest_review_at": "2026-07-16T10:27:21Z",
+      "status": "success"
+    },
+    {
+      "country": "ca",
+      "rank": 12,
+      "review_count": 400,
+      "newest_review_at": "2026-09-23T04:41:27Z",
+      "oldest_review_at": "2026-09-11T01:20:52Z",
+      "status": "success"
+    },
+    {
+      "country": "ua",
+      "rank": 13,
+      "review_count": 400,
+      "newest_review_at": "2026-09-22T19:07:45Z",
+      "oldest_review_at": "2026-05-04T15:52:38Z",
+      "status": "success"
+    },
+    {
+      "country": "ro",
+      "rank": 14,
+      "review_count": 400,
+      "newest_review_at": "2026-09-22T15:28:34Z",
+      "oldest_review_at": "2026-05-24T15:27:39Z",
+      "status": "success"
+    },
+    {
+      "country": "hu",
+      "rank": 15,
+      "review_count": 400,
+      "newest_review_at": "2026-09-22T06:26:36Z",
+      "oldest_review_at": "2026-02-10T19:07:29Z",
+      "status": "success"
+    },
+    {
+      "country": "tr",
+      "rank": 16,
+      "review_count": 400,
+      "newest_review_at": "2026-09-21T14:00:05Z",
+      "oldest_review_at": "2026-09-03T23:45:02Z",
+      "status": "success"
+    },
+    {
+      "country": "ee",
+      "rank": 17,
+      "review_count": 400,
+      "newest_review_at": "2026-07-18T19:41:21Z",
+      "oldest_review_at": "2023-07-18T00:49:59Z",
+      "status": "success"
+    },
+    {
+      "country": "md",
+      "rank": 18,
+      "review_count": 363,
+      "newest_review_at": "2026-09-22T11:24:41Z",
+      "oldest_review_at": "2019-07-29T20:47:31Z",
+      "status": "success"
+    },
+    {
+      "country": "gb",
+      "rank": 19,
+      "review_count": 350,
+      "newest_review_at": "2026-09-23T07:36:42Z",
+      "oldest_review_at": "2026-09-14T10:52:22Z",
+      "status": "success"
+    },
+    {
+      "country": "us",
+      "rank": 20,
+      "review_count": 350,
+      "newest_review_at": "2026-09-23T07:28:19Z",
+      "oldest_review_at": "2026-09-22T00:11:45Z",
+      "status": "success"
+    },
+    {
+      "country": "mx",
+      "rank": 21,
+      "review_count": 350,
+      "newest_review_at": "2026-09-23T07:13:37Z",
+      "oldest_review_at": "2026-09-15T18:42:29Z",
+      "status": "success"
+    },
+    {
+      "country": "es",
+      "rank": 22,
+      "review_count": 350,
+      "newest_review_at": "2026-09-23T06:44:32Z",
+      "oldest_review_at": "2026-09-01T13:43:52Z",
+      "status": "success"
+    },
+    {
+      "country": "ch",
+      "rank": 23,
+      "review_count": 350,
+      "newest_review_at": "2026-09-23T05:38:37Z",
+      "oldest_review_at": "2026-06-29T10:16:22Z",
+      "status": "success"
+    },
+    {
+      "country": "dk",
+      "rank": 24,
+      "review_count": 350,
+      "newest_review_at": "2026-09-23T05:26:06Z",
+      "oldest_review_at": "2026-07-05T08:14:07Z",
+      "status": "success"
+    },
+    {
+      "country": "no",
+      "rank": 25,
+      "review_count": 350,
+      "newest_review_at": "2026-09-22T20:32:48Z",
+      "oldest_review_at": "2026-07-25T10:10:04Z",
+      "status": "success"
+    },
+    {
+      "country": "de",
+      "rank": 26,
+      "review_count": 350,
+      "newest_review_at": "2026-09-20T00:14:20Z",
+      "oldest_review_at": "2026-09-09T05:22:25Z",
+      "status": "success"
+    },
+    {
+      "country": "cz",
+      "rank": 27,
+      "review_count": 350,
+      "newest_review_at": "2026-09-06T16:02:26Z",
+      "oldest_review_at": "2026-06-22T16:49:17Z",
+      "status": "success"
+    },
+    {
+      "country": "ge",
+      "rank": 28,
+      "review_count": 308,
+      "newest_review_at": "2026-09-21T19:59:04Z",
+      "oldest_review_at": "2021-02-24T16:03:15Z",
+      "status": "success"
+    },
+    {
+      "country": "se",
+      "rank": 29,
+      "review_count": 300,
+      "newest_review_at": "2026-09-23T05:52:12Z",
+      "oldest_review_at": "2026-08-30T14:07:49Z",
+      "status": "success"
+    },
+    {
+      "country": "fi",
+      "rank": 30,
+      "review_count": 300,
+      "newest_review_at": "2026-09-22T19:34:30Z",
+      "oldest_review_at": "2026-06-23T12:51:19Z",
+      "status": "success"
+    },
+    {
+      "country": "lv",
+      "rank": 31,
+      "review_count": 300,
+      "newest_review_at": "2026-08-12T10:43:36Z",
+      "oldest_review_at": "2023-11-05T20:39:44Z",
+      "status": "success"
+    },
+    {
+      "country": "sk",
+      "rank": 32,
+      "review_count": 300,
+      "newest_review_at": "2026-07-25T09:41:01Z",
+      "oldest_review_at": "2025-07-09T06:53:44Z",
+      "status": "success"
+    }
+  ],
+  "errors": []
+}

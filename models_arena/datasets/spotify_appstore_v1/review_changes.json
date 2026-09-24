@@ -1,0 +1,243 @@
+{
+  "reviewed_rows": 391,
+  "changed": [
+    {
+      "reviewId": "12139015078",
+      "changes": {
+        "sentiment": {
+          "old": "neutral",
+          "new": "negative"
+        },
+        "confidence": {
+          "old": "low",
+          "new": "medium"
+        }
+      },
+      "reason": "The review complains that Spotify is overly controlling."
+    },
+    {
+      "reviewId": "13881121196",
+      "changes": {
+        "sentiment": {
+          "old": "neutral",
+          "new": "positive"
+        },
+        "confidence": {
+          "old": "low",
+          "new": "medium"
+        }
+      },
+      "reason": "The title calls it the best; the body is incomplete."
+    },
+    {
+      "reviewId": "14123673266",
+      "changes": {
+        "sentiment": {
+          "old": "neutral",
+          "new": "negative"
+        },
+        "needs_manual_review": {
+          "old": false,
+          "new": true
+        }
+      },
+      "reason": "“Goodbye” and the weapons statement convey disapproval, though the target is unclear."
+    },
+    {
+      "reviewId": "14340253624",
+      "changes": {
+        "sentiment": {
+          "old": "positive",
+          "new": "negative"
+        },
+        "confidence": {
+          "old": "medium",
+          "new": "high"
+        }
+      },
+      "reason": "The review says the app does not work."
+    },
+    {
+      "reviewId": "14350454216",
+      "changes": {
+        "sentiment": {
+          "old": "neutral",
+          "new": "negative"
+        },
+        "confidence": {
+          "old": "low",
+          "new": "medium"
+        }
+      },
+      "reason": "The review objects to too many features requiring Premium."
+    },
+    {
+      "reviewId": "14358229141",
+      "changes": {
+        "sentiment": {
+          "old": "positive",
+          "new": "negative"
+        },
+        "confidence": {
+          "old": "medium",
+          "new": "high"
+        }
+      },
+      "reason": "The reviewer angrily complains about frequent ads."
+    },
+    {
+      "reviewId": "14359621381",
+      "changes": {
+        "sentiment": {
+          "old": "negative",
+          "new": "positive"
+        }
+      },
+      "reason": "The reviewer describes some features positively and says they like the app."
+    },
+    {
+      "reviewId": "14361573524",
+      "changes": {
+        "sentiment": {
+          "old": "neutral",
+          "new": "negative"
+        },
+        "confidence": {
+          "old": "low",
+          "new": "medium"
+        }
+      },
+      "reason": "The reviewer reports frequent ads and inability to buy Premium."
+    },
+    {
+      "reviewId": "14398437933",
+      "changes": {
+        "sentiment": {
+          "old": "positive",
+          "new": "negative"
+        },
+        "confidence": {
+          "old": "medium",
+          "new": "high"
+        }
+      },
+      "reason": "The reviewer says Apple Music is better and cheaper."
+    },
+    {
+      "reviewId": "14420253803",
+      "changes": {
+        "sentiment": {
+          "old": "neutral",
+          "new": "negative"
+        },
+        "confidence": {
+          "old": "low",
+          "new": "high"
+        }
+      },
+      "reason": "The reviewer calls the ads annoying."
+    },
+    {
+      "reviewId": "14471086935",
+      "changes": {
+        "sentiment": {
+          "old": "neutral",
+          "new": "positive"
+        },
+        "confidence": {
+          "old": "low",
+          "new": "medium"
+        }
+      },
+      "reason": "The reviewer says ads are very few and nearly gives five stars."
+    },
+    {
+      "reviewId": "14478357085",
+      "changes": {
+        "confidence": {
+          "old": "medium",
+          "new": "high"
+        }
+      },
+      "reason": "The reviewer describes the interface and recommendations as poor despite some positives."
+    },
+    {
+      "reviewId": "14543916044",
+      "changes": {
+        "sentiment": {
+          "old": "neutral",
+          "new": "positive"
+        }
+      },
+      "reason": "The text praises the music but appears promotional and gives little app detail."
+    },
+    {
+      "reviewId": "14546156482",
+      "changes": {
+        "sentiment": {
+          "old": "neutral",
+          "new": "positive"
+        }
+      },
+      "reason": "The reviewer says everything else is good despite a concern about artist compensation."
+    },
+    {
+      "reviewId": "14549240650",
+      "changes": {
+        "sentiment": {
+          "old": "negative",
+          "new": "positive"
+        }
+      },
+      "reason": "“A D O R O” expresses love for the app."
+    },
+    {
+      "reviewId": "14559247255",
+      "changes": {
+        "confidence": {
+          "old": "medium",
+          "new": "low"
+        },
+        "needs_manual_review": {
+          "old": false,
+          "new": true
+        }
+      },
+      "reason": "The text is garbled and gives no clear app verdict."
+    },
+    {
+      "reviewId": "14567387123",
+      "changes": {
+        "sentiment": {
+          "old": "neutral",
+          "new": "positive"
+        },
+        "confidence": {
+          "old": "low",
+          "new": "medium"
+        }
+      },
+      "reason": "“Supcio” is an approving Polish expression."
+    },
+    {
+      "reviewId": "14582787863",
+      "changes": {
+        "sentiment": {
+          "old": "negative",
+          "new": "positive"
+        }
+      },
+      "reason": "The review calls the app great and mentions ads as a drawback."
+    },
+    {
+      "reviewId": "13645562118",
+      "changes": {
+        "needs_manual_review": {
+          "old": false,
+          "new": true
+        }
+      },
+      "reason": "The text does not clearly express sentiment toward Spotify."
+    }
+  ]
+}

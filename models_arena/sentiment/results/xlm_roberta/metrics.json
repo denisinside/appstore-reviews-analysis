@@ -1,0 +1,1775 @@
+{
+  "datasets": {
+    "multilingual": {
+      "count": 291,
+      "successful_predictions": 291,
+      "coverage": 1.0,
+      "accuracy": 0.7216494845360825,
+      "macro_f1": 0.5229098805646037,
+      "per_class": {
+        "negative": {
+          "precision": 0.9076923076923077,
+          "recall": 0.6666666666666666,
+          "f1": 0.7687296416938111,
+          "support": 177
+        },
+        "neutral": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 5
+        },
+        "positive": {
+          "precision": 0.7603305785123967,
+          "recall": 0.8440366972477065,
+          "f1": 0.8,
+          "support": 109
+        }
+      },
+      "confusion_matrix": {
+        "labels": [
+          "negative",
+          "neutral",
+          "positive"
+        ],
+        "rows": {
+          "negative": {
+            "negative": 118,
+            "neutral": 32,
+            "positive": 27
+          },
+          "neutral": {
+            "negative": 3,
+            "neutral": 0,
+            "positive": 2
+          },
+          "positive": {
+            "negative": 9,
+            "neutral": 8,
+            "positive": 92
+          }
+        }
+      },
+      "mean_macro_f1_across_languages": 0.3865534514967136
+    },
+    "ukrainian": {
+      "count": 50,
+      "successful_predictions": 50,
+      "coverage": 1.0,
+      "accuracy": 0.8,
+      "macro_f1": 0.6384482332592044,
+      "per_class": {
+        "negative": {
+          "precision": 1.0,
+          "recall": 0.775,
+          "f1": 0.8732394366197184,
+          "support": 40
+        },
+        "neutral": {
+          "precision": 0.125,
+          "recall": 0.5,
+          "f1": 0.2,
+          "support": 2
+        },
+        "positive": {
+          "precision": 0.7272727272727273,
+          "recall": 1.0,
+          "f1": 0.8421052631578948,
+          "support": 8
+        }
+      },
+      "confusion_matrix": {
+        "labels": [
+          "negative",
+          "neutral",
+          "positive"
+        ],
+        "rows": {
+          "negative": {
+            "negative": 31,
+            "neutral": 7,
+            "positive": 2
+          },
+          "neutral": {
+            "negative": 0,
+            "neutral": 1,
+            "positive": 1
+          },
+          "positive": {
+            "negative": 0,
+            "neutral": 0,
+            "positive": 8
+          }
+        }
+      }
+    },
+    "english": {
+      "count": 50,
+      "successful_predictions": 50,
+      "coverage": 1.0,
+      "accuracy": 0.74,
+      "macro_f1": 0.45495495495495497,
+      "per_class": {
+        "negative": {
+          "precision": 0.8888888888888888,
+          "recall": 0.8421052631578947,
+          "f1": 0.8648648648648649,
+          "support": 38
+        },
+        "neutral": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 2
+        },
+        "positive": {
+          "precision": 0.5,
+          "recall": 0.5,
+          "f1": 0.5,
+          "support": 10
+        }
+      },
+      "confusion_matrix": {
+        "labels": [
+          "negative",
+          "neutral",
+          "positive"
+        ],
+        "rows": {
+          "negative": {
+            "negative": 32,
+            "neutral": 3,
+            "positive": 3
+          },
+          "neutral": {
+            "negative": 0,
+            "neutral": 0,
+            "positive": 2
+          },
+          "positive": {
+            "negative": 4,
+            "neutral": 1,
+            "positive": 5
+          }
+        }
+      }
+    }
+  },
+  "languages": {
+    "ar": {
+      "count": 1,
+      "successful_predictions": 1,
+      "coverage": 1.0,
+      "accuracy": 0.0,
+      "macro_f1": 0.0,
+      "per_class": {
+        "negative": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "neutral": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 1
+        },
+        "positive": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        }
+      },
+      "confusion_matrix": {
+        "labels": [
+          "negative",
+          "neutral",
+          "positive"
+        ],
+        "rows": {
+          "negative": {
+            "negative": 0,
+            "neutral": 0,
+            "positive": 0
+          },
+          "neutral": {
+            "negative": 0,
+            "neutral": 0,
+            "positive": 1
+          },
+          "positive": {
+            "negative": 0,
+            "neutral": 0,
+            "positive": 0
+          }
+        }
+      }
+    },
+    "bg": {
+      "count": 20,
+      "successful_predictions": 20,
+      "coverage": 1.0,
+      "accuracy": 0.7,
+      "macro_f1": 0.5359477124183006,
+      "per_class": {
+        "negative": {
+          "precision": 0.8571428571428571,
+          "recall": 0.5454545454545454,
+          "f1": 0.6666666666666665,
+          "support": 11
+        },
+        "neutral": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 1
+        },
+        "positive": {
+          "precision": 0.8888888888888888,
+          "recall": 1.0,
+          "f1": 0.9411764705882353,
+          "support": 8
+        }
+      },
+      "confusion_matrix": {
+        "labels": [
+          "negative",
+          "neutral",
+          "positive"
+        ],
+        "rows": {
+          "negative": {
+            "negative": 6,
+            "neutral": 4,
+            "positive": 1
+          },
+          "neutral": {
+            "negative": 1,
+            "neutral": 0,
+            "positive": 0
+          },
+          "positive": {
+            "negative": 0,
+            "neutral": 0,
+            "positive": 8
+          }
+        }
+      }
+    },
+    "ceb": {
+      "count": 1,
+      "successful_predictions": 1,
+      "coverage": 1.0,
+      "accuracy": 1.0,
+      "macro_f1": 0.3333333333333333,
+      "per_class": {
+        "negative": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "neutral": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "positive": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 1
+        }
+      },
+      "confusion_matrix": {
+        "labels": [
+          "negative",
+          "neutral",
+          "positive"
+        ],
+        "rows": {
+          "negative": {
+            "negative": 0,
+            "neutral": 0,
+            "positive": 0
+          },
+          "neutral": {
+            "negative": 0,
+            "neutral": 0,
+            "positive": 0
+          },
+          "positive": {
+            "negative": 0,
+            "neutral": 0,
+            "positive": 1
+          }
+        }
+      }
+    },
+    "cs": {
+      "count": 2,
+      "successful_predictions": 2,
+      "coverage": 1.0,
+      "accuracy": 1.0,
+      "macro_f1": 0.3333333333333333,
+      "per_class": {
+        "negative": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "neutral": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "positive": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 2
+        }
+      },
+      "confusion_matrix": {
+        "labels": [
+          "negative",
+          "neutral",
+          "positive"
+        ],
+        "rows": {
+          "negative": {
+            "negative": 0,
+            "neutral": 0,
+            "positive": 0
+          },
+          "neutral": {
+            "negative": 0,
+            "neutral": 0,
+            "positive": 0
+          },
+          "positive": {
+            "negative": 0,
+            "neutral": 0,
+            "positive": 2
+          }
+        }
+      }
+    },
+    "de": {
+      "count": 20,
+      "successful_predictions": 20,
+      "coverage": 1.0,
+      "accuracy": 0.75,
+      "macro_f1": 0.5132275132275133,
+      "per_class": {
+        "negative": {
+          "precision": 1.0,
+          "recall": 0.6153846153846154,
+          "f1": 0.761904761904762,
+          "support": 13
+        },
+        "neutral": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "positive": {
+          "precision": 0.6363636363636364,
+          "recall": 1.0,
+          "f1": 0.7777777777777778,
+          "support": 7
+        }
+      },
+      "confusion_matrix": {
+        "labels": [
+          "negative",
+          "neutral",
+          "positive"
+        ],
+        "rows": {
+          "negative": {
+            "negative": 8,
+            "neutral": 1,
+            "positive": 4
+          },
+          "neutral": {
+            "negative": 0,
+            "neutral": 0,
+            "positive": 0
+          },
+          "positive": {
+            "negative": 0,
+            "neutral": 0,
+            "positive": 7
+          }
+        }
+      }
+    },
+    "en": {
+      "count": 20,
+      "successful_predictions": 20,
+      "coverage": 1.0,
+      "accuracy": 0.75,
+      "macro_f1": 0.5244755244755245,
+      "per_class": {
+        "negative": {
+          "precision": 1.0,
+          "recall": 0.7333333333333333,
+          "f1": 0.846153846153846,
+          "support": 15
+        },
+        "neutral": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "positive": {
+          "precision": 0.6666666666666666,
+          "recall": 0.8,
+          "f1": 0.7272727272727272,
+          "support": 5
+        }
+      },
+      "confusion_matrix": {
+        "labels": [
+          "negative",
+          "neutral",
+          "positive"
+        ],
+        "rows": {
+          "negative": {
+            "negative": 11,
+            "neutral": 2,
+            "positive": 2
+          },
+          "neutral": {
+            "negative": 0,
+            "neutral": 0,
+            "positive": 0
+          },
+          "positive": {
+            "negative": 0,
+            "neutral": 1,
+            "positive": 4
+          }
+        }
+      }
+    },
+    "eo": {
+      "count": 2,
+      "successful_predictions": 2,
+      "coverage": 1.0,
+      "accuracy": 1.0,
+      "macro_f1": 0.3333333333333333,
+      "per_class": {
+        "negative": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "neutral": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "positive": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 2
+        }
+      },
+      "confusion_matrix": {
+        "labels": [
+          "negative",
+          "neutral",
+          "positive"
+        ],
+        "rows": {
+          "negative": {
+            "negative": 0,
+            "neutral": 0,
+            "positive": 0
+          },
+          "neutral": {
+            "negative": 0,
+            "neutral": 0,
+            "positive": 0
+          },
+          "positive": {
+            "negative": 0,
+            "neutral": 0,
+            "positive": 2
+          }
+        }
+      }
+    },
+    "es": {
+      "count": 20,
+      "successful_predictions": 20,
+      "coverage": 1.0,
+      "accuracy": 0.85,
+      "macro_f1": 0.5815217391304348,
+      "per_class": {
+        "negative": {
+          "precision": 0.8333333333333334,
+          "recall": 0.9090909090909091,
+          "f1": 0.8695652173913043,
+          "support": 11
+        },
+        "neutral": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "positive": {
+          "precision": 1.0,
+          "recall": 0.7777777777777778,
+          "f1": 0.8750000000000001,
+          "support": 9
+        }
+      },
+      "confusion_matrix": {
+        "labels": [
+          "negative",
+          "neutral",
+          "positive"
+        ],
+        "rows": {
+          "negative": {
+            "negative": 10,
+            "neutral": 1,
+            "positive": 0
+          },
+          "neutral": {
+            "negative": 0,
+            "neutral": 0,
+            "positive": 0
+          },
+          "positive": {
+            "negative": 2,
+            "neutral": 0,
+            "positive": 7
+          }
+        }
+      }
+    },
+    "fi": {
+      "count": 4,
+      "successful_predictions": 4,
+      "coverage": 1.0,
+      "accuracy": 0.75,
+      "macro_f1": 0.6,
+      "per_class": {
+        "negative": {
+          "precision": 1.0,
+          "recall": 0.6666666666666666,
+          "f1": 0.8,
+          "support": 3
+        },
+        "neutral": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "positive": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 1
+        }
+      },
+      "confusion_matrix": {
+        "labels": [
+          "negative",
+          "neutral",
+          "positive"
+        ],
+        "rows": {
+          "negative": {
+            "negative": 2,
+            "neutral": 1,
+            "positive": 0
+          },
+          "neutral": {
+            "negative": 0,
+            "neutral": 0,
+            "positive": 0
+          },
+          "positive": {
+            "negative": 0,
+            "neutral": 0,
+            "positive": 1
+          }
+        }
+      }
+    },
+    "fr": {
+      "count": 20,
+      "successful_predictions": 20,
+      "coverage": 1.0,
+      "accuracy": 0.7,
+      "macro_f1": 0.4912280701754385,
+      "per_class": {
+        "negative": {
+          "precision": 0.7777777777777778,
+          "recall": 0.7,
+          "f1": 0.7368421052631577,
+          "support": 10
+        },
+        "neutral": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "positive": {
+          "precision": 0.7777777777777778,
+          "recall": 0.7,
+          "f1": 0.7368421052631577,
+          "support": 10
+        }
+      },
+      "confusion_matrix": {
+        "labels": [
+          "negative",
+          "neutral",
+          "positive"
+        ],
+        "rows": {
+          "negative": {
+            "negative": 7,
+            "neutral": 1,
+            "positive": 2
+          },
+          "neutral": {
+            "negative": 0,
+            "neutral": 0,
+            "positive": 0
+          },
+          "positive": {
+            "negative": 2,
+            "neutral": 1,
+            "positive": 7
+          }
+        }
+      }
+    },
+    "gl": {
+      "count": 2,
+      "successful_predictions": 2,
+      "coverage": 1.0,
+      "accuracy": 1.0,
+      "macro_f1": 0.3333333333333333,
+      "per_class": {
+        "negative": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "neutral": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "positive": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 2
+        }
+      },
+      "confusion_matrix": {
+        "labels": [
+          "negative",
+          "neutral",
+          "positive"
+        ],
+        "rows": {
+          "negative": {
+            "negative": 0,
+            "neutral": 0,
+            "positive": 0
+          },
+          "neutral": {
+            "negative": 0,
+            "neutral": 0,
+            "positive": 0
+          },
+          "positive": {
+            "negative": 0,
+            "neutral": 0,
+            "positive": 2
+          }
+        }
+      }
+    },
+    "he": {
+      "count": 1,
+      "successful_predictions": 1,
+      "coverage": 1.0,
+      "accuracy": 1.0,
+      "macro_f1": 0.3333333333333333,
+      "per_class": {
+        "negative": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "neutral": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "positive": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 1
+        }
+      },
+      "confusion_matrix": {
+        "labels": [
+          "negative",
+          "neutral",
+          "positive"
+        ],
+        "rows": {
+          "negative": {
+            "negative": 0,
+            "neutral": 0,
+            "positive": 0
+          },
+          "neutral": {
+            "negative": 0,
+            "neutral": 0,
+            "positive": 0
+          },
+          "positive": {
+            "negative": 0,
+            "neutral": 0,
+            "positive": 1
+          }
+        }
+      }
+    },
+    "hu": {
+      "count": 2,
+      "successful_predictions": 2,
+      "coverage": 1.0,
+      "accuracy": 1.0,
+      "macro_f1": 0.3333333333333333,
+      "per_class": {
+        "negative": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "neutral": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "positive": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 2
+        }
+      },
+      "confusion_matrix": {
+        "labels": [
+          "negative",
+          "neutral",
+          "positive"
+        ],
+        "rows": {
+          "negative": {
+            "negative": 0,
+            "neutral": 0,
+            "positive": 0
+          },
+          "neutral": {
+            "negative": 0,
+            "neutral": 0,
+            "positive": 0
+          },
+          "positive": {
+            "negative": 0,
+            "neutral": 0,
+            "positive": 2
+          }
+        }
+      }
+    },
+    "it": {
+      "count": 20,
+      "successful_predictions": 20,
+      "coverage": 1.0,
+      "accuracy": 0.8,
+      "macro_f1": 0.5755693581780538,
+      "per_class": {
+        "negative": {
+          "precision": 1.0,
+          "recall": 0.7692307692307693,
+          "f1": 0.8695652173913044,
+          "support": 13
+        },
+        "neutral": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "positive": {
+          "precision": 0.8571428571428571,
+          "recall": 0.8571428571428571,
+          "f1": 0.8571428571428571,
+          "support": 7
+        }
+      },
+      "confusion_matrix": {
+        "labels": [
+          "negative",
+          "neutral",
+          "positive"
+        ],
+        "rows": {
+          "negative": {
+            "negative": 10,
+            "neutral": 2,
+            "positive": 1
+          },
+          "neutral": {
+            "negative": 0,
+            "neutral": 0,
+            "positive": 0
+          },
+          "positive": {
+            "negative": 0,
+            "neutral": 1,
+            "positive": 6
+          }
+        }
+      }
+    },
+    "ja": {
+      "count": 2,
+      "successful_predictions": 2,
+      "coverage": 1.0,
+      "accuracy": 0.5,
+      "macro_f1": 0.2222222222222222,
+      "per_class": {
+        "negative": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "neutral": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "positive": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666,
+          "support": 2
+        }
+      },
+      "confusion_matrix": {
+        "labels": [
+          "negative",
+          "neutral",
+          "positive"
+        ],
+        "rows": {
+          "negative": {
+            "negative": 0,
+            "neutral": 0,
+            "positive": 0
+          },
+          "neutral": {
+            "negative": 0,
+            "neutral": 0,
+            "positive": 0
+          },
+          "positive": {
+            "negative": 0,
+            "neutral": 1,
+            "positive": 1
+          }
+        }
+      }
+    },
+    "kk": {
+      "count": 4,
+      "successful_predictions": 4,
+      "coverage": 1.0,
+      "accuracy": 0.5,
+      "macro_f1": 0.2222222222222222,
+      "per_class": {
+        "negative": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666,
+          "support": 4
+        },
+        "neutral": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "positive": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        }
+      },
+      "confusion_matrix": {
+        "labels": [
+          "negative",
+          "neutral",
+          "positive"
+        ],
+        "rows": {
+          "negative": {
+            "negative": 2,
+            "neutral": 1,
+            "positive": 1
+          },
+          "neutral": {
+            "negative": 0,
+            "neutral": 0,
+            "positive": 0
+          },
+          "positive": {
+            "negative": 0,
+            "neutral": 0,
+            "positive": 0
+          }
+        }
+      }
+    },
+    "ky": {
+      "count": 1,
+      "successful_predictions": 1,
+      "coverage": 1.0,
+      "accuracy": 1.0,
+      "macro_f1": 0.3333333333333333,
+      "per_class": {
+        "negative": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "neutral": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "positive": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 1
+        }
+      },
+      "confusion_matrix": {
+        "labels": [
+          "negative",
+          "neutral",
+          "positive"
+        ],
+        "rows": {
+          "negative": {
+            "negative": 0,
+            "neutral": 0,
+            "positive": 0
+          },
+          "neutral": {
+            "negative": 0,
+            "neutral": 0,
+            "positive": 0
+          },
+          "positive": {
+            "negative": 0,
+            "neutral": 0,
+            "positive": 1
+          }
+        }
+      }
+    },
+    "lt": {
+      "count": 20,
+      "successful_predictions": 20,
+      "coverage": 1.0,
+      "accuracy": 0.5,
+      "macro_f1": 0.39215686274509803,
+      "per_class": {
+        "negative": {
+          "precision": 0.6666666666666666,
+          "recall": 0.36363636363636365,
+          "f1": 0.4705882352941177,
+          "support": 11
+        },
+        "neutral": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 1
+        },
+        "positive": {
+          "precision": 0.6666666666666666,
+          "recall": 0.75,
+          "f1": 0.7058823529411765,
+          "support": 8
+        }
+      },
+      "confusion_matrix": {
+        "labels": [
+          "negative",
+          "neutral",
+          "positive"
+        ],
+        "rows": {
+          "negative": {
+            "negative": 4,
+            "neutral": 4,
+            "positive": 3
+          },
+          "neutral": {
+            "negative": 1,
+            "neutral": 0,
+            "positive": 0
+          },
+          "positive": {
+            "negative": 1,
+            "neutral": 1,
+            "positive": 6
+          }
+        }
+      }
+    },
+    "mk": {
+      "count": 1,
+      "successful_predictions": 1,
+      "coverage": 1.0,
+      "accuracy": 1.0,
+      "macro_f1": 0.3333333333333333,
+      "per_class": {
+        "negative": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "neutral": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "positive": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 1
+        }
+      },
+      "confusion_matrix": {
+        "labels": [
+          "negative",
+          "neutral",
+          "positive"
+        ],
+        "rows": {
+          "negative": {
+            "negative": 0,
+            "neutral": 0,
+            "positive": 0
+          },
+          "neutral": {
+            "negative": 0,
+            "neutral": 0,
+            "positive": 0
+          },
+          "positive": {
+            "negative": 0,
+            "neutral": 0,
+            "positive": 1
+          }
+        }
+      }
+    },
+    "nl": {
+      "count": 20,
+      "successful_predictions": 20,
+      "coverage": 1.0,
+      "accuracy": 0.85,
+      "macro_f1": 0.579047619047619,
+      "per_class": {
+        "negative": {
+          "precision": 1.0,
+          "recall": 0.7857142857142857,
+          "f1": 0.88,
+          "support": 14
+        },
+        "neutral": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "positive": {
+          "precision": 0.75,
+          "recall": 1.0,
+          "f1": 0.8571428571428571,
+          "support": 6
+        }
+      },
+      "confusion_matrix": {
+        "labels": [
+          "negative",
+          "neutral",
+          "positive"
+        ],
+        "rows": {
+          "negative": {
+            "negative": 11,
+            "neutral": 1,
+            "positive": 2
+          },
+          "neutral": {
+            "negative": 0,
+            "neutral": 0,
+            "positive": 0
+          },
+          "positive": {
+            "negative": 0,
+            "neutral": 0,
+            "positive": 6
+          }
+        }
+      }
+    },
+    "no": {
+      "count": 1,
+      "successful_predictions": 1,
+      "coverage": 1.0,
+      "accuracy": 0.0,
+      "macro_f1": 0.0,
+      "per_class": {
+        "negative": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "neutral": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "positive": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 1
+        }
+      },
+      "confusion_matrix": {
+        "labels": [
+          "negative",
+          "neutral",
+          "positive"
+        ],
+        "rows": {
+          "negative": {
+            "negative": 0,
+            "neutral": 0,
+            "positive": 0
+          },
+          "neutral": {
+            "negative": 0,
+            "neutral": 0,
+            "positive": 0
+          },
+          "positive": {
+            "negative": 1,
+            "neutral": 0,
+            "positive": 0
+          }
+        }
+      }
+    },
+    "oc": {
+      "count": 1,
+      "successful_predictions": 1,
+      "coverage": 1.0,
+      "accuracy": 0.0,
+      "macro_f1": 0.0,
+      "per_class": {
+        "negative": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 1
+        },
+        "neutral": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "positive": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        }
+      },
+      "confusion_matrix": {
+        "labels": [
+          "negative",
+          "neutral",
+          "positive"
+        ],
+        "rows": {
+          "negative": {
+            "negative": 0,
+            "neutral": 1,
+            "positive": 0
+          },
+          "neutral": {
+            "negative": 0,
+            "neutral": 0,
+            "positive": 0
+          },
+          "positive": {
+            "negative": 0,
+            "neutral": 0,
+            "positive": 0
+          }
+        }
+      }
+    },
+    "pl": {
+      "count": 20,
+      "successful_predictions": 20,
+      "coverage": 1.0,
+      "accuracy": 0.7,
+      "macro_f1": 0.5202020202020202,
+      "per_class": {
+        "negative": {
+          "precision": 0.9090909090909091,
+          "recall": 0.7692307692307693,
+          "f1": 0.8333333333333333,
+          "support": 13
+        },
+        "neutral": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 1
+        },
+        "positive": {
+          "precision": 0.8,
+          "recall": 0.6666666666666666,
+          "f1": 0.7272727272727272,
+          "support": 6
+        }
+      },
+      "confusion_matrix": {
+        "labels": [
+          "negative",
+          "neutral",
+          "positive"
+        ],
+        "rows": {
+          "negative": {
+            "negative": 10,
+            "neutral": 3,
+            "positive": 0
+          },
+          "neutral": {
+            "negative": 0,
+            "neutral": 0,
+            "positive": 1
+          },
+          "positive": {
+            "negative": 1,
+            "neutral": 1,
+            "positive": 4
+          }
+        }
+      }
+    },
+    "pt": {
+      "count": 20,
+      "successful_predictions": 20,
+      "coverage": 1.0,
+      "accuracy": 0.6,
+      "macro_f1": 0.3950617283950617,
+      "per_class": {
+        "negative": {
+          "precision": 0.9090909090909091,
+          "recall": 0.625,
+          "f1": 0.7407407407407406,
+          "support": 16
+        },
+        "neutral": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "positive": {
+          "precision": 0.4,
+          "recall": 0.5,
+          "f1": 0.4444444444444445,
+          "support": 4
+        }
+      },
+      "confusion_matrix": {
+        "labels": [
+          "negative",
+          "neutral",
+          "positive"
+        ],
+        "rows": {
+          "negative": {
+            "negative": 10,
+            "neutral": 3,
+            "positive": 3
+          },
+          "neutral": {
+            "negative": 0,
+            "neutral": 0,
+            "positive": 0
+          },
+          "positive": {
+            "negative": 1,
+            "neutral": 1,
+            "positive": 2
+          }
+        }
+      }
+    },
+    "ro": {
+      "count": 2,
+      "successful_predictions": 2,
+      "coverage": 1.0,
+      "accuracy": 1.0,
+      "macro_f1": 0.6666666666666666,
+      "per_class": {
+        "negative": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 1
+        },
+        "neutral": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "positive": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 1
+        }
+      },
+      "confusion_matrix": {
+        "labels": [
+          "negative",
+          "neutral",
+          "positive"
+        ],
+        "rows": {
+          "negative": {
+            "negative": 1,
+            "neutral": 0,
+            "positive": 0
+          },
+          "neutral": {
+            "negative": 0,
+            "neutral": 0,
+            "positive": 0
+          },
+          "positive": {
+            "negative": 0,
+            "neutral": 0,
+            "positive": 1
+          }
+        }
+      }
+    },
+    "ru": {
+      "count": 20,
+      "successful_predictions": 20,
+      "coverage": 1.0,
+      "accuracy": 0.6,
+      "macro_f1": 0.43076923076923074,
+      "per_class": {
+        "negative": {
+          "precision": 0.9,
+          "recall": 0.5625,
+          "f1": 0.6923076923076923,
+          "support": 16
+        },
+        "neutral": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "positive": {
+          "precision": 0.5,
+          "recall": 0.75,
+          "f1": 0.6,
+          "support": 4
+        }
+      },
+      "confusion_matrix": {
+        "labels": [
+          "negative",
+          "neutral",
+          "positive"
+        ],
+        "rows": {
+          "negative": {
+            "negative": 9,
+            "neutral": 4,
+            "positive": 3
+          },
+          "neutral": {
+            "negative": 0,
+            "neutral": 0,
+            "positive": 0
+          },
+          "positive": {
+            "negative": 1,
+            "neutral": 0,
+            "positive": 3
+          }
+        }
+      }
+    },
+    "sk": {
+      "count": 1,
+      "successful_predictions": 1,
+      "coverage": 1.0,
+      "accuracy": 0.0,
+      "macro_f1": 0.0,
+      "per_class": {
+        "negative": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 1
+        },
+        "neutral": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "positive": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        }
+      },
+      "confusion_matrix": {
+        "labels": [
+          "negative",
+          "neutral",
+          "positive"
+        ],
+        "rows": {
+          "negative": {
+            "negative": 0,
+            "neutral": 0,
+            "positive": 1
+          },
+          "neutral": {
+            "negative": 0,
+            "neutral": 0,
+            "positive": 0
+          },
+          "positive": {
+            "negative": 0,
+            "neutral": 0,
+            "positive": 0
+          }
+        }
+      }
+    },
+    "sr": {
+      "count": 2,
+      "successful_predictions": 2,
+      "coverage": 1.0,
+      "accuracy": 1.0,
+      "macro_f1": 0.6666666666666666,
+      "per_class": {
+        "negative": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 1
+        },
+        "neutral": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "positive": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 1
+        }
+      },
+      "confusion_matrix": {
+        "labels": [
+          "negative",
+          "neutral",
+          "positive"
+        ],
+        "rows": {
+          "negative": {
+            "negative": 1,
+            "neutral": 0,
+            "positive": 0
+          },
+          "neutral": {
+            "negative": 0,
+            "neutral": 0,
+            "positive": 0
+          },
+          "positive": {
+            "negative": 0,
+            "neutral": 0,
+            "positive": 1
+          }
+        }
+      }
+    },
+    "tr": {
+      "count": 18,
+      "successful_predictions": 18,
+      "coverage": 1.0,
+      "accuracy": 0.7777777777777778,
+      "macro_f1": 0.5473684210526316,
+      "per_class": {
+        "negative": {
+          "precision": 1.0,
+          "recall": 0.6666666666666666,
+          "f1": 0.8,
+          "support": 9
+        },
+        "neutral": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "positive": {
+          "precision": 0.8,
+          "recall": 0.8888888888888888,
+          "f1": 0.8421052631578948,
+          "support": 9
+        }
+      },
+      "confusion_matrix": {
+        "labels": [
+          "negative",
+          "neutral",
+          "positive"
+        ],
+        "rows": {
+          "negative": {
+            "negative": 6,
+            "neutral": 1,
+            "positive": 2
+          },
+          "neutral": {
+            "negative": 0,
+            "neutral": 0,
+            "positive": 0
+          },
+          "positive": {
+            "negative": 0,
+            "neutral": 1,
+            "positive": 8
+          }
+        }
+      }
+    },
+    "uk": {
+      "count": 20,
+      "successful_predictions": 20,
+      "coverage": 1.0,
+      "accuracy": 0.8,
+      "macro_f1": 0.5854700854700855,
+      "per_class": {
+        "negative": {
+          "precision": 0.9090909090909091,
+          "recall": 0.7692307692307693,
+          "f1": 0.8333333333333333,
+          "support": 13
+        },
+        "neutral": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 1
+        },
+        "positive": {
+          "precision": 0.8571428571428571,
+          "recall": 1.0,
+          "f1": 0.923076923076923,
+          "support": 6
+        }
+      },
+      "confusion_matrix": {
+        "labels": [
+          "negative",
+          "neutral",
+          "positive"
+        ],
+        "rows": {
+          "negative": {
+            "negative": 10,
+            "neutral": 2,
+            "positive": 1
+          },
+          "neutral": {
+            "negative": 1,
+            "neutral": 0,
+            "positive": 0
+          },
+          "positive": {
+            "negative": 0,
+            "neutral": 0,
+            "positive": 6
+          }
+        }
+      }
+    },
+    "zh": {
+      "count": 3,
+      "successful_predictions": 3,
+      "coverage": 1.0,
+      "accuracy": 0.6666666666666666,
+      "macro_f1": 0.26666666666666666,
+      "per_class": {
+        "negative": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 1
+        },
+        "neutral": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "positive": {
+          "precision": 0.6666666666666666,
+          "recall": 1.0,
+          "f1": 0.8,
+          "support": 2
+        }
+      },
+      "confusion_matrix": {
+        "labels": [
+          "negative",
+          "neutral",
+          "positive"
+        ],
+        "rows": {
+          "negative": {
+            "negative": 0,
+            "neutral": 0,
+            "positive": 1
+          },
+          "neutral": {
+            "negative": 0,
+            "neutral": 0,
+            "positive": 0
+          },
+          "positive": {
+            "negative": 0,
+            "neutral": 0,
+            "positive": 2
+          }
+        }
+      }
+    }
+  },
+  "model_id": "cardiffnlp/twitter-xlm-roberta-base-sentiment",
+  "revision": "f2f1202b1bdeb07342385c3f807f9c07cd8f5cf8",
+  "id2label": {
+    "0": "negative",
+    "1": "neutral",
+    "2": "positive"
+  },
+  "library_versions": {
+    "torch": "2.14.0",
+    "transformers": "4.57.6",
+    "huggingface-hub": "0.36.2",
+    "tokenizers": "0.22.2"
+  },
+  "hardware": {
+    "platform": "Windows-11-10.0.26200-SP0",
+    "processor": "AMD64 Family 25 Model 80 Stepping 0, AuthenticAMD",
+    "device": "cpu",
+    "torch_threads": 4
+  },
+  "inference": {
+    "batch_size": 8,
+    "max_length_tokens": 256,
+    "load_seconds": 2.1120640999870375,
+    "inference_seconds": 44.60951289976947,
+    "average_inference_seconds_per_review": 0.11409082583061246,
+    "attempted_reviews": 391,
+    "successful_predictions": 391,
+    "errors": []
+  },
+  "gold_distribution": {
+    "positive": 127,
+    "negative": 255,
+    "neutral": 9
+  }
+}

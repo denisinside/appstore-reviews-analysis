@@ -1,0 +1,9 @@
+# Spotify App Store evaluation set, version 1
+
+This frozen set contains 391 real Spotify App Store reviews collected on 2026-09-24 with the existing RSS parser. Discovery selected the ten storefronts `fr, bg, nl, at, it, ie, lt, pl, pt, kz`; the parser returned 4,939 unique reviews. An additional `ua` collection returned 498 reviews to strengthen the Ukrainian set. The selected reviews comprise a multilingual sample of 291 (up to 20 per available language), plus 50 separate Ukrainian and 50 separate English reviews. There are 70 Ukrainian and 70 English reviews in total.
+
+`reviews.jsonl` preserves the parser's original title, text, rating, date, version, language and provenance, with an `evaluation_sets` field. `sentiment_labels.jsonl` stores text-only GPT-6 Luna annotations in the same order. The annotators saw only opaque review IDs, titles and bodies. Ratings, countries, and candidate model predictions were hidden. Labels are `positive`, `neutral`, and `negative`; `ambiguous` and `needs_manual_review` mark uncertain cases. Ten cases remain flagged for human review. They are retained in the benchmark, so the benchmark measures agreement with this provisional text-only reference.
+
+`metadata.json` records source file checksums, selection version, language and country counts, shortages, and label information. The source snapshots are retained for audit. The two detected language codes `ie` and `tg` had no text meeting the minimum validity criteria. Low-count languages have small, unstable per-language metrics. fastText can misidentify languages in short or mixed-language reviews; the selected language code is its output, not a human verified language label.
+
+To reproduce model evaluation, run the benchmark against these files. Do not recollect Spotify or alter v1 after seeing model results. Make a v2 dataset if selection changes.

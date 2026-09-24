@@ -1,0 +1,5226 @@
+{
+  "total_reviews_with_any_disagreement": 220,
+  "all_three_wrong": 43,
+  "negative_missed_by_at_least_one": 152,
+  "examples": [
+    {
+      "review_id": "14055779941",
+      "language": "uk",
+      "evaluation_sets": [
+        "ukrainian"
+      ],
+      "title": ".",
+      "text": "Останній місяць чи два не сортує пісні у локальній папці по даті додавання. Ставить нові пісні куди заманеться. Дуже дратує! До цього моменту все було 👌",
+      "analysis_text": ".\nОстанній місяць чи два не сортує пісні у локальній папці по даті додавання. Ставить нові пісні куди заманеться. Дуже дратує! До цього моменту все було 👌",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "positive",
+        "tabularis_multilingual": "positive",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "xlm_roberta",
+        "tabularis_multilingual",
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": true,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14090252525",
+      "language": "uk",
+      "evaluation_sets": [
+        "ukrainian"
+      ],
+      "title": "Зависає",
+      "text": "Після оновлення в car play показує картинку і назву пісні яка вже грала. Тобто показує картинку і назву однієї пісні, а грає зовсім інша.(",
+      "analysis_text": "Зависає\nПісля оновлення в car play показує картинку і назву пісні яка вже грала. Тобто показує картинку і назву однієї пісні, а грає зовсім інша.(",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "neutral",
+        "tabularis_multilingual": "neutral",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "xlm_roberta",
+        "tabularis_multilingual",
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": true,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14289198825",
+      "language": "uk",
+      "evaluation_sets": [
+        "ukrainian"
+      ],
+      "title": "Багато реклами!",
+      "text": "Ліміт перемикання пісень! Все платно!",
+      "analysis_text": "Багато реклами!\nЛіміт перемикання пісень! Все платно!",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "neutral",
+        "tabularis_multilingual": "positive",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "xlm_roberta",
+        "tabularis_multilingual",
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": true,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14345978564",
+      "language": "en",
+      "evaluation_sets": [
+        "english"
+      ],
+      "title": "Advertisement",
+      "text": "I think policy should change when it comes to free listening to music and should be able to choose a music without having to pay a monthly fee or in other words for every 2 hours of music a 30 second advertisement and the right to listen to any playlist and choose any song without having to listen to it on shuffle mode",
+      "analysis_text": "Advertisement\nI think policy should change when it comes to free listening to music and should be able to choose a music without having to pay a monthly fee or in other words for every 2 hours of music a 30 second advertisement and the right to listen to any playlist and choose any song without having to listen to it on shuffle mode",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "neutral",
+        "tabularis_multilingual": "neutral",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "xlm_roberta",
+        "tabularis_multilingual",
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": true,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14358457646",
+      "language": "en",
+      "evaluation_sets": [
+        "english"
+      ],
+      "title": "Spotify",
+      "text": "I think Spotify is good although it could do without the adds \nApart from that BRILLIANT",
+      "analysis_text": "Spotify\nI think Spotify is good although it could do without the adds Apart from that BRILLIANT",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "positive",
+        "tabularis_multilingual": "positive",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "xlm_roberta",
+        "tabularis_multilingual",
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": true,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14537698598",
+      "language": "en",
+      "evaluation_sets": [
+        "english"
+      ],
+      "title": "Overall review",
+      "text": "The app is realy good with premium, you just listen to music whenever you want and whenever you are, no adds, just your music, metal? Pop? Rap? Doesnt matter everything is in spotify every song, tiktok trends popular songs and even niche songs, you will find something for yourself. You can make playlist with friends, or alone, its like you make your own album, by mixing songs from a bunch of creators, its the best music app there is, but unfortunatelly with non premium your skips are limited and there are some adds, not a lot tho and the premium? It's cheap and you get a monthly free trial! Its a great app, definitely worth trying",
+      "analysis_text": "Overall review\nThe app is realy good with premium, you just listen to music whenever you want and whenever you are, no adds, just your music, metal? Pop? Rap? Doesnt matter everything is in spotify every song, tiktok trends popular songs and even niche songs, you will find something for yourself. You can make playlist with friends, or alone, its like you make your own album, by mixing songs from a bunch of creators, its the best music app there is, but unfortunatelly with non premium your skips are limited and there are some adds, not a lot tho and the premium? It's cheap and you get a monthly free trial! Its a great app, definitely worth trying",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "neutral",
+        "tabularis_multilingual": "positive",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "xlm_roberta",
+        "tabularis_multilingual",
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": true,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14540680035",
+      "language": "uk",
+      "evaluation_sets": [
+        "ukrainian"
+      ],
+      "title": "Много реклам",
+      "text": "Много реклам ( мінус)",
+      "analysis_text": "Много реклам\nМного реклам ( мінус)",
+      "gold": "negative",
+      "gold_ambiguous": true,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "neutral",
+        "tabularis_multilingual": "positive",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "xlm_roberta",
+        "tabularis_multilingual",
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": true,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14552542956",
+      "language": "uk",
+      "evaluation_sets": [
+        "ukrainian"
+      ],
+      "title": "реклама",
+      "text": "дуже богато реклам",
+      "analysis_text": "реклама\nдуже богато реклам",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "positive",
+        "tabularis_multilingual": "positive",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "xlm_roberta",
+        "tabularis_multilingual",
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": true,
+      "negative_missed": true
+    },
+    {
+      "review_id": "11981682744",
+      "language": "nl",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Mehr Werbungen als in YouTube!",
+      "text": "Mehr Werbungen als in YouTube!",
+      "analysis_text": "Mehr Werbungen als in YouTube!\nMehr Werbungen als in YouTube!",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "positive",
+        "tabularis_multilingual": "positive",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "xlm_roberta",
+        "tabularis_multilingual",
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": true,
+      "negative_missed": true
+    },
+    {
+      "review_id": "12833874835",
+      "language": "bg",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Стартиране на музика",
+      "text": "Когато телефона е вързан към автомоби музиката стартира сама без да съм я пускал.",
+      "analysis_text": "Стартиране на музика\nКогато телефона е вързан към автомоби музиката стартира сама без да съм я пускал.",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "neutral",
+        "tabularis_multilingual": "neutral",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "xlm_roberta",
+        "tabularis_multilingual",
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": true,
+      "negative_missed": true
+    },
+    {
+      "review_id": "13693386285",
+      "language": "ru",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Има много реклами",
+      "text": "Има много реклами",
+      "analysis_text": "Има много реклами\nИма много реклами",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "neutral",
+        "tabularis_multilingual": "positive",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "xlm_roberta",
+        "tabularis_multilingual",
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": true,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14089545502",
+      "language": "de",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Spotify neuer Ki-DJ und Design",
+      "text": "Der neue Ki-DJ der jetzt verfügbar ist ist eine sehr gute Idee und funktioniert super!! Das Design der App am iPhone hingegen schaut noch immer sehr veraltet aus!!! Auf meinem PC habe ich mir dafür extra eine Software heruntergeladen um das Design zu ändern das funktioniert aber nicht am Handy.",
+      "analysis_text": "Spotify neuer Ki-DJ und Design\nDer neue Ki-DJ der jetzt verfügbar ist ist eine sehr gute Idee und funktioniert super!! Das Design der App am iPhone hingegen schaut noch immer sehr veraltet aus!!! Auf meinem PC habe ich mir dafür extra eine Software heruntergeladen um das Design zu ändern das funktioniert aber nicht am Handy.",
+      "gold": "negative",
+      "gold_ambiguous": true,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "positive",
+        "tabularis_multilingual": "positive",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "xlm_roberta",
+        "tabularis_multilingual",
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": true,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14193282877",
+      "language": "tr",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "❤️‍🔥",
+      "text": "Çççoookkk güzel  . Ama begendigim şarkılardan açınca başka şarkı çalıyo",
+      "analysis_text": "❤️‍🔥\nÇççoookkk güzel . Ama begendigim şarkılardan açınca başka şarkı çalıyo",
+      "gold": "negative",
+      "gold_ambiguous": true,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "positive",
+        "tabularis_multilingual": "positive",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "xlm_roberta",
+        "tabularis_multilingual",
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": true,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14259433696",
+      "language": "de",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Ist schon gut aber die music quali",
+      "text": "Also finde die app toll und habe sie auch schon sehr lange aber am pc merk ich halt das amazon music, apple music die beste qualität haben dannach YouTube und erst ganz am ende von der liste die ich genannt habe spotify würde ehrlich mich über ein upgrade freuen das die laut stärke und der bass mehr wie bei amazon oder apple music ist",
+      "analysis_text": "Ist schon gut aber die music quali\nAlso finde die app toll und habe sie auch schon sehr lange aber am pc merk ich halt das amazon music, apple music die beste qualität haben dannach YouTube und erst ganz am ende von der liste die ich genannt habe spotify würde ehrlich mich über ein upgrade freuen das die laut stärke und der bass mehr wie bei amazon oder apple music ist",
+      "gold": "negative",
+      "gold_ambiguous": true,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "positive",
+        "tabularis_multilingual": "positive",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "xlm_roberta",
+        "tabularis_multilingual",
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": true,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14302432115",
+      "language": "sk",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Super pop*či front app",
+      "text": "Veľa hudby a pre umelcov 0,0003 € za stream. Yes ďakujeme ❤️❤️❤️ Neni zač celé zle.",
+      "analysis_text": "Super pop*či front app\nVeľa hudby a pre umelcov 0,0003 € za stream. Yes ďakujeme ❤️❤️❤️ Neni zač celé zle.",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "positive",
+        "tabularis_multilingual": "positive",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "xlm_roberta",
+        "tabularis_multilingual",
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": true,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14318447061",
+      "language": "pt",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Spotify",
+      "text": "É uma aplicação muito boa e quando eu quero relaxar eu ponho uma música que eu quero o até estou andar de avião por tanto eu recomendo muito esta aplicação é detalhe não é muito cara 😌🏆⭐️",
+      "analysis_text": "Spotify\nÉ uma aplicação muito boa e quando eu quero relaxar eu ponho uma música que eu quero o até estou andar de avião por tanto eu recomendo muito esta aplicação é detalhe não é muito cara 😌🏆⭐️",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "positive",
+        "tabularis_multilingual": "positive",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "xlm_roberta",
+        "tabularis_multilingual",
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": true,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14351747289",
+      "language": "lt",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Žolinė Novaselkai",
+      "text": "2026-2032",
+      "analysis_text": "Žolinė Novaselkai\n2026-2032",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "neutral",
+        "tabularis_multilingual": "neutral",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "xlm_roberta",
+        "tabularis_multilingual",
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": true,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14362061046",
+      "language": "fi",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Mightaa Man from  Mayo",
+      "text": "It’s Mightaa",
+      "analysis_text": "Mightaa Man from Mayo\nIt’s Mightaa",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "neutral",
+        "tabularis_multilingual": "positive",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "xlm_roberta",
+        "tabularis_multilingual",
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": true,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14398437933",
+      "language": "de",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Mittel",
+      "text": "Apple Music ist besser und billiger!",
+      "analysis_text": "Mittel\nApple Music ist besser und billiger!",
+      "gold": "negative",
+      "gold_ambiguous": true,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "positive",
+        "tabularis_multilingual": "positive",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "xlm_roberta",
+        "tabularis_multilingual",
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": true,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14450219348",
+      "language": "ru",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Реклами",
+      "text": "Много реклами има",
+      "analysis_text": "Реклами\nМного реклами има",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "neutral",
+        "tabularis_multilingual": "positive",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "xlm_roberta",
+        "tabularis_multilingual",
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": true,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14458109187",
+      "language": "fr",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Super",
+      "text": "Formidable bonne continuation",
+      "analysis_text": "Super\nFormidable bonne continuation",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "positive",
+        "tabularis_multilingual": "positive",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "xlm_roberta",
+        "tabularis_multilingual",
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": true,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14467355242",
+      "language": "de",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Donal O’ Brien’s Spotify Premium",
+      "text": "100 Persent",
+      "analysis_text": "Donal O’ Brien’s Spotify Premium\n100 Persent",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "neutral",
+        "tabularis_multilingual": "neutral",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "xlm_roberta",
+        "tabularis_multilingual",
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": true,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14483538176",
+      "language": "it",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Ascolto canzoni",
+      "text": "Preferirei ascoltare canzoni che posso scegliere io nella frequenza che voglio e senza fare abbonamenti",
+      "analysis_text": "Ascolto canzoni\nPreferirei ascoltare canzoni che posso scegliere io nella frequenza che voglio e senza fare abbonamenti",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "neutral",
+        "tabularis_multilingual": "neutral",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "xlm_roberta",
+        "tabularis_multilingual",
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": true,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14496785228",
+      "language": "it",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "troppa pubblicità",
+      "text": "l’app è fatta molto bene sono contento su tutto tranne sulla troppa pubblicità che tra l’altro è proprio di spotify. cambierei questo",
+      "analysis_text": "troppa pubblicità\nl’app è fatta molto bene sono contento su tutto tranne sulla troppa pubblicità che tra l’altro è proprio di spotify. cambierei questo",
+      "gold": "negative",
+      "gold_ambiguous": true,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "positive",
+        "tabularis_multilingual": "positive",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "xlm_roberta",
+        "tabularis_multilingual",
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": true,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14503487198",
+      "language": "oc",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "🤙🤙",
+      "text": "OGNI COSA CHE FACCIO DEVO AVERE LE CUFFIE CON SPOTIFY ATTIVO",
+      "analysis_text": "🤙🤙\nOGNI COSA CHE FACCIO DEVO AVERE LE CUFFIE CON SPOTIFY ATTIVO",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "neutral",
+        "tabularis_multilingual": "positive",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "xlm_roberta",
+        "tabularis_multilingual",
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": true,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14519310929",
+      "language": "ru",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Реклама",
+      "text": "Реклама через песню",
+      "analysis_text": "Реклама\nРеклама через песню",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "neutral",
+        "tabularis_multilingual": "neutral",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "xlm_roberta",
+        "tabularis_multilingual",
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": true,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14529338230",
+      "language": "fr",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Gare app",
+      "text": "Holy ads",
+      "analysis_text": "Gare app\nHoly ads",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "neutral",
+        "tabularis_multilingual": "neutral",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "xlm_roberta",
+        "tabularis_multilingual",
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": true,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14530032419",
+      "language": "pt",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Crítica da",
+      "text": "Amoo o Spotify!! É uma das aplicações que mais uso ao dia-a-dia e é muito útil 💗💕",
+      "analysis_text": "Crítica da\nAmoo o Spotify!! É uma das aplicações que mais uso ao dia-a-dia e é muito útil 💗💕",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "positive",
+        "tabularis_multilingual": "positive",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "xlm_roberta",
+        "tabularis_multilingual",
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": true,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14541438775",
+      "language": "it",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Pay to listen",
+      "text": "Se non paghi è solo pubblicità….",
+      "analysis_text": "Pay to listen\nSe non paghi è solo pubblicità….",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "neutral",
+        "tabularis_multilingual": "neutral",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "xlm_roberta",
+        "tabularis_multilingual",
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": true,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14571471207",
+      "language": "nl",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Spotify",
+      "text": "Het moet gratis zijn voor iedereen",
+      "analysis_text": "Spotify\nHet moet gratis zijn voor iedereen",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "neutral",
+        "tabularis_multilingual": "positive",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "xlm_roberta",
+        "tabularis_multilingual",
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": true,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14581119923",
+      "language": "nl",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Beste App",
+      "text": "👏👏👏👏👏",
+      "analysis_text": "Beste App\n👏👏👏👏👏",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "positive",
+        "tabularis_multilingual": "positive",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "xlm_roberta",
+        "tabularis_multilingual",
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": true,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14262330103",
+      "language": "uk",
+      "evaluation_sets": [
+        "ukrainian"
+      ],
+      "title": "Один з найкращих музичних сервісів",
+      "text": "Додайте нарешті lossless(",
+      "analysis_text": "Один з найкращих музичних сервісів\nДодайте нарешті lossless(",
+      "gold": "neutral",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "positive",
+        "tabularis_multilingual": "positive",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "xlm_roberta",
+        "tabularis_multilingual",
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": true,
+      "negative_missed": false
+    },
+    {
+      "review_id": "14454352219",
+      "language": "en",
+      "evaluation_sets": [
+        "english"
+      ],
+      "title": "Speed",
+      "text": "Since a few months ago I have noticed this app is especially slow.",
+      "analysis_text": "Speed\nSince a few months ago I have noticed this app is especially slow.",
+      "gold": "positive",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "negative",
+        "tabularis_multilingual": "negative",
+        "multilingual_distilbert": "negative"
+      },
+      "wrong_models": [
+        "xlm_roberta",
+        "tabularis_multilingual",
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": true,
+      "negative_missed": false
+    },
+    {
+      "review_id": "14512952850",
+      "language": "uk",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Чудово але",
+      "text": "Прошу не пропонувати російські пісні і не підкидати їх в плейлисти .Можна зробити можливість блокування для різних типів пісень і мов 🙏",
+      "analysis_text": "Чудово але\nПрошу не пропонувати російські пісні і не підкидати їх в плейлисти .Можна зробити можливість блокування для різних типів пісень і мов 🙏",
+      "gold": "neutral",
+      "gold_ambiguous": true,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "negative",
+        "tabularis_multilingual": "negative",
+        "multilingual_distilbert": "negative"
+      },
+      "wrong_models": [
+        "xlm_roberta",
+        "tabularis_multilingual",
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": true,
+      "negative_missed": false
+    },
+    {
+      "review_id": "14559247255",
+      "language": "en",
+      "evaluation_sets": [
+        "english"
+      ],
+      "title": "Opiniom about the Rytmic melodie",
+      "text": "My Opionion is such as great such is My Lord’r Love @/& in Me ofGod",
+      "analysis_text": "Opiniom about the Rytmic melodie\nMy Opionion is such as great such is My Lord’r Love @/& in Me ofGod",
+      "gold": "neutral",
+      "gold_ambiguous": true,
+      "needs_manual_review": true,
+      "predictions": {
+        "xlm_roberta": "positive",
+        "tabularis_multilingual": "positive",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "xlm_roberta",
+        "tabularis_multilingual",
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": true,
+      "negative_missed": false
+    },
+    {
+      "review_id": "14580557011",
+      "language": "en",
+      "evaluation_sets": [
+        "english"
+      ],
+      "title": "What is this nonsense",
+      "text": "I was doing homework about my incident and i was listening to music and a random song that wasn’t even in the playlist started playing",
+      "analysis_text": "What is this nonsense\nI was doing homework about my incident and i was listening to music and a random song that wasn’t even in the playlist started playing",
+      "gold": "positive",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "negative",
+        "tabularis_multilingual": "negative",
+        "multilingual_distilbert": "negative"
+      },
+      "wrong_models": [
+        "xlm_roberta",
+        "tabularis_multilingual",
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": true,
+      "negative_missed": false
+    },
+    {
+      "review_id": "13645562118",
+      "language": "bg",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Долу ГЕРБ/ДПС!!!",
+      "text": "Вън мафията от България! Затвор и тъмница за Тиквата и Свинята",
+      "analysis_text": "Долу ГЕРБ/ДПС!!!\nВън мафията от България! Затвор и тъмница за Тиквата и Свинята",
+      "gold": "neutral",
+      "gold_ambiguous": true,
+      "needs_manual_review": true,
+      "predictions": {
+        "xlm_roberta": "negative",
+        "tabularis_multilingual": "positive",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "xlm_roberta",
+        "tabularis_multilingual",
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": true,
+      "negative_missed": false
+    },
+    {
+      "review_id": "14318414559",
+      "language": "lt",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Dainų trūkumas",
+      "text": "Labai daug muzikos neina rast. YouTube music tokios problemos nėra",
+      "analysis_text": "Dainų trūkumas\nLabai daug muzikos neina rast. YouTube music tokios problemos nėra",
+      "gold": "positive",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "negative",
+        "tabularis_multilingual": "negative",
+        "multilingual_distilbert": "negative"
+      },
+      "wrong_models": [
+        "xlm_roberta",
+        "tabularis_multilingual",
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": true,
+      "negative_missed": false
+    },
+    {
+      "review_id": "14323904824",
+      "language": "pt",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Modo aleatório numa jam não funciona",
+      "text": "Quando duas pessoas estão numa jam e uma coloca músicas na fila de reprodução e a outra também faz a adição de faixa e o dono jam coloca em modo aleatório a fila de reprodução, a ordem ainda continua como a adicionada, sem misturar a ordem das músicas a serem tocadas. Parece q o Spotify não dá mta atenção pra esses detalhes, porque pra eles a única vantagem oferecida aos usuários q pagam é não terem propaganda entre as faixas, como se fosse a vantagem absoluta, apesar q, não sei por que, estou tendo propagandas antes de iniciar alguns podcasts, uma coisa que a equipe poderia me esclarecer pagando plano família. Em se tratando do detalhe anteriormente mencionado gostaria de uma solução, ouvir músicas em ordem aleatório numa jam entre duas pessoas. Aguardo retorno, obrigado.",
+      "analysis_text": "Modo aleatório numa jam não funciona\nQuando duas pessoas estão numa jam e uma coloca músicas na fila de reprodução e a outra também faz a adição de faixa e o dono jam coloca em modo aleatório a fila de reprodução, a ordem ainda continua como a adicionada, sem misturar a ordem das músicas a serem tocadas. Parece q o Spotify não dá mta atenção pra esses detalhes, porque pra eles a única vantagem oferecida aos usuários q pagam é não terem propaganda entre as faixas, como se fosse a vantagem absoluta, apesar q, não sei por que, estou tendo propagandas antes de iniciar alguns podcasts, uma coisa que a equipe poderia me esclarecer pagando plano família. Em se tratando do detalhe anteriormente mencionado gostaria de uma solução, ouvir músicas em ordem aleatório numa jam entre duas pessoas. Aguardo retorno, obrigado.",
+      "gold": "positive",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "neutral",
+        "tabularis_multilingual": "neutral",
+        "multilingual_distilbert": "negative"
+      },
+      "wrong_models": [
+        "xlm_roberta",
+        "tabularis_multilingual",
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": true,
+      "negative_missed": false
+    },
+    {
+      "review_id": "14437923251",
+      "language": "pl",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Reklamy",
+      "text": "Uważam że ostatnio jest za dużo reklam i nie da się normalnie słuchać muzyki😭",
+      "analysis_text": "Reklamy\nUważam że ostatnio jest za dużo reklam i nie da się normalnie słuchać muzyki😭",
+      "gold": "positive",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "negative",
+        "tabularis_multilingual": "negative",
+        "multilingual_distilbert": "negative"
+      },
+      "wrong_models": [
+        "xlm_roberta",
+        "tabularis_multilingual",
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": true,
+      "negative_missed": false
+    },
+    {
+      "review_id": "14471086935",
+      "language": "tr",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "✨",
+      "text": "Reklamlar çok az ve nerdeyse 5 yıldızı hak ediyor",
+      "analysis_text": "✨\nReklamlar çok az ve nerdeyse 5 yıldızı hak ediyor",
+      "gold": "positive",
+      "gold_ambiguous": true,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "neutral",
+        "tabularis_multilingual": "negative",
+        "multilingual_distilbert": "negative"
+      },
+      "wrong_models": [
+        "xlm_roberta",
+        "tabularis_multilingual",
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": true,
+      "negative_missed": false
+    },
+    {
+      "review_id": "14502347949",
+      "language": "pl",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Mix",
+      "text": "Przydałby  się lepszy mix",
+      "analysis_text": "Mix\nPrzydałby się lepszy mix",
+      "gold": "neutral",
+      "gold_ambiguous": true,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "positive",
+        "tabularis_multilingual": "negative",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "xlm_roberta",
+        "tabularis_multilingual",
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": true,
+      "negative_missed": false
+    },
+    {
+      "review_id": "14528082336",
+      "language": "ar",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Nederland",
+      "text": "عدم ظهور الإعلانات. في قنوات الدينيه.  احترام لكافة الأديان   \n\nوتقلي من هذه الإعلانات على هذا البرنامج.   وسماح بتحكم الرجوع للأغاني في نظام car ply",
+      "analysis_text": "Nederland\nعدم ظهور الإعلانات. في قنوات الدينيه. احترام لكافة الأديان وتقلي من هذه الإعلانات على هذا البرنامج. وسماح بتحكم الرجوع للأغاني في نظام car ply",
+      "gold": "neutral",
+      "gold_ambiguous": true,
+      "needs_manual_review": true,
+      "predictions": {
+        "xlm_roberta": "positive",
+        "tabularis_multilingual": "negative",
+        "multilingual_distilbert": "negative"
+      },
+      "wrong_models": [
+        "xlm_roberta",
+        "tabularis_multilingual",
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": true,
+      "negative_missed": false
+    },
+    {
+      "review_id": "12139015078",
+      "language": "en",
+      "evaluation_sets": [
+        "english"
+      ],
+      "title": "Not",
+      "text": "Controlling to much people",
+      "analysis_text": "Not\nControlling to much people",
+      "gold": "negative",
+      "gold_ambiguous": true,
+      "needs_manual_review": true,
+      "predictions": {
+        "xlm_roberta": "negative",
+        "tabularis_multilingual": "negative",
+        "multilingual_distilbert": "neutral"
+      },
+      "wrong_models": [
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "12890937301",
+      "language": "en",
+      "evaluation_sets": [
+        "english"
+      ],
+      "title": "Premium Scam",
+      "text": "I don’t know why they changed the History that way, but I’m Premium and if I play few songs from a Playlist and the Playlist gets updated constantly, it doesn’t show the songs you played that were previously part of the Playlist, but were swapped.",
+      "analysis_text": "Premium Scam\nI don’t know why they changed the History that way, but I’m Premium and if I play few songs from a Playlist and the Playlist gets updated constantly, it doesn’t show the songs you played that were previously part of the Playlist, but were swapped.",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "negative",
+        "tabularis_multilingual": "neutral",
+        "multilingual_distilbert": "neutral"
+      },
+      "wrong_models": [
+        "tabularis_multilingual",
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "13303806366",
+      "language": "en",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Too much suggestions with AI generated trash",
+      "text": "Too much suggestions with AI generated trash",
+      "analysis_text": "Too much suggestions with AI generated trash\nToo much suggestions with AI generated trash",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "negative",
+        "tabularis_multilingual": "negative",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "13858807790",
+      "language": "en",
+      "evaluation_sets": [
+        "english"
+      ],
+      "title": "Goda",
+      "text": "Į had to pay for premium like 3 time in less then a week",
+      "analysis_text": "Goda\nĮ had to pay for premium like 3 time in less then a week",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "negative",
+        "tabularis_multilingual": "negative",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "13877772672",
+      "language": "en",
+      "evaluation_sets": [
+        "english"
+      ],
+      "title": "Ads",
+      "text": "There were already a lot of ads, now there are twice as many and they appear much more often. Reduce the number.",
+      "analysis_text": "Ads\nThere were already a lot of ads, now there are twice as many and they appear much more often. Reduce the number.",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "neutral",
+        "tabularis_multilingual": "negative",
+        "multilingual_distilbert": "negative"
+      },
+      "wrong_models": [
+        "xlm_roberta"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "13907130045",
+      "language": "en",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Ads",
+      "text": "Too much ads last time",
+      "analysis_text": "Ads\nToo much ads last time",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "negative",
+        "tabularis_multilingual": "negative",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14001948936",
+      "language": "en",
+      "evaluation_sets": [
+        "english"
+      ],
+      "title": "Old mixing technology",
+      "text": "2026 and you can't do normal mixing? I have more than 200 hours of music and you offer me to listen to the same thing? It's a shame.",
+      "analysis_text": "Old mixing technology\n2026 and you can't do normal mixing? I have more than 200 hours of music and you offer me to listen to the same thing? It's a shame.",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "negative",
+        "tabularis_multilingual": "neutral",
+        "multilingual_distilbert": "negative"
+      },
+      "wrong_models": [
+        "tabularis_multilingual"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14050499214",
+      "language": "en",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Ads",
+      "text": "Too much ads",
+      "analysis_text": "Ads\nToo much ads",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "negative",
+        "tabularis_multilingual": "negative",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14051794558",
+      "language": "uk",
+      "evaluation_sets": [
+        "ukrainian"
+      ],
+      "title": "мінуси",
+      "text": "багато реклам і пісні самі міняються не по черзі по альбому",
+      "analysis_text": "мінуси\nбагато реклам і пісні самі міняються не по черзі по альбому",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "neutral",
+        "tabularis_multilingual": "negative",
+        "multilingual_distilbert": "negative"
+      },
+      "wrong_models": [
+        "xlm_roberta"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14060849448",
+      "language": "uk",
+      "evaluation_sets": [
+        "ukrainian"
+      ],
+      "title": "не робе",
+      "text": "На ipad 7 2019 року, взагалі не робе, пише що немає інтернету хоча він є",
+      "analysis_text": "не робе\nНа ipad 7 2019 року, взагалі не робе, пише що немає інтернету хоча він є",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "negative",
+        "tabularis_multilingual": "negative",
+        "multilingual_distilbert": "neutral"
+      },
+      "wrong_models": [
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14071995303",
+      "language": "uk",
+      "evaluation_sets": [
+        "ukrainian"
+      ],
+      "title": "Не знаю 🤷 Создателів 🙄",
+      "text": "Важко знайти собі пісню яку я люблю або хочу !!!!! \nЗробіть ліпше «мила»» спокійна « Щось типу такого😫😘",
+      "analysis_text": "Не знаю 🤷 Создателів 🙄\nВажко знайти собі пісню яку я люблю або хочу !!!!! Зробіть ліпше «мила»» спокійна « Щось типу такого😫😘",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "neutral",
+        "tabularis_multilingual": "positive",
+        "multilingual_distilbert": "negative"
+      },
+      "wrong_models": [
+        "xlm_roberta",
+        "tabularis_multilingual"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14072562622",
+      "language": "uk",
+      "evaluation_sets": [
+        "ukrainian"
+      ],
+      "title": "4 пісні і 2 реклами",
+      "text": "Будь ласка зменшить кількість реклами . 4 пісні прослухав і 2 реклами одразу . Чому реклами так часто попадаються ?",
+      "analysis_text": "4 пісні і 2 реклами\nБудь ласка зменшить кількість реклами . 4 пісні прослухав і 2 реклами одразу . Чому реклами так часто попадаються ?",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "negative",
+        "tabularis_multilingual": "neutral",
+        "multilingual_distilbert": "negative"
+      },
+      "wrong_models": [
+        "tabularis_multilingual"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14077573094",
+      "language": "uk",
+      "evaluation_sets": [
+        "ukrainian"
+      ],
+      "title": "Що за",
+      "text": "Чому уже немає вкладки з оновленнями моїх виконавців???",
+      "analysis_text": "Що за\nЧому уже немає вкладки з оновленнями моїх виконавців???",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "negative",
+        "tabularis_multilingual": "neutral",
+        "multilingual_distilbert": "negative"
+      },
+      "wrong_models": [
+        "tabularis_multilingual"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14108587418",
+      "language": "uk",
+      "evaluation_sets": [
+        "ukrainian"
+      ],
+      "title": "не працює підписка",
+      "text": "купив підписку, а вона не працює",
+      "analysis_text": "не працює підписка\nкупив підписку, а вона не працює",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "negative",
+        "tabularis_multilingual": "negative",
+        "multilingual_distilbert": "neutral"
+      },
+      "wrong_models": [
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14114887496",
+      "language": "en",
+      "evaluation_sets": [
+        "english"
+      ],
+      "title": "Too much ads for free member",
+      "text": "Dear spotify you are waisting my time I just get ads every 5 minutes",
+      "analysis_text": "Too much ads for free member\nDear spotify you are waisting my time I just get ads every 5 minutes",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "negative",
+        "tabularis_multilingual": "negative",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14140267190",
+      "language": "uk",
+      "evaluation_sets": [
+        "ukrainian"
+      ],
+      "title": "ЗМІНІТЬ ІКОНКУ",
+      "text": "Змініть цю огидну кончену іконнку на нормальну, попередню!! дивитись на неї не можу",
+      "analysis_text": "ЗМІНІТЬ ІКОНКУ\nЗмініть цю огидну кончену іконнку на нормальну, попередню!! дивитись на неї не можу",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "negative",
+        "tabularis_multilingual": "positive",
+        "multilingual_distilbert": "negative"
+      },
+      "wrong_models": [
+        "tabularis_multilingual"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14142254336",
+      "language": "uk",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "2/10",
+      "text": "Заблокували мене мені 37 років акаунтом користуюся я.я ліза пристаяк  1989 року народження \nЯкщо вам щось не подобається то вибачте але верніть акаунт я не маю право мати батьківський контроль я вже доросла якщо ви вернете я видалю цей відгук я не можу включати дитині мультики давати їй слухати дитячі пісні та гуглити їх я більше не хочу користуватися цим це дуже погано і для мене це важливо я і моя дитина їде в подорож нам треба дивитися мультики але ви мене заблокували ви найгірші ненавиджу вас і якщо ви це видалите то я ще раз це я буду писати тому у вас є день щоб вернути акаунт інакше на вас полетить репорт \nБо я їду в поїздку чекаю вибачення на мій акаунт",
+      "analysis_text": "2/10\nЗаблокували мене мені 37 років акаунтом користуюся я.я ліза пристаяк 1989 року народження Якщо вам щось не подобається то вибачте але верніть акаунт я не маю право мати батьківський контроль я вже доросла якщо ви вернете я видалю цей відгук я не можу включати дитині мультики давати їй слухати дитячі пісні та гуглити їх я більше не хочу користуватися цим це дуже погано і для мене це важливо я і моя дитина їде в подорож нам треба дивитися мультики але ви мене заблокували ви найгірші ненавиджу вас і якщо ви це видалите то я ще раз це я буду писати тому у вас є день щоб вернути акаунт інакше на вас полетить репорт Бо я їду в поїздку чекаю вибачення на мій акаунт",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "neutral",
+        "tabularis_multilingual": "negative",
+        "multilingual_distilbert": "negative"
+      },
+      "wrong_models": [
+        "xlm_roberta"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14144692441",
+      "language": "uk",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "response",
+      "text": "Не 5 зірок , тому що перше, заблокували мій акаунт за порушення умов та правил , скачування модів , з не офіційних  джерел, за слухання та зберігання музики поза програмою, що я абсолютно заперечую , тому що я такого ніколи не робив , я просто слухав музику з андроїд та айфона та можливо причина була в тому що на андроїд стояло інше місцезнаходження, мене заблокували і на одному і на другому акаунті і друге за що я відняв зірку, це за те що можна підтверджувати що я студент тільки раз в 334 дня , а так як мій акаунт заблокували то на новому я не можу підтвердити що я студент бо цей статус прикріплений до заблокованого акаунта і я писав в підтримку але нічого …",
+      "analysis_text": "response\nНе 5 зірок , тому що перше, заблокували мій акаунт за порушення умов та правил , скачування модів , з не офіційних джерел, за слухання та зберігання музики поза програмою, що я абсолютно заперечую , тому що я такого ніколи не робив , я просто слухав музику з андроїд та айфона та можливо причина була в тому що на андроїд стояло інше місцезнаходження, мене заблокували і на одному і на другому акаунті і друге за що я відняв зірку, це за те що можна підтверджувати що я студент тільки раз в 334 дня , а так як мій акаунт заблокували то на новому я не можу підтвердити що я студент бо цей статус прикріплений до заблокованого акаунта і я писав в підтримку але нічого …",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "neutral",
+        "tabularis_multilingual": "negative",
+        "multilingual_distilbert": "negative"
+      },
+      "wrong_models": [
+        "xlm_roberta"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14145959187",
+      "language": "uk",
+      "evaluation_sets": [
+        "ukrainian"
+      ],
+      "title": "поверніть",
+      "text": "пропала кнопка \"what's new\"",
+      "analysis_text": "поверніть\nпропала кнопка \"what's new\"",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "negative",
+        "tabularis_multilingual": "neutral",
+        "multilingual_distilbert": "negative"
+      },
+      "wrong_models": [
+        "tabularis_multilingual"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14161557254",
+      "language": "uk",
+      "evaluation_sets": [
+        "ukrainian"
+      ],
+      "title": "Забагато реклами",
+      "text": "Якщо слухати без преміум, стало занадто багато реклами. Якщо раніше ролик був раз на 15 хвилин, то зараз кожну третю пісню. Це не спонукає придбати преміум. \nНа преміум підписці не реалізована функція офлайн прослуховування. Тож можна вже не міняти значок. Це не змінить недоліків додатку.",
+      "analysis_text": "Забагато реклами\nЯкщо слухати без преміум, стало занадто багато реклами. Якщо раніше ролик був раз на 15 хвилин, то зараз кожну третю пісню. Це не спонукає придбати преміум. На преміум підписці не реалізована функція офлайн прослуховування. Тож можна вже не міняти значок. Це не змінить недоліків додатку.",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "neutral",
+        "tabularis_multilingual": "negative",
+        "multilingual_distilbert": "negative"
+      },
+      "wrong_models": [
+        "xlm_roberta"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14196723787",
+      "language": "en",
+      "evaluation_sets": [
+        "english"
+      ],
+      "title": "Spotify ig",
+      "text": "Its very good but the ads get on my nerve but its cool tho",
+      "analysis_text": "Spotify ig\nIts very good but the ads get on my nerve but its cool tho",
+      "gold": "negative",
+      "gold_ambiguous": true,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "positive",
+        "tabularis_multilingual": "negative",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "xlm_roberta",
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14200218892",
+      "language": "uk",
+      "evaluation_sets": [
+        "ukrainian"
+      ],
+      "title": "Рекомендації - дно",
+      "text": "Неймовірно дратує наявність російськомовних пісень в рекомендаціях, зробіть вже змогу заблокувати пісні конкретної країни, або хоча б нормальні рекомендації, які розуміють, що ти не споживаєш російський контент.",
+      "analysis_text": "Рекомендації - дно\nНеймовірно дратує наявність російськомовних пісень в рекомендаціях, зробіть вже змогу заблокувати пісні конкретної країни, або хоча б нормальні рекомендації, які розуміють, що ти не споживаєш російський контент.",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "negative",
+        "tabularis_multilingual": "neutral",
+        "multilingual_distilbert": "negative"
+      },
+      "wrong_models": [
+        "tabularis_multilingual"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14227572956",
+      "language": "uk",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "😼",
+      "text": "Іноді не подобається що багато реклами",
+      "analysis_text": "😼\nІноді не подобається що багато реклами",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "negative",
+        "tabularis_multilingual": "negative",
+        "multilingual_distilbert": "neutral"
+      },
+      "wrong_models": [
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14257305236",
+      "language": "en",
+      "evaluation_sets": [
+        "english"
+      ],
+      "title": "Too many ads!",
+      "text": "I enjoy spotify but there are way too many ads. Keep adding up as time passes!",
+      "analysis_text": "Too many ads!\nI enjoy spotify but there are way too many ads. Keep adding up as time passes!",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "positive",
+        "tabularis_multilingual": "negative",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "xlm_roberta",
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14278694562",
+      "language": "en",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Premium isn’t ad free…",
+      "text": "l've been a premium user for\nYEARS now and one of the features I loved most (and used to tell everyone about) was that, since spotify bought parcast, their podcasts were dynamic ad free. They had a couple advertisements recorded on the audio itself, but it was just for parcast's other podcasts, which was completely fine, since it was just a few seconds long and not very disruptive. However, since a couple months ago, spotify decided to add dynamic ads on parcast’s podcasts, even for premium users! As the subscription isn’t that cheap, I’m seriously reconsidering renovating it, changing instead to apple music and apple podcasts…",
+      "analysis_text": "Premium isn’t ad free…\nl've been a premium user for YEARS now and one of the features I loved most (and used to tell everyone about) was that, since spotify bought parcast, their podcasts were dynamic ad free. They had a couple advertisements recorded on the audio itself, but it was just for parcast's other podcasts, which was completely fine, since it was just a few seconds long and not very disruptive. However, since a couple months ago, spotify decided to add dynamic ads on parcast’s podcasts, even for premium users! As the subscription isn’t that cheap, I’m seriously reconsidering renovating it, changing instead to apple music and apple podcasts…",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "neutral",
+        "tabularis_multilingual": "negative",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "xlm_roberta",
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14338291153",
+      "language": "uk",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Неякісне оновлення",
+      "text": "Не рекомендує новий треків, а тільки одне і те саме по кругу пропонує",
+      "analysis_text": "Неякісне оновлення\nНе рекомендує новий треків, а тільки одне і те саме по кругу пропонує",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "negative",
+        "tabularis_multilingual": "negative",
+        "multilingual_distilbert": "neutral"
+      },
+      "wrong_models": [
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14340253624",
+      "language": "uk",
+      "evaluation_sets": [
+        "ukrainian"
+      ],
+      "title": "Робіть щось",
+      "text": "Не працює🤬🤬🤬",
+      "analysis_text": "Робіть щось\nНе працює🤬🤬🤬",
+      "gold": "negative",
+      "gold_ambiguous": true,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "negative",
+        "tabularis_multilingual": "negative",
+        "multilingual_distilbert": "neutral"
+      },
+      "wrong_models": [
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14342690426",
+      "language": "en",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Update",
+      "text": "Recently I left a review and I came off as rude (I was in a very bad mood) so I did do your advice and it ended up working, however it still takes time to load but not as long so I guess it’s working. Overall very nice",
+      "analysis_text": "Update\nRecently I left a review and I came off as rude (I was in a very bad mood) so I did do your advice and it ended up working, however it still takes time to load but not as long so I guess it’s working. Overall very nice",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "positive",
+        "tabularis_multilingual": "negative",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "xlm_roberta",
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14345831644",
+      "language": "en",
+      "evaluation_sets": [
+        "english"
+      ],
+      "title": "Review",
+      "text": "It could be better but where is a lot of adds",
+      "analysis_text": "Review\nIt could be better but where is a lot of adds",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "negative",
+        "tabularis_multilingual": "negative",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14369272679",
+      "language": "en",
+      "evaluation_sets": [
+        "english"
+      ],
+      "title": "too much ads",
+      "text": "TOO MUCH ads",
+      "analysis_text": "too much ads\nTOO MUCH ads",
+      "gold": "negative",
+      "gold_ambiguous": true,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "negative",
+        "tabularis_multilingual": "negative",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14371062928",
+      "language": "uk",
+      "evaluation_sets": [
+        "ukrainian"
+      ],
+      "title": "Дорого платити кожного місяця з оновленнями раз у сто років!!!!!",
+      "text": "ГАНЬБА",
+      "analysis_text": "Дорого платити кожного місяця з оновленнями раз у сто років!!!!!\nГАНЬБА",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "negative",
+        "tabularis_multilingual": "positive",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "tabularis_multilingual",
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14389762227",
+      "language": "uk",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "😍",
+      "text": "Мені подобається",
+      "analysis_text": "😍\nМені подобається",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "positive",
+        "tabularis_multilingual": "positive",
+        "multilingual_distilbert": "negative"
+      },
+      "wrong_models": [
+        "xlm_roberta",
+        "tabularis_multilingual"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14392597440",
+      "language": "en",
+      "evaluation_sets": [
+        "english"
+      ],
+      "title": "4 ads to listen a single song",
+      "text": "i used to enjoy this app a lot, and in the past between songs 2 adds were maximum, but now it's 4 which in sum is 2 minutes on avarage to hear a desired song, so money hungry gosh",
+      "analysis_text": "4 ads to listen a single song\ni used to enjoy this app a lot, and in the past between songs 2 adds were maximum, but now it's 4 which in sum is 2 minutes on avarage to hear a desired song, so money hungry gosh",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "negative",
+        "tabularis_multilingual": "neutral",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "tabularis_multilingual",
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14419130876",
+      "language": "en",
+      "evaluation_sets": [
+        "english"
+      ],
+      "title": "Too many ads",
+      "text": "Too many ads",
+      "analysis_text": "Too many ads\nToo many ads",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "negative",
+        "tabularis_multilingual": "negative",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14434505174",
+      "language": "uk",
+      "evaluation_sets": [
+        "ukrainian"
+      ],
+      "title": "Зникають пісні",
+      "text": "У застосунку зникають пісні? У інших людей поруч вони є, а у мене вилучені з плейлиста. У мене в Ютубмюзік вони є, а ваш застосунок блокує.\nЯкщо це авторскі права, то чому у інших ці пісні є?",
+      "analysis_text": "Зникають пісні\nУ застосунку зникають пісні? У інших людей поруч вони є, а у мене вилучені з плейлиста. У мене в Ютубмюзік вони є, а ваш застосунок блокує. Якщо це авторскі права, то чому у інших ці пісні є?",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "negative",
+        "tabularis_multilingual": "neutral",
+        "multilingual_distilbert": "negative"
+      },
+      "wrong_models": [
+        "tabularis_multilingual"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14454177515",
+      "language": "uk",
+      "evaluation_sets": [
+        "ukrainian"
+      ],
+      "title": "не оправдало очікування",
+      "text": "Без підписки преміум майже нічого не можна зробити, море реклами",
+      "analysis_text": "не оправдало очікування\nБез підписки преміум майже нічого не можна зробити, море реклами",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "negative",
+        "tabularis_multilingual": "negative",
+        "multilingual_distilbert": "neutral"
+      },
+      "wrong_models": [
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14483684161",
+      "language": "en",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Too much adds",
+      "text": "Too much adds",
+      "analysis_text": "Too much adds\nToo much adds",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "negative",
+        "tabularis_multilingual": "negative",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14494233111",
+      "language": "en",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "👀",
+      "text": "i love this app, the only thing is that there's very much ads",
+      "analysis_text": "👀\ni love this app, the only thing is that there's very much ads",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "positive",
+        "tabularis_multilingual": "negative",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "xlm_roberta",
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14500465507",
+      "language": "en",
+      "evaluation_sets": [
+        "english"
+      ],
+      "title": "Boogie",
+      "text": "Not very cheap",
+      "analysis_text": "Boogie\nNot very cheap",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "negative",
+        "tabularis_multilingual": "negative",
+        "multilingual_distilbert": "neutral"
+      },
+      "wrong_models": [
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14506367897",
+      "language": "en",
+      "evaluation_sets": [
+        "english"
+      ],
+      "title": "ads during podcasts",
+      "text": "ads on a PAID platform are unacceptable also pay the artists more!!",
+      "analysis_text": "ads during podcasts\nads on a PAID platform are unacceptable also pay the artists more!!",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "negative",
+        "tabularis_multilingual": "positive",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "tabularis_multilingual",
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14507896746",
+      "language": "en",
+      "evaluation_sets": [
+        "english"
+      ],
+      "title": "Unacceptable",
+      "text": "Do not pay artists nearly enough and the CEO invested in AI military systems",
+      "analysis_text": "Unacceptable\nDo not pay artists nearly enough and the CEO invested in AI military systems",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "negative",
+        "tabularis_multilingual": "negative",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14510071567",
+      "language": "uk",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "За багато реклам",
+      "text": "Реклама після кожної пісні це unreal , я розумію, що у мене немає преміум і що реклами повинні бути, ну це занадто одна пісня і реклама типу це трохи занадто",
+      "analysis_text": "За багато реклам\nРеклама після кожної пісні це unreal , я розумію, що у мене немає преміум і що реклами повинні бути, ну це занадто одна пісня і реклама типу це трохи занадто",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "negative",
+        "tabularis_multilingual": "negative",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14518948607",
+      "language": "uk",
+      "evaluation_sets": [
+        "ukrainian"
+      ],
+      "title": "я не можу купити преміум",
+      "text": "я не можу купити у вас преміум, зіверніть увагу будь ласка",
+      "analysis_text": "я не можу купити преміум\nя не можу купити у вас преміум, зіверніть увагу будь ласка",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "negative",
+        "tabularis_multilingual": "negative",
+        "multilingual_distilbert": "neutral"
+      },
+      "wrong_models": [
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14535858266",
+      "language": "uk",
+      "evaluation_sets": [
+        "ukrainian"
+      ],
+      "title": "Поціновувачка спотіфай",
+      "text": "Забагато реклами, пісні рекомендуються на вмання, і не той жанр, що зазвичай слухаєш",
+      "analysis_text": "Поціновувачка спотіфай\nЗабагато реклами, пісні рекомендуються на вмання, і не той жанр, що зазвичай слухаєш",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "neutral",
+        "tabularis_multilingual": "negative",
+        "multilingual_distilbert": "negative"
+      },
+      "wrong_models": [
+        "xlm_roberta"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14538671204",
+      "language": "en",
+      "evaluation_sets": [
+        "english"
+      ],
+      "title": "Way too many adverts",
+      "text": "The music is good obviously but there are way too many ads now. sometimes I even get 4 in a row.",
+      "analysis_text": "Way too many adverts\nThe music is good obviously but there are way too many ads now. sometimes I even get 4 in a row.",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "negative",
+        "tabularis_multilingual": "negative",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14538807364",
+      "language": "en",
+      "evaluation_sets": [
+        "english"
+      ],
+      "title": "Fix the ads",
+      "text": "It is really good but the ads are very long",
+      "analysis_text": "Fix the ads\nIt is really good but the ads are very long",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "negative",
+        "tabularis_multilingual": "negative",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14546862840",
+      "language": "en",
+      "evaluation_sets": [
+        "english"
+      ],
+      "title": "too many ads.",
+      "text": "I instaled spotify to listen to music and not ads. I understand there needs to be a couple of ads for yall to earn money but there's just too much. I decided to write this review when I got 4 ads in a row and then another ad 10min later😐",
+      "analysis_text": "too many ads.\nI instaled spotify to listen to music and not ads. I understand there needs to be a couple of ads for yall to earn money but there's just too much. I decided to write this review when I got 4 ads in a row and then another ad 10min later😐",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "negative",
+        "tabularis_multilingual": "negative",
+        "multilingual_distilbert": "neutral"
+      },
+      "wrong_models": [
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14555702222",
+      "language": "uk",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Porażka",
+      "text": "Dajcie spokój🫣 \nPIOSENKA—> REKLAMA—>PIOSENKA—>REKLAMA—>REKLAMA—>REKLAMA—>PIOSENKA",
+      "analysis_text": "Porażka\nDajcie spokój🫣 PIOSENKA—> REKLAMA—>PIOSENKA—>REKLAMA—>REKLAMA—>REKLAMA—>PIOSENKA",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "negative",
+        "tabularis_multilingual": "neutral",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "tabularis_multilingual",
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14560830730",
+      "language": "en",
+      "evaluation_sets": [
+        "english"
+      ],
+      "title": "Ads",
+      "text": "My question is , why there are ads while playing podcasts? I would have no problem with that but with premium i expect that I don’t have any ads :3",
+      "analysis_text": "Ads\nMy question is , why there are ads while playing podcasts? I would have no problem with that but with premium i expect that I don’t have any ads :3",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "negative",
+        "tabularis_multilingual": "neutral",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "tabularis_multilingual",
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14563016948",
+      "language": "en",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "A little behind",
+      "text": "I was waiting for a better algorithm, which can predicts better what I want to hear",
+      "analysis_text": "A little behind\nI was waiting for a better algorithm, which can predicts better what I want to hear",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "neutral",
+        "tabularis_multilingual": "negative",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "xlm_roberta",
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14564276056",
+      "language": "en",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Small bugs and Dated UI",
+      "text": "The service in itself is great, however, the app looks extremely dated when compared to Apple Music, and small bugs in the UI and Shuffle mode are still present.",
+      "analysis_text": "Small bugs and Dated UI\nThe service in itself is great, however, the app looks extremely dated when compared to Apple Music, and small bugs in the UI and Shuffle mode are still present.",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "negative",
+        "tabularis_multilingual": "negative",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14565580734",
+      "language": "en",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "its so nice but",
+      "text": "stop supporting genocide 🩷",
+      "analysis_text": "its so nice but\nstop supporting genocide 🩷",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "negative",
+        "tabularis_multilingual": "negative",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14574044673",
+      "language": "uk",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Уроди",
+      "text": "Заєбла та реклама",
+      "analysis_text": "Уроди\nЗаєбла та реклама",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "negative",
+        "tabularis_multilingual": "neutral",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "tabularis_multilingual",
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14581175859",
+      "language": "uk",
+      "evaluation_sets": [
+        "ukrainian"
+      ],
+      "title": "отак",
+      "text": "багато реклам і платна програма",
+      "analysis_text": "отак\nбагато реклам і платна програма",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "negative",
+        "tabularis_multilingual": "positive",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "tabularis_multilingual",
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "11636201031",
+      "language": "lt",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "6/10",
+      "text": "Nepasakyčiau, kad “Spotify” yra puiki programa. Pavyzdžiui, įrašai į paiešką dainos pavadinimą, tau jį išmeta į dainas su TUO PAT pavadinimu, bet tai visiškai kitos dainos. Taip pat nesuprantu, kam reikėjo leisti tik kelis kartus per jungti dainą. Persukti nevisada galima ir pasidarė LABAI daug reklamų. Vienu žodžiu, anksčiau buvo geriau.",
+      "analysis_text": "6/10\nNepasakyčiau, kad “Spotify” yra puiki programa. Pavyzdžiui, įrašai į paiešką dainos pavadinimą, tau jį išmeta į dainas su TUO PAT pavadinimu, bet tai visiškai kitos dainos. Taip pat nesuprantu, kam reikėjo leisti tik kelis kartus per jungti dainą. Persukti nevisada galima ir pasidarė LABAI daug reklamų. Vienu žodžiu, anksčiau buvo geriau.",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "positive",
+        "tabularis_multilingual": "negative",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "xlm_roberta",
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "11893709906",
+      "language": "de",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "not sigma",
+      "text": "im gonna touch u spotify. LET ME CONNECT MY SPOTIFY TO MY DISCORD ITS NOT THAT HARD OH MY GOD???",
+      "analysis_text": "not sigma\nim gonna touch u spotify. LET ME CONNECT MY SPOTIFY TO MY DISCORD ITS NOT THAT HARD OH MY GOD???",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "negative",
+        "tabularis_multilingual": "neutral",
+        "multilingual_distilbert": "negative"
+      },
+      "wrong_models": [
+        "tabularis_multilingual"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "12157002121",
+      "language": "lt",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Idk",
+      "text": "Negalima skipint dainų",
+      "analysis_text": "Idk\nNegalima skipint dainų",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "negative",
+        "tabularis_multilingual": "negative",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "12381222952",
+      "language": "sr",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Spotify",
+      "text": "Ne mi xapeca mnogo",
+      "analysis_text": "Spotify\nNe mi xapeca mnogo",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "negative",
+        "tabularis_multilingual": "negative",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "13018746710",
+      "language": "bg",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Песни",
+      "text": "Понякога като  избирам песен да кажем на Дара-Нито звук и ми излиза друга нейна песен и това е много досадно!Иначе всичко друго е много добре!",
+      "analysis_text": "Песни\nПонякога като избирам песен да кажем на Дара-Нито звук и ми излиза друга нейна песен и това е много досадно!Иначе всичко друго е много добре!",
+      "gold": "negative",
+      "gold_ambiguous": true,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "negative",
+        "tabularis_multilingual": "positive",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "tabularis_multilingual",
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "13302714281",
+      "language": "pl",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Citronowy jebaniec",
+      "text": "Spotiwaju jebaniec",
+      "analysis_text": "Citronowy jebaniec\nSpotiwaju jebaniec",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "negative",
+        "tabularis_multilingual": "neutral",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "tabularis_multilingual",
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "13378044751",
+      "language": "tr",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Reklam",
+      "text": "Ben bir şarkı dinlemek için 4 tane reklam arka arkaya baktım. Bu uygulamayı sinir hastası olmak isterseniz kullanın",
+      "analysis_text": "Reklam\nBen bir şarkı dinlemek için 4 tane reklam arka arkaya baktım. Bu uygulamayı sinir hastası olmak isterseniz kullanın",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "neutral",
+        "tabularis_multilingual": "neutral",
+        "multilingual_distilbert": "negative"
+      },
+      "wrong_models": [
+        "xlm_roberta",
+        "tabularis_multilingual"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "13906115807",
+      "language": "ru",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Только хотел перейти обратно",
+      "text": "Только хотел перейти обратно в спотифай после эппл, вижу новую функцию переноса песен из других сервисов и решил попробовать так эти дауны сделали так что перенос происходит в алфавитном порядке и это нельзя настроить, так что теперь мой плейлист любимых песен испорчен навсегда как и настройки рекомендаций, никогда больше не вернусь в это ужасное приложение и скорее всего слава богу.",
+      "analysis_text": "Только хотел перейти обратно\nТолько хотел перейти обратно в спотифай после эппл, вижу новую функцию переноса песен из других сервисов и решил попробовать так эти дауны сделали так что перенос происходит в алфавитном порядке и это нельзя настроить, так что теперь мой плейлист любимых песен испорчен навсегда как и настройки рекомендаций, никогда больше не вернусь в это ужасное приложение и скорее всего слава богу.",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "neutral",
+        "tabularis_multilingual": "negative",
+        "multilingual_distilbert": "negative"
+      },
+      "wrong_models": [
+        "xlm_roberta"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "13985439986",
+      "language": "kk",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Жақсы",
+      "text": "Бұл програмада бәрі жақсы бүткіл музыка таба аласын бірақ музыкалар кезек пен орындалмайды сосын реклама көп",
+      "analysis_text": "Жақсы\nБұл програмада бәрі жақсы бүткіл музыка таба аласын бірақ музыкалар кезек пен орындалмайды сосын реклама көп",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "neutral",
+        "tabularis_multilingual": "negative",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "xlm_roberta",
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14123673266",
+      "language": "fr",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Goodbye",
+      "text": "648 millions for weapons",
+      "analysis_text": "Goodbye\n648 millions for weapons",
+      "gold": "negative",
+      "gold_ambiguous": true,
+      "needs_manual_review": true,
+      "predictions": {
+        "xlm_roberta": "negative",
+        "tabularis_multilingual": "negative",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14165864023",
+      "language": "ru",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "слушаю рекламу🥰🥰🥰",
+      "text": "заплати бабки чтоб не слушать рекламу 24/7, ебвнаты",
+      "analysis_text": "слушаю рекламу🥰🥰🥰\nзаплати бабки чтоб не слушать рекламу 24/7, ебвнаты",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "positive",
+        "tabularis_multilingual": "neutral",
+        "multilingual_distilbert": "negative"
+      },
+      "wrong_models": [
+        "xlm_roberta",
+        "tabularis_multilingual"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14167175384",
+      "language": "lt",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Spotify",
+      "text": "Man šiandien iš mano banko sąskaitos atėmė 8,99 eurus aš iš pradžių nežinojau kas tai buvo bet tada supratau, kad buvo spotify, bent jau, kad praneštu anksčiau kita karta, aš noriu savo pinigų atgal!",
+      "analysis_text": "Spotify\nMan šiandien iš mano banko sąskaitos atėmė 8,99 eurus aš iš pradžių nežinojau kas tai buvo bet tada supratau, kad buvo spotify, bent jau, kad praneštu anksčiau kita karta, aš noriu savo pinigų atgal!",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "neutral",
+        "tabularis_multilingual": "negative",
+        "multilingual_distilbert": "negative"
+      },
+      "wrong_models": [
+        "xlm_roberta"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14217342873",
+      "language": "de",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Ganz oke",
+      "text": "Ich finde die App super jedoch ist sie teilweise ein wenig unübersichtlich",
+      "analysis_text": "Ganz oke\nIch finde die App super jedoch ist sie teilweise ein wenig unübersichtlich",
+      "gold": "negative",
+      "gold_ambiguous": true,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "negative",
+        "tabularis_multilingual": "negative",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14224303388",
+      "language": "bg",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Пълни тарикати на дребно",
+      "text": "Обещанията за 30 минути музика без реклами са чиста подвеждаща реклама и нелоялна практика. Музика се слуша, не се гледа – телефонът ми е в джоба или е захвърлен някъде! Реалността е влудяваща: пускат се реклами преди, по време на и след всяко едно-две парчета! Отделно, откакто засекоха, че имам iPhone, ме отрязаха и от регулярните имейл промоции (3 месеца за 1). Пълни тарикати на дребно.",
+      "analysis_text": "Пълни тарикати на дребно\nОбещанията за 30 минути музика без реклами са чиста подвеждаща реклама и нелоялна практика. Музика се слуша, не се гледа – телефонът ми е в джоба или е захвърлен някъде! Реалността е влудяваща: пускат се реклами преди, по време на и след всяко едно-две парчета! Отделно, откакто засекоха, че имам iPhone, ме отрязаха и от регулярните имейл промоции (3 месеца за 1). Пълни тарикати на дребно.",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "neutral",
+        "tabularis_multilingual": "neutral",
+        "multilingual_distilbert": "negative"
+      },
+      "wrong_models": [
+        "xlm_roberta",
+        "tabularis_multilingual"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14229582933",
+      "language": "lt",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "🤩",
+      "text": "Labai gera programa bet labai daug reklamų norėtųsi mažiau ir labai daug skirtingu muziku ir  stilių",
+      "analysis_text": "🤩\nLabai gera programa bet labai daug reklamų norėtųsi mažiau ir labai daug skirtingu muziku ir stilių",
+      "gold": "negative",
+      "gold_ambiguous": true,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "positive",
+        "tabularis_multilingual": "negative",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "xlm_roberta",
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14229992623",
+      "language": "lt",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Pradėjo",
+      "text": "Agresyviai kišti reklamą. Viso gero.",
+      "analysis_text": "Pradėjo\nAgresyviai kišti reklamą. Viso gero.",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "negative",
+        "tabularis_multilingual": "positive",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "tabularis_multilingual",
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14242111508",
+      "language": "lt",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Bruh",
+      "text": "Bruh reikia mokėti už premium versija kad gautum visas funkcijas aš noriu kad kitame updeite būtų visos funkcijos nemokamai",
+      "analysis_text": "Bruh\nBruh reikia mokėti už premium versija kad gautum visas funkcijas aš noriu kad kitame updeite būtų visos funkcijos nemokamai",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "negative",
+        "tabularis_multilingual": "negative",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14259046162",
+      "language": "de",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Geld",
+      "text": "Spotify ist meiner Meinung nach eine sehr gute Plattform um Musik zu hören, jedoch bringt es einem fast nichts ohne premium, da die sinnvollen Features kostenpflichtig sind. Ich persönlich habe mir premium geholt und ich finde auch das es sich gelohnt hat, aber auch nur da ich mit mehreren Leuten ein Familienabo teile und der Preis somit okay ist. Für ein Einzelabo. finde ich ist der Preis zu teuer. Wenn der Preis gesenkt werden würde, würde ich Vorscheindlich 5 Sterne geben.",
+      "analysis_text": "Geld\nSpotify ist meiner Meinung nach eine sehr gute Plattform um Musik zu hören, jedoch bringt es einem fast nichts ohne premium, da die sinnvollen Features kostenpflichtig sind. Ich persönlich habe mir premium geholt und ich finde auch das es sich gelohnt hat, aber auch nur da ich mit mehreren Leuten ein Familienabo teile und der Preis somit okay ist. Für ein Einzelabo. finde ich ist der Preis zu teuer. Wenn der Preis gesenkt werden würde, würde ich Vorscheindlich 5 Sterne geben.",
+      "gold": "negative",
+      "gold_ambiguous": true,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "negative",
+        "tabularis_multilingual": "positive",
+        "multilingual_distilbert": "negative"
+      },
+      "wrong_models": [
+        "tabularis_multilingual"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14261999894",
+      "language": "pt",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Icon",
+      "text": "Mudaram o icon e não gosto das cores, estava muito melhor antes",
+      "analysis_text": "Icon\nMudaram o icon e não gosto das cores, estava muito melhor antes",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "negative",
+        "tabularis_multilingual": "negative",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14275710929",
+      "language": "bg",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Нощен режим✌🏼🫰🏽🙏",
+      "text": "Харесвам новият ъпдейт на телевизора как е направен, но преди имаше нощен режим за което не съм доволна, че е премахнат \nАко може да го върнете ще съм много доволна.😇",
+      "analysis_text": "Нощен режим✌🏼🫰🏽🙏\nХаресвам новият ъпдейт на телевизора как е направен, но преди имаше нощен режим за което не съм доволна, че е премахнат Ако може да го върнете ще съм много доволна.😇",
+      "gold": "negative",
+      "gold_ambiguous": true,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "positive",
+        "tabularis_multilingual": "negative",
+        "multilingual_distilbert": "negative"
+      },
+      "wrong_models": [
+        "xlm_roberta"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14295193330",
+      "language": "tr",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Bok gibi bir şey",
+      "text": "Bok gibi Bir şey\nOlmaz",
+      "analysis_text": "Bok gibi bir şey\nBok gibi Bir şey Olmaz",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "negative",
+        "tabularis_multilingual": "neutral",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "tabularis_multilingual",
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14297706026",
+      "language": "pt",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "não sei o título",
+      "text": "tem muitos anúncios",
+      "analysis_text": "não sei o título\ntem muitos anúncios",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "neutral",
+        "tabularis_multilingual": "negative",
+        "multilingual_distilbert": "neutral"
+      },
+      "wrong_models": [
+        "xlm_roberta",
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14298992318",
+      "language": "bg",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "👀",
+      "text": "има твърде много реклами",
+      "analysis_text": "👀\nима твърде много реклами",
+      "gold": "negative",
+      "gold_ambiguous": true,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "negative",
+        "tabularis_multilingual": "negative",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14299270907",
+      "language": "fi",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Ich mag nicht dauernd bewerten",
+      "text": "Ääääääää",
+      "analysis_text": "Ich mag nicht dauernd bewerten\nÄäääääää",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "negative",
+        "tabularis_multilingual": "negative",
+        "multilingual_distilbert": "neutral"
+      },
+      "wrong_models": [
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14312749336",
+      "language": "es",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Pague y no me dieron mi mes de premium",
+      "text": "E pagado hace dos días 8.99 euros y no me han dado mi mes de premium",
+      "analysis_text": "Pague y no me dieron mi mes de premium\nE pagado hace dos días 8.99 euros y no me han dado mi mes de premium",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "negative",
+        "tabularis_multilingual": "negative",
+        "multilingual_distilbert": "neutral"
+      },
+      "wrong_models": [
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14358229141",
+      "language": "kk",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Рекламы много",
+      "text": "Рекламадан өледі бұлар сүмелектер адам емес айуандар қотағым жеп 3 реклама шығады қаншықтар",
+      "analysis_text": "Рекламы много\nРекламадан өледі бұлар сүмелектер адам емес айуандар қотағым жеп 3 реклама шығады қаншықтар",
+      "gold": "negative",
+      "gold_ambiguous": true,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "negative",
+        "tabularis_multilingual": "neutral",
+        "multilingual_distilbert": "negative"
+      },
+      "wrong_models": [
+        "tabularis_multilingual"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14361573524",
+      "language": "lt",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": ".",
+      "text": "Apie programa nieko negaliu pasakyti, veikia kaip priklauso. Įsigyti spotify premium neleidžia. Paklausiu viena daina meta 3 reklamas.",
+      "analysis_text": ".\nApie programa nieko negaliu pasakyti, veikia kaip priklauso. Įsigyti spotify premium neleidžia. Paklausiu viena daina meta 3 reklamas.",
+      "gold": "negative",
+      "gold_ambiguous": true,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "negative",
+        "tabularis_multilingual": "neutral",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "tabularis_multilingual",
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14363448696",
+      "language": "lt",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Reklamos išmetamos beveik po kiekvienos pasibaigusios MUZIKOS.|.Ir jų neįmanoma pergudrauti išjungus",
+      "text": "PVZ : Spotify/youtube. O čia jos privalomos AKIMIS!😂",
+      "analysis_text": "Reklamos išmetamos beveik po kiekvienos pasibaigusios MUZIKOS.|.Ir jų neįmanoma pergudrauti išjungus\nPVZ : Spotify/youtube. O čia jos privalomos AKIMIS!😂",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "neutral",
+        "tabularis_multilingual": "neutral",
+        "multilingual_distilbert": "negative"
+      },
+      "wrong_models": [
+        "xlm_roberta",
+        "tabularis_multilingual"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14371021222",
+      "language": "tr",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Cok reklam cıkıyo",
+      "text": "Asılnda guzl",
+      "analysis_text": "Cok reklam cıkıyo\nAsılnda guzl",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "positive",
+        "tabularis_multilingual": "negative",
+        "multilingual_distilbert": "negative"
+      },
+      "wrong_models": [
+        "xlm_roberta"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14391966742",
+      "language": "ru",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Бесит все",
+      "text": "Бесполезное приложеник когда ты путешествуешь!Стоит сменить страну и оно не работает!",
+      "analysis_text": "Бесит все\nБесполезное приложеник когда ты путешествуешь!Стоит сменить страну и оно не работает!",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "negative",
+        "tabularis_multilingual": "positive",
+        "multilingual_distilbert": "negative"
+      },
+      "wrong_models": [
+        "tabularis_multilingual"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14404867655",
+      "language": "zh",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "好👍",
+      "text": "好喜欢这个好棒啊好喜欢这个啊好喜欢这套好喜欢这组好喜欢这幅画啊好喜欢这套好喜欢这组好喜欢这一组好喜欢这个图啊好喜欢这个啊好喜欢这组好喜欢这套好喜欢",
+      "analysis_text": "好👍\n好喜欢这个好棒啊好喜欢这个啊好喜欢这套好喜欢这组好喜欢这幅画啊好喜欢这套好喜欢这组好喜欢这一组好喜欢这个图啊好喜欢这个啊好喜欢这组好喜欢这套好喜欢",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "positive",
+        "tabularis_multilingual": "negative",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "xlm_roberta",
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14417926844",
+      "language": "lt",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Ačiū",
+      "text": "Ačiū, randu tai kas patinka",
+      "analysis_text": "Ačiū\nAčiū, randu tai kas patinka",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "positive",
+        "tabularis_multilingual": "negative",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "xlm_roberta",
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14420234419",
+      "language": "es",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "ya mn",
+      "text": "mt anuncio",
+      "analysis_text": "ya mn\nmt anuncio",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "negative",
+        "tabularis_multilingual": "neutral",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "tabularis_multilingual",
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14422882391",
+      "language": "es",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Wü Po p Po",
+      "text": "Saa e y m es tat PP PP—",
+      "analysis_text": "Wü Po p Po\nSaa e y m es tat PP PP—",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "neutral",
+        "tabularis_multilingual": "neutral",
+        "multilingual_distilbert": "negative"
+      },
+      "wrong_models": [
+        "xlm_roberta",
+        "tabularis_multilingual"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14424368224",
+      "language": "it",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "ai slop",
+      "text": "ai slop",
+      "analysis_text": "ai slop\nai slop",
+      "gold": "negative",
+      "gold_ambiguous": true,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "negative",
+        "tabularis_multilingual": "negative",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14438335420",
+      "language": "de",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Spoko",
+      "text": "Super jak sie zaplaci",
+      "analysis_text": "Spoko\nSuper jak sie zaplaci",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "positive",
+        "tabularis_multilingual": "positive",
+        "multilingual_distilbert": "negative"
+      },
+      "wrong_models": [
+        "xlm_roberta",
+        "tabularis_multilingual"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14442410972",
+      "language": "pl",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "gowno",
+      "text": "strony dla dorosłych lepiej cię traktują za darmo",
+      "analysis_text": "gowno\nstrony dla dorosłych lepiej cię traktują za darmo",
+      "gold": "negative",
+      "gold_ambiguous": true,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "neutral",
+        "tabularis_multilingual": "negative",
+        "multilingual_distilbert": "negative"
+      },
+      "wrong_models": [
+        "xlm_roberta"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14446693726",
+      "language": "pl",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Piątkowe nowości",
+      "text": "Bardziej zapytanie do zespołu Spotify niż recenzja co się stało z piątkowymi nowościami ? Kiedyś był to przegląd wszystkiego co zostało wydane w danym tygodniu chyba bez wyjątków każdy gatunek, a od dość dawna \n„ Nowości polecane przez nasz zespół „\nTylko te polecajki są tylko takie co chyba autor tego działu lubi i słucha, nie neguje gustu każdy słucha co lubi ale to chyba jest pomoc dla słuchaczy co zostało wydane a nie co poleca zespół. Może warto powrócić do tego co było bo nie każdy ma czas śledzić co jego wykonawcy wydają i kiedy a nowości polecane przez zespół też mogą być bo napewno trafią to w czyjś gust.\nDo tego bardzo dużo treści muzyczny Ai sztuczna inteligencja muzyczna góruje nad wykonawcami, którzy tworzą sami i od lat",
+      "analysis_text": "Piątkowe nowości\nBardziej zapytanie do zespołu Spotify niż recenzja co się stało z piątkowymi nowościami ? Kiedyś był to przegląd wszystkiego co zostało wydane w danym tygodniu chyba bez wyjątków każdy gatunek, a od dość dawna „ Nowości polecane przez nasz zespół „ Tylko te polecajki są tylko takie co chyba autor tego działu lubi i słucha, nie neguje gustu każdy słucha co lubi ale to chyba jest pomoc dla słuchaczy co zostało wydane a nie co poleca zespół. Może warto powrócić do tego co było bo nie każdy ma czas śledzić co jego wykonawcy wydają i kiedy a nowości polecane przez zespół też mogą być bo napewno trafią to w czyjś gust. Do tego bardzo dużo treści muzyczny Ai sztuczna inteligencja muzyczna góruje nad wykonawcami, którzy tworzą sami i od lat",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "neutral",
+        "tabularis_multilingual": "positive",
+        "multilingual_distilbert": "negative"
+      },
+      "wrong_models": [
+        "xlm_roberta",
+        "tabularis_multilingual"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14450236068",
+      "language": "ru",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "реклама",
+      "text": "куча принудительной рекламы",
+      "analysis_text": "реклама\nкуча принудительной рекламы",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "negative",
+        "tabularis_multilingual": "neutral",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "tabularis_multilingual",
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14474032862",
+      "language": "bg",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Твърде сложно е да се купи абонамент",
+      "text": "Непрестанно музиката бива прекъсвана от реклами да се абонирам, а когато натисна линка ми казва, че няма как да се случи това през приложението и се отказвам всеки път. В крайна сметка каква е целта ви? Да се абонирам или да слушам реклами? Защото за да направя абонамент към вас, трябва собственоръчно да напиша отделен линк в браузъра, да си знам имейла с който съм регистрирана ( което няма как да проверя в профила си в приложението) и става абсурдно сложно. Направете директен линк за плащане и ще имате повече абонати. Абсурдно е такава голяма платформа да не изпипа този очевиден детайл.",
+      "analysis_text": "Твърде сложно е да се купи абонамент\nНепрестанно музиката бива прекъсвана от реклами да се абонирам, а когато натисна линка ми казва, че няма как да се случи това през приложението и се отказвам всеки път. В крайна сметка каква е целта ви? Да се абонирам или да слушам реклами? Защото за да направя абонамент към вас, трябва собственоръчно да напиша отделен линк в браузъра, да си знам имейла с който съм регистрирана ( което няма как да проверя в профила си в приложението) и става абсурдно сложно. Направете директен линк за плащане и ще имате повече абонати. Абсурдно е такава голяма платформа да не изпипа този очевиден детайл.",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "neutral",
+        "tabularis_multilingual": "negative",
+        "multilingual_distilbert": "negative"
+      },
+      "wrong_models": [
+        "xlm_roberta"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14477915668",
+      "language": "ru",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Такой отзыв",
+      "text": "Площадка топ для слушания музыки  было бы пять звёзд если бы не добавили цензуру а так все на три потому что была добавлена цензура то песня становится не оригиналом а фигнёй",
+      "analysis_text": "Такой отзыв\nПлощадка топ для слушания музыки было бы пять звёзд если бы не добавили цензуру а так все на три потому что была добавлена цензура то песня становится не оригиналом а фигнёй",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "positive",
+        "tabularis_multilingual": "negative",
+        "multilingual_distilbert": "negative"
+      },
+      "wrong_models": [
+        "xlm_roberta"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14481732553",
+      "language": "kk",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Сіктімда қол қойдым рекламаларыңа",
+      "text": "!!!!",
+      "analysis_text": "Сіктімда қол қойдым рекламаларыңа\n!!!!",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "positive",
+        "tabularis_multilingual": "positive",
+        "multilingual_distilbert": "negative"
+      },
+      "wrong_models": [
+        "xlm_roberta",
+        "tabularis_multilingual"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14483541294",
+      "language": "nl",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Werkt niet",
+      "text": "Werkt niet",
+      "analysis_text": "Werkt niet\nWerkt niet",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "negative",
+        "tabularis_multilingual": "negative",
+        "multilingual_distilbert": "neutral"
+      },
+      "wrong_models": [
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14485541436",
+      "language": "pt",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "-",
+      "text": "Acho que é muito bom tem uma boa organização dentro do app muito bom ,mas acho que devia ter mais de 6 passes pra passar a música a frente e também mais possíveis escolhas diretas de músicas inveja de escolheres uma e vir outra e teres que ouvir mais de 3 músicas até aparecer a que realmente queres",
+      "analysis_text": "-\nAcho que é muito bom tem uma boa organização dentro do app muito bom ,mas acho que devia ter mais de 6 passes pra passar a música a frente e também mais possíveis escolhas diretas de músicas inveja de escolheres uma e vir outra e teres que ouvir mais de 3 músicas até aparecer a que realmente queres",
+      "gold": "negative",
+      "gold_ambiguous": true,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "positive",
+        "tabularis_multilingual": "negative",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "xlm_roberta",
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14486931452",
+      "language": "pl",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Coraz gorsza aplikacja",
+      "text": "Od jakiegoś czasu po wejściu w aplikację utwory z poza playlisty zaczynają grać od początku. Przy po połączeniu z telewizorem i odtwarzaniu muzyki na tv to samo albo w ogóle po ponownym wejściu w aplikację rozłącza z telewizorem. Aplikacja działa dużo gorzej niż wcześniej.",
+      "analysis_text": "Coraz gorsza aplikacja\nOd jakiegoś czasu po wejściu w aplikację utwory z poza playlisty zaczynają grać od początku. Przy po połączeniu z telewizorem i odtwarzaniu muzyki na tv to samo albo w ogóle po ponownym wejściu w aplikację rozłącza z telewizorem. Aplikacja działa dużo gorzej niż wcześniej.",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "negative",
+        "tabularis_multilingual": "neutral",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "tabularis_multilingual",
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14491220498",
+      "language": "es",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Muy bueno, pero caro",
+      "text": "La app este muy buena, el echo de agregar la opción de videos está buena. Debería mejorar el motor de búsqueda, por frases o partes de canciones. Podría tener la opción de “escuchar” una canción y poder encontrarla así. Últimamente está muy caro, ha subido mucho de precio en el ultimo tiempo",
+      "analysis_text": "Muy bueno, pero caro\nLa app este muy buena, el echo de agregar la opción de videos está buena. Debería mejorar el motor de búsqueda, por frases o partes de canciones. Podría tener la opción de “escuchar” una canción y poder encontrarla así. Últimamente está muy caro, ha subido mucho de precio en el ultimo tiempo",
+      "gold": "negative",
+      "gold_ambiguous": true,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "negative",
+        "tabularis_multilingual": "positive",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "tabularis_multilingual",
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14498554640",
+      "language": "nl",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Tja het was beter...",
+      "text": "Helaas weer een prijsverhoging, voor wat we krijgen vind ik het jammer. De app zelf mag zeker aandacht krijgen met de UI. En ik bepaal zelf of ik previewvideo wil zien op mijn startpagina.. En wat dacht je van mijn batterij die overheat bij mijn Downloaded songs?? Maak het gewoon simpeler net zoals vroeger.",
+      "analysis_text": "Tja het was beter...\nHelaas weer een prijsverhoging, voor wat we krijgen vind ik het jammer. De app zelf mag zeker aandacht krijgen met de UI. En ik bepaal zelf of ik previewvideo wil zien op mijn startpagina.. En wat dacht je van mijn batterij die overheat bij mijn Downloaded songs?? Maak het gewoon simpeler net zoals vroeger.",
+      "gold": "negative",
+      "gold_ambiguous": true,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "negative",
+        "tabularis_multilingual": "negative",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14508786644",
+      "language": "nl",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Reclame",
+      "text": "Reclames zijn irritant en met een te hoog volume.\nHet volume is duidelijk hoger dan de gekozen muziek.",
+      "analysis_text": "Reclame\nReclames zijn irritant en met een te hoog volume. Het volume is duidelijk hoger dan de gekozen muziek.",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "negative",
+        "tabularis_multilingual": "positive",
+        "multilingual_distilbert": "negative"
+      },
+      "wrong_models": [
+        "tabularis_multilingual"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14510196887",
+      "language": "it",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Includete più cose nella versione gratis",
+      "text": "È troppo essenziale farsi il premium!\nTroppi pochi skip troppe pubblicità.",
+      "analysis_text": "Includete più cose nella versione gratis\nÈ troppo essenziale farsi il premium! Troppi pochi skip troppe pubblicità.",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "negative",
+        "tabularis_multilingual": "negative",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14512314293",
+      "language": "de",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Werbung",
+      "text": "Zu viel Werbung tritz Abo",
+      "analysis_text": "Werbung\nZu viel Werbung tritz Abo",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "negative",
+        "tabularis_multilingual": "neutral",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "tabularis_multilingual",
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14516719042",
+      "language": "es",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Crítica",
+      "text": "Demasiados anúncios",
+      "analysis_text": "Crítica\nDemasiados anúncios",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "negative",
+        "tabularis_multilingual": "negative",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14528353256",
+      "language": "nl",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Premium en reclame?",
+      "text": "Waar krijg ik met premium reclame bij de podcasts(buiten de afleveringen om) ik betaal niet voor niets om niet naar die onzin te luisteren.",
+      "analysis_text": "Premium en reclame?\nWaar krijg ik met premium reclame bij de podcasts(buiten de afleveringen om) ik betaal niet voor niets om niet naar die onzin te luisteren.",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "negative",
+        "tabularis_multilingual": "neutral",
+        "multilingual_distilbert": "negative"
+      },
+      "wrong_models": [
+        "tabularis_multilingual"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14534285173",
+      "language": "fr",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Vous me soûlez avec les pub",
+      "text": "Vous me soûlez avec les pub",
+      "analysis_text": "Vous me soûlez avec les pub\nVous me soûlez avec les pub",
+      "gold": "negative",
+      "gold_ambiguous": true,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "negative",
+        "tabularis_multilingual": "positive",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "tabularis_multilingual",
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14536120350",
+      "language": "pt",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Plano Familiar",
+      "text": "Temos plano familiar porém só um pode usar o sportify por vez",
+      "analysis_text": "Plano Familiar\nTemos plano familiar porém só um pode usar o sportify por vez",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "neutral",
+        "tabularis_multilingual": "negative",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "xlm_roberta",
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14540988151",
+      "language": "tr",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Çok gıcık",
+      "text": "Çok reklam çıkıyor",
+      "analysis_text": "Çok gıcık\nÇok reklam çıkıyor",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "negative",
+        "tabularis_multilingual": "positive",
+        "multilingual_distilbert": "negative"
+      },
+      "wrong_models": [
+        "tabularis_multilingual"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14546045273",
+      "language": "it",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "app molto buona per la musica",
+      "text": "è un app molto buona peró bisogna pagare troppo per ascoltare musica e un altro grande problema sono le pubblicità che ci sono ogni 2 canzoni",
+      "analysis_text": "app molto buona per la musica\nè un app molto buona peró bisogna pagare troppo per ascoltare musica e un altro grande problema sono le pubblicità che ci sono ogni 2 canzoni",
+      "gold": "negative",
+      "gold_ambiguous": true,
+      "needs_manual_review": true,
+      "predictions": {
+        "xlm_roberta": "negative",
+        "tabularis_multilingual": "positive",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "tabularis_multilingual",
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14547813022",
+      "language": "es",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "M",
+      "text": "Demasiados anúncios",
+      "analysis_text": "M\nDemasiados anúncios",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "negative",
+        "tabularis_multilingual": "negative",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14551948103",
+      "language": "pt",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Tem muitos anúncios",
+      "text": "A aplicação tem muitos anúncios e antes não havia nada de premium e agora é tudo a pagar",
+      "analysis_text": "Tem muitos anúncios\nA aplicação tem muitos anúncios e antes não havia nada de premium e agora é tudo a pagar",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "neutral",
+        "tabularis_multilingual": "negative",
+        "multilingual_distilbert": "negative"
+      },
+      "wrong_models": [
+        "xlm_roberta"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14553001004",
+      "language": "es",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Mierda",
+      "text": "Es una gran decepción",
+      "analysis_text": "Mierda\nEs una gran decepción",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "negative",
+        "tabularis_multilingual": "negative",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14556469286",
+      "language": "fr",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Pub !",
+      "text": "Y’en a marre des pub ! Et oui encore une super appli qu’il faut payer pour avoir quelque chose de cool …",
+      "analysis_text": "Pub !\nY’en a marre des pub ! Et oui encore une super appli qu’il faut payer pour avoir quelque chose de cool …",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "positive",
+        "tabularis_multilingual": "negative",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "xlm_roberta",
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14560660512",
+      "language": "pl",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Pytanie do dewelopera",
+      "text": "Czy deweloper może łaskawie wyjaśnić dlaczego podczas słuchania playlisty nie ma możliwości łatwego zatrzymania kończącego się utworu prze uruchomieniem się kolejnego utworu? Mam wrażenie, że jak zostaje kilka sekund do końca utworu, to aplikacja wręcz „blokuje” zatrzymanie utworu celem zapobieżenia odtworzenia kolejnego utworu z playlisty. To, że to jest celowe działanie jest dla mnie oczywiste, ale czy deweloper jest w stanie wyjaśnić w jakim celu to robicie?",
+      "analysis_text": "Pytanie do dewelopera\nCzy deweloper może łaskawie wyjaśnić dlaczego podczas słuchania playlisty nie ma możliwości łatwego zatrzymania kończącego się utworu prze uruchomieniem się kolejnego utworu? Mam wrażenie, że jak zostaje kilka sekund do końca utworu, to aplikacja wręcz „blokuje” zatrzymanie utworu celem zapobieżenia odtworzenia kolejnego utworu z playlisty. To, że to jest celowe działanie jest dla mnie oczywiste, ale czy deweloper jest w stanie wyjaśnić w jakim celu to robicie?",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "neutral",
+        "tabularis_multilingual": "neutral",
+        "multilingual_distilbert": "negative"
+      },
+      "wrong_models": [
+        "xlm_roberta",
+        "tabularis_multilingual"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14564659706",
+      "language": "lt",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Blogai",
+      "text": "Labai striginėja dainos, galvoju ieškoti alternatyvos spotify",
+      "analysis_text": "Blogai\nLabai striginėja dainos, galvoju ieškoti alternatyvos spotify",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "neutral",
+        "tabularis_multilingual": "negative",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "xlm_roberta",
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14564796188",
+      "language": "it",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Troppa pubblicità",
+      "text": "Non se ne può più che ogni 2 canzoni ci sono sempre 3 o 4 annunci pubblicitari da 2 minuti ciascuno… uno non può permettersi l’abbonamento e per ripicca gli buttate in quello gratuito ottocento annunci pubblicitari ogni 2 canzoni? Ma dai follia. Mi state ogni giorno di più motivando a disinstallarla sta applicazione",
+      "analysis_text": "Troppa pubblicità\nNon se ne può più che ogni 2 canzoni ci sono sempre 3 o 4 annunci pubblicitari da 2 minuti ciascuno… uno non può permettersi l’abbonamento e per ripicca gli buttate in quello gratuito ottocento annunci pubblicitari ogni 2 canzoni? Ma dai follia. Mi state ogni giorno di più motivando a disinstallarla sta applicazione",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "negative",
+        "tabularis_multilingual": "neutral",
+        "multilingual_distilbert": "negative"
+      },
+      "wrong_models": [
+        "tabularis_multilingual"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14571778464",
+      "language": "bg",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "..",
+      "text": "Само дава реклами аз слушам една песен тя свършва и тварешава да пушне нещо съвсем друго",
+      "analysis_text": "..\nСамо дава реклами аз слушам една песен тя свършва и тварешава да пушне нещо съвсем друго",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "neutral",
+        "tabularis_multilingual": "positive",
+        "multilingual_distilbert": "negative"
+      },
+      "wrong_models": [
+        "xlm_roberta",
+        "tabularis_multilingual"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14575798658",
+      "language": "fr",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Kanker boeven",
+      "text": "Kanker boeven",
+      "analysis_text": "Kanker boeven\nKanker boeven",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "negative",
+        "tabularis_multilingual": "neutral",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "tabularis_multilingual",
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14580818006",
+      "language": "ru",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": ".",
+      "text": "очень удобно пользоваться но есть минус то что часто рекламы идут долго,а так все классно,хорошое качество звука,все очень удобно !",
+      "analysis_text": ".\nочень удобно пользоваться но есть минус то что часто рекламы идут долго,а так все классно,хорошое качество звука,все очень удобно !",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "positive",
+        "tabularis_multilingual": "negative",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "xlm_roberta",
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "14582913419",
+      "language": "pt",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Super",
+      "text": "Super mais cher !",
+      "analysis_text": "Super\nSuper mais cher !",
+      "gold": "negative",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "negative",
+        "tabularis_multilingual": "positive",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "tabularis_multilingual",
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": true
+    },
+    {
+      "review_id": "12104928555",
+      "language": "uk",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Ааа",
+      "text": "Много яко",
+      "analysis_text": "Ааа\nМного яко",
+      "gold": "positive",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "positive",
+        "tabularis_multilingual": "neutral",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "tabularis_multilingual"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": false
+    },
+    {
+      "review_id": "13949097365",
+      "language": "en",
+      "evaluation_sets": [
+        "english"
+      ],
+      "title": "Add a shared playlist \"on device/downloaded\"",
+      "text": "If it were possible to add tracks offline so that they would not be deleted from the downloaded, it would be cool, or add a downloaded section where all downloaded tracks from playlists and favorites will be written, thus it will be possible to add songs.",
+      "analysis_text": "Add a shared playlist \"on device/downloaded\"\nIf it were possible to add tracks offline so that they would not be deleted from the downloaded, it would be cool, or add a downloaded section where all downloaded tracks from playlists and favorites will be written, thus it will be possible to add songs.",
+      "gold": "positive",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "neutral",
+        "tabularis_multilingual": "neutral",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "xlm_roberta",
+        "tabularis_multilingual"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": false
+    },
+    {
+      "review_id": "14045562074",
+      "language": "uk",
+      "evaluation_sets": [
+        "ukrainian"
+      ],
+      "title": "Потужно мені подобається",
+      "text": "📀",
+      "analysis_text": "Потужно мені подобається\n📀",
+      "gold": "positive",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "positive",
+        "tabularis_multilingual": "positive",
+        "multilingual_distilbert": "negative"
+      },
+      "wrong_models": [
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": false
+    },
+    {
+      "review_id": "14182356914",
+      "language": "uk",
+      "evaluation_sets": [
+        "ukrainian"
+      ],
+      "title": "Мій відгук",
+      "text": "Мені дуже подобається особливо те що пісні всі оригінальні",
+      "analysis_text": "Мій відгук\nМені дуже подобається особливо те що пісні всі оригінальні",
+      "gold": "positive",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "positive",
+        "tabularis_multilingual": "positive",
+        "multilingual_distilbert": "negative"
+      },
+      "wrong_models": [
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": false
+    },
+    {
+      "review_id": "14202197594",
+      "language": "uk",
+      "evaluation_sets": [
+        "ukrainian"
+      ],
+      "title": "Все окрім реклами подобається",
+      "text": "👍🏼🇺🇦",
+      "analysis_text": "Все окрім реклами подобається\n👍🏼🇺🇦",
+      "gold": "positive",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "positive",
+        "tabularis_multilingual": "positive",
+        "multilingual_distilbert": "negative"
+      },
+      "wrong_models": [
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": false
+    },
+    {
+      "review_id": "14259085036",
+      "language": "uk",
+      "evaluation_sets": [
+        "ukrainian"
+      ],
+      "title": "Супер застосунок",
+      "text": "Чудово підлаштовується під смак музики, і постійно щось додає ,що точно сподобається 👍",
+      "analysis_text": "Супер застосунок\nЧудово підлаштовується під смак музики, і постійно щось додає ,що точно сподобається 👍",
+      "gold": "positive",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "positive",
+        "tabularis_multilingual": "positive",
+        "multilingual_distilbert": "negative"
+      },
+      "wrong_models": [
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": false
+    },
+    {
+      "review_id": "14359621381",
+      "language": "uk",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": ".",
+      "text": "Програма прикольна не має реклам але якщо є типу цей міні мультик то показує одне і те саме під час пісні є текст прикольно те що показує білим те що вже пройшло а більш прозорим те що ні програла прикольна мені подобається ☺️",
+      "analysis_text": ".\nПрограма прикольна не має реклам але якщо є типу цей міні мультик то показує одне і те саме під час пісні є текст прикольно те що показує білим те що вже пройшло а більш прозорим те що ні програла прикольна мені подобається ☺️",
+      "gold": "positive",
+      "gold_ambiguous": true,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "positive",
+        "tabularis_multilingual": "negative",
+        "multilingual_distilbert": "negative"
+      },
+      "wrong_models": [
+        "tabularis_multilingual",
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": false
+    },
+    {
+      "review_id": "14384220319",
+      "language": "en",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "DJ X",
+      "text": "DJ X\nHe is ok but i think he needs some improvement in the way he relates with us e.g when we tell him to “keep it up” he changes the songs",
+      "analysis_text": "DJ X\nDJ X He is ok but i think he needs some improvement in the way he relates with us e.g when we tell him to “keep it up” he changes the songs",
+      "gold": "positive",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "neutral",
+        "tabularis_multilingual": "negative",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "xlm_roberta",
+        "tabularis_multilingual"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": false
+    },
+    {
+      "review_id": "14415264712",
+      "language": "en",
+      "evaluation_sets": [
+        "english"
+      ],
+      "title": "It was so good…",
+      "text": "And became the very glitched app:(",
+      "analysis_text": "It was so good…\nAnd became the very glitched app:(",
+      "gold": "positive",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "negative",
+        "tabularis_multilingual": "negative",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "xlm_roberta",
+        "tabularis_multilingual"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": false
+    },
+    {
+      "review_id": "14471032962",
+      "language": "en",
+      "evaluation_sets": [
+        "english"
+      ],
+      "title": "Spotify",
+      "text": "It's nice and all but I wish that no ads was free",
+      "analysis_text": "Spotify\nIt's nice and all but I wish that no ads was free",
+      "gold": "positive",
+      "gold_ambiguous": true,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "negative",
+        "tabularis_multilingual": "positive",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "xlm_roberta"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": false
+    },
+    {
+      "review_id": "14544174300",
+      "language": "en",
+      "evaluation_sets": [
+        "english"
+      ],
+      "title": "Select multiple songs at once",
+      "text": "It would be really useful to be able to select multiple songs at the same time in a playlist and then add them directly to another playlist. For example, you could select several songs using checkboxes (or by holding down), then choose “Add to playlist.” This would save a lot of time instead of having to move the songs one by one.",
+      "analysis_text": "Select multiple songs at once\nIt would be really useful to be able to select multiple songs at the same time in a playlist and then add them directly to another playlist. For example, you could select several songs using checkboxes (or by holding down), then choose “Add to playlist.” This would save a lot of time instead of having to move the songs one by one.",
+      "gold": "neutral",
+      "gold_ambiguous": true,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "positive",
+        "tabularis_multilingual": "neutral",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "xlm_roberta",
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": false
+    },
+    {
+      "review_id": "14544729857",
+      "language": "uk",
+      "evaluation_sets": [
+        "ukrainian"
+      ],
+      "title": "Рандомна пісня",
+      "text": "Чому немає рандомної пісні і по тренду, тільки плейлисти одинакові.",
+      "analysis_text": "Рандомна пісня\nЧому немає рандомної пісні і по тренду, тільки плейлисти одинакові.",
+      "gold": "neutral",
+      "gold_ambiguous": true,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "neutral",
+        "tabularis_multilingual": "negative",
+        "multilingual_distilbert": "neutral"
+      },
+      "wrong_models": [
+        "tabularis_multilingual"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": false
+    },
+    {
+      "review_id": "14567553331",
+      "language": "uk",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Крор стилі",
+      "text": "Музыкалар кайфф",
+      "analysis_text": "Крор стилі\nМузыкалар кайфф",
+      "gold": "positive",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "positive",
+        "tabularis_multilingual": "negative",
+        "multilingual_distilbert": "negative"
+      },
+      "wrong_models": [
+        "tabularis_multilingual",
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": false
+    },
+    {
+      "review_id": "11715144954",
+      "language": "tr",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Mükemmel bir yer bence ne zaman moralim bozulsa veya mutluysam buraya geliyorum ❤️❤️❤️❤️",
+      "text": "Muhteşem ☺️ olmuş",
+      "analysis_text": "Mükemmel bir yer bence ne zaman moralim bozulsa veya mutluysam buraya geliyorum ❤️❤️❤️❤️\nMuhteşem ☺️ olmuş",
+      "gold": "positive",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "positive",
+        "tabularis_multilingual": "positive",
+        "multilingual_distilbert": "negative"
+      },
+      "wrong_models": [
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": false
+    },
+    {
+      "review_id": "12123909142",
+      "language": "lt",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Bombastik",
+      "text": "Aš",
+      "analysis_text": "Bombastik\nAš",
+      "gold": "neutral",
+      "gold_ambiguous": true,
+      "needs_manual_review": true,
+      "predictions": {
+        "xlm_roberta": "negative",
+        "tabularis_multilingual": "neutral",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "xlm_roberta",
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": false
+    },
+    {
+      "review_id": "12547071609",
+      "language": "es",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Spotify",
+      "text": "Me enkanta con el premium",
+      "analysis_text": "Spotify\nMe enkanta con el premium",
+      "gold": "positive",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "negative",
+        "tabularis_multilingual": "positive",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "xlm_roberta"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": false
+    },
+    {
+      "review_id": "13243615825",
+      "language": "sr",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Mnogo dobro",
+      "text": "Mnogo dobro",
+      "analysis_text": "Mnogo dobro\nMnogo dobro",
+      "gold": "positive",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "positive",
+        "tabularis_multilingual": "neutral",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "tabularis_multilingual"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": false
+    },
+    {
+      "review_id": "13244692310",
+      "language": "zh",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "SLAY",
+      "text": "THEY GIVE FREE PREMIUM AND HAVE EVERY SINGLE SONG",
+      "analysis_text": "SLAY\nTHEY GIVE FREE PREMIUM AND HAVE EVERY SINGLE SONG",
+      "gold": "positive",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "positive",
+        "tabularis_multilingual": "neutral",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "tabularis_multilingual"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": false
+    },
+    {
+      "review_id": "13560847687",
+      "language": "lt",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Spotify",
+      "text": "Geriausia tesiog dalykas pasauli",
+      "analysis_text": "Spotify\nGeriausia tesiog dalykas pasauli",
+      "gold": "positive",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "positive",
+        "tabularis_multilingual": "neutral",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "tabularis_multilingual"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": false
+    },
+    {
+      "review_id": "13726432513",
+      "language": "lt",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "🩷🩷🩷🩷",
+      "text": "Labai gera programėlė",
+      "analysis_text": "🩷🩷🩷🩷\nLabai gera programėlė",
+      "gold": "positive",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "positive",
+        "tabularis_multilingual": "negative",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "tabularis_multilingual"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": false
+    },
+    {
+      "review_id": "13751513611",
+      "language": "gl",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Labas",
+      "text": "Labai fauna programa",
+      "analysis_text": "Labas\nLabai fauna programa",
+      "gold": "positive",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "positive",
+        "tabularis_multilingual": "neutral",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "tabularis_multilingual"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": false
+    },
+    {
+      "review_id": "13755791839",
+      "language": "bg",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Готино",
+      "text": "Всеки ден слушам музика от Spotify и съм възхитен.Има всичко и може да си го пуснеш на безплатно.",
+      "analysis_text": "Готино\nВсеки ден слушам музика от Spotify и съм възхитен.Има всичко и може да си го пуснеш на безплатно.",
+      "gold": "positive",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "positive",
+        "tabularis_multilingual": "positive",
+        "multilingual_distilbert": "negative"
+      },
+      "wrong_models": [
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": false
+    },
+    {
+      "review_id": "13813230535",
+      "language": "mk",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Яко се чува",
+      "text": "Можеш да слушаш музика и да играеш игри едновременно",
+      "analysis_text": "Яко се чува\nМожеш да слушаш музика и да играеш игри едновременно",
+      "gold": "positive",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "positive",
+        "tabularis_multilingual": "neutral",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "tabularis_multilingual"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": false
+    },
+    {
+      "review_id": "13900410901",
+      "language": "bg",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Много сте яки",
+      "text": "Малко ме дразни това че има реклами но иначе сте много готини",
+      "analysis_text": "Много сте яки\nМалко ме дразни това че има реклами но иначе сте много готини",
+      "gold": "positive",
+      "gold_ambiguous": true,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "positive",
+        "tabularis_multilingual": "negative",
+        "multilingual_distilbert": "negative"
+      },
+      "wrong_models": [
+        "tabularis_multilingual",
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": false
+    },
+    {
+      "review_id": "13904326631",
+      "language": "ru",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Не знаю как назвать заголовок 😅",
+      "text": "Приложение очень классное ! Тут можно найти любую песню и ничего больше мне это нравится ! Вить в ютубе когда пишу какую-то песню то не всегда выходит песня которую я хочу . Вот только в некоторых музык внизу есть текст а в некоторых нет в этом есть минус … а если можете и добавить текст с нотоми для музыкантов . Спасибо за выслушивание . Ещё раз приложение просто супер ! 👍",
+      "analysis_text": "Не знаю как назвать заголовок 😅\nПриложение очень классное ! Тут можно найти любую песню и ничего больше мне это нравится ! Вить в ютубе когда пишу какую-то песню то не всегда выходит песня которую я хочу . Вот только в некоторых музык внизу есть текст а в некоторых нет в этом есть минус … а если можете и добавить текст с нотоми для музыкантов . Спасибо за выслушивание . Ещё раз приложение просто супер ! 👍",
+      "gold": "positive",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "positive",
+        "tabularis_multilingual": "positive",
+        "multilingual_distilbert": "negative"
+      },
+      "wrong_models": [
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": false
+    },
+    {
+      "review_id": "13962988833",
+      "language": "ky",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "👍",
+      "text": "Музыканын бары бар",
+      "analysis_text": "👍\nМузыканын бары бар",
+      "gold": "positive",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "positive",
+        "tabularis_multilingual": "negative",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "tabularis_multilingual"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": false
+    },
+    {
+      "review_id": "14165668529",
+      "language": "lt",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Spotify rating",
+      "text": "Pats geriauses appas net video yra atsisiuk DABAR",
+      "analysis_text": "Spotify rating\nPats geriauses appas net video yra atsisiuk DABAR",
+      "gold": "positive",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "neutral",
+        "tabularis_multilingual": "positive",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "xlm_roberta"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": false
+    },
+    {
+      "review_id": "14205293951",
+      "language": "zh",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "𝐒𝐮𝐩𝐞𝐫 𝐜𝐨𝐨𝐥",
+      "text": "𝐃𝐮 𝐤𝐚𝐧𝐧𝐬𝐭 𝐯𝐢𝐞𝐥𝐞 𝐋𝐢𝐞𝐝𝐞𝐫 𝐡𝐨̈𝐫𝐞𝐧 👍",
+      "analysis_text": "𝐒𝐮𝐩𝐞𝐫 𝐜𝐨𝐨𝐥\n𝐃𝐮 𝐤𝐚𝐧𝐧𝐬𝐭 𝐯𝐢𝐞𝐥𝐞 𝐋𝐢𝐞𝐝𝐞𝐫 𝐡𝐨̈𝐫𝐞𝐧 👍",
+      "gold": "positive",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "positive",
+        "tabularis_multilingual": "neutral",
+        "multilingual_distilbert": "negative"
+      },
+      "wrong_models": [
+        "tabularis_multilingual",
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": false
+    },
+    {
+      "review_id": "14228400086",
+      "language": "tr",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Başarılı",
+      "text": "Mükemmel uygulama",
+      "analysis_text": "Başarılı\nMükemmel uygulama",
+      "gold": "positive",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "positive",
+        "tabularis_multilingual": "positive",
+        "multilingual_distilbert": "negative"
+      },
+      "wrong_models": [
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": false
+    },
+    {
+      "review_id": "14264069525",
+      "language": "it",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Muito bom",
+      "text": "Fino do fino",
+      "analysis_text": "Muito bom\nFino do fino",
+      "gold": "positive",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "positive",
+        "tabularis_multilingual": "positive",
+        "multilingual_distilbert": "negative"
+      },
+      "wrong_models": [
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": false
+    },
+    {
+      "review_id": "14359319031",
+      "language": "ru",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Круто, но алгоритмы фигня",
+      "text": "Алгоритмы фигня полная, постоянно даже при перемешивании, даже в избранных, заезженные песни, которые приелись знатно. Приходится отключать интернет чтобы послушать песни нормально в перемешку. В общем, я требую чтобы было прям ПЕРЕМЕШИВАНИЕ, а то задолбалась слушать одно и то же каждый раз, да даже это ваше перемешивание повторяет все те песни что были до этого. Только тогда моя оценка поднимется до пяти звезд.",
+      "analysis_text": "Круто, но алгоритмы фигня\nАлгоритмы фигня полная, постоянно даже при перемешивании, даже в избранных, заезженные песни, которые приелись знатно. Приходится отключать интернет чтобы послушать песни нормально в перемешку. В общем, я требую чтобы было прям ПЕРЕМЕШИВАНИЕ, а то задолбалась слушать одно и то же каждый раз, да даже это ваше перемешивание повторяет все те песни что были до этого. Только тогда моя оценка поднимется до пяти звезд.",
+      "gold": "positive",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "negative",
+        "tabularis_multilingual": "positive",
+        "multilingual_distilbert": "negative"
+      },
+      "wrong_models": [
+        "xlm_roberta",
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": false
+    },
+    {
+      "review_id": "14463172825",
+      "language": "pl",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Podziękowania",
+      "text": "Dziękuję",
+      "analysis_text": "Podziękowania\nDziękuję",
+      "gold": "positive",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "positive",
+        "tabularis_multilingual": "neutral",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "tabularis_multilingual"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": false
+    },
+    {
+      "review_id": "14474584321",
+      "language": "nl",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Recensie",
+      "text": "Het zou beter zijn om spotify premium te hebben gratis. Er zijn veel mensen die alsnog niet genoeg geld hebben voor spotify premium. Verder echt een fijne en goeie app en geen glitches of dergelijke vervelende dingen die gebeuren dus echt een top app!",
+      "analysis_text": "Recensie\nHet zou beter zijn om spotify premium te hebben gratis. Er zijn veel mensen die alsnog niet genoeg geld hebben voor spotify premium. Verder echt een fijne en goeie app en geen glitches of dergelijke vervelende dingen die gebeuren dus echt een top app!",
+      "gold": "positive",
+      "gold_ambiguous": true,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "positive",
+        "tabularis_multilingual": "negative",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "tabularis_multilingual"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": false
+    },
+    {
+      "review_id": "14482492405",
+      "language": "fi",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Beauty ful",
+      "text": "Muhtesem pretyygoeed",
+      "analysis_text": "Beauty ful\nMuhtesem pretyygoeed",
+      "gold": "positive",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "positive",
+        "tabularis_multilingual": "negative",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "tabularis_multilingual"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": false
+    },
+    {
+      "review_id": "14503195213",
+      "language": "it",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Carplay",
+      "text": "Da qualche giorno sto notando che in modalità carplay non ci sono più i tasti per aggiungere il brano nei preferiti e tutti gli altri , per il resto top come sempre",
+      "analysis_text": "Carplay\nDa qualche giorno sto notando che in modalità carplay non ci sono più i tasti per aggiungere il brano nei preferiti e tutti gli altri , per il resto top come sempre",
+      "gold": "positive",
+      "gold_ambiguous": true,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "positive",
+        "tabularis_multilingual": "negative",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "tabularis_multilingual"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": false
+    },
+    {
+      "review_id": "14513667445",
+      "language": "no",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Spoty fi",
+      "text": "Leukkkkkkkkkkkkkkkk",
+      "analysis_text": "Spoty fi\nLeukkkkkkkkkkkkkkkk",
+      "gold": "positive",
+      "gold_ambiguous": true,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "negative",
+        "tabularis_multilingual": "neutral",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "xlm_roberta",
+        "tabularis_multilingual"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": false
+    },
+    {
+      "review_id": "14514181810",
+      "language": "ja",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "MOGE SLUCHAC TOKIO HOTEL🫶🏽😝🎶😻🎸🥹💕",
+      "text": "🎶🎶🎶",
+      "analysis_text": "MOGE SLUCHAC TOKIO HOTEL🫶🏽😝🎶😻🎸🥹💕\n🎶🎶🎶",
+      "gold": "positive",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "neutral",
+        "tabularis_multilingual": "positive",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "xlm_roberta"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": false
+    },
+    {
+      "review_id": "14516449239",
+      "language": "pl",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "mi się podoba",
+      "text": "lubię kwachy",
+      "analysis_text": "mi się podoba\nlubię kwachy",
+      "gold": "positive",
+      "gold_ambiguous": true,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "positive",
+        "tabularis_multilingual": "neutral",
+        "multilingual_distilbert": "negative"
+      },
+      "wrong_models": [
+        "tabularis_multilingual",
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": false
+    },
+    {
+      "review_id": "14537896080",
+      "language": "fr",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Très utile !",
+      "text": "Je trouve que c'est vraiment très utile et ça sert beaucoup quand on s'ennuie ou juste pour le fun. Par contre les seuls problèmes qu'il y a c'est que on peux pas choisir quand on veux aller dans la musique genre sur une vidéo youtube on peux choisir le temps, alors que la non, aussi les publicités, et surtout le pire c'est que quand tu créer une playlist, les musique ne sont pas gorcéments celles que tu a ajoutés. Sinon c'est vraiment bien💛",
+      "analysis_text": "Très utile !\nJe trouve que c'est vraiment très utile et ça sert beaucoup quand on s'ennuie ou juste pour le fun. Par contre les seuls problèmes qu'il y a c'est que on peux pas choisir quand on veux aller dans la musique genre sur une vidéo youtube on peux choisir le temps, alors que la non, aussi les publicités, et surtout le pire c'est que quand tu créer une playlist, les musique ne sont pas gorcéments celles que tu a ajoutés. Sinon c'est vraiment bien💛",
+      "gold": "positive",
+      "gold_ambiguous": true,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "positive",
+        "tabularis_multilingual": "negative",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "tabularis_multilingual"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": false
+    },
+    {
+      "review_id": "14538185652",
+      "language": "fr",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Bien",
+      "text": "C’est super pour écouter de la musique et regarder des vidéos même hors ligne mais le contrôle parental ne sert à rien voilà",
+      "analysis_text": "Bien\nC’est super pour écouter de la musique et regarder des vidéos même hors ligne mais le contrôle parental ne sert à rien voilà",
+      "gold": "positive",
+      "gold_ambiguous": true,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "negative",
+        "tabularis_multilingual": "negative",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "xlm_roberta",
+        "tabularis_multilingual"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": false
+    },
+    {
+      "review_id": "14538640495",
+      "language": "it",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "È una bellisima app peccato per gli annunci",
+      "text": "A me Spotify piace un sacco e le do i miei complimenti, solo che credo che gli annunci messi siano un po’ troppi. Cioè, 2 annunci ogni 5 canzoni mi sembra un po’ esagerato \nogni 10 ci starebbe di più diciamo. Secondo me anche alcune funzioni premio un dovrebbero essere disponili anche su un account normale tipo fare una coda e forse degli skip in più. Per il resto secondo me è un app fantastica e la consiglio veramente a tutti .",
+      "analysis_text": "È una bellisima app peccato per gli annunci\nA me Spotify piace un sacco e le do i miei complimenti, solo che credo che gli annunci messi siano un po’ troppi. Cioè, 2 annunci ogni 5 canzoni mi sembra un po’ esagerato ogni 10 ci starebbe di più diciamo. Secondo me anche alcune funzioni premio un dovrebbero essere disponili anche su un account normale tipo fare una coda e forse degli skip in più. Per il resto secondo me è un app fantastica e la consiglio veramente a tutti .",
+      "gold": "positive",
+      "gold_ambiguous": true,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "positive",
+        "tabularis_multilingual": "negative",
+        "multilingual_distilbert": "negative"
+      },
+      "wrong_models": [
+        "tabularis_multilingual",
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": false
+    },
+    {
+      "review_id": "14540774534",
+      "language": "nl",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Leuk",
+      "text": "Ik vind het een leuke app ik kan vind het altijd leuk om na een werkdag ff te ontspannen met een lekker nummertje",
+      "analysis_text": "Leuk\nIk vind het een leuke app ik kan vind het altijd leuk om na een werkdag ff te ontspannen met een lekker nummertje",
+      "gold": "positive",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "positive",
+        "tabularis_multilingual": "positive",
+        "multilingual_distilbert": "negative"
+      },
+      "wrong_models": [
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": false
+    },
+    {
+      "review_id": "14544380137",
+      "language": "tr",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Fena değil",
+      "text": "Allah belamı verdikçe dinlediğim şarkılar adına güzel bir uygulama",
+      "analysis_text": "Fena değil\nAllah belamı verdikçe dinlediğim şarkılar adına güzel bir uygulama",
+      "gold": "positive",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "positive",
+        "tabularis_multilingual": "positive",
+        "multilingual_distilbert": "negative"
+      },
+      "wrong_models": [
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": false
+    },
+    {
+      "review_id": "14549240650",
+      "language": "pt",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "JUST DACEEEE",
+      "text": "A D O R O",
+      "analysis_text": "JUST DACEEEE\nA D O R O",
+      "gold": "positive",
+      "gold_ambiguous": true,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "negative",
+        "tabularis_multilingual": "neutral",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "xlm_roberta",
+        "tabularis_multilingual"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": false
+    },
+    {
+      "review_id": "14549698415",
+      "language": "cs",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Poděkování",
+      "text": "Diky za další skvělý díl! Vše jednoduše řečeno a shrnuto, báječné tipy. Krásný podzim a těším se na další díl, Jitka",
+      "analysis_text": "Poděkování\nDiky za další skvělý díl! Vše jednoduše řečeno a shrnuto, báječné tipy. Krásný podzim a těším se na další díl, Jitka",
+      "gold": "positive",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "positive",
+        "tabularis_multilingual": "positive",
+        "multilingual_distilbert": "negative"
+      },
+      "wrong_models": [
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": false
+    },
+    {
+      "review_id": "14552287278",
+      "language": "es",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Lo mejor",
+      "text": "Para mi la música esta en mi vida de siempre , me acompaña en alegrías, pena, desilusiones.En los mejores momentos, en los momentos no tan buenos y en los peores momentos de mi vida. Solo darles mil gracias por  entregar música🥰.",
+      "analysis_text": "Lo mejor\nPara mi la música esta en mi vida de siempre , me acompaña en alegrías, pena, desilusiones.En los mejores momentos, en los momentos no tan buenos y en los peores momentos de mi vida. Solo darles mil gracias por entregar música🥰.",
+      "gold": "positive",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "positive",
+        "tabularis_multilingual": "negative",
+        "multilingual_distilbert": "negative"
+      },
+      "wrong_models": [
+        "tabularis_multilingual",
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": false
+    },
+    {
+      "review_id": "14552679426",
+      "language": "nl",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Leuk",
+      "text": "Het is een hele leuke app voor als je in de auto of een andere vervoersmiddel zit",
+      "analysis_text": "Leuk\nHet is een hele leuke app voor als je in de auto of een andere vervoersmiddel zit",
+      "gold": "positive",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "positive",
+        "tabularis_multilingual": "positive",
+        "multilingual_distilbert": "negative"
+      },
+      "wrong_models": [
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": false
+    },
+    {
+      "review_id": "14561352623",
+      "language": "eo",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Super❤️",
+      "text": "Mega fajne polecam😍",
+      "analysis_text": "Super❤️\nMega fajne polecam😍",
+      "gold": "positive",
+      "gold_ambiguous": true,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "positive",
+        "tabularis_multilingual": "positive",
+        "multilingual_distilbert": "negative"
+      },
+      "wrong_models": [
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": false
+    },
+    {
+      "review_id": "14562755730",
+      "language": "pl",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Tnie",
+      "text": "Często muzyka przycina się przy zasięgu 5G niczym stare płyty CD",
+      "analysis_text": "Tnie\nCzęsto muzyka przycina się przy zasięgu 5G niczym stare płyty CD",
+      "gold": "positive",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "neutral",
+        "tabularis_multilingual": "neutral",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "xlm_roberta",
+        "tabularis_multilingual"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": false
+    },
+    {
+      "review_id": "14564076368",
+      "language": "bg",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "💚💚💚",
+      "text": "L unica app ❤️❤️❤️😘😘🥰😍💕",
+      "analysis_text": "💚💚💚\nL unica app ❤️❤️❤️😘😘🥰😍💕",
+      "gold": "positive",
+      "gold_ambiguous": true,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "positive",
+        "tabularis_multilingual": "neutral",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "tabularis_multilingual"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": false
+    },
+    {
+      "review_id": "14567387123",
+      "language": "es",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Supcio",
+      "text": "Supcio",
+      "analysis_text": "Supcio\nSupcio",
+      "gold": "positive",
+      "gold_ambiguous": true,
+      "needs_manual_review": true,
+      "predictions": {
+        "xlm_roberta": "negative",
+        "tabularis_multilingual": "neutral",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "xlm_roberta",
+        "tabularis_multilingual"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": false
+    },
+    {
+      "review_id": "14568611442",
+      "language": "fr",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "recensione",
+      "text": "gasa",
+      "analysis_text": "recensione\ngasa",
+      "gold": "positive",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "neutral",
+        "tabularis_multilingual": "neutral",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "xlm_roberta",
+        "tabularis_multilingual"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": false
+    },
+    {
+      "review_id": "14571317198",
+      "language": "it",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Ci sta",
+      "text": "Ci sta",
+      "analysis_text": "Ci sta\nCi sta",
+      "gold": "positive",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "neutral",
+        "tabularis_multilingual": "neutral",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "xlm_roberta",
+        "tabularis_multilingual"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": false
+    },
+    {
+      "review_id": "14576583909",
+      "language": "fr",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Nouvelle mise à jour",
+      "text": "J’adore Spotify si vraiment mon outil de travail tous les jours mais le problème c’est la nouvelle mise à jour on ne peut pas choisir les titres qu’on a envie d’écouter et on ne peut pas zapper des chansons. Franchement ça me dégoûte car je peux pas choisir les titres que j’ai envie d’écouter, et franchement il faudrait que ce soit réglé au plus vite car je ne peux pas travailler et je ne peux pas me permettre d’acheter un abonnement",
+      "analysis_text": "Nouvelle mise à jour\nJ’adore Spotify si vraiment mon outil de travail tous les jours mais le problème c’est la nouvelle mise à jour on ne peut pas choisir les titres qu’on a envie d’écouter et on ne peut pas zapper des chansons. Franchement ça me dégoûte car je peux pas choisir les titres que j’ai envie d’écouter, et franchement il faudrait que ce soit réglé au plus vite car je ne peux pas travailler et je ne peux pas me permettre d’acheter un abonnement",
+      "gold": "positive",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "positive",
+        "tabularis_multilingual": "negative",
+        "multilingual_distilbert": "negative"
+      },
+      "wrong_models": [
+        "tabularis_multilingual",
+        "multilingual_distilbert"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": false
+    },
+    {
+      "review_id": "14577420059",
+      "language": "fr",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "Voici mon avis",
+      "text": "Je trouve que Spotify est une très bonne application malgré certaines choses qui ne sont pas très utile\n\nJe trouve aussi que l’IA de Spotify est très insolante.?",
+      "analysis_text": "Voici mon avis\nJe trouve que Spotify est une très bonne application malgré certaines choses qui ne sont pas très utile Je trouve aussi que l’IA de Spotify est très insolante.?",
+      "gold": "positive",
+      "gold_ambiguous": false,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "negative",
+        "tabularis_multilingual": "negative",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "xlm_roberta",
+        "tabularis_multilingual"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": false
+    },
+    {
+      "review_id": "14582787863",
+      "language": "fr",
+      "evaluation_sets": [
+        "multilingual"
+      ],
+      "title": "méline",
+      "text": "ces super par contre si tu paye pas le premium tu a des pub tout les 4 musique",
+      "analysis_text": "méline\nces super par contre si tu paye pas le premium tu a des pub tout les 4 musique",
+      "gold": "positive",
+      "gold_ambiguous": true,
+      "needs_manual_review": false,
+      "predictions": {
+        "xlm_roberta": "positive",
+        "tabularis_multilingual": "negative",
+        "multilingual_distilbert": "positive"
+      },
+      "wrong_models": [
+        "tabularis_multilingual"
+      ],
+      "all_three_wrong": false,
+      "negative_missed": false
+    }
+  ]
+}

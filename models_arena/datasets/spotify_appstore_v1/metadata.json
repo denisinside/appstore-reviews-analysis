@@ -1,0 +1,249 @@
+{
+  "dataset_id": "spotify_appstore_v1",
+  "app_id": "324684580",
+  "created_at": "2026-09-24T15:49:30.654565+00:00",
+  "selection_version": "spotify-selection-v1",
+  "preprocessing_version": "nfc-whitespace-v1",
+  "source_countries_discovery_rank": [
+    "fr",
+    "bg",
+    "nl",
+    "at",
+    "it",
+    "ie",
+    "lt",
+    "pl",
+    "pt",
+    "kz"
+  ],
+  "supplemental_country": "ua",
+  "source_files_sha256": {
+    "source_top10.json": "cddad45b08b3136c02737410e95c2569f3bb7a4c03df331f196325bea9169fb2",
+    "source_ua.json": "38acb827dc4180180d185926c3a3a0f65ee8e3b14451afa126c56c3f7133e35d",
+    "discovery.json": "88f442b4dfaa8449baf198ca815038242cf08e3916139ebe6b37fca1cbaed608"
+  },
+  "source_review_counts": {
+    "top10": 4939,
+    "ua": 498
+  },
+  "detected_languages_top10": [
+    "ar",
+    "bg",
+    "ceb",
+    "cs",
+    "de",
+    "en",
+    "eo",
+    "es",
+    "fi",
+    "fr",
+    "gl",
+    "he",
+    "hu",
+    "ie",
+    "it",
+    "ja",
+    "kk",
+    "ky",
+    "lt",
+    "mk",
+    "nl",
+    "no",
+    "oc",
+    "pl",
+    "pt",
+    "ro",
+    "ru",
+    "sk",
+    "sr",
+    "tg",
+    "tr",
+    "uk",
+    "zh"
+  ],
+  "valid_candidates_top10_by_language": {
+    "ar": 1,
+    "bg": 63,
+    "ceb": 1,
+    "cs": 2,
+    "de": 299,
+    "en": 1708,
+    "eo": 2,
+    "es": 34,
+    "fi": 4,
+    "fr": 398,
+    "gl": 2,
+    "he": 1,
+    "hu": 2,
+    "it": 387,
+    "ja": 2,
+    "kk": 4,
+    "ky": 1,
+    "lt": 23,
+    "mk": 1,
+    "nl": 319,
+    "no": 1,
+    "oc": 1,
+    "pl": 292,
+    "pt": 375,
+    "ro": 2,
+    "ru": 379,
+    "sk": 1,
+    "sr": 2,
+    "tr": 18,
+    "uk": 12,
+    "zh": 3
+  },
+  "selected_review_count": 391,
+  "evaluation_set_counts": {
+    "multilingual": 291,
+    "english": 50,
+    "ukrainian": 50
+  },
+  "language_counts": {
+    "ar": 1,
+    "bg": 20,
+    "ceb": 1,
+    "cs": 2,
+    "de": 20,
+    "en": 70,
+    "eo": 2,
+    "es": 20,
+    "fi": 4,
+    "fr": 20,
+    "gl": 2,
+    "he": 1,
+    "hu": 2,
+    "it": 20,
+    "ja": 2,
+    "kk": 4,
+    "ky": 1,
+    "lt": 20,
+    "mk": 1,
+    "nl": 20,
+    "no": 1,
+    "oc": 1,
+    "pl": 20,
+    "pt": 20,
+    "ro": 2,
+    "ru": 20,
+    "sk": 1,
+    "sr": 2,
+    "tr": 18,
+    "uk": 70,
+    "zh": 3
+  },
+  "country_counts": {
+    "at": 33,
+    "bg": 53,
+    "fr": 23,
+    "ie": 16,
+    "it": 36,
+    "kz": 20,
+    "lt": 42,
+    "nl": 35,
+    "pl": 42,
+    "pt": 28,
+    "ua": 63
+  },
+  "shortages": {
+    "ar": {
+      "target": 20,
+      "selected": 1
+    },
+    "ceb": {
+      "target": 20,
+      "selected": 1
+    },
+    "cs": {
+      "target": 20,
+      "selected": 2
+    },
+    "eo": {
+      "target": 20,
+      "selected": 2
+    },
+    "fi": {
+      "target": 20,
+      "selected": 4
+    },
+    "gl": {
+      "target": 20,
+      "selected": 2
+    },
+    "he": {
+      "target": 20,
+      "selected": 1
+    },
+    "hu": {
+      "target": 20,
+      "selected": 2
+    },
+    "ie": {
+      "target": 20,
+      "selected": 0
+    },
+    "ja": {
+      "target": 20,
+      "selected": 2
+    },
+    "kk": {
+      "target": 20,
+      "selected": 4
+    },
+    "ky": {
+      "target": 20,
+      "selected": 1
+    },
+    "mk": {
+      "target": 20,
+      "selected": 1
+    },
+    "no": {
+      "target": 20,
+      "selected": 1
+    },
+    "oc": {
+      "target": 20,
+      "selected": 1
+    },
+    "ro": {
+      "target": 20,
+      "selected": 2
+    },
+    "sk": {
+      "target": 20,
+      "selected": 1
+    },
+    "sr": {
+      "target": 20,
+      "selected": 2
+    },
+    "tg": {
+      "target": 20,
+      "selected": 0
+    },
+    "tr": {
+      "target": 20,
+      "selected": 18
+    },
+    "zh": {
+      "target": 20,
+      "selected": 3
+    }
+  },
+  "reviews_jsonl_sha256": "b5f02873c2b3e93735a15b3d975d1cbb251e5729f25e80d7352af49dcd183b27",
+  "labeler": {
+    "model": "GPT-6 Luna",
+    "instructions_version": "text-only-sentiment-v1",
+    "label_distribution": {
+      "positive": 127,
+      "negative": 255,
+      "neutral": 9
+    },
+    "ambiguous_count": 71,
+    "needs_manual_review_count": 13,
+    "second_reviewed_count": 73
+  },
+  "sentiment_labels_sha256": "cc2cfd0aec5b553a9579e975756ccbd61aabef3e4b40b69c3ac434a635d30eb5"
+}

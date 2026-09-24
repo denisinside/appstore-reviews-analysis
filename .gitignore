@@ -9,3 +9,8 @@ build/
 dist/
 models/*.ftz
 models/*.bin
+
+# Hugging Face model weights and optional local model cache
+*.safetensors
+pytorch_model.bin
+.hf-cache/
