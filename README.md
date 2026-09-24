@@ -41,6 +41,16 @@ with AppStoreReviews() as scraper:
 
 For another Python project, install this directory with `python -m pip install -e path/to/appstore-reviews-analysis` (or a regular `pip install` from that path). The package dependencies are declared in `pyproject.toml`.
 
+### Prepare text for later analysis
+
+```python
+from appstore_reviews import prepare_review_text
+
+analysis_text = prepare_review_text(reviews_ua["reviews"][0])
+```
+
+This optional step combines the title and review body with a newline, applies Unicode NFC, and collapses repeated spaces, tabs, and line breaks within each part. It returns a string without adding a field or changing the original `title` and `text`. For example, `"и\u0306"` (two Unicode code points) becomes `"й"` (one code point) while retaining the same visible letter. Use `normalize_text` if you need to process one string separately.
+
 All methods return JSON-serializable dictionaries. Discovery returns country statistics and errors without full review texts. Country returns reviews, collection status, page counts, and errors. Top returns a combined review list and separate country statistics. Every review has `review_id`, `app_id`, `country`, `observed_countries`, `title`, `text`, `rating`, `app_version`, `updated_at`, `language`, and `language_confidence`. Missing optional values are `null`; unknown languages are `und`. A failed country has `review_count: null` to distinguish it from a successful empty result.
 
 Discovery ranks fully checked countries ahead of partial and failed ones, then sorts by accessible unique review count, newest available review, and country code. Top selects only fully checked countries and reports partial status if the discovery or a selected country had errors.
