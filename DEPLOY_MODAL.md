@@ -29,7 +29,7 @@ Use the FastAPI URL printed by `modal serve` to check `/health` and `/docs`. `mo
 modal deploy modal_app.py
 modal app dashboard appstore-reviews-analysis
 modal app logs appstore-reviews-analysis --tail 100
-modal volume ls appstore-reviews-data /scans
+modal volume ls appstore-reviews-data /
 ```
 
 `modal deploy` prints the public FastAPI URL; it is also shown in the app dashboard. Verify it with:
@@ -39,6 +39,8 @@ $apiUrl = "https://<URL-from-modal-deploy>"
 Invoke-RestMethod "$apiUrl/health"
 Start-Process "$apiUrl/docs"
 ```
+
+An empty Volume has no `/scans` directory yet. After the first successful `POST /api/scans`, inspect saved scan folders with `modal volume ls appstore-reviews-data /scans`.
 
 Set the Vercel frontend's public `VITE_API_URL` environment variable to that exact API origin and redeploy the frontend. Add the actual Vercel origin to `CORS_ORIGINS` in `.env.modal`, update the Secret with the command above, then redeploy Modal to apply it.
 

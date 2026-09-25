@@ -44,6 +44,9 @@ image = (
         "FASTTEXT_MODEL_PATH": FASTTEXT_MODEL_PATH,
         "APPSTORE_SCAN_DIR": f"{DATA_MOUNT}/scans",
     })
+    # The build function imports this module, which imports appstore_reviews.
+    # Copy the package before run_function so it exists during image builds.
+    .add_local_python_source("appstore_reviews", copy=True)
     .run_function(
         _download_models,
         args=(
@@ -56,7 +59,6 @@ image = (
         timeout=3600,
     )
     .env({"HF_HUB_OFFLINE": "1", "TRANSFORMERS_OFFLINE": "1"})
-    .add_local_python_source("appstore_reviews")
 )
 
 app = modal.App("appstore-reviews-analysis")
