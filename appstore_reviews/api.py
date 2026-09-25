@@ -134,8 +134,11 @@ def health() -> dict[str, str]:
 
 @app.get("/api/apps/{app_id}/discovery")
 def discover_app(app_id: str, force_refresh: bool = False) -> dict[str, Any]:
-    with AppStoreReviews() as scraper:
-        return scraper.discovery(app_id, force_refresh=force_refresh)
+    try:
+        with AppStoreReviews() as scraper:
+            return scraper.discovery(app_id, force_refresh=force_refresh)
+    except ValueError as exc:
+        raise HTTPException(status_code=422, detail=str(exc)) from exc
 
 
 @app.post("/api/scans", status_code=status.HTTP_201_CREATED)
@@ -143,21 +146,24 @@ def create_scan(payload: CollectRequest) -> dict[str, Any]:
     if payload.mode == "country" and not payload.country:
         raise HTTPException(status_code=422, detail="country is required when mode='country'")
 
-    with AppStoreReviews() as scraper:
-        if payload.mode == "country":
-            collection = scraper.get_reviews(
-                payload.app_id,
-                payload.country,
-                max_pages=payload.max_pages,
-                force_refresh=payload.force_refresh,
-            )
-        else:
-            collection = scraper.get_top_reviews(
-                payload.app_id,
-                top_n=payload.top_n,
-                max_pages=payload.max_pages,
-                force_refresh=payload.force_refresh,
-            )
+    try:
+        with AppStoreReviews() as scraper:
+            if payload.mode == "country":
+                collection = scraper.get_reviews(
+                    payload.app_id,
+                    payload.country,
+                    max_pages=payload.max_pages,
+                    force_refresh=payload.force_refresh,
+                )
+            else:
+                collection = scraper.get_top_reviews(
+                    payload.app_id,
+                    top_n=payload.top_n,
+                    max_pages=payload.max_pages,
+                    force_refresh=payload.force_refresh,
+                )
+    except ValueError as exc:
+        raise HTTPException(status_code=422, detail=str(exc)) from exc
 
     reviews = collection.get("reviews") or []
     if not isinstance(reviews, list):
