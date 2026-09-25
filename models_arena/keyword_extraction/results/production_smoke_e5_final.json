@@ -1,0 +1,467 @@
+{
+  "source": "previously collected public Apple RSS reviews, outside frozen evaluation sets",
+  "review_ids": [
+    "14486090949",
+    "14273095949",
+    "14555711588",
+    "14496094913"
+  ],
+  "sentiment_model_reused": true,
+  "keyword_model_reused": true,
+  "evidence_offsets_valid": true,
+  "aggregation_unique_review_ids_valid": true,
+  "result": {
+    "review_count": 4,
+    "negative_review_count": 4,
+    "sentiment_results": [
+      {
+        "review_id": "14486090949",
+        "sentiment": "negative",
+        "sentiment_scores": {
+          "negative": 0.8376436233520508,
+          "neutral": 0.10919707268476486,
+          "positive": 0.05315929651260376
+        },
+        "sentiment_model": {
+          "id": "cardiffnlp/twitter-xlm-roberta-base-sentiment",
+          "revision": "f2f1202b1bdeb07342385c3f807f9c07cd8f5cf8"
+        },
+        "error": null
+      },
+      {
+        "review_id": "14273095949",
+        "sentiment": "negative",
+        "sentiment_scores": {
+          "negative": 0.5924578309059143,
+          "neutral": 0.3312336802482605,
+          "positive": 0.07630851119756699
+        },
+        "sentiment_model": {
+          "id": "cardiffnlp/twitter-xlm-roberta-base-sentiment",
+          "revision": "f2f1202b1bdeb07342385c3f807f9c07cd8f5cf8"
+        },
+        "error": null
+      },
+      {
+        "review_id": "14555711588",
+        "sentiment": "negative",
+        "sentiment_scores": {
+          "negative": 0.9296305775642395,
+          "neutral": 0.04972982779145241,
+          "positive": 0.020639561116695404
+        },
+        "sentiment_model": {
+          "id": "cardiffnlp/twitter-xlm-roberta-base-sentiment",
+          "revision": "f2f1202b1bdeb07342385c3f807f9c07cd8f5cf8"
+        },
+        "error": null
+      },
+      {
+        "review_id": "14496094913",
+        "sentiment": "negative",
+        "sentiment_scores": {
+          "negative": 0.881671130657196,
+          "neutral": 0.10107794404029846,
+          "positive": 0.01725092902779579
+        },
+        "sentiment_model": {
+          "id": "cardiffnlp/twitter-xlm-roberta-base-sentiment",
+          "revision": "f2f1202b1bdeb07342385c3f807f9c07cd8f5cf8"
+        },
+        "error": null
+      }
+    ],
+    "keyword_results": [
+      {
+        "review_id": "14486090949",
+        "language": "uk",
+        "keywords": [
+          {
+            "text": "Шкали енергії не вистачає",
+            "score": 0.878341,
+            "evidence_span": "Шкали енергії не вистачає навіть на 2 уроки",
+            "source_start": 56,
+            "source_end": 81
+          },
+          {
+            "text": "взагалі викликає бажання видалити додаток",
+            "score": 0.897543,
+            "evidence_span": "а заставка взагалі викликає бажання видалити додаток з екрану телефону",
+            "source_start": 112,
+            "source_end": 153
+          },
+          {
+            "text": "продовжувати його не маю",
+            "score": 0.851995,
+            "evidence_span": "продовжувати його не маю бажання",
+            "source_start": 200,
+            "source_end": 224
+          },
+          {
+            "text": "страйк майже 900 днів",
+            "score": 0.831865,
+            "evidence_span": "Був страйк майже 900 днів",
+            "source_start": 177,
+            "source_end": 198
+          },
+          {
+            "text": "Зробили з додатку чорти",
+            "score": 0.863112,
+            "evidence_span": "Зробили з додатку чорти-шо",
+            "source_start": 0,
+            "source_end": 23
+          }
+        ],
+        "keyword_model": {
+          "id": "intfloat/multilingual-e5-small",
+          "revision": "614241f622f53c4eeff9890bdc4f31cfecc418b3"
+        },
+        "error": null
+      },
+      {
+        "review_id": "14273095949",
+        "language": "uk",
+        "keywords": [
+          {
+            "text": "Оформила заявку на повернення коштів",
+            "score": 0.882643,
+            "evidence_span": "Оформила заявку на повернення коштів",
+            "source_start": 428,
+            "source_end": 464
+          },
+          {
+            "text": "мене списано кошти за неї",
+            "score": 0.875647,
+            "evidence_span": "сьогодні у мене списано кошти за неї",
+            "source_start": 323,
+            "source_end": 348
+          },
+          {
+            "text": "у мене є вже підписка сина",
+            "score": 0.8721,
+            "evidence_span": "у мене є вже підписка сина",
+            "source_start": 165,
+            "source_end": 191
+          },
+          {
+            "text": "я планувала відмовитись від індивідуальної",
+            "score": 0.865196,
+            "evidence_span": "я планувала відмовитись від індивідуальної",
+            "source_start": 194,
+            "source_end": 236
+          },
+          {
+            "text": "знову є в додатку в підписках",
+            "score": 0.865091,
+            "evidence_span": "вона знову є в додатку в підписках",
+            "source_start": 356,
+            "source_end": 385
+          }
+        ],
+        "keyword_model": {
+          "id": "intfloat/multilingual-e5-small",
+          "revision": "614241f622f53c4eeff9890bdc4f31cfecc418b3"
+        },
+        "error": null
+      },
+      {
+        "review_id": "14555711588",
+        "language": "en",
+        "keywords": [
+          {
+            "text": "not show russian content to Ukrainian",
+            "score": 0.899913,
+            "evidence_span": "do not show russian content to Ukrainian users",
+            "source_start": 19,
+            "source_end": 56
+          },
+          {
+            "text": "repeat my 1 star",
+            "score": 0.8655,
+            "evidence_span": "So I will repeat my 1 star to you again",
+            "source_start": 253,
+            "source_end": 269
+          },
+          {
+            "text": "deleting russian language courses",
+            "score": 0.875348,
+            "evidence_span": "instead of deleting russian language courses from my profile (that was my big mistake to start them) you are deleting my feedback",
+            "source_start": 106,
+            "source_end": 139
+          },
+          {
+            "text": "That’s not fair",
+            "score": 0.842289,
+            "evidence_span": "That’s not fair",
+            "source_start": 226,
+            "source_end": 241
+          },
+          {
+            "text": "It’s a big trigger",
+            "score": 0.85981,
+            "evidence_span": "It’s a big trigger for us",
+            "source_start": 64,
+            "source_end": 82
+          }
+        ],
+        "keyword_model": {
+          "id": "intfloat/multilingual-e5-small",
+          "revision": "614241f622f53c4eeff9890bdc4f31cfecc418b3"
+        },
+        "error": null
+      },
+      {
+        "review_id": "14496094913",
+        "language": "en",
+        "keywords": [
+          {
+            "text": "exploit in a Duolingo Chess PvP",
+            "score": 0.905168,
+            "evidence_span": "I want to report a possible exploit in a Duolingo Chess PvP match against user CarlosDAndrade",
+            "source_start": 44,
+            "source_end": 75
+          },
+          {
+            "text": "opponent may have exploited a bug",
+            "score": 0.90074,
+            "evidence_span": "I believe the opponent may have exploited a bug to force a win",
+            "source_start": 262,
+            "source_end": 295
+          },
+          {
+            "text": "investigate this match",
+            "score": 0.865968,
+            "evidence_span": "Please investigate this match",
+            "source_start": 319,
+            "source_end": 341
+          },
+          {
+            "text": "game suddenly ended about 5",
+            "score": 0.818222,
+            "evidence_span": "the game suddenly ended about 5 seconds later",
+            "source_start": 170,
+            "source_end": 197
+          },
+          {
+            "text": "Cheating Report",
+            "score": 0.873804,
+            "evidence_span": "Cheating Report",
+            "source_start": 0,
+            "source_end": 15
+          }
+        ],
+        "keyword_model": {
+          "id": "intfloat/multilingual-e5-small",
+          "revision": "614241f622f53c4eeff9890bdc4f31cfecc418b3"
+        },
+        "error": null
+      }
+    ],
+    "common_keywords_by_language": {
+      "uk": [
+        {
+          "phrase": "взагалі викликає бажання видалити додаток",
+          "normalized_phrase": "взагалі викликає бажання видалити додаток",
+          "review_count": 1,
+          "share": 0.5,
+          "average_score": 0.897543,
+          "example_review_ids": [
+            "14486090949"
+          ]
+        },
+        {
+          "phrase": "знову є в додатку в підписках",
+          "normalized_phrase": "знову є в додатку в підписках",
+          "review_count": 1,
+          "share": 0.5,
+          "average_score": 0.865091,
+          "example_review_ids": [
+            "14273095949"
+          ]
+        },
+        {
+          "phrase": "Зробили з додатку чорти",
+          "normalized_phrase": "зробили з додатку чорти",
+          "review_count": 1,
+          "share": 0.5,
+          "average_score": 0.863112,
+          "example_review_ids": [
+            "14486090949"
+          ]
+        },
+        {
+          "phrase": "мене списано кошти за неї",
+          "normalized_phrase": "мене списано кошти за неї",
+          "review_count": 1,
+          "share": 0.5,
+          "average_score": 0.875647,
+          "example_review_ids": [
+            "14273095949"
+          ]
+        },
+        {
+          "phrase": "Оформила заявку на повернення коштів",
+          "normalized_phrase": "оформила заявку на повернення коштів",
+          "review_count": 1,
+          "share": 0.5,
+          "average_score": 0.882643,
+          "example_review_ids": [
+            "14273095949"
+          ]
+        },
+        {
+          "phrase": "продовжувати його не маю",
+          "normalized_phrase": "продовжувати його не маю",
+          "review_count": 1,
+          "share": 0.5,
+          "average_score": 0.851995,
+          "example_review_ids": [
+            "14486090949"
+          ]
+        },
+        {
+          "phrase": "страйк майже 900 днів",
+          "normalized_phrase": "страйк майже 900 днів",
+          "review_count": 1,
+          "share": 0.5,
+          "average_score": 0.831865,
+          "example_review_ids": [
+            "14486090949"
+          ]
+        },
+        {
+          "phrase": "у мене є вже підписка сина",
+          "normalized_phrase": "у мене є вже підписка сина",
+          "review_count": 1,
+          "share": 0.5,
+          "average_score": 0.8721,
+          "example_review_ids": [
+            "14273095949"
+          ]
+        },
+        {
+          "phrase": "Шкали енергії не вистачає",
+          "normalized_phrase": "шкали енергії не вистачає",
+          "review_count": 1,
+          "share": 0.5,
+          "average_score": 0.878341,
+          "example_review_ids": [
+            "14486090949"
+          ]
+        },
+        {
+          "phrase": "я планувала відмовитись від індивідуальної",
+          "normalized_phrase": "я планувала відмовитись від індивідуальної",
+          "review_count": 1,
+          "share": 0.5,
+          "average_score": 0.865196,
+          "example_review_ids": [
+            "14273095949"
+          ]
+        }
+      ],
+      "en": [
+        {
+          "phrase": "Cheating Report",
+          "normalized_phrase": "cheating report",
+          "review_count": 1,
+          "share": 0.5,
+          "average_score": 0.873804,
+          "example_review_ids": [
+            "14496094913"
+          ]
+        },
+        {
+          "phrase": "deleting russian language courses",
+          "normalized_phrase": "deleting russian language courses",
+          "review_count": 1,
+          "share": 0.5,
+          "average_score": 0.875348,
+          "example_review_ids": [
+            "14555711588"
+          ]
+        },
+        {
+          "phrase": "exploit in a Duolingo Chess PvP",
+          "normalized_phrase": "exploit in a duolingo chess pvp",
+          "review_count": 1,
+          "share": 0.5,
+          "average_score": 0.905168,
+          "example_review_ids": [
+            "14496094913"
+          ]
+        },
+        {
+          "phrase": "game suddenly ended about 5",
+          "normalized_phrase": "game suddenly ended about 5",
+          "review_count": 1,
+          "share": 0.5,
+          "average_score": 0.818222,
+          "example_review_ids": [
+            "14496094913"
+          ]
+        },
+        {
+          "phrase": "investigate this match",
+          "normalized_phrase": "investigate this match",
+          "review_count": 1,
+          "share": 0.5,
+          "average_score": 0.865968,
+          "example_review_ids": [
+            "14496094913"
+          ]
+        },
+        {
+          "phrase": "It’s a big trigger",
+          "normalized_phrase": "it’s a big trigger",
+          "review_count": 1,
+          "share": 0.5,
+          "average_score": 0.85981,
+          "example_review_ids": [
+            "14555711588"
+          ]
+        },
+        {
+          "phrase": "not show russian content to Ukrainian",
+          "normalized_phrase": "not show russian content to ukrainian",
+          "review_count": 1,
+          "share": 0.5,
+          "average_score": 0.899913,
+          "example_review_ids": [
+            "14555711588"
+          ]
+        },
+        {
+          "phrase": "opponent may have exploited a bug",
+          "normalized_phrase": "opponent may have exploited a bug",
+          "review_count": 1,
+          "share": 0.5,
+          "average_score": 0.90074,
+          "example_review_ids": [
+            "14496094913"
+          ]
+        },
+        {
+          "phrase": "repeat my 1 star",
+          "normalized_phrase": "repeat my 1 star",
+          "review_count": 1,
+          "share": 0.5,
+          "average_score": 0.8655,
+          "example_review_ids": [
+            "14555711588"
+          ]
+        },
+        {
+          "phrase": "That’s not fair",
+          "normalized_phrase": "that’s not fair",
+          "review_count": 1,
+          "share": 0.5,
+          "average_score": 0.842289,
+          "example_review_ids": [
+            "14555711588"
+          ]
+        }
+      ]
+    }
+  }
+}

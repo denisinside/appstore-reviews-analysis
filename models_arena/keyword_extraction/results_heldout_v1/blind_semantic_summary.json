@@ -1,0 +1,66 @@
+{
+  "minilm": {
+    "reviews": 40,
+    "phrases": 171,
+    "mean_utility_0_to_5": 2.825,
+    "useful_phrase_share": 0.4035,
+    "meaning_error_count": 12,
+    "negation_or_number_loss_count": 3,
+    "generic_or_duplicate_count": 104,
+    "missed_major_complaint_count": 34,
+    "utility_by_language": {
+      "uk": 3.7,
+      "en": 2.4,
+      "pl": 2.1,
+      "ru": 3.1
+    }
+  },
+  "bge_m3": {
+    "reviews": 40,
+    "phrases": 172,
+    "mean_utility_0_to_5": 2.975,
+    "useful_phrase_share": 0.4128,
+    "meaning_error_count": 14,
+    "negation_or_number_loss_count": 4,
+    "generic_or_duplicate_count": 101,
+    "missed_major_complaint_count": 32,
+    "utility_by_language": {
+      "uk": 3.6,
+      "en": 2.5,
+      "pl": 2.7,
+      "ru": 3.1
+    }
+  },
+  "tfidf": {
+    "reviews": 40,
+    "phrases": 178,
+    "mean_utility_0_to_5": 2.05,
+    "useful_phrase_share": 0.2528,
+    "meaning_error_count": 17,
+    "negation_or_number_loss_count": 5,
+    "generic_or_duplicate_count": 124,
+    "missed_major_complaint_count": 47,
+    "utility_by_language": {
+      "uk": 2.5,
+      "en": 1.8,
+      "pl": 1.7,
+      "ru": 2.2
+    }
+  },
+  "e5_small": {
+    "reviews": 40,
+    "phrases": 172,
+    "mean_utility_0_to_5": 2.875,
+    "useful_phrase_share": 0.407,
+    "meaning_error_count": 14,
+    "negation_or_number_loss_count": 3,
+    "generic_or_duplicate_count": 103,
+    "missed_major_complaint_count": 30,
+    "utility_by_language": {
+      "uk": 3.8,
+      "en": 2.7,
+      "pl": 2.6,
+      "ru": 2.4
+    }
+  }
+}

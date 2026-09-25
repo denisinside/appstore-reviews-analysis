@@ -1,0 +1,194 @@
+{
+  "seed": 20260924,
+  "sampling": "rating <= 2 and >=25 title+body characters; rating omitted from annotator inputs",
+  "source": "public Apple RSS via AppStoreReviews, Duolingo and Telegram, ua/us/gb/pl, pages 1-10",
+  "review_count": 200,
+  "sampling_groups": {
+    "uk_duolingo": 40,
+    "uk_telegram": 40,
+    "en_duolingo": 40,
+    "en_telegram": 40,
+    "pl": 20,
+    "ru": 20
+  },
+  "languages": {
+    "uk": 80,
+    "en": 80,
+    "pl": 20,
+    "ru": 20
+  },
+  "source_collection": [
+    {
+      "app_id": "570060128",
+      "name": "Duolingo",
+      "country": "ua",
+      "status": "success",
+      "pages_succeeded": 10,
+      "errors": [],
+      "review_count": 500,
+      "languages": {
+        "ru": 140,
+        "und": 19,
+        "uk": 193,
+        "en": 137,
+        "es": 1,
+        "pl": 2,
+        "fi": 3,
+        "fr": 2,
+        "ja": 1,
+        "da": 1,
+        "de": 1
+      },
+      "low_rating_languages": {
+        "ru": 46,
+        "uk": 54,
+        "en": 55,
+        "und": 3,
+        "ja": 1
+      }
+    },
+    {
+      "app_id": "570060128",
+      "name": "Duolingo",
+      "country": "us",
+      "status": "success",
+      "pages_succeeded": 10,
+      "errors": [],
+      "review_count": 450,
+      "languages": {
+        "en": 383,
+        "und": 27,
+        "ar": 1,
+        "ru": 11,
+        "tr": 2,
+        "fi": 2,
+        "es": 19,
+        "pt": 1,
+        "vi": 1,
+        "ja": 1,
+        "fr": 1,
+        "si": 1
+      },
+      "low_rating_languages": {
+        "en": 96,
+        "und": 4,
+        "ru": 3
+      }
+    },
+    {
+      "app_id": "570060128",
+      "name": "Duolingo",
+      "country": "gb",
+      "status": "success",
+      "pages_succeeded": 10,
+      "errors": [],
+      "review_count": 500,
+      "languages": {
+        "en": 468,
+        "pl": 1,
+        "und": 28,
+        "ru": 1,
+        "zh": 1,
+        "fi": 1
+      },
+      "low_rating_languages": {
+        "en": 97,
+        "fi": 1
+      }
+    },
+    {
+      "app_id": "570060128",
+      "name": "Duolingo",
+      "country": "pl",
+      "status": "success",
+      "pages_succeeded": 10,
+      "errors": [],
+      "review_count": 450,
+      "languages": {
+        "en": 90,
+        "pl": 311,
+        "uk": 3,
+        "it": 1,
+        "hy": 1,
+        "ru": 11,
+        "und": 28,
+        "lt": 1,
+        "hu": 1,
+        "fi": 2,
+        "es": 1
+      },
+      "low_rating_languages": {
+        "en": 52,
+        "pl": 55,
+        "ru": 7,
+        "und": 4
+      }
+    },
+    {
+      "app_id": "686449807",
+      "name": "Telegram",
+      "country": "ua",
+      "status": "success",
+      "pages_succeeded": 10,
+      "errors": [],
+      "review_count": 500,
+      "languages": {
+        "ru": 246,
+        "uk": 138,
+        "en": 108,
+        "und": 7,
+        "de": 1
+      },
+      "low_rating_languages": {
+        "ru": 158,
+        "uk": 104,
+        "en": 74,
+        "und": 2
+      }
+    },
+    {
+      "app_id": "686449807",
+      "name": "Telegram",
+      "country": "pl",
+      "status": "success",
+      "pages_succeeded": 10,
+      "errors": [],
+      "review_count": 400,
+      "languages": {
+        "und": 15,
+        "pl": 42,
+        "en": 168,
+        "ru": 159,
+        "uk": 16
+      },
+      "low_rating_languages": {
+        "und": 6,
+        "en": 120,
+        "ru": 105,
+        "uk": 9,
+        "pl": 35
+      }
+    }
+  ],
+  "reviews_sha256": "4a29144df794637940c72d55f0ae2959cef99039816054310951dc68d3343d5b",
+  "annotation_input_sha256": "30847207c49c6c6c0465df390f298b64f1ba8bebf48760c1f8c6fe16d1d8e476",
+  "old_review_ids_overlap": 0,
+  "frozen_reviews_sha256": "0c776719cd6a66bcb9251a97a266848973eaa2f98ef4047a0ea77d89866c509d",
+  "frozen_labels_sha256": "3329280c786fff85ccbf37ced681c54d198214f1e77a0a119b255e0ace589307",
+  "gold_sentiment_counts": {
+    "negative": 197,
+    "neutral": 2,
+    "positive": 1
+  },
+  "gold_uncertain_count": 32,
+  "annotation_protocol": "Two independent annotators, each 100 blinded records; no model outputs or rating seen; source spans validated and labels frozen before any held-out inference.",
+  "evaluation_exclusions": {
+    "review_ids": [
+      "14583149356",
+      "14130625981"
+    ],
+    "reason": "Two source/label rows were accidentally viewed by the implementation agent during setup before code freeze; excluded from final model comparison and blind semantic sample."
+  },
+  "evaluated_negative_count": 195,
+  "reviews_sha256_note": "reviews_sha256 is the initial 200-row sample before adding evaluation_sets/app_name; frozen_reviews_sha256 is the current reviews.jsonl file."
+}

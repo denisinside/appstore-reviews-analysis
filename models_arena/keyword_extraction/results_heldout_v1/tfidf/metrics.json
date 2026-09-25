@@ -1,0 +1,172 @@
+{
+  "performance": {
+    "load_seconds": 0.0,
+    "total_seconds": 1.543,
+    "mean_seconds_per_review": 0.007912,
+    "rss_mb": 124.6
+  },
+  "metrics": {
+    "heldout": {
+      "n": 195,
+      "processed": 195,
+      "gold_empty": 6,
+      "uncertain_keyword_labels": 30,
+      "precision_at_5": 0.150598,
+      "recall_at_5": 0.299658,
+      "f1_at_5": 0.193158
+    },
+    "heldout/lang/uk": {
+      "n": 77,
+      "processed": 77,
+      "gold_empty": 4,
+      "uncertain_keyword_labels": 14,
+      "precision_at_5": 0.189394,
+      "recall_at_5": 0.35974,
+      "f1_at_5": 0.239518
+    },
+    "ukrainian": {
+      "n": 77,
+      "processed": 77,
+      "gold_empty": 4,
+      "uncertain_keyword_labels": 14,
+      "precision_at_5": 0.189394,
+      "recall_at_5": 0.35974,
+      "f1_at_5": 0.239518
+    },
+    "ukrainian/lang/uk": {
+      "n": 77,
+      "processed": 77,
+      "gold_empty": 4,
+      "uncertain_keyword_labels": 14,
+      "precision_at_5": 0.189394,
+      "recall_at_5": 0.35974,
+      "f1_at_5": 0.239518
+    },
+    "all": {
+      "n": 195,
+      "processed": 195,
+      "gold_empty": 6,
+      "uncertain_keyword_labels": 30,
+      "precision_at_5": 0.150598,
+      "recall_at_5": 0.299658,
+      "f1_at_5": 0.193158
+    },
+    "all_excluding_uncertain_sentiment": {
+      "n": 195,
+      "processed": 195,
+      "gold_empty": 6,
+      "uncertain_keyword_labels": 30,
+      "precision_at_5": 0.150598,
+      "recall_at_5": 0.299658,
+      "f1_at_5": 0.193158
+    },
+    "heldout_excluding_uncertain_sentiment": {
+      "n": 195,
+      "processed": 195,
+      "gold_empty": 6,
+      "uncertain_keyword_labels": 30,
+      "precision_at_5": 0.150598,
+      "recall_at_5": 0.299658,
+      "f1_at_5": 0.193158
+    },
+    "ukrainian_excluding_uncertain_sentiment": {
+      "n": 77,
+      "processed": 77,
+      "gold_empty": 4,
+      "uncertain_keyword_labels": 14,
+      "precision_at_5": 0.189394,
+      "recall_at_5": 0.35974,
+      "f1_at_5": 0.239518
+    },
+    "heldout/lang/en": {
+      "n": 80,
+      "processed": 80,
+      "gold_empty": 1,
+      "uncertain_keyword_labels": 13,
+      "precision_at_5": 0.139167,
+      "recall_at_5": 0.273333,
+      "f1_at_5": 0.177133
+    },
+    "english": {
+      "n": 80,
+      "processed": 80,
+      "gold_empty": 1,
+      "uncertain_keyword_labels": 13,
+      "precision_at_5": 0.139167,
+      "recall_at_5": 0.273333,
+      "f1_at_5": 0.177133
+    },
+    "english/lang/en": {
+      "n": 80,
+      "processed": 80,
+      "gold_empty": 1,
+      "uncertain_keyword_labels": 13,
+      "precision_at_5": 0.139167,
+      "recall_at_5": 0.273333,
+      "f1_at_5": 0.177133
+    },
+    "english_excluding_uncertain_sentiment": {
+      "n": 80,
+      "processed": 80,
+      "gold_empty": 1,
+      "uncertain_keyword_labels": 13,
+      "precision_at_5": 0.139167,
+      "recall_at_5": 0.273333,
+      "f1_at_5": 0.177133
+    },
+    "heldout/lang/pl": {
+      "n": 18,
+      "processed": 18,
+      "gold_empty": 1,
+      "uncertain_keyword_labels": 1,
+      "precision_at_5": 0.094444,
+      "recall_at_5": 0.233333,
+      "f1_at_5": 0.131217
+    },
+    "multilingual_other": {
+      "n": 38,
+      "processed": 38,
+      "gold_empty": 1,
+      "uncertain_keyword_labels": 3,
+      "precision_at_5": 0.096053,
+      "recall_at_5": 0.233333,
+      "f1_at_5": 0.132957
+    },
+    "multilingual_other/lang/pl": {
+      "n": 18,
+      "processed": 18,
+      "gold_empty": 1,
+      "uncertain_keyword_labels": 1,
+      "precision_at_5": 0.094444,
+      "recall_at_5": 0.233333,
+      "f1_at_5": 0.131217
+    },
+    "multilingual_other_excluding_uncertain_sentiment": {
+      "n": 38,
+      "processed": 38,
+      "gold_empty": 1,
+      "uncertain_keyword_labels": 3,
+      "precision_at_5": 0.096053,
+      "recall_at_5": 0.233333,
+      "f1_at_5": 0.132957
+    },
+    "heldout/lang/ru": {
+      "n": 20,
+      "processed": 20,
+      "gold_empty": 0,
+      "uncertain_keyword_labels": 2,
+      "precision_at_5": 0.0975,
+      "recall_at_5": 0.233333,
+      "f1_at_5": 0.134524
+    },
+    "multilingual_other/lang/ru": {
+      "n": 20,
+      "processed": 20,
+      "gold_empty": 0,
+      "uncertain_keyword_labels": 2,
+      "precision_at_5": 0.0975,
+      "recall_at_5": 0.233333,
+      "f1_at_5": 0.134524
+    }
+  }
+}

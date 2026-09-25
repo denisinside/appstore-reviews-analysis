@@ -1,0 +1,165 @@
+[
+  {
+    "review_id": "13034351439",
+    "language": "pl",
+    "keywords": [
+      {
+        "text": "aplikacja wymaga zakupu subskrypcji 4,99 zł",
+        "score": 0.895939,
+        "evidence_span": "Podczas rejestracji aplikacja wymaga zakupu subskrypcji 4,99 zł",
+        "source_start": 37,
+        "source_end": 80
+      },
+      {
+        "text": "komunikator nie pobiera opłat",
+        "score": 0.850659,
+        "evidence_span": "żaden inny komunikator nie pobiera opłat na etapie tworzenia konta",
+        "source_start": 160,
+        "source_end": 189
+      },
+      {
+        "text": "rejestracji aplikacja wymaga zakupu subskrypcji",
+        "score": 0.884402,
+        "evidence_span": "Podczas rejestracji aplikacja wymaga zakupu subskrypcji 4",
+        "source_start": 25,
+        "source_end": 72
+      },
+      {
+        "text": "Proszę o rozważenie bezpłatnej rejestracji",
+        "score": 0.881653,
+        "evidence_span": "Proszę o rozważenie bezpłatnej rejestracji (np",
+        "source_start": 217,
+        "source_end": 259
+      },
+      {
+        "text": "weryfikacja e-mail/push",
+        "score": 0.856254,
+        "evidence_span": "weryfikacja e-mail/push) i transparentne wyjaśnienie kosztów",
+        "source_start": 265,
+        "source_end": 288
+      }
+    ],
+    "keyword_model": {
+      "id": "intfloat/multilingual-e5-small",
+      "revision": "614241f622f53c4eeff9890bdc4f31cfecc418b3"
+    },
+    "error": null
+  },
+  {
+    "review_id": "14118838307",
+    "language": "uk",
+    "keywords": [
+      {
+        "text": "не можу відкрити чати",
+        "score": 0.910288,
+        "evidence_span": "Я не можу відкрити чати",
+        "source_start": 20,
+        "source_end": 41
+      },
+      {
+        "text": "при натисканні просто немає",
+        "score": 0.902868,
+        "evidence_span": "при натисканні просто немає ніякої реакції",
+        "source_start": 43,
+        "source_end": 70
+      },
+      {
+        "text": "Проблема в роботі",
+        "score": 0.878126,
+        "evidence_span": "Проблема в роботі",
+        "source_start": 0,
+        "source_end": 17
+      },
+      {
+        "text": "немає ніякої реакції",
+        "score": 0.87564,
+        "evidence_span": "при натисканні просто немає ніякої реакції",
+        "source_start": 65,
+        "source_end": 85
+      },
+      {
+        "text": "дзвінки",
+        "score": 0.851378,
+        "evidence_span": "хоча дзвінки",
+        "source_start": 92,
+        "source_end": 99
+      }
+    ],
+    "keyword_model": {
+      "id": "intfloat/multilingual-e5-small",
+      "revision": "614241f622f53c4eeff9890bdc4f31cfecc418b3"
+    },
+    "error": null
+  },
+  {
+    "review_id": "13720974464",
+    "language": "en",
+    "keywords": [
+      {
+        "text": "Telegram is a terrible app",
+        "score": 0.887908,
+        "evidence_span": "Telegram is a terrible app",
+        "source_start": 87,
+        "source_end": 113
+      },
+      {
+        "text": "it’s only gotten worse",
+        "score": 0.843825,
+        "evidence_span": "it’s only gotten worse",
+        "source_start": 63,
+        "source_end": 85
+      },
+      {
+        "text": "are so many ads",
+        "score": 0.837258,
+        "evidence_span": "There are so many ads",
+        "source_start": 9,
+        "source_end": 24
+      },
+      {
+        "text": "it’s awful",
+        "score": 0.852377,
+        "evidence_span": "overall it’s awful",
+        "source_start": 194,
+        "source_end": 204
+      },
+      {
+        "text": "pushing subscriptions",
+        "score": 0.811595,
+        "evidence_span": "they keep pushing subscriptions",
+        "source_start": 39,
+        "source_end": 60
+      }
+    ],
+    "keyword_model": {
+      "id": "intfloat/multilingual-e5-small",
+      "revision": "614241f622f53c4eeff9890bdc4f31cfecc418b3"
+    },
+    "error": null
+  },
+  {
+    "review_id": "14301645523",
+    "language": "uk",
+    "keywords": [
+      {
+        "text": "Перестали працювати кружки",
+        "score": 0.953203,
+        "evidence_span": "Перестали працювати кружки",
+        "source_start": 0,
+        "source_end": 26
+      },
+      {
+        "text": "працюють через раз",
+        "score": 0.907118,
+        "evidence_span": "працюють через раз",
+        "source_start": 58,
+        "source_end": 76
+      }
+    ],
+    "keyword_model": {
+      "id": "intfloat/multilingual-e5-small",
+      "revision": "614241f622f53c4eeff9890bdc4f31cfecc418b3"
+    },
+    "error": null
+  }
+]
