@@ -73,3 +73,68 @@ def test_atomic_json_write_survives_parallel_status_updates(api_module, tmp_path
         list(pool.map(lambda value: api_module._write_json(path, {"value": value}), range(80)))
     assert json.loads(path.read_text(encoding="utf-8"))["value"] in range(80)
     assert not list(tmp_path.glob("*.tmp"))
+
+
+def test_scan_history_returns_compact_sorted_summaries(api_module, tmp_path):
+    client = TestClient(api_module.app)
+    for scan_id, created_at, rating in (
+        ("abcdef123456", "2026-09-24T10:00:00Z", 3.5),
+        ("123456abcdef", "2026-09-25T10:00:00Z", 4.25),
+    ):
+        folder = tmp_path / scan_id
+        folder.mkdir()
+        (folder / "scan.json").write_text(json.dumps({
+            "scan_id": scan_id, "app_id": "324684580", "created_at": created_at,
+            "analysis_status": "completed", "collection_mode": "top", "top_n": 10,
+            "review_count": 2,
+        }), encoding="utf-8")
+        (folder / "basic_metrics.json").write_text(json.dumps({"average_rating": rating}), encoding="utf-8")
+        (folder / "sentiment_results.json").write_text(json.dumps([
+            {"review_id": "a", "sentiment": "negative"},
+            {"review_id": "b", "sentiment": "positive"},
+        ]), encoding="utf-8")
+        (folder / "issue_catalog.json").write_text(json.dumps([{"canonical_id": "one"}]), encoding="utf-8")
+
+    response = client.get("/api/scans")
+    assert response.status_code == 200
+    items = response.json()["items"]
+    assert [item["scan_id"] for item in items] == ["123456abcdef", "abcdef123456"]
+    assert items[0]["app_name"] == "App 324684580"
+    assert items[0]["average_rating"] == 4.25
+    assert items[0]["negative_sentiment_share"] == 0.5
+    assert items[0]["issue_count"] == 1
+    assert "reviews" not in items[0]
+
+
+def test_download_analysis_report_uses_saved_artifacts_and_keeps_raw_download(api_module, tmp_path):
+    folder = tmp_path / "abcdef123456"
+    folder.mkdir()
+    artifacts = {
+        "scan.json": {"scan_id": "abcdef123456", "app_id": "123", "created_at": "2026-01-01T00:00:00Z", "collection_mode": "top", "analysis_status": "completed", "review_count": 1},
+        "reviews.json": [{"review_id": "r1", "title": "Bad", "text": "Broken", "rating": 1}],
+        "basic_metrics.json": {"average_rating": 1.0},
+        "sentiment_results.json": [{"review_id": "r1", "sentiment": "negative", "sentiment_scores": {"negative": 0.9}}],
+        "keyword_results.json": [{"review_id": "r1", "keywords": [{"text": "broken"}]}],
+        "review_analyses.json": {"r1": {"aspects": [{"aspect": "Playback"}]}},
+        "nlp_metrics.json": {"languages": 1},
+        "insights.json": {"summary": "Playback issues"},
+        "issue_catalog.json": [{"canonical_id": "i1"}],
+        "feature_request_catalog.json": [],
+    }
+    for name, value in artifacts.items():
+        (folder / name).write_text(json.dumps(value), encoding="utf-8")
+
+    client = TestClient(api_module.app)
+    report_response = client.get("/api/scans/abcdef123456/report/download")
+    assert report_response.status_code == 200
+    report = report_response.json()
+    assert report["basic_metrics"]["average_rating"] == 1.0
+    assert report["insights"]["summary"] == "Playback issues"
+    assert report["reviews"][0]["sentiment"] == "negative"
+    assert report["reviews"][0]["sentiment_scores"]["negative"] == 0.9
+    assert report["reviews"][0]["keywords"][0]["text"] == "broken"
+    assert report["reviews"][0]["issue_analysis"]["aspects"][0]["aspect"] == "Playback"
+
+    raw_response = client.get("/api/scans/abcdef123456/reviews/download")
+    assert raw_response.status_code == 200
+    assert raw_response.json() == artifacts["reviews.json"]

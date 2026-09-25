@@ -6,6 +6,7 @@ import json
 import os
 import re
 import time
+import urllib.request
 from collections import Counter
 from datetime import datetime, timezone
 from pathlib import Path
@@ -75,6 +76,68 @@ def _load_meta(folder: Path) -> dict[str, Any]:
 def _save_meta(folder: Path, meta: dict[str, Any]) -> None:
     meta["updated_at"] = _utc_now()
     _write_json(folder / "scan.json", meta)
+
+
+def _lookup_app_name(app_id: str) -> str | None:
+    """Best-effort name lookup; metadata outages must never block review collection."""
+    try:
+        request = urllib.request.Request(
+            f"https://itunes.apple.com/lookup?id={app_id}",
+            headers={"User-Agent": "AppStoreReviewsAnalyzer/1.0"},
+        )
+        with urllib.request.urlopen(request, timeout=3) as response:
+            payload = json.loads(response.read().decode("utf-8"))
+        results = payload.get("results") if isinstance(payload, dict) else None
+        if results and isinstance(results[0], dict):
+            name = results[0].get("trackName")
+            return name.strip() if isinstance(name, str) and name.strip() else None
+    except Exception:
+        return None
+    return None
+
+
+def _history_summary(folder: Path, meta: dict[str, Any]) -> dict[str, Any]:
+    """Build a compact history row exclusively from saved scan artifacts."""
+    try:
+        basic = _read_json(folder / "basic_metrics.json", {})
+    except (OSError, ValueError):
+        basic = {}
+    try:
+        nlp = _read_json(folder / "nlp_metrics.json", {})
+    except (OSError, ValueError):
+        nlp = {}
+    try:
+        sentiments = _read_json(folder / "sentiment_results.json", [])
+    except (OSError, ValueError):
+        sentiments = []
+    try:
+        issues = _read_json(folder / "issue_catalog.json", None)
+    except (OSError, ValueError):
+        issues = None
+    if not isinstance(basic, dict):
+        basic = {}
+    if not isinstance(nlp, dict):
+        nlp = {}
+    if not isinstance(sentiments, list):
+        sentiments = []
+    sentiment = _sentiment_summary(sentiments)
+    negative = sentiment["distribution"]["negative"]["share"]
+    issue_rows = issues if isinstance(issues, list) else nlp.get("issue_metrics", {}).get("issues") if isinstance(nlp.get("issue_metrics"), dict) else None
+    app_id = str(meta.get("app_id") or "unknown")
+    return {
+        "scan_id": meta.get("scan_id") or folder.name,
+        "app_id": app_id,
+        "app_name": meta.get("app_name") or f"App {app_id}",
+        "created_at": meta.get("created_at"),
+        "analysis_status": meta.get("analysis_status") or "not_started",
+        "collection_mode": meta.get("collection_mode"),
+        "country": meta.get("country"),
+        "top_n": meta.get("top_n"),
+        "review_count": meta.get("review_count", basic.get("review_count")),
+        "average_rating": basic.get("average_rating"),
+        "negative_sentiment_share": negative,
+        "issue_count": len(issue_rows) if isinstance(issue_rows, list) else None,
+    }
 
 
 def _sentiment_summary(rows: list[dict]) -> dict[str, Any]:
@@ -184,10 +247,12 @@ def create_scan(payload: CollectRequest) -> dict[str, Any]:
     folder = DATA_ROOT / scan_id
     folder.mkdir(parents=True, exist_ok=False)
     basic_metrics = calculate_metrics(reviews)
+    app_name = _lookup_app_name(payload.app_id)
 
     meta = {
         "scan_id": scan_id,
         "app_id": payload.app_id,
+        "app_name": app_name or f"App {payload.app_id}",
         "collection_mode": payload.mode,
         "country": payload.country,
         "top_n": payload.top_n if payload.mode == "top" else None,
@@ -215,12 +280,16 @@ def create_scan(payload: CollectRequest) -> dict[str, Any]:
 @app.get("/api/scans")
 def list_scans() -> dict[str, Any]:
     items = []
-    for folder in DATA_ROOT.iterdir():
-        if not folder.is_dir():
-            continue
-        meta = _read_json(folder / "scan.json")
-        if isinstance(meta, dict):
-            items.append(meta)
+    if DATA_ROOT.exists():
+        for folder in DATA_ROOT.iterdir():
+            if not folder.is_dir():
+                continue
+            try:
+                meta = _read_json(folder / "scan.json")
+            except (OSError, ValueError):
+                continue
+            if isinstance(meta, dict):
+                items.append(_history_summary(folder, meta))
     items.sort(key=lambda item: item.get("created_at") or "", reverse=True)
     return {"items": items}
 
@@ -402,3 +471,75 @@ def download_reviews(scan_id: str) -> FileResponse:
     meta = _load_meta(folder)
     filename = f"app_{meta.get('app_id', 'unknown')}_{scan_id}_reviews.json"
     return FileResponse(path, media_type="application/json", filename=filename)
+
+
+@app.get("/api/scans/{scan_id}/report/download")
+def download_analysis_report(scan_id: str) -> FileResponse:
+    """Assemble a downloadable report from artifacts already saved for a scan."""
+    folder = _scan_dir(scan_id)
+    meta = _load_meta(folder)
+    reviews = _read_json(folder / "reviews.json", [])
+    if not isinstance(reviews, list):
+        reviews = []
+
+    sentiment_rows = _read_json(folder / "sentiment_results.json", [])
+    keyword_rows = _read_json(folder / "keyword_results.json", [])
+    analyses = _read_json(folder / "review_analyses.json", {})
+    if not isinstance(sentiment_rows, list):
+        sentiment_rows = []
+    if not isinstance(keyword_rows, list):
+        keyword_rows = []
+    if not isinstance(analyses, dict):
+        analyses = {}
+
+    sentiment_by_id = {
+        str(row["review_id"]): row for row in sentiment_rows
+        if isinstance(row, dict) and row.get("review_id") is not None
+    }
+    keywords_by_id = {
+        str(row["review_id"]): row for row in keyword_rows
+        if isinstance(row, dict) and row.get("review_id") is not None
+    }
+    enriched_reviews = []
+    for review in reviews:
+        if not isinstance(review, dict):
+            continue
+        review_id = str(review.get("review_id", ""))
+        sentiment = sentiment_by_id.get(review_id, {})
+        keyword = keywords_by_id.get(review_id, {})
+        enriched_reviews.append({
+            **review,
+            "sentiment": sentiment.get("sentiment"),
+            "sentiment_scores": sentiment.get("sentiment_scores", sentiment.get("scores")),
+            "keywords": keyword.get("keywords") or [],
+            "issue_analysis": analyses.get(review_id),
+        })
+
+    basic_metrics = _read_json(folder / "basic_metrics.json")
+    sentiment_summary = _sentiment_summary(sentiment_rows)
+    nlp_metrics = _read_json(folder / "nlp_metrics.json")
+    insights = _read_json(folder / "insights.json")
+    report = {
+        "report_version": "1.0",
+        "scan": {
+            "scan_id": meta.get("scan_id", scan_id),
+            "app_id": meta.get("app_id"),
+            "app_name": meta.get("app_name"),
+            "created_at": meta.get("created_at"),
+            "collection_mode": meta.get("collection_mode"),
+            "country": meta.get("country"),
+            "top_n": meta.get("top_n"),
+            "review_count": meta.get("review_count", len(reviews)),
+            "analysis_status": meta.get("analysis_status"),
+        },
+        "basic_metrics": basic_metrics,
+        "sentiment_summary": sentiment_summary,
+        "nlp_metrics": nlp_metrics,
+        "issues": _read_json(folder / "issue_catalog.json", []),
+        "feature_requests": _read_json(folder / "feature_request_catalog.json", []),
+        "insights": insights,
+        "reviews": enriched_reviews,
+    }
+    report_path = folder / f"app_{meta.get('app_id', 'unknown')}_{scan_id}_analysis_report.json"
+    _write_json(report_path, report)
+    return FileResponse(report_path, media_type="application/json", filename=report_path.name)

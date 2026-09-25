@@ -9,6 +9,7 @@ import type {
   ReviewsQuery,
   ReviewsPage,
   Scan,
+  ScansResponse,
 } from "./types";
 
 const API_BASE_URL = (import.meta.env.VITE_API_URL || "http://localhost:8000").replace(/\/$/, "");
@@ -86,6 +87,10 @@ export function getScan(scanId: string): Promise<Scan> {
   return request<Scan>(`/api/scans/${encodeURIComponent(scanId)}`);
 }
 
+export function getScans(): Promise<ScansResponse> {
+  return request<ScansResponse>("/api/scans");
+}
+
 export function getMetrics(scanId: string): Promise<MetricsResponse> {
   return request<MetricsResponse>(`/api/scans/${encodeURIComponent(scanId)}/metrics`);
 }
@@ -106,6 +111,10 @@ export function getReviews(scanId: string, filters: ReviewsQuery = {}): Promise<
 
 export function downloadReviewsUrl(scanId: string): string {
   return `${API_BASE_URL}/api/scans/${encodeURIComponent(scanId)}/reviews/download`;
+}
+
+export function downloadReportUrl(scanId: string): string {
+  return `${API_BASE_URL}/api/scans/${encodeURIComponent(scanId)}/report/download`;
 }
 
 export function getDiscovery(appId: string, forceRefresh = false): Promise<DiscoveryResponse> {

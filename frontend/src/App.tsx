@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { ArrowDownToLine, ArrowLeft, ArrowRight, CircleAlert, LoaderCircle, MoveUpRight } from 'lucide-react'
 import { Link, Route, Routes, useNavigate, useParams, useSearchParams } from 'react-router-dom'
-import { analyzeScan, createScan, downloadReviewsUrl, getInsights, getIssues, getMetrics, getScan } from './api/client'
+import { analyzeScan, createScan, downloadReportUrl, downloadReviewsUrl, getInsights, getIssues, getMetrics, getScan } from './api/client'
 import type { Scan } from './api/types'
 import { parseAppStoreId } from './utils/appId'
 import { integer } from './utils/format'
@@ -10,6 +10,7 @@ import Overview from './components/Overview'
 import IssuesView from './components/IssuesView'
 import InsightsView from './components/InsightsView'
 import ReviewsExplorer from './components/ReviewsExplorer'
+import RecentAnalyses from './components/RecentAnalyses'
 
 const tabs = ['overview', 'issues', 'insights', 'reviews'] as const
 type Tab = typeof tabs[number]
@@ -46,6 +47,7 @@ function Home() {
       </form>
     </div>
     <div className="mt-20 grid gap-7 border-t border-line pt-8 text-sm text-muted md:grid-cols-[1fr_2fr]"><span className="eyebrow">A clearer reading of feedback</span><p className="max-w-2xl leading-relaxed">Ratings tell you how people feel. The review text explains why. Fieldnotes connects sentiment, recurring issues, feature requests, and original evidence in one place.</p></div>
+    <RecentAnalyses />
   </main></Shell>
 }
 
@@ -74,7 +76,7 @@ function Workspace() {
 
   return <Shell><main className="mx-auto max-w-[1480px] px-5 pb-20 pt-8 md:px-10"><Link to="/" className="inline-flex items-center gap-2 text-sm text-muted hover:text-rust"><ArrowLeft size={15} /> New analysis</Link>
     {status.isLoading ? <div className="mt-20 flex items-center gap-3 text-muted"><LoaderCircle size={18} className="animate-spin" /> Loading scan…</div> : status.isError || !scan ? <div className="panel mt-12 p-8"><CircleAlert className="text-danger" /><h2 className="mt-4 font-serif text-3xl">Scan unavailable</h2><p className="mt-2 text-muted">{(status.error as Error)?.message ?? 'The scan could not be found.'}</p></div> : <>
-      <div className="mt-9 flex flex-wrap items-end justify-between gap-6 border-b border-ink pb-8"><div><p className="eyebrow">APP {scan.app_id} / SCAN {scan.scan_id}</p><h1 className="mt-3 font-serif text-[clamp(38px,4.6vw,64px)] leading-none tracking-[-0.035em]">App Store Review Analysis</h1><p className="mt-5 text-sm text-muted"><span className="font-mono text-ink">{integer(scan.review_count)}</span> reviews <span className="mx-2 text-line">·</span> {scope}</p></div><div className="flex flex-wrap items-center gap-5"><span className={`font-mono text-[11px] font-medium uppercase tracking-[0.14em] ${completed ? 'text-good' : scan.analysis_status === 'failed' ? 'text-danger' : 'text-orange'}`}><span className="mr-2 inline-block h-2 w-2 rounded-full bg-current" />{scan.analysis_status.replaceAll('_', ' ')}</span><a href={downloadReviewsUrl(scanId)} className="thin-button"><ArrowDownToLine size={16} /> Download reviews</a></div></div>
+      <div className="mt-9 flex flex-wrap items-end justify-between gap-6 border-b border-ink pb-8"><div><p className="eyebrow">APP {scan.app_id} / SCAN {scan.scan_id}</p><h1 className="mt-3 font-serif text-[clamp(38px,4.6vw,64px)] leading-none tracking-[-0.035em]">App Store Review Analysis</h1><p className="mt-5 text-sm text-muted"><span className="font-mono text-ink">{integer(scan.review_count)}</span> reviews <span className="mx-2 text-line">·</span> {scope}</p></div><div className="flex flex-wrap items-center gap-3"><span className={`mr-2 font-mono text-[11px] font-medium uppercase tracking-[0.14em] ${completed ? 'text-good' : scan.analysis_status === 'failed' ? 'text-danger' : 'text-orange'}`}><span className="mr-2 inline-block h-2 w-2 rounded-full bg-current" />{scan.analysis_status.replaceAll('_', ' ')}</span><a href={downloadReviewsUrl(scanId)} className="thin-button"><ArrowDownToLine size={16} /> Download raw reviews</a>{completed && <a href={downloadReportUrl(scanId)} className="thin-button"><ArrowDownToLine size={16} /> Download full report</a>}</div></div>
       {!completed ? <StatusPanel scan={scan} onRetry={() => { requested.current = true; analysis.mutate() }} retrying={analysis.isPending} retryError={analysis.isError ? (analysis.error as Error).message : undefined} /> : <>
         <nav aria-label="Analysis sections" className="mt-1 flex gap-7 overflow-x-auto border-b border-line">{tabs.map(tab => <button key={tab} className={`whitespace-nowrap border-b-2 px-1 py-5 text-sm font-semibold capitalize ${current === tab ? 'border-orange text-ink' : 'border-transparent text-muted hover:text-ink'}`} onClick={() => navigateTab(tab)}>{tab}</button>)}</nav>
         <div className="pt-10">{current === 'overview' && <Overview metrics={metrics.data} loading={metrics.isLoading} error={metrics.error as Error | null} onIssueClick={id => navigateTab('issues', { issue: id })} />}{current === 'issues' && <IssuesView metrics={metrics.data} catalog={issues.data} loading={metrics.isLoading || issues.isLoading} error={(metrics.error || issues.error) as Error | null} selectedId={params.get('issue') ?? undefined} onSelect={id => navigateTab('issues', { issue: id })} onReviewClick={ids => navigateTab('reviews', { review: ids.join(',') })} />}{current === 'insights' && <InsightsView data={insights.data} loading={insights.isLoading} error={insights.error as Error | null} onReviewClick={ids => navigateTab('reviews', { review: ids.join(',') })} />}{current === 'reviews' && <ReviewsExplorer scanId={scanId} focusReviewIds={reviewIds} onCloseFocus={() => navigateTab('reviews')} />}</div>

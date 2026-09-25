@@ -37,6 +37,7 @@ export interface BasicMetrics {
 export interface Scan {
   scan_id: string;
   app_id: string;
+  app_name?: string | null;
   collection_mode: ScanMode;
   country: string | null;
   top_n: number | null;
@@ -51,6 +52,23 @@ export interface Scan {
   basic_metrics?: BasicMetrics;
   collection_errors?: Array<Record<string, unknown>>;
 }
+
+export interface ScanSummary {
+  scan_id: string;
+  app_id: string;
+  app_name: string | null;
+  created_at: string | null;
+  analysis_status: AnalysisStatus;
+  collection_mode: ScanMode;
+  country: string | null;
+  top_n: number | null;
+  review_count: number;
+  average_rating: number | null;
+  negative_sentiment_share: number | null;
+  issue_count: number | null;
+}
+
+export interface ScansResponse { items: ScanSummary[] }
 
 export interface AnalyzeScanRequest {
   batch_size?: number;
