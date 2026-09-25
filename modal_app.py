@@ -11,7 +11,7 @@ from appstore_reviews.sentiment import DEFAULT_SENTIMENT_MODEL, DEFAULT_SENTIMEN
 HF_HOME = "/opt/huggingface"
 FASTTEXT_MODEL_PATH = "/opt/models/lid.176.ftz"
 DATA_MOUNT = "/data"
-
+PLAYWRIGHT_BROWSERS_PATH = "/opt/playwright-browsers"
 
 def _configure_runtime_paths() -> None:
     """Keep deployment paths authoritative even if a Secret has local .env values."""
@@ -46,15 +46,23 @@ def _download_models(
 
 image = (
     modal.Image.debian_slim(python_version="3.11")
-    .pip_install_from_pyproject("pyproject.toml", optional_dependencies=["sentiment", "keywords"])
+    .pip_install_from_pyproject(
+        "pyproject.toml",
+        optional_dependencies=["sentiment", "keywords"],
+    )
     .env({
         "HF_HOME": HF_HOME,
         "FASTTEXT_MODEL_PATH": FASTTEXT_MODEL_PATH,
         "APPSTORE_SCAN_DIR": f"{DATA_MOUNT}/scans",
+        "PLAYWRIGHT_BROWSERS_PATH": PLAYWRIGHT_BROWSERS_PATH,
     })
-    # The build function imports this module, which imports appstore_reviews.
-    # Copy the package before run_function so it exists during image builds.
-    .add_local_python_source("appstore_reviews", copy=True)
+    .run_commands(
+        "playwright install --with-deps chromium"
+    )
+    .add_local_python_source(
+        "appstore_reviews",
+        copy=True,
+    )
     .run_function(
         _download_models,
         args=(
@@ -66,7 +74,10 @@ image = (
         ),
         timeout=3600,
     )
-    .env({"HF_HUB_OFFLINE": "1", "TRANSFORMERS_OFFLINE": "1"})
+    .env({
+        "HF_HUB_OFFLINE": "1",
+        "TRANSFORMERS_OFFLINE": "1",
+    })
 )
 
 app = modal.App("appstore-reviews-analysis")
@@ -100,7 +111,7 @@ def analyze_worker(scan_id: str, payload: dict) -> None:
     memory=2048,
     max_containers=1,
 )
-@modal.concurrent(max_inputs=1)
+@modal.concurrent(max_inputs=16)
 @modal.asgi_app()
 def fastapi_app():
     _configure_runtime_paths()

@@ -726,7 +726,7 @@ def download_analysis_report_pdf(scan_id: str) -> FileResponse:
             browser = playwright.chromium.launch(headless=True)
             try:
                 page = browser.new_page()
-                response = page.goto(report_url, wait_until="networkidle", timeout=45_000)
+                response = page.goto(report_url, wait_until="domcontentloaded", timeout=30_000)
                 if response is None or not response.ok:
                     raise HTTPException(status_code=502, detail="Could not load the report page for PDF export")
                 page.wait_for_selector('[data-report-ready="true"]', timeout=45_000)
@@ -748,7 +748,7 @@ def download_analysis_report_pdf(scan_id: str) -> FileResponse:
     except PlaywrightError as exc:
         raise HTTPException(
             status_code=503,
-            detail="PDF export could not start Chromium or render the report. Install Chromium with 'playwright install chromium'.",
+            detail=f"PDF export failed: {str(exc)[:1000]}",
         ) from exc
 
     return FileResponse(pdf_path, media_type="application/pdf", filename=pdf_path.name)
