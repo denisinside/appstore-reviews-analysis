@@ -1,0 +1,1182 @@
+{
+  "analysis_summary": {
+    "input_review_count": 8,
+    "analyzed_review_count": 8,
+    "analysis_error_count": 0,
+    "rating_sample_size": 8,
+    "average_rating": 2.875,
+    "rules": [
+      "Unique review IDs are counted once per metric.",
+      "Issue and feature denominators use successful analyses.",
+      "Unverified evidence is excluded from counts.",
+      "Rating shares use reviews with a valid rating.",
+      "Missing metadata is omitted; no values are imputed.",
+      "Time buckets describe accessible reviews; they do not establish population trends."
+    ],
+    "metric_rules": {
+      "aspect_frequency": "distinct reviews mentioning the category / successful analyses",
+      "aspect_sentiment": "distinct reviews per class; mixed reviews can occur in multiple classes",
+      "negative_aspect_share": "reviews with a negative category mention / reviews mentioning the category",
+      "issue_and_feature_share": "distinct reviews with canonical signal / successful analyses",
+      "average_rating": "mean of available ratings for reviews with the issue",
+      "negative_rating_share": "ratings of 1 or 2 / available ratings for reviews with the issue",
+      "negative_sentiment_issue_coverage": "negative overall sentiment reviews with a concrete issue / negative overall sentiment reviews",
+      "breakdown_share": "distinct reviews with issue in bucket / successful analyses in bucket"
+    }
+  },
+  "aspect_metrics": [
+    {
+      "category": "content",
+      "review_count": 6,
+      "denominator_review_count": 8,
+      "mention_count": 8,
+      "share_of_successful_reviews": 0.75,
+      "sentiment_distribution": {
+        "positive": {
+          "review_count": 1,
+          "mention_count": 2,
+          "share_of_aspect_reviews": 0.166667
+        },
+        "neutral": {
+          "review_count": 0,
+          "mention_count": 0,
+          "share_of_aspect_reviews": 0.0
+        },
+        "negative": {
+          "review_count": 5,
+          "mention_count": 6,
+          "share_of_aspect_reviews": 0.833333
+        }
+      },
+      "mixed_review_count": 0,
+      "negative_aspect_share": 0.833333
+    },
+    {
+      "category": "features",
+      "review_count": 3,
+      "denominator_review_count": 8,
+      "mention_count": 5,
+      "share_of_successful_reviews": 0.375,
+      "sentiment_distribution": {
+        "positive": {
+          "review_count": 1,
+          "mention_count": 3,
+          "share_of_aspect_reviews": 0.333333
+        },
+        "neutral": {
+          "review_count": 1,
+          "mention_count": 1,
+          "share_of_aspect_reviews": 0.333333
+        },
+        "negative": {
+          "review_count": 1,
+          "mention_count": 1,
+          "share_of_aspect_reviews": 0.333333
+        }
+      },
+      "mixed_review_count": 0,
+      "negative_aspect_share": 0.333333
+    },
+    {
+      "category": "stability",
+      "review_count": 1,
+      "denominator_review_count": 8,
+      "mention_count": 1,
+      "share_of_successful_reviews": 0.125,
+      "sentiment_distribution": {
+        "positive": {
+          "review_count": 0,
+          "mention_count": 0,
+          "share_of_aspect_reviews": 0.0
+        },
+        "neutral": {
+          "review_count": 0,
+          "mention_count": 0,
+          "share_of_aspect_reviews": 0.0
+        },
+        "negative": {
+          "review_count": 1,
+          "mention_count": 1,
+          "share_of_aspect_reviews": 1.0
+        }
+      },
+      "mixed_review_count": 0,
+      "negative_aspect_share": 1.0
+    },
+    {
+      "category": "ui_ux",
+      "review_count": 4,
+      "denominator_review_count": 8,
+      "mention_count": 4,
+      "share_of_successful_reviews": 0.5,
+      "sentiment_distribution": {
+        "positive": {
+          "review_count": 2,
+          "mention_count": 2,
+          "share_of_aspect_reviews": 0.5
+        },
+        "neutral": {
+          "review_count": 0,
+          "mention_count": 0,
+          "share_of_aspect_reviews": 0.0
+        },
+        "negative": {
+          "review_count": 2,
+          "mention_count": 2,
+          "share_of_aspect_reviews": 0.5
+        }
+      },
+      "mixed_review_count": 0,
+      "negative_aspect_share": 0.5
+    }
+  ],
+  "issue_metrics": {
+    "reviews_with_any_issue_count": 6,
+    "reviews_with_any_issue_share": 0.75,
+    "issues": [
+      {
+        "canonical_id": "issue_0bf9ad67ee096a446083a7e1",
+        "canonical_name": "Too many ads",
+        "category": "ui_ux",
+        "review_count": 2,
+        "denominator_review_count": 8,
+        "review_ids": [
+          "11403128585",
+          "14050499214"
+        ],
+        "share_of_successful_reviews": 0.25,
+        "average_rating": 2.5,
+        "negative_rating_review_count": 1,
+        "negative_rating_share": 0.5,
+        "rating_sample_size": 2,
+        "sample_review_ids": [
+          "11403128585",
+          "14050499214"
+        ]
+      },
+      {
+        "canonical_id": "issue_5606153d35c36b419203b664",
+        "canonical_name": "Playback includes songs not shown among Spotify-added songs",
+        "category": "ui_ux",
+        "review_count": 1,
+        "denominator_review_count": 8,
+        "review_ids": [
+          "11403128585"
+        ],
+        "share_of_successful_reviews": 0.125,
+        "average_rating": 2.0,
+        "negative_rating_review_count": 1,
+        "negative_rating_share": 1.0,
+        "rating_sample_size": 1,
+        "sample_review_ids": [
+          "11403128585"
+        ]
+      },
+      {
+        "canonical_id": "issue_68ead690715d163c7f1cdeb5",
+        "canonical_name": "Ads are irritating",
+        "category": "content",
+        "review_count": 1,
+        "denominator_review_count": 8,
+        "review_ids": [
+          "14196723787"
+        ],
+        "share_of_successful_reviews": 0.125,
+        "average_rating": 5.0,
+        "negative_rating_review_count": 0,
+        "negative_rating_share": 0.0,
+        "rating_sample_size": 1,
+        "sample_review_ids": [
+          "14196723787"
+        ]
+      },
+      {
+        "canonical_id": "issue_a0fdd5360e7f49bd43b19689",
+        "canonical_name": "Playlist created on laptop not saved or synced to phone",
+        "category": "stability",
+        "review_count": 1,
+        "denominator_review_count": 8,
+        "review_ids": [
+          "11694352262"
+        ],
+        "share_of_successful_reviews": 0.125,
+        "average_rating": 2.0,
+        "negative_rating_review_count": 1,
+        "negative_rating_share": 1.0,
+        "rating_sample_size": 1,
+        "sample_review_ids": [
+          "11694352262"
+        ]
+      },
+      {
+        "canonical_id": "issue_c551cc177a1e619e0b43691a",
+        "canonical_name": "Ad frequency increased compared to before",
+        "category": "content",
+        "review_count": 2,
+        "denominator_review_count": 8,
+        "review_ids": [
+          "13877772672",
+          "14161557254"
+        ],
+        "share_of_successful_reviews": 0.25,
+        "average_rating": 1.0,
+        "negative_rating_review_count": 2,
+        "negative_rating_share": 1.0,
+        "rating_sample_size": 2,
+        "sample_review_ids": [
+          "13877772672",
+          "14161557254"
+        ]
+      },
+      {
+        "canonical_id": "issue_cdec12fe8a8eb796cc288e8a",
+        "canonical_name": "Offline listening missing on premium subscription",
+        "category": "features",
+        "review_count": 1,
+        "denominator_review_count": 8,
+        "review_ids": [
+          "14161557254"
+        ],
+        "share_of_successful_reviews": 0.125,
+        "average_rating": 1.0,
+        "negative_rating_review_count": 1,
+        "negative_rating_share": 1.0,
+        "rating_sample_size": 1,
+        "sample_review_ids": [
+          "14161557254"
+        ]
+      },
+      {
+        "canonical_id": "issue_e149aca29d98961487c1c6a6",
+        "canonical_name": "Free tier limits skips to 6 per hour",
+        "category": "ui_ux",
+        "review_count": 1,
+        "denominator_review_count": 8,
+        "review_ids": [
+          "11403128585"
+        ],
+        "share_of_successful_reviews": 0.125,
+        "average_rating": 2.0,
+        "negative_rating_review_count": 1,
+        "negative_rating_share": 1.0,
+        "rating_sample_size": 1,
+        "sample_review_ids": [
+          "11403128585"
+        ]
+      },
+      {
+        "canonical_id": "issue_ea2b84803897475296f7e217",
+        "canonical_name": "Playback plays Spotify-added songs instead of user's playlist songs",
+        "category": "ui_ux",
+        "review_count": 1,
+        "denominator_review_count": 8,
+        "review_ids": [
+          "11403128585"
+        ],
+        "share_of_successful_reviews": 0.125,
+        "average_rating": 2.0,
+        "negative_rating_review_count": 1,
+        "negative_rating_share": 1.0,
+        "rating_sample_size": 1,
+        "sample_review_ids": [
+          "11403128585"
+        ]
+      }
+    ]
+  },
+  "feature_request_metrics": {
+    "reviews_with_any_feature_request_count": 2,
+    "reviews_with_any_feature_request_share": 0.25,
+    "feature_requests": [
+      {
+        "canonical_id": "feature_3ce69831c68b3ca06fb7c387",
+        "canonical_name": "Keep offline-added tracks from being deleted from downloads",
+        "category": "features",
+        "review_count": 1,
+        "denominator_review_count": 8,
+        "review_ids": [
+          "13949097365"
+        ],
+        "share_of_successful_reviews": 0.125,
+        "sample_review_ids": [
+          "13949097365"
+        ]
+      },
+      {
+        "canonical_id": "feature_441ecc08af6c771e2db018c3",
+        "canonical_name": "Add a downloaded tracks section listing downloads from playlists and favorites",
+        "category": "features",
+        "review_count": 1,
+        "denominator_review_count": 8,
+        "review_ids": [
+          "13949097365"
+        ],
+        "share_of_successful_reviews": 0.125,
+        "sample_review_ids": [
+          "13949097365"
+        ]
+      },
+      {
+        "canonical_id": "feature_730070df17c1cfc6305a26b5",
+        "canonical_name": "Reduce number of ads",
+        "category": "content",
+        "review_count": 1,
+        "denominator_review_count": 8,
+        "review_ids": [
+          "13877772672"
+        ],
+        "share_of_successful_reviews": 0.125,
+        "sample_review_ids": [
+          "13877772672"
+        ]
+      }
+    ]
+  },
+  "coverage_metrics": {
+    "submitted_review_count": 8,
+    "successful_review_count": 8,
+    "successful_share": 1.0,
+    "error_count": 0,
+    "error_review_ids": [],
+    "reviews_with_issue_count": 6,
+    "reviews_with_issue_share": 0.75,
+    "negative_sentiment_review_count": 3,
+    "negative_sentiment_denominator_review_count": 3,
+    "negative_reviews_with_issue_count": 3,
+    "negative_reviews_with_issue_share": 1.0
+  },
+  "country_breakdown": {
+    "at": {
+      "successful_review_count": 2,
+      "denominator_review_count": 2,
+      "issue_frequency": {
+        "issue_0bf9ad67ee096a446083a7e1": 1,
+        "issue_5606153d35c36b419203b664": 0,
+        "issue_68ead690715d163c7f1cdeb5": 1,
+        "issue_a0fdd5360e7f49bd43b19689": 0,
+        "issue_c551cc177a1e619e0b43691a": 0,
+        "issue_cdec12fe8a8eb796cc288e8a": 0,
+        "issue_e149aca29d98961487c1c6a6": 0,
+        "issue_ea2b84803897475296f7e217": 0
+      },
+      "issue_share": {
+        "issue_0bf9ad67ee096a446083a7e1": 0.5,
+        "issue_5606153d35c36b419203b664": 0.0,
+        "issue_68ead690715d163c7f1cdeb5": 0.5,
+        "issue_a0fdd5360e7f49bd43b19689": 0.0,
+        "issue_c551cc177a1e619e0b43691a": 0.0,
+        "issue_cdec12fe8a8eb796cc288e8a": 0.0,
+        "issue_e149aca29d98961487c1c6a6": 0.0,
+        "issue_ea2b84803897475296f7e217": 0.0
+      },
+      "aspect_sentiment": {
+        "content": {
+          "positive": 0,
+          "neutral": 0,
+          "negative": 2
+        },
+        "features": {
+          "positive": 0,
+          "neutral": 0,
+          "negative": 0
+        },
+        "stability": {
+          "positive": 0,
+          "neutral": 0,
+          "negative": 0
+        },
+        "ui_ux": {
+          "positive": 1,
+          "neutral": 0,
+          "negative": 0
+        }
+      }
+    },
+    "kz": {
+      "successful_review_count": 2,
+      "denominator_review_count": 2,
+      "issue_frequency": {
+        "issue_0bf9ad67ee096a446083a7e1": 0,
+        "issue_5606153d35c36b419203b664": 0,
+        "issue_68ead690715d163c7f1cdeb5": 0,
+        "issue_a0fdd5360e7f49bd43b19689": 0,
+        "issue_c551cc177a1e619e0b43691a": 1,
+        "issue_cdec12fe8a8eb796cc288e8a": 0,
+        "issue_e149aca29d98961487c1c6a6": 0,
+        "issue_ea2b84803897475296f7e217": 0
+      },
+      "issue_share": {
+        "issue_0bf9ad67ee096a446083a7e1": 0.0,
+        "issue_5606153d35c36b419203b664": 0.0,
+        "issue_68ead690715d163c7f1cdeb5": 0.0,
+        "issue_a0fdd5360e7f49bd43b19689": 0.0,
+        "issue_c551cc177a1e619e0b43691a": 0.5,
+        "issue_cdec12fe8a8eb796cc288e8a": 0.0,
+        "issue_e149aca29d98961487c1c6a6": 0.0,
+        "issue_ea2b84803897475296f7e217": 0.0
+      },
+      "aspect_sentiment": {
+        "content": {
+          "positive": 0,
+          "neutral": 0,
+          "negative": 1
+        },
+        "features": {
+          "positive": 0,
+          "neutral": 1,
+          "negative": 0
+        },
+        "stability": {
+          "positive": 0,
+          "neutral": 0,
+          "negative": 0
+        },
+        "ui_ux": {
+          "positive": 0,
+          "neutral": 0,
+          "negative": 0
+        }
+      }
+    },
+    "lt": {
+      "successful_review_count": 3,
+      "denominator_review_count": 3,
+      "issue_frequency": {
+        "issue_0bf9ad67ee096a446083a7e1": 1,
+        "issue_5606153d35c36b419203b664": 1,
+        "issue_68ead690715d163c7f1cdeb5": 0,
+        "issue_a0fdd5360e7f49bd43b19689": 1,
+        "issue_c551cc177a1e619e0b43691a": 0,
+        "issue_cdec12fe8a8eb796cc288e8a": 0,
+        "issue_e149aca29d98961487c1c6a6": 1,
+        "issue_ea2b84803897475296f7e217": 1
+      },
+      "issue_share": {
+        "issue_0bf9ad67ee096a446083a7e1": 0.333333,
+        "issue_5606153d35c36b419203b664": 0.333333,
+        "issue_68ead690715d163c7f1cdeb5": 0.0,
+        "issue_a0fdd5360e7f49bd43b19689": 0.333333,
+        "issue_c551cc177a1e619e0b43691a": 0.0,
+        "issue_cdec12fe8a8eb796cc288e8a": 0.0,
+        "issue_e149aca29d98961487c1c6a6": 0.333333,
+        "issue_ea2b84803897475296f7e217": 0.333333
+      },
+      "aspect_sentiment": {
+        "content": {
+          "positive": 1,
+          "neutral": 0,
+          "negative": 1
+        },
+        "features": {
+          "positive": 1,
+          "neutral": 0,
+          "negative": 0
+        },
+        "stability": {
+          "positive": 0,
+          "neutral": 0,
+          "negative": 1
+        },
+        "ui_ux": {
+          "positive": 1,
+          "neutral": 0,
+          "negative": 1
+        }
+      }
+    },
+    "ua": {
+      "successful_review_count": 1,
+      "denominator_review_count": 1,
+      "issue_frequency": {
+        "issue_0bf9ad67ee096a446083a7e1": 0,
+        "issue_5606153d35c36b419203b664": 0,
+        "issue_68ead690715d163c7f1cdeb5": 0,
+        "issue_a0fdd5360e7f49bd43b19689": 0,
+        "issue_c551cc177a1e619e0b43691a": 1,
+        "issue_cdec12fe8a8eb796cc288e8a": 1,
+        "issue_e149aca29d98961487c1c6a6": 0,
+        "issue_ea2b84803897475296f7e217": 0
+      },
+      "issue_share": {
+        "issue_0bf9ad67ee096a446083a7e1": 0.0,
+        "issue_5606153d35c36b419203b664": 0.0,
+        "issue_68ead690715d163c7f1cdeb5": 0.0,
+        "issue_a0fdd5360e7f49bd43b19689": 0.0,
+        "issue_c551cc177a1e619e0b43691a": 1.0,
+        "issue_cdec12fe8a8eb796cc288e8a": 1.0,
+        "issue_e149aca29d98961487c1c6a6": 0.0,
+        "issue_ea2b84803897475296f7e217": 0.0
+      },
+      "aspect_sentiment": {
+        "content": {
+          "positive": 0,
+          "neutral": 0,
+          "negative": 1
+        },
+        "features": {
+          "positive": 0,
+          "neutral": 0,
+          "negative": 1
+        },
+        "stability": {
+          "positive": 0,
+          "neutral": 0,
+          "negative": 0
+        },
+        "ui_ux": {
+          "positive": 0,
+          "neutral": 0,
+          "negative": 1
+        }
+      }
+    }
+  },
+  "version_breakdown": {
+    "8.9.48": {
+      "successful_review_count": 1,
+      "denominator_review_count": 1,
+      "issue_frequency": {
+        "issue_0bf9ad67ee096a446083a7e1": 1,
+        "issue_5606153d35c36b419203b664": 1,
+        "issue_68ead690715d163c7f1cdeb5": 0,
+        "issue_a0fdd5360e7f49bd43b19689": 0,
+        "issue_c551cc177a1e619e0b43691a": 0,
+        "issue_cdec12fe8a8eb796cc288e8a": 0,
+        "issue_e149aca29d98961487c1c6a6": 1,
+        "issue_ea2b84803897475296f7e217": 1
+      },
+      "issue_share": {
+        "issue_0bf9ad67ee096a446083a7e1": 1.0,
+        "issue_5606153d35c36b419203b664": 1.0,
+        "issue_68ead690715d163c7f1cdeb5": 0.0,
+        "issue_a0fdd5360e7f49bd43b19689": 0.0,
+        "issue_c551cc177a1e619e0b43691a": 0.0,
+        "issue_cdec12fe8a8eb796cc288e8a": 0.0,
+        "issue_e149aca29d98961487c1c6a6": 1.0,
+        "issue_ea2b84803897475296f7e217": 1.0
+      },
+      "aspect_sentiment": {
+        "content": {
+          "positive": 0,
+          "neutral": 0,
+          "negative": 1
+        },
+        "features": {
+          "positive": 0,
+          "neutral": 0,
+          "negative": 0
+        },
+        "stability": {
+          "positive": 0,
+          "neutral": 0,
+          "negative": 0
+        },
+        "ui_ux": {
+          "positive": 0,
+          "neutral": 0,
+          "negative": 1
+        }
+      }
+    },
+    "8.9.70": {
+      "successful_review_count": 1,
+      "denominator_review_count": 1,
+      "issue_frequency": {
+        "issue_0bf9ad67ee096a446083a7e1": 0,
+        "issue_5606153d35c36b419203b664": 0,
+        "issue_68ead690715d163c7f1cdeb5": 0,
+        "issue_a0fdd5360e7f49bd43b19689": 1,
+        "issue_c551cc177a1e619e0b43691a": 0,
+        "issue_cdec12fe8a8eb796cc288e8a": 0,
+        "issue_e149aca29d98961487c1c6a6": 0,
+        "issue_ea2b84803897475296f7e217": 0
+      },
+      "issue_share": {
+        "issue_0bf9ad67ee096a446083a7e1": 0.0,
+        "issue_5606153d35c36b419203b664": 0.0,
+        "issue_68ead690715d163c7f1cdeb5": 0.0,
+        "issue_a0fdd5360e7f49bd43b19689": 1.0,
+        "issue_c551cc177a1e619e0b43691a": 0.0,
+        "issue_cdec12fe8a8eb796cc288e8a": 0.0,
+        "issue_e149aca29d98961487c1c6a6": 0.0,
+        "issue_ea2b84803897475296f7e217": 0.0
+      },
+      "aspect_sentiment": {
+        "content": {
+          "positive": 0,
+          "neutral": 0,
+          "negative": 0
+        },
+        "features": {
+          "positive": 0,
+          "neutral": 0,
+          "negative": 0
+        },
+        "stability": {
+          "positive": 0,
+          "neutral": 0,
+          "negative": 1
+        },
+        "ui_ux": {
+          "positive": 0,
+          "neutral": 0,
+          "negative": 0
+        }
+      }
+    },
+    "9.1.28": {
+      "successful_review_count": 1,
+      "denominator_review_count": 1,
+      "issue_frequency": {
+        "issue_0bf9ad67ee096a446083a7e1": 0,
+        "issue_5606153d35c36b419203b664": 0,
+        "issue_68ead690715d163c7f1cdeb5": 0,
+        "issue_a0fdd5360e7f49bd43b19689": 0,
+        "issue_c551cc177a1e619e0b43691a": 1,
+        "issue_cdec12fe8a8eb796cc288e8a": 0,
+        "issue_e149aca29d98961487c1c6a6": 0,
+        "issue_ea2b84803897475296f7e217": 0
+      },
+      "issue_share": {
+        "issue_0bf9ad67ee096a446083a7e1": 0.0,
+        "issue_5606153d35c36b419203b664": 0.0,
+        "issue_68ead690715d163c7f1cdeb5": 0.0,
+        "issue_a0fdd5360e7f49bd43b19689": 0.0,
+        "issue_c551cc177a1e619e0b43691a": 1.0,
+        "issue_cdec12fe8a8eb796cc288e8a": 0.0,
+        "issue_e149aca29d98961487c1c6a6": 0.0,
+        "issue_ea2b84803897475296f7e217": 0.0
+      },
+      "aspect_sentiment": {
+        "content": {
+          "positive": 0,
+          "neutral": 0,
+          "negative": 1
+        },
+        "features": {
+          "positive": 0,
+          "neutral": 0,
+          "negative": 0
+        },
+        "stability": {
+          "positive": 0,
+          "neutral": 0,
+          "negative": 0
+        },
+        "ui_ux": {
+          "positive": 0,
+          "neutral": 0,
+          "negative": 0
+        }
+      }
+    },
+    "9.1.34": {
+      "successful_review_count": 1,
+      "denominator_review_count": 1,
+      "issue_frequency": {
+        "issue_0bf9ad67ee096a446083a7e1": 0,
+        "issue_5606153d35c36b419203b664": 0,
+        "issue_68ead690715d163c7f1cdeb5": 0,
+        "issue_a0fdd5360e7f49bd43b19689": 0,
+        "issue_c551cc177a1e619e0b43691a": 0,
+        "issue_cdec12fe8a8eb796cc288e8a": 0,
+        "issue_e149aca29d98961487c1c6a6": 0,
+        "issue_ea2b84803897475296f7e217": 0
+      },
+      "issue_share": {
+        "issue_0bf9ad67ee096a446083a7e1": 0.0,
+        "issue_5606153d35c36b419203b664": 0.0,
+        "issue_68ead690715d163c7f1cdeb5": 0.0,
+        "issue_a0fdd5360e7f49bd43b19689": 0.0,
+        "issue_c551cc177a1e619e0b43691a": 0.0,
+        "issue_cdec12fe8a8eb796cc288e8a": 0.0,
+        "issue_e149aca29d98961487c1c6a6": 0.0,
+        "issue_ea2b84803897475296f7e217": 0.0
+      },
+      "aspect_sentiment": {
+        "content": {
+          "positive": 0,
+          "neutral": 0,
+          "negative": 0
+        },
+        "features": {
+          "positive": 0,
+          "neutral": 1,
+          "negative": 0
+        },
+        "stability": {
+          "positive": 0,
+          "neutral": 0,
+          "negative": 0
+        },
+        "ui_ux": {
+          "positive": 0,
+          "neutral": 0,
+          "negative": 0
+        }
+      }
+    },
+    "9.1.36": {
+      "successful_review_count": 1,
+      "denominator_review_count": 1,
+      "issue_frequency": {
+        "issue_0bf9ad67ee096a446083a7e1": 0,
+        "issue_5606153d35c36b419203b664": 0,
+        "issue_68ead690715d163c7f1cdeb5": 0,
+        "issue_a0fdd5360e7f49bd43b19689": 0,
+        "issue_c551cc177a1e619e0b43691a": 0,
+        "issue_cdec12fe8a8eb796cc288e8a": 0,
+        "issue_e149aca29d98961487c1c6a6": 0,
+        "issue_ea2b84803897475296f7e217": 0
+      },
+      "issue_share": {
+        "issue_0bf9ad67ee096a446083a7e1": 0.0,
+        "issue_5606153d35c36b419203b664": 0.0,
+        "issue_68ead690715d163c7f1cdeb5": 0.0,
+        "issue_a0fdd5360e7f49bd43b19689": 0.0,
+        "issue_c551cc177a1e619e0b43691a": 0.0,
+        "issue_cdec12fe8a8eb796cc288e8a": 0.0,
+        "issue_e149aca29d98961487c1c6a6": 0.0,
+        "issue_ea2b84803897475296f7e217": 0.0
+      },
+      "aspect_sentiment": {
+        "content": {
+          "positive": 1,
+          "neutral": 0,
+          "negative": 0
+        },
+        "features": {
+          "positive": 1,
+          "neutral": 0,
+          "negative": 0
+        },
+        "stability": {
+          "positive": 0,
+          "neutral": 0,
+          "negative": 0
+        },
+        "ui_ux": {
+          "positive": 1,
+          "neutral": 0,
+          "negative": 0
+        }
+      }
+    },
+    "9.1.44": {
+      "successful_review_count": 1,
+      "denominator_review_count": 1,
+      "issue_frequency": {
+        "issue_0bf9ad67ee096a446083a7e1": 1,
+        "issue_5606153d35c36b419203b664": 0,
+        "issue_68ead690715d163c7f1cdeb5": 0,
+        "issue_a0fdd5360e7f49bd43b19689": 0,
+        "issue_c551cc177a1e619e0b43691a": 0,
+        "issue_cdec12fe8a8eb796cc288e8a": 0,
+        "issue_e149aca29d98961487c1c6a6": 0,
+        "issue_ea2b84803897475296f7e217": 0
+      },
+      "issue_share": {
+        "issue_0bf9ad67ee096a446083a7e1": 1.0,
+        "issue_5606153d35c36b419203b664": 0.0,
+        "issue_68ead690715d163c7f1cdeb5": 0.0,
+        "issue_a0fdd5360e7f49bd43b19689": 0.0,
+        "issue_c551cc177a1e619e0b43691a": 0.0,
+        "issue_cdec12fe8a8eb796cc288e8a": 0.0,
+        "issue_e149aca29d98961487c1c6a6": 0.0,
+        "issue_ea2b84803897475296f7e217": 0.0
+      },
+      "aspect_sentiment": {
+        "content": {
+          "positive": 0,
+          "neutral": 0,
+          "negative": 1
+        },
+        "features": {
+          "positive": 0,
+          "neutral": 0,
+          "negative": 0
+        },
+        "stability": {
+          "positive": 0,
+          "neutral": 0,
+          "negative": 0
+        },
+        "ui_ux": {
+          "positive": 0,
+          "neutral": 0,
+          "negative": 0
+        }
+      }
+    },
+    "9.1.48": {
+      "successful_review_count": 1,
+      "denominator_review_count": 1,
+      "issue_frequency": {
+        "issue_0bf9ad67ee096a446083a7e1": 0,
+        "issue_5606153d35c36b419203b664": 0,
+        "issue_68ead690715d163c7f1cdeb5": 0,
+        "issue_a0fdd5360e7f49bd43b19689": 0,
+        "issue_c551cc177a1e619e0b43691a": 1,
+        "issue_cdec12fe8a8eb796cc288e8a": 1,
+        "issue_e149aca29d98961487c1c6a6": 0,
+        "issue_ea2b84803897475296f7e217": 0
+      },
+      "issue_share": {
+        "issue_0bf9ad67ee096a446083a7e1": 0.0,
+        "issue_5606153d35c36b419203b664": 0.0,
+        "issue_68ead690715d163c7f1cdeb5": 0.0,
+        "issue_a0fdd5360e7f49bd43b19689": 0.0,
+        "issue_c551cc177a1e619e0b43691a": 1.0,
+        "issue_cdec12fe8a8eb796cc288e8a": 1.0,
+        "issue_e149aca29d98961487c1c6a6": 0.0,
+        "issue_ea2b84803897475296f7e217": 0.0
+      },
+      "aspect_sentiment": {
+        "content": {
+          "positive": 0,
+          "neutral": 0,
+          "negative": 1
+        },
+        "features": {
+          "positive": 0,
+          "neutral": 0,
+          "negative": 1
+        },
+        "stability": {
+          "positive": 0,
+          "neutral": 0,
+          "negative": 0
+        },
+        "ui_ux": {
+          "positive": 0,
+          "neutral": 0,
+          "negative": 1
+        }
+      }
+    },
+    "9.1.56": {
+      "successful_review_count": 1,
+      "denominator_review_count": 1,
+      "issue_frequency": {
+        "issue_0bf9ad67ee096a446083a7e1": 0,
+        "issue_5606153d35c36b419203b664": 0,
+        "issue_68ead690715d163c7f1cdeb5": 1,
+        "issue_a0fdd5360e7f49bd43b19689": 0,
+        "issue_c551cc177a1e619e0b43691a": 0,
+        "issue_cdec12fe8a8eb796cc288e8a": 0,
+        "issue_e149aca29d98961487c1c6a6": 0,
+        "issue_ea2b84803897475296f7e217": 0
+      },
+      "issue_share": {
+        "issue_0bf9ad67ee096a446083a7e1": 0.0,
+        "issue_5606153d35c36b419203b664": 0.0,
+        "issue_68ead690715d163c7f1cdeb5": 1.0,
+        "issue_a0fdd5360e7f49bd43b19689": 0.0,
+        "issue_c551cc177a1e619e0b43691a": 0.0,
+        "issue_cdec12fe8a8eb796cc288e8a": 0.0,
+        "issue_e149aca29d98961487c1c6a6": 0.0,
+        "issue_ea2b84803897475296f7e217": 0.0
+      },
+      "aspect_sentiment": {
+        "content": {
+          "positive": 0,
+          "neutral": 0,
+          "negative": 1
+        },
+        "features": {
+          "positive": 0,
+          "neutral": 0,
+          "negative": 0
+        },
+        "stability": {
+          "positive": 0,
+          "neutral": 0,
+          "negative": 0
+        },
+        "ui_ux": {
+          "positive": 1,
+          "neutral": 0,
+          "negative": 0
+        }
+      }
+    }
+  },
+  "time_breakdown": {
+    "2024-06": {
+      "successful_review_count": 1,
+      "denominator_review_count": 1,
+      "issue_frequency": {
+        "issue_0bf9ad67ee096a446083a7e1": 1,
+        "issue_5606153d35c36b419203b664": 1,
+        "issue_68ead690715d163c7f1cdeb5": 0,
+        "issue_a0fdd5360e7f49bd43b19689": 0,
+        "issue_c551cc177a1e619e0b43691a": 0,
+        "issue_cdec12fe8a8eb796cc288e8a": 0,
+        "issue_e149aca29d98961487c1c6a6": 1,
+        "issue_ea2b84803897475296f7e217": 1
+      },
+      "issue_share": {
+        "issue_0bf9ad67ee096a446083a7e1": 1.0,
+        "issue_5606153d35c36b419203b664": 1.0,
+        "issue_68ead690715d163c7f1cdeb5": 0.0,
+        "issue_a0fdd5360e7f49bd43b19689": 0.0,
+        "issue_c551cc177a1e619e0b43691a": 0.0,
+        "issue_cdec12fe8a8eb796cc288e8a": 0.0,
+        "issue_e149aca29d98961487c1c6a6": 1.0,
+        "issue_ea2b84803897475296f7e217": 1.0
+      },
+      "aspect_sentiment": {
+        "content": {
+          "positive": 0,
+          "neutral": 0,
+          "negative": 1
+        },
+        "features": {
+          "positive": 0,
+          "neutral": 0,
+          "negative": 0
+        },
+        "stability": {
+          "positive": 0,
+          "neutral": 0,
+          "negative": 0
+        },
+        "ui_ux": {
+          "positive": 0,
+          "neutral": 0,
+          "negative": 1
+        }
+      }
+    },
+    "2024-09": {
+      "successful_review_count": 1,
+      "denominator_review_count": 1,
+      "issue_frequency": {
+        "issue_0bf9ad67ee096a446083a7e1": 0,
+        "issue_5606153d35c36b419203b664": 0,
+        "issue_68ead690715d163c7f1cdeb5": 0,
+        "issue_a0fdd5360e7f49bd43b19689": 1,
+        "issue_c551cc177a1e619e0b43691a": 0,
+        "issue_cdec12fe8a8eb796cc288e8a": 0,
+        "issue_e149aca29d98961487c1c6a6": 0,
+        "issue_ea2b84803897475296f7e217": 0
+      },
+      "issue_share": {
+        "issue_0bf9ad67ee096a446083a7e1": 0.0,
+        "issue_5606153d35c36b419203b664": 0.0,
+        "issue_68ead690715d163c7f1cdeb5": 0.0,
+        "issue_a0fdd5360e7f49bd43b19689": 1.0,
+        "issue_c551cc177a1e619e0b43691a": 0.0,
+        "issue_cdec12fe8a8eb796cc288e8a": 0.0,
+        "issue_e149aca29d98961487c1c6a6": 0.0,
+        "issue_ea2b84803897475296f7e217": 0.0
+      },
+      "aspect_sentiment": {
+        "content": {
+          "positive": 0,
+          "neutral": 0,
+          "negative": 0
+        },
+        "features": {
+          "positive": 0,
+          "neutral": 0,
+          "negative": 0
+        },
+        "stability": {
+          "positive": 0,
+          "neutral": 0,
+          "negative": 1
+        },
+        "ui_ux": {
+          "positive": 0,
+          "neutral": 0,
+          "negative": 0
+        }
+      }
+    },
+    "2026-03": {
+      "successful_review_count": 1,
+      "denominator_review_count": 1,
+      "issue_frequency": {
+        "issue_0bf9ad67ee096a446083a7e1": 0,
+        "issue_5606153d35c36b419203b664": 0,
+        "issue_68ead690715d163c7f1cdeb5": 0,
+        "issue_a0fdd5360e7f49bd43b19689": 0,
+        "issue_c551cc177a1e619e0b43691a": 1,
+        "issue_cdec12fe8a8eb796cc288e8a": 0,
+        "issue_e149aca29d98961487c1c6a6": 0,
+        "issue_ea2b84803897475296f7e217": 0
+      },
+      "issue_share": {
+        "issue_0bf9ad67ee096a446083a7e1": 0.0,
+        "issue_5606153d35c36b419203b664": 0.0,
+        "issue_68ead690715d163c7f1cdeb5": 0.0,
+        "issue_a0fdd5360e7f49bd43b19689": 0.0,
+        "issue_c551cc177a1e619e0b43691a": 1.0,
+        "issue_cdec12fe8a8eb796cc288e8a": 0.0,
+        "issue_e149aca29d98961487c1c6a6": 0.0,
+        "issue_ea2b84803897475296f7e217": 0.0
+      },
+      "aspect_sentiment": {
+        "content": {
+          "positive": 0,
+          "neutral": 0,
+          "negative": 1
+        },
+        "features": {
+          "positive": 0,
+          "neutral": 0,
+          "negative": 0
+        },
+        "stability": {
+          "positive": 0,
+          "neutral": 0,
+          "negative": 0
+        },
+        "ui_ux": {
+          "positive": 0,
+          "neutral": 0,
+          "negative": 0
+        }
+      }
+    },
+    "2026-04": {
+      "successful_review_count": 2,
+      "denominator_review_count": 2,
+      "issue_frequency": {
+        "issue_0bf9ad67ee096a446083a7e1": 0,
+        "issue_5606153d35c36b419203b664": 0,
+        "issue_68ead690715d163c7f1cdeb5": 0,
+        "issue_a0fdd5360e7f49bd43b19689": 0,
+        "issue_c551cc177a1e619e0b43691a": 0,
+        "issue_cdec12fe8a8eb796cc288e8a": 0,
+        "issue_e149aca29d98961487c1c6a6": 0,
+        "issue_ea2b84803897475296f7e217": 0
+      },
+      "issue_share": {
+        "issue_0bf9ad67ee096a446083a7e1": 0.0,
+        "issue_5606153d35c36b419203b664": 0.0,
+        "issue_68ead690715d163c7f1cdeb5": 0.0,
+        "issue_a0fdd5360e7f49bd43b19689": 0.0,
+        "issue_c551cc177a1e619e0b43691a": 0.0,
+        "issue_cdec12fe8a8eb796cc288e8a": 0.0,
+        "issue_e149aca29d98961487c1c6a6": 0.0,
+        "issue_ea2b84803897475296f7e217": 0.0
+      },
+      "aspect_sentiment": {
+        "content": {
+          "positive": 1,
+          "neutral": 0,
+          "negative": 0
+        },
+        "features": {
+          "positive": 1,
+          "neutral": 1,
+          "negative": 0
+        },
+        "stability": {
+          "positive": 0,
+          "neutral": 0,
+          "negative": 0
+        },
+        "ui_ux": {
+          "positive": 1,
+          "neutral": 0,
+          "negative": 0
+        }
+      }
+    },
+    "2026-05": {
+      "successful_review_count": 1,
+      "denominator_review_count": 1,
+      "issue_frequency": {
+        "issue_0bf9ad67ee096a446083a7e1": 1,
+        "issue_5606153d35c36b419203b664": 0,
+        "issue_68ead690715d163c7f1cdeb5": 0,
+        "issue_a0fdd5360e7f49bd43b19689": 0,
+        "issue_c551cc177a1e619e0b43691a": 0,
+        "issue_cdec12fe8a8eb796cc288e8a": 0,
+        "issue_e149aca29d98961487c1c6a6": 0,
+        "issue_ea2b84803897475296f7e217": 0
+      },
+      "issue_share": {
+        "issue_0bf9ad67ee096a446083a7e1": 1.0,
+        "issue_5606153d35c36b419203b664": 0.0,
+        "issue_68ead690715d163c7f1cdeb5": 0.0,
+        "issue_a0fdd5360e7f49bd43b19689": 0.0,
+        "issue_c551cc177a1e619e0b43691a": 0.0,
+        "issue_cdec12fe8a8eb796cc288e8a": 0.0,
+        "issue_e149aca29d98961487c1c6a6": 0.0,
+        "issue_ea2b84803897475296f7e217": 0.0
+      },
+      "aspect_sentiment": {
+        "content": {
+          "positive": 0,
+          "neutral": 0,
+          "negative": 1
+        },
+        "features": {
+          "positive": 0,
+          "neutral": 0,
+          "negative": 0
+        },
+        "stability": {
+          "positive": 0,
+          "neutral": 0,
+          "negative": 0
+        },
+        "ui_ux": {
+          "positive": 0,
+          "neutral": 0,
+          "negative": 0
+        }
+      }
+    },
+    "2026-06": {
+      "successful_review_count": 2,
+      "denominator_review_count": 2,
+      "issue_frequency": {
+        "issue_0bf9ad67ee096a446083a7e1": 0,
+        "issue_5606153d35c36b419203b664": 0,
+        "issue_68ead690715d163c7f1cdeb5": 1,
+        "issue_a0fdd5360e7f49bd43b19689": 0,
+        "issue_c551cc177a1e619e0b43691a": 1,
+        "issue_cdec12fe8a8eb796cc288e8a": 1,
+        "issue_e149aca29d98961487c1c6a6": 0,
+        "issue_ea2b84803897475296f7e217": 0
+      },
+      "issue_share": {
+        "issue_0bf9ad67ee096a446083a7e1": 0.0,
+        "issue_5606153d35c36b419203b664": 0.0,
+        "issue_68ead690715d163c7f1cdeb5": 0.5,
+        "issue_a0fdd5360e7f49bd43b19689": 0.0,
+        "issue_c551cc177a1e619e0b43691a": 0.5,
+        "issue_cdec12fe8a8eb796cc288e8a": 0.5,
+        "issue_e149aca29d98961487c1c6a6": 0.0,
+        "issue_ea2b84803897475296f7e217": 0.0
+      },
+      "aspect_sentiment": {
+        "content": {
+          "positive": 0,
+          "neutral": 0,
+          "negative": 2
+        },
+        "features": {
+          "positive": 0,
+          "neutral": 0,
+          "negative": 1
+        },
+        "stability": {
+          "positive": 0,
+          "neutral": 0,
+          "negative": 0
+        },
+        "ui_ux": {
+          "positive": 1,
+          "neutral": 0,
+          "negative": 1
+        }
+      }
+    }
+  }
+}

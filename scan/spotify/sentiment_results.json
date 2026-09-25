@@ -1,0 +1,82 @@
+[
+  {
+    "review_id": "11403128585",
+    "sentiment": "negative",
+    "sentiment_scores": {
+      "negative": 0.8444584012031555,
+      "neutral": 0.13303939998149872,
+      "positive": 0.02250228449702263
+    },
+    "error": null
+  },
+  {
+    "review_id": "11694352262",
+    "sentiment": "negative",
+    "sentiment_scores": {
+      "negative": 0.7066048979759216,
+      "neutral": 0.26878121495246887,
+      "positive": 0.0246138833463192
+    },
+    "error": null
+  },
+  {
+    "review_id": "13877772672",
+    "sentiment": "neutral",
+    "sentiment_scores": {
+      "negative": 0.12244544923305511,
+      "neutral": 0.539124071598053,
+      "positive": 0.3384304940700531
+    },
+    "error": null
+  },
+  {
+    "review_id": "13949097365",
+    "sentiment": "neutral",
+    "sentiment_scores": {
+      "negative": 0.14417487382888794,
+      "neutral": 0.43656331300735474,
+      "positive": 0.41926172375679016
+    },
+    "error": null
+  },
+  {
+    "review_id": "13974032565",
+    "sentiment": "positive",
+    "sentiment_scores": {
+      "negative": 0.0740245059132576,
+      "neutral": 0.2248511165380478,
+      "positive": 0.701124370098114
+    },
+    "error": null
+  },
+  {
+    "review_id": "14050499214",
+    "sentiment": "negative",
+    "sentiment_scores": {
+      "negative": 0.620819091796875,
+      "neutral": 0.2676699459552765,
+      "positive": 0.1115109845995903
+    },
+    "error": null
+  },
+  {
+    "review_id": "14161557254",
+    "sentiment": "neutral",
+    "sentiment_scores": {
+      "negative": 0.4298701584339142,
+      "neutral": 0.46767333149909973,
+      "positive": 0.1024564728140831
+    },
+    "error": null
+  },
+  {
+    "review_id": "14196723787",
+    "sentiment": "positive",
+    "sentiment_scores": {
+      "negative": 0.2739136219024658,
+      "neutral": 0.21587608754634857,
+      "positive": 0.5102102756500244
+    },
+    "error": null
+  }
+]

@@ -1,0 +1,11 @@
+{
+  "app": "Spotify",
+  "sample_review_count": 8,
+  "llm_model": "z-ai/glm-5.3-flash",
+  "llm_inference": "Live OpenRouter extraction and normalization, with iterative reruns to verify taxonomy and category reconciliation",
+  "local_sentiment_source": "models_arena/sentiment/results/xlm_roberta/predictions.jsonl",
+  "local_keyword_source": "models_arena/keyword_extraction/results_v2/e5_small/predictions.jsonl",
+  "fresh_local_model_inference": false,
+  "llm_request_count_cumulative": 13,
+  "llm_cost_usd_cumulative": 0.02969865
+}

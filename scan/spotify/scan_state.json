@@ -1,0 +1,37 @@
+{
+  "api_usage": {
+    "extraction": {
+      "requests": 3,
+      "prompt_tokens": 2385,
+      "completion_tokens": 39503,
+      "total_tokens": 41888,
+      "cost_usd": 0.020109250000000002,
+      "cost_reported_requests": 3
+    },
+    "issue_normalization": {
+      "requests": 6,
+      "prompt_tokens": 4598,
+      "completion_tokens": 15350,
+      "total_tokens": 19948,
+      "cost_usd": 0.008364700000000001,
+      "cost_reported_requests": 6
+    },
+    "feature_normalization": {
+      "requests": 4,
+      "prompt_tokens": 1078,
+      "completion_tokens": 2126,
+      "total_tokens": 3204,
+      "cost_usd": 0.0012247000000000013,
+      "cost_reported_requests": 4
+    },
+    "insights": {
+      "requests": 1,
+      "prompt_tokens": 3178,
+      "completion_tokens": 6426,
+      "total_tokens": 9604,
+      "cost_usd": 0.0039528885,
+      "cost_reported_requests": 1
+    }
+  },
+  "local_input_hash": "d5a23fd3f318a19ab3f9c07ea5fa01edd2eb1e9f89885cb01c467f4108d480e9"
+}

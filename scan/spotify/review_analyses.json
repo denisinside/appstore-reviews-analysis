@@ -1,0 +1,379 @@
+{
+  "14050499214": {
+    "review_id": "14050499214",
+    "status": "success",
+    "error": null,
+    "input_hash": "9aed29f2b74986153ea2dc2ba46743e8259d34aacd8d676741207164b123be60",
+    "original_title": "Ads",
+    "original_text": "Too much ads",
+    "taxonomy_version": "1.0",
+    "schema_version": "1.0",
+    "model": "z-ai/glm-5.3-flash",
+    "aspects": [
+      {
+        "category": "content",
+        "aspect": "Ad load",
+        "sentiment": "negative",
+        "evidence": "Too much ads",
+        "issues": [
+          {
+            "description": "There are too many ads",
+            "evidence": "Too much ads",
+            "evidence_verified": true,
+            "canonical_id": "issue_0bf9ad67ee096a446083a7e1"
+          }
+        ],
+        "feature_requests": [],
+        "evidence_verified": true
+      }
+    ]
+  },
+  "11403128585": {
+    "review_id": "11403128585",
+    "status": "success",
+    "error": null,
+    "input_hash": "3f8e53cb6efdf1948b1ec36ee8b2f9f18fc4970b8d5d1368f2095d9aed6e4524",
+    "original_title": "A little bit annoying",
+    "original_text": "Then I created a playlist Spotify added a lot of songs I don’t want and plays ONLY them and plays songs that aren’t even shown on what they added.  Then too much ads and only 6 skips in an hour?! Then I started to listen to that playlist only one song played from all of my playlist and the rest of them was Spotify added.",
+    "taxonomy_version": "1.0",
+    "schema_version": "1.0",
+    "model": "z-ai/glm-5.3-flash",
+    "aspects": [
+      {
+        "category": "ui_ux",
+        "aspect": "Overall app experience",
+        "sentiment": "negative",
+        "evidence": "A little bit annoying",
+        "issues": [
+          {
+            "description": "Spotify auto-adds many unwanted songs to playlists the user creates",
+            "evidence": "Spotify added a lot of songs I don’t want and plays ONLY them",
+            "evidence_verified": true,
+            "canonical_id": "issue_ea2b84803897475296f7e217",
+            "alternate_formulations": [
+              {
+                "description": "Playback of the playlist plays only the songs Spotify added, not the user's own songs; only one song from the user's playlist played",
+                "evidence": "only one song played from all of my playlist and the rest of them was Spotify added",
+                "category": "ui_ux",
+                "aspect": "Overall app experience"
+              }
+            ]
+          },
+          {
+            "description": "Playback includes songs that are not even shown among the songs Spotify added to the playlist",
+            "evidence": "plays songs that aren’t even shown on what they added",
+            "evidence_verified": true,
+            "canonical_id": "issue_5606153d35c36b419203b664"
+          },
+          {
+            "description": "There are too many ads",
+            "evidence": "too much ads",
+            "evidence_verified": true,
+            "canonical_id": "issue_0bf9ad67ee096a446083a7e1",
+            "alternate_formulations": [
+              {
+                "description": "There are too many ads",
+                "evidence": "too much ads",
+                "category": "content",
+                "aspect": "Ads"
+              }
+            ]
+          },
+          {
+            "description": "Free tier restricts skips to only 6 per hour",
+            "evidence": "only 6 skips in an hour?!",
+            "evidence_verified": true,
+            "canonical_id": "issue_e149aca29d98961487c1c6a6",
+            "alternate_formulations": [
+              {
+                "description": "Only 6 skips are allowed per hour",
+                "evidence": "only 6 skips in an hour?!",
+                "category": "content",
+                "aspect": "Skip limit"
+              }
+            ]
+          }
+        ],
+        "feature_requests": [],
+        "evidence_verified": true
+      },
+      {
+        "category": "content",
+        "aspect": "Ads",
+        "sentiment": "negative",
+        "evidence": "too much ads",
+        "issues": [],
+        "feature_requests": [],
+        "evidence_verified": true
+      },
+      {
+        "category": "content",
+        "aspect": "Skip limit",
+        "sentiment": "negative",
+        "evidence": "only 6 skips in an hour?!",
+        "issues": [],
+        "feature_requests": [],
+        "evidence_verified": true
+      }
+    ]
+  },
+  "13877772672": {
+    "review_id": "13877772672",
+    "status": "success",
+    "error": null,
+    "input_hash": "d9222b266ea74c2189aa0ccee51d7f130703d41bc3a1226b29371e55a53a3a77",
+    "original_title": "Ads",
+    "original_text": "There were already a lot of ads, now there are twice as many and they appear much more often. Reduce the number.",
+    "taxonomy_version": "1.0",
+    "schema_version": "1.0",
+    "model": "z-ai/glm-5.3-flash",
+    "aspects": [
+      {
+        "category": "content",
+        "aspect": "Ad frequency and quantity",
+        "sentiment": "negative",
+        "evidence": "There were already a lot of ads, now there are twice as many and they appear much more often",
+        "issues": [
+          {
+            "description": "The number of ads has doubled compared to before and they appear much more often",
+            "evidence": "now there are twice as many and they appear much more often",
+            "evidence_verified": true,
+            "canonical_id": "issue_c551cc177a1e619e0b43691a"
+          }
+        ],
+        "feature_requests": [
+          {
+            "description": "Reduce the number of ads",
+            "evidence": "Reduce the number.",
+            "evidence_verified": true,
+            "canonical_id": "feature_730070df17c1cfc6305a26b5"
+          }
+        ],
+        "evidence_verified": true
+      }
+    ]
+  },
+  "13949097365": {
+    "review_id": "13949097365",
+    "status": "success",
+    "error": null,
+    "input_hash": "e4513662c02c41a9ae3c84c0d73e1ec52c127d5302712215f8917f8560b54682",
+    "original_title": "Add a shared playlist \"on device/downloaded\"",
+    "original_text": "If it were possible to add tracks offline so that they would not be deleted from the downloaded, it would be cool, or add a downloaded section where all downloaded tracks from playlists and favorites will be written, thus it will be possible to add songs.",
+    "taxonomy_version": "1.0",
+    "schema_version": "1.0",
+    "model": "z-ai/glm-5.3-flash",
+    "aspects": [
+      {
+        "category": "features",
+        "aspect": "Offline downloads management",
+        "sentiment": "neutral",
+        "evidence": "add tracks offline so that they would not be deleted from the downloaded",
+        "issues": [],
+        "feature_requests": [
+          {
+            "description": "Make it possible to add tracks offline so that they are not deleted from the downloaded tracks",
+            "evidence": "If it were possible to add tracks offline so that they would not be deleted from the downloaded",
+            "evidence_verified": true,
+            "canonical_id": "feature_3ce69831c68b3ca06fb7c387"
+          },
+          {
+            "description": "Add a downloaded section listing all downloaded tracks from playlists and favorites",
+            "evidence": "or add a downloaded section where all downloaded tracks from playlists and favorites will be written",
+            "evidence_verified": true,
+            "canonical_id": "feature_441ecc08af6c771e2db018c3"
+          }
+        ],
+        "evidence_verified": true
+      }
+    ]
+  },
+  "11694352262": {
+    "review_id": "11694352262",
+    "status": "success",
+    "error": null,
+    "input_hash": "1f0678e22e8f8a5e5d55e4ea1bedcdd3b9a164a0415a1ca229190021a8ae3453",
+    "original_title": "playlist",
+    "original_text": "i made a playlist on my laptop and it didnt save or what because its not there anymore, and it doesnt show on my phone",
+    "taxonomy_version": "1.0",
+    "schema_version": "1.0",
+    "model": "z-ai/glm-5.3-flash",
+    "aspects": [
+      {
+        "category": "stability",
+        "aspect": "Playlist saving and syncing between devices",
+        "sentiment": "negative",
+        "evidence": "it didnt save or what because its not there anymore",
+        "issues": [
+          {
+            "description": "A playlist created on the laptop didn't save and disappeared, and it doesn't show up on the phone either",
+            "evidence": "i made a playlist on my laptop and it didnt save or what because its not there anymore, and it doesnt show on my phone",
+            "evidence_verified": true,
+            "canonical_id": "issue_a0fdd5360e7f49bd43b19689"
+          }
+        ],
+        "feature_requests": [],
+        "evidence_verified": true
+      }
+    ]
+  },
+  "14196723787": {
+    "review_id": "14196723787",
+    "status": "success",
+    "error": null,
+    "input_hash": "d2cc9f06c5e9c56ed59f3d50c7e47251e6dff80fc6b51265b457da89017c571e",
+    "original_title": "Spotify ig",
+    "original_text": "Its very good but the ads get on my nerve but its cool tho",
+    "taxonomy_version": "1.0",
+    "schema_version": "1.0",
+    "model": "z-ai/glm-5.3-flash",
+    "aspects": [
+      {
+        "category": "ui_ux",
+        "aspect": "Overall app experience",
+        "sentiment": "positive",
+        "evidence": "Its very good",
+        "issues": [],
+        "feature_requests": [],
+        "evidence_verified": true
+      },
+      {
+        "category": "content",
+        "aspect": "Ads",
+        "sentiment": "negative",
+        "evidence": "the ads get on my nerve",
+        "issues": [
+          {
+            "description": "The ads are irritating to the user",
+            "evidence": "the ads get on my nerve",
+            "evidence_verified": true,
+            "canonical_id": "issue_68ead690715d163c7f1cdeb5"
+          }
+        ],
+        "feature_requests": [],
+        "evidence_verified": true
+      }
+    ]
+  },
+  "13974032565": {
+    "review_id": "13974032565",
+    "status": "success",
+    "error": null,
+    "input_hash": "cc08c612a7f559f24dd97b8b3783cd66fe01c83a04bd1d5d421ddf3b9fd8ab06",
+    "original_title": "Great app for music",
+    "original_text": "Everything is just perfect I can find my favourite songs creators even podcast my mood playlists you can search your country tops and it not always but will pick out a playlist were is your country most listened songs and recommends what to listen and on Friday their is like new drops of your favourite creators and new songs the perfect app for music",
+    "taxonomy_version": "1.0",
+    "schema_version": "1.0",
+    "model": "z-ai/glm-5.3-flash",
+    "aspects": [
+      {
+        "category": "ui_ux",
+        "aspect": "Overall app experience",
+        "sentiment": "positive",
+        "evidence": "Everything is just perfect",
+        "issues": [],
+        "feature_requests": [],
+        "evidence_verified": true
+      },
+      {
+        "category": "content",
+        "aspect": "Finding favourite songs, creators and podcasts",
+        "sentiment": "positive",
+        "evidence": "I can find my favourite songs creators even podcast",
+        "issues": [],
+        "feature_requests": [],
+        "evidence_verified": true
+      },
+      {
+        "category": "features",
+        "aspect": "Mood playlists",
+        "sentiment": "positive",
+        "evidence": "my mood playlists",
+        "issues": [],
+        "feature_requests": [],
+        "evidence_verified": true
+      },
+      {
+        "category": "features",
+        "aspect": "Search for country top charts",
+        "sentiment": "positive",
+        "evidence": "you can search your country tops",
+        "issues": [],
+        "feature_requests": [],
+        "evidence_verified": true
+      },
+      {
+        "category": "features",
+        "aspect": "Playlist picks based on country's most listened songs and listening recommendations",
+        "sentiment": "positive",
+        "evidence": "it not always but will pick out a playlist were is your country most listened songs and recommends what to listen",
+        "issues": [],
+        "feature_requests": [],
+        "evidence_verified": true
+      },
+      {
+        "category": "content",
+        "aspect": "Friday new releases from favourite creators",
+        "sentiment": "positive",
+        "evidence": "on Friday their is like new drops of your favourite creators and new songs",
+        "issues": [],
+        "feature_requests": [],
+        "evidence_verified": true
+      }
+    ]
+  },
+  "14161557254": {
+    "review_id": "14161557254",
+    "status": "success",
+    "error": null,
+    "input_hash": "edc17030dfc47d0d797bb45e908730b0962c51c1866f31c0a02d875c8f1eeac8",
+    "original_title": "Забагато реклами",
+    "original_text": "Якщо слухати без преміум, стало занадто багато реклами. Якщо раніше ролик був раз на 15 хвилин, то зараз кожну третю пісню. Це не спонукає придбати преміум. \nНа преміум підписці не реалізована функція офлайн прослуховування. Тож можна вже не міняти значок. Це не змінить недоліків додатку.",
+    "taxonomy_version": "1.0",
+    "schema_version": "1.0",
+    "model": "z-ai/glm-5.3-flash",
+    "aspects": [
+      {
+        "category": "content",
+        "aspect": "Ad frequency without premium",
+        "sentiment": "negative",
+        "evidence": "Якщо слухати без преміум, стало занадто багато реклами",
+        "issues": [
+          {
+            "description": "Without premium, ads have become too frequent: previously one ad every 15 minutes, now every third song",
+            "evidence": "Якщо раніше ролик був раз на 15 хвилин, то зараз кожну третю пісню",
+            "evidence_verified": true,
+            "canonical_id": "issue_c551cc177a1e619e0b43691a"
+          }
+        ],
+        "feature_requests": [],
+        "evidence_verified": true
+      },
+      {
+        "category": "features",
+        "aspect": "Offline listening on premium subscription",
+        "sentiment": "negative",
+        "evidence": "На преміум підписці не реалізована функція офлайн прослуховування",
+        "issues": [
+          {
+            "description": "The offline listening function is not implemented on the premium subscription",
+            "evidence": "На преміум підписці не реалізована функція офлайн прослуховування",
+            "evidence_verified": true,
+            "canonical_id": "issue_cdec12fe8a8eb796cc288e8a"
+          }
+        ],
+        "feature_requests": [],
+        "evidence_verified": true
+      },
+      {
+        "category": "ui_ux",
+        "aspect": "Overall app quality",
+        "sentiment": "negative",
+        "evidence": "Це не змінить недоліків додатку",
+        "issues": [],
+        "feature_requests": [],
+        "evidence_verified": true
+      }
+    ]
+  }
+}

@@ -1,0 +1,158 @@
+{
+  "model": "z-ai/glm-5.3-flash",
+  "selection": {
+    "minimum_issue_support": 2,
+    "max_issues": 8,
+    "max_feature_requests": 5,
+    "review_sampling_rule": "min(issue_count, clamp(floor(issue_count * 0.10), 5, 15))"
+  },
+  "analysis_summary": {
+    "input_review_count": 8,
+    "analyzed_review_count": 8,
+    "analysis_error_count": 0,
+    "rating_sample_size": 8,
+    "average_rating": 2.875,
+    "rules": [
+      "Unique review IDs are counted once per metric.",
+      "Issue and feature denominators use successful analyses.",
+      "Unverified evidence is excluded from counts.",
+      "Rating shares use reviews with a valid rating.",
+      "Missing metadata is omitted; no values are imputed.",
+      "Time buckets describe accessible reviews; they do not establish population trends."
+    ],
+    "metric_rules": {
+      "aspect_frequency": "distinct reviews mentioning the category / successful analyses",
+      "aspect_sentiment": "distinct reviews per class; mixed reviews can occur in multiple classes",
+      "negative_aspect_share": "reviews with a negative category mention / reviews mentioning the category",
+      "issue_and_feature_share": "distinct reviews with canonical signal / successful analyses",
+      "average_rating": "mean of available ratings for reviews with the issue",
+      "negative_rating_share": "ratings of 1 or 2 / available ratings for reviews with the issue",
+      "negative_sentiment_issue_coverage": "negative overall sentiment reviews with a concrete issue / negative overall sentiment reviews",
+      "breakdown_share": "distinct reviews with issue in bucket / successful analyses in bucket"
+    }
+  },
+  "coverage_metrics": {
+    "submitted_review_count": 8,
+    "successful_review_count": 8,
+    "successful_share": 1.0,
+    "error_count": 0,
+    "error_review_ids": [],
+    "reviews_with_issue_count": 6,
+    "reviews_with_issue_share": 0.75,
+    "negative_sentiment_review_count": 3,
+    "negative_sentiment_denominator_review_count": 3,
+    "negative_reviews_with_issue_count": 3,
+    "negative_reviews_with_issue_share": 1.0
+  },
+  "overall_summary": "Across this sample of 8 reviews, advertising is the dominant theme among the identified issues: users report both a perceived increase in ad frequency over time and generally excessive ad volume on the free tier, with low ratings (1 to 3 stars) and one user stating the heavier ad load does not increase their willingness to buy premium. The remaining feedback is constructive: one 4-star reviewer proposes improvements to offline/downloaded music management (persistent offline-added tracks and a consolidated downloads view), and one 1-star reviewer directly asks for fewer ads. All conclusions carry the sample-size and evidence limitations listed below.",
+  "issue_insights": [
+    {
+      "canonical_id": "issue_c551cc177a1e619e0b43691a",
+      "canonical_name": "Ad frequency increased compared to before",
+      "category": "content",
+      "metrics": {
+        "review_count": 2,
+        "share_of_successful_reviews": 0.25,
+        "average_rating": 1.0,
+        "negative_rating_share": 1.0,
+        "rating_sample_size": 2
+      },
+      "sample_size": 2,
+      "caveat": "Based on only two reviews; the quoted frequency figures are user estimates, not measured data, and may not generalize. One of the two reviews also raises a separate complaint about missing offline listening on the premium subscription, which is not covered by this issue.",
+      "finding": "Both reviews report that ads appear noticeably more often than before. One user estimates the ad load has roughly doubled, and another compares a previous cadence of about one ad per 15 minutes with the current experience of an ad roughly every third song. The complaint is specifically about an increase over prior behavior, not about the presence of ads itself.",
+      "recommended_actions": [
+        "Verify against ad-serving or frequency-configuration data whether the free-tier ad cadence actually changed in recent versions (the two reports come from versions 9.1.28 and 9.1.48), since the reviews establish only the perceived symptom.",
+        "If the increase is confirmed, reassess the ad-pacing versus monetization trade-off, given one reviewer's statement that the heavier ad load does not make them more inclined to buy premium.",
+        "If no configuration change is found, investigate what drives the perceived increase (for example, how often affected users start sessions) rather than assuming a technical regression."
+      ],
+      "supporting_review_ids": [
+        "13877772672",
+        "14161557254"
+      ],
+      "user_impact": "More frequent interruptions disrupt listening sessions, and both reviewers in this group rated the app 1 star. One reviewer explicitly says the increased ad frequency does not encourage them to purchase premium, suggesting it may be hurting rather than helping conversion intent for at least some free-tier listeners."
+    },
+    {
+      "canonical_id": "issue_0bf9ad67ee096a446083a7e1",
+      "canonical_name": "Too many ads",
+      "category": "ui_ux",
+      "metrics": {
+        "review_count": 2,
+        "share_of_successful_reviews": 0.25,
+        "average_rating": 2.5,
+        "negative_rating_share": 0.5,
+        "rating_sample_size": 2
+      },
+      "sample_size": 2,
+      "caveat": "Only two reviews support this issue: one is a single-line comment and the other bundles unrelated playlist and skip-limit complaints around a brief ad remark, so the ad-specific evidence is thin and severity is subjective.",
+      "finding": "Two reviewers describe the volume of ads as excessive during listening. One of them frames the ad load alongside other free-tier restrictions, notably a limited number of skips per hour, when describing frustration. Note that this same review mixes several distinct sub-patterns — Spotify-added songs appearing in a user-created playlist, playback of tracks not shown in that playlist, and the skip limit — which are separate problems from ad volume and are only partially captured here.",
+      "recommended_actions": [
+        "Quantify actual ad load per session or listening hour for free users and compare it against intended product guidelines to check whether user perception matches the configuration.",
+        "Since the reviews describe only the symptom, investigate current ad-frequency rules instead of assuming a specific cause.",
+        "Explore how ad load interacts with other free-tier limits (such as skip caps) in shaping frustration, for example through targeted user research."
+      ],
+      "supporting_review_ids": [
+        "11403128585",
+        "14050499214"
+      ],
+      "user_impact": "Perceived excessive ad interruptions make listening sessions annoying and, when combined in one review with skip limits and unwanted playlist content, may make the free tier feel overly constrained. Ratings in this group are 2 and 3 stars."
+    }
+  ],
+  "feature_request_insights": [
+    {
+      "canonical_id": "feature_3ce69831c68b3ca06fb7c387",
+      "canonical_name": "Keep offline-added tracks from being deleted from downloads",
+      "category": "features",
+      "metrics": {
+        "review_count": 1,
+        "share_of_successful_reviews": 0.125
+      },
+      "sample_size": 1,
+      "caveat": "Based on a single 4-star review. The reason tracks are removed from downloads is not explained in the review, so the underlying behavior needs verification before scoping any change.",
+      "finding": "A reviewer wants the ability to add tracks offline in a way that keeps them in their downloads instead of being deleted, so a stable set of songs stays available on the device.",
+      "recommended_action": "Investigate the current behavior around downloaded/offline-added tracks being removed (the review does not explain why this happens), then evaluate whether to support persistent offline-added tracks. With only one report, treat this as exploratory demand.",
+      "supporting_review_ids": [
+        "13949097365"
+      ]
+    },
+    {
+      "canonical_id": "feature_441ecc08af6c771e2db018c3",
+      "canonical_name": "Add a downloaded tracks section listing downloads from playlists and favorites",
+      "category": "features",
+      "metrics": {
+        "review_count": 1,
+        "share_of_successful_reviews": 0.125
+      },
+      "sample_size": 1,
+      "caveat": "Sourced from the same single review as the offline-persistence request; the two requests are alternative framings by the same user and therefore represent one data point, not independent demand.",
+      "finding": "The same reviewer proposes a dedicated 'downloaded' section that aggregates all downloaded tracks from playlists and favorites into one list, as an alternative way to manage offline music.",
+      "recommended_action": "Evaluate a consolidated downloads view as a lower-effort alternative or complement to persistent offline-added tracks, and gather more user evidence before prioritizing, since this comes from a single review.",
+      "supporting_review_ids": [
+        "13949097365"
+      ]
+    },
+    {
+      "canonical_id": "feature_730070df17c1cfc6305a26b5",
+      "canonical_name": "Reduce number of ads",
+      "category": "content",
+      "metrics": {
+        "review_count": 1,
+        "share_of_successful_reviews": 0.125
+      },
+      "sample_size": 1,
+      "caveat": "Single 1-star review that is also cited under the 'Ad frequency increased compared to before' issue, so it adds no independent signal beyond that report.",
+      "finding": "A reviewer explicitly asks for the number of ads to be reduced, stating the current amount is already high and has grown.",
+      "recommended_action": "Handle this together with the ad-frequency issue as one ad-load feedback cluster: validate actual ad-load levels against internal data and weigh user sentiment against monetization objectives before making any frequency changes.",
+      "supporting_review_ids": [
+        "13877772672"
+      ]
+    }
+  ],
+  "limitations": [
+    "Small sample: only 8 reviews were analyzed, so the patterns described here reflect this collected sample only and should not be read as representative of the broader user base.",
+    "The reported increase in ad frequency rests on user recollections ('twice as many', 'about every third song vs. every 15 minutes') and was not verified against ad-serving or configuration data.",
+    "Several reviews bundle multiple distinct complaints — playlist auto-add behavior, hourly skip limits, and missing offline listening on premium — that are not represented as separate canonical issues in this output.",
+    "Two of the three feature requests come from the same single review, so demand for download-related changes is supported by only one user.",
+    "Reviews span different app versions (8.9.48 to 9.1.48) and countries (kz, ua, lt, at), so experiences may vary across versions and markets; no version- or market-specific conclusions are drawn."
+  ],
+  "input_hash": "1c0af366704b6f0253544fcf6c792c687cb5f9cfa7529b4743fc784b131059fc"
+}

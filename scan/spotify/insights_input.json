@@ -1,0 +1,313 @@
+{
+  "analysis_summary": {
+    "input_review_count": 8,
+    "analyzed_review_count": 8,
+    "analysis_error_count": 0,
+    "rating_sample_size": 8,
+    "average_rating": 2.875,
+    "rules": [
+      "Unique review IDs are counted once per metric.",
+      "Issue and feature denominators use successful analyses.",
+      "Unverified evidence is excluded from counts.",
+      "Rating shares use reviews with a valid rating.",
+      "Missing metadata is omitted; no values are imputed.",
+      "Time buckets describe accessible reviews; they do not establish population trends."
+    ],
+    "metric_rules": {
+      "aspect_frequency": "distinct reviews mentioning the category / successful analyses",
+      "aspect_sentiment": "distinct reviews per class; mixed reviews can occur in multiple classes",
+      "negative_aspect_share": "reviews with a negative category mention / reviews mentioning the category",
+      "issue_and_feature_share": "distinct reviews with canonical signal / successful analyses",
+      "average_rating": "mean of available ratings for reviews with the issue",
+      "negative_rating_share": "ratings of 1 or 2 / available ratings for reviews with the issue",
+      "negative_sentiment_issue_coverage": "negative overall sentiment reviews with a concrete issue / negative overall sentiment reviews",
+      "breakdown_share": "distinct reviews with issue in bucket / successful analyses in bucket"
+    }
+  },
+  "coverage_metrics": {
+    "submitted_review_count": 8,
+    "successful_review_count": 8,
+    "successful_share": 1.0,
+    "error_count": 0,
+    "error_review_ids": [],
+    "reviews_with_issue_count": 6,
+    "reviews_with_issue_share": 0.75,
+    "negative_sentiment_review_count": 3,
+    "negative_sentiment_denominator_review_count": 3,
+    "negative_reviews_with_issue_count": 3,
+    "negative_reviews_with_issue_share": 1.0
+  },
+  "aspect_metrics": [
+    {
+      "category": "content",
+      "review_count": 6,
+      "denominator_review_count": 8,
+      "mention_count": 8,
+      "share_of_successful_reviews": 0.75,
+      "sentiment_distribution": {
+        "positive": {
+          "review_count": 1,
+          "mention_count": 2,
+          "share_of_aspect_reviews": 0.166667
+        },
+        "neutral": {
+          "review_count": 0,
+          "mention_count": 0,
+          "share_of_aspect_reviews": 0.0
+        },
+        "negative": {
+          "review_count": 5,
+          "mention_count": 6,
+          "share_of_aspect_reviews": 0.833333
+        }
+      },
+      "mixed_review_count": 0,
+      "negative_aspect_share": 0.833333
+    },
+    {
+      "category": "features",
+      "review_count": 3,
+      "denominator_review_count": 8,
+      "mention_count": 5,
+      "share_of_successful_reviews": 0.375,
+      "sentiment_distribution": {
+        "positive": {
+          "review_count": 1,
+          "mention_count": 3,
+          "share_of_aspect_reviews": 0.333333
+        },
+        "neutral": {
+          "review_count": 1,
+          "mention_count": 1,
+          "share_of_aspect_reviews": 0.333333
+        },
+        "negative": {
+          "review_count": 1,
+          "mention_count": 1,
+          "share_of_aspect_reviews": 0.333333
+        }
+      },
+      "mixed_review_count": 0,
+      "negative_aspect_share": 0.333333
+    },
+    {
+      "category": "stability",
+      "review_count": 1,
+      "denominator_review_count": 8,
+      "mention_count": 1,
+      "share_of_successful_reviews": 0.125,
+      "sentiment_distribution": {
+        "positive": {
+          "review_count": 0,
+          "mention_count": 0,
+          "share_of_aspect_reviews": 0.0
+        },
+        "neutral": {
+          "review_count": 0,
+          "mention_count": 0,
+          "share_of_aspect_reviews": 0.0
+        },
+        "negative": {
+          "review_count": 1,
+          "mention_count": 1,
+          "share_of_aspect_reviews": 1.0
+        }
+      },
+      "mixed_review_count": 0,
+      "negative_aspect_share": 1.0
+    },
+    {
+      "category": "ui_ux",
+      "review_count": 4,
+      "denominator_review_count": 8,
+      "mention_count": 4,
+      "share_of_successful_reviews": 0.5,
+      "sentiment_distribution": {
+        "positive": {
+          "review_count": 2,
+          "mention_count": 2,
+          "share_of_aspect_reviews": 0.5
+        },
+        "neutral": {
+          "review_count": 0,
+          "mention_count": 0,
+          "share_of_aspect_reviews": 0.0
+        },
+        "negative": {
+          "review_count": 2,
+          "mention_count": 2,
+          "share_of_aspect_reviews": 0.5
+        }
+      },
+      "mixed_review_count": 0,
+      "negative_aspect_share": 0.5
+    }
+  ],
+  "selection": {
+    "minimum_issue_support": 2,
+    "max_issues": 8,
+    "max_feature_requests": 5,
+    "review_sampling_rule": "min(issue_count, clamp(floor(issue_count * 0.10), 5, 15))"
+  },
+  "issues": [
+    {
+      "canonical_id": "issue_c551cc177a1e619e0b43691a",
+      "canonical_name": "Ad frequency increased compared to before",
+      "category": "content",
+      "metrics": {
+        "review_count": 2,
+        "share_of_successful_reviews": 0.25,
+        "average_rating": 1.0,
+        "negative_rating_share": 1.0,
+        "rating_sample_size": 2
+      },
+      "sample_size": 2,
+      "reviews": [
+        {
+          "review_id": "13877772672",
+          "title": "Ads",
+          "text": "There were already a lot of ads, now there are twice as many and they appear much more often. Reduce the number.",
+          "rating": 1,
+          "language": "en",
+          "country": "kz",
+          "app_version": "9.1.28",
+          "date": "2026-03-23T07:58:38Z",
+          "issue_evidence": [
+            "now there are twice as many and they appear much more often"
+          ]
+        },
+        {
+          "review_id": "14161557254",
+          "title": "Забагато реклами",
+          "text": "Якщо слухати без преміум, стало занадто багато реклами. Якщо раніше ролик був раз на 15 хвилин, то зараз кожну третю пісню. Це не спонукає придбати преміум. \nНа преміум підписці не реалізована функція офлайн прослуховування. Тож можна вже не міняти значок. Це не змінить недоліків додатку.",
+          "rating": 1,
+          "language": "uk",
+          "country": "ua",
+          "app_version": "9.1.48",
+          "date": "2026-06-09T09:40:12Z",
+          "issue_evidence": [
+            "Якщо раніше ролик був раз на 15 хвилин, то зараз кожну третю пісню"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_id": "issue_0bf9ad67ee096a446083a7e1",
+      "canonical_name": "Too many ads",
+      "category": "ui_ux",
+      "metrics": {
+        "review_count": 2,
+        "share_of_successful_reviews": 0.25,
+        "average_rating": 2.5,
+        "negative_rating_share": 0.5,
+        "rating_sample_size": 2
+      },
+      "sample_size": 2,
+      "reviews": [
+        {
+          "review_id": "11403128585",
+          "title": "A little bit annoying",
+          "text": "Then I created a playlist Spotify added a lot of songs I don’t want and plays ONLY them and plays songs that aren’t even shown on what they added.  Then too much ads and only 6 skips in an hour?! Then I started to listen to that playlist only one song played from all of my playlist and the rest of them was Spotify added.",
+          "rating": 2,
+          "language": "en",
+          "country": "lt",
+          "app_version": "8.9.48",
+          "date": "2024-06-20T15:17:44Z",
+          "issue_evidence": [
+            "too much ads"
+          ]
+        },
+        {
+          "review_id": "14050499214",
+          "title": "Ads",
+          "text": "Too much ads",
+          "rating": 3,
+          "language": "en",
+          "country": "at",
+          "app_version": "9.1.44",
+          "date": "2026-05-10T21:47:30Z",
+          "issue_evidence": [
+            "Too much ads"
+          ]
+        }
+      ]
+    }
+  ],
+  "feature_requests": [
+    {
+      "canonical_id": "feature_3ce69831c68b3ca06fb7c387",
+      "canonical_name": "Keep offline-added tracks from being deleted from downloads",
+      "category": "features",
+      "metrics": {
+        "review_count": 1,
+        "share_of_successful_reviews": 0.125
+      },
+      "sample_size": 1,
+      "reviews": [
+        {
+          "review_id": "13949097365",
+          "title": "Add a shared playlist \"on device/downloaded\"",
+          "text": "If it were possible to add tracks offline so that they would not be deleted from the downloaded, it would be cool, or add a downloaded section where all downloaded tracks from playlists and favorites will be written, thus it will be possible to add songs.",
+          "rating": 4,
+          "language": "en",
+          "country": "kz",
+          "app_version": "9.1.34",
+          "date": "2026-04-12T06:33:15Z",
+          "issue_evidence": [
+            "If it were possible to add tracks offline so that they would not be deleted from the downloaded"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_id": "feature_441ecc08af6c771e2db018c3",
+      "canonical_name": "Add a downloaded tracks section listing downloads from playlists and favorites",
+      "category": "features",
+      "metrics": {
+        "review_count": 1,
+        "share_of_successful_reviews": 0.125
+      },
+      "sample_size": 1,
+      "reviews": [
+        {
+          "review_id": "13949097365",
+          "title": "Add a shared playlist \"on device/downloaded\"",
+          "text": "If it were possible to add tracks offline so that they would not be deleted from the downloaded, it would be cool, or add a downloaded section where all downloaded tracks from playlists and favorites will be written, thus it will be possible to add songs.",
+          "rating": 4,
+          "language": "en",
+          "country": "kz",
+          "app_version": "9.1.34",
+          "date": "2026-04-12T06:33:15Z",
+          "issue_evidence": [
+            "or add a downloaded section where all downloaded tracks from playlists and favorites will be written"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_id": "feature_730070df17c1cfc6305a26b5",
+      "canonical_name": "Reduce number of ads",
+      "category": "content",
+      "metrics": {
+        "review_count": 1,
+        "share_of_successful_reviews": 0.125
+      },
+      "sample_size": 1,
+      "reviews": [
+        {
+          "review_id": "13877772672",
+          "title": "Ads",
+          "text": "There were already a lot of ads, now there are twice as many and they appear much more often. Reduce the number.",
+          "rating": 1,
+          "language": "en",
+          "country": "kz",
+          "app_version": "9.1.28",
+          "date": "2026-03-23T07:58:38Z",
+          "issue_evidence": [
+            "Reduce the number."
+          ]
+        }
+      ]
+    }
+  ]
+}

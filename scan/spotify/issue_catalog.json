@@ -1,0 +1,276 @@
+[
+  {
+    "canonical_id": "issue_0bf9ad67ee096a446083a7e1",
+    "canonical_name": "Too many ads",
+    "category": "ui_ux",
+    "source_issues": [
+      {
+        "source_id": "src_65ef088583e983fedbe3934b",
+        "aspect": "Ad load",
+        "description": "There are too many ads",
+        "descriptions": [
+          "There are too many ads"
+        ],
+        "evidence": [
+          "Too much ads"
+        ],
+        "review_ids": [
+          "14050499214"
+        ]
+      },
+      {
+        "source_id": "src_8373540102a8cbd5e2259cb3",
+        "aspect": "Overall app experience",
+        "description": "There are too many ads",
+        "descriptions": [
+          "There are too many ads"
+        ],
+        "evidence": [
+          "too much ads"
+        ],
+        "review_ids": [
+          "11403128585"
+        ]
+      },
+      {
+        "source_id": "src_b7c88b2268f0f66a509dda47",
+        "aspect": "Ads",
+        "description": "There are too many ads",
+        "descriptions": [
+          "There are too many ads"
+        ],
+        "evidence": [
+          "too much ads"
+        ],
+        "review_ids": [
+          "11403128585"
+        ]
+      }
+    ],
+    "source_requests": [],
+    "review_ids": [
+      "11403128585",
+      "14050499214"
+    ],
+    "category_reconciliation": "Identical complaint about excessive ad frequency, referring to the same ad-interruption experience rather than the content itself."
+  },
+  {
+    "canonical_id": "issue_5606153d35c36b419203b664",
+    "canonical_name": "Playback includes songs not shown among Spotify-added songs",
+    "category": "ui_ux",
+    "source_issues": [
+      {
+        "source_id": "src_5203ec9397297d7169e5b5e5",
+        "aspect": "Overall app experience",
+        "description": "Playback includes songs that are not even shown among the songs Spotify added to the playlist",
+        "descriptions": [
+          "Playback includes songs that are not even shown among the songs Spotify added to the playlist"
+        ],
+        "evidence": [
+          "plays songs that aren’t even shown on what they added"
+        ],
+        "review_ids": [
+          "11403128585"
+        ]
+      }
+    ],
+    "source_requests": [],
+    "review_ids": [
+      "11403128585"
+    ]
+  },
+  {
+    "canonical_id": "issue_68ead690715d163c7f1cdeb5",
+    "canonical_name": "Ads are irritating",
+    "category": "content",
+    "source_issues": [
+      {
+        "source_id": "src_4e9556a03ec90396dfc82bf9",
+        "aspect": "Ads",
+        "description": "The ads are irritating to the user",
+        "descriptions": [
+          "The ads are irritating to the user"
+        ],
+        "evidence": [
+          "the ads get on my nerve"
+        ],
+        "review_ids": [
+          "14196723787"
+        ]
+      }
+    ],
+    "source_requests": [],
+    "review_ids": [
+      "14196723787"
+    ]
+  },
+  {
+    "canonical_id": "issue_a0fdd5360e7f49bd43b19689",
+    "canonical_name": "Playlist created on laptop not saved or synced to phone",
+    "category": "stability",
+    "source_issues": [
+      {
+        "source_id": "src_25648efbe113426b2022702d",
+        "aspect": "Playlist saving and syncing between devices",
+        "description": "A playlist created on the laptop didn't save and disappeared, and it doesn't show up on the phone either",
+        "descriptions": [
+          "A playlist created on the laptop didn't save and disappeared, and it doesn't show up on the phone either"
+        ],
+        "evidence": [
+          "i made a playlist on my laptop and it didnt save or what because its not there anymore, and it doesnt show on my phone"
+        ],
+        "review_ids": [
+          "11694352262"
+        ]
+      }
+    ],
+    "source_requests": [],
+    "review_ids": [
+      "11694352262"
+    ]
+  },
+  {
+    "canonical_id": "issue_c551cc177a1e619e0b43691a",
+    "canonical_name": "Ad frequency increased compared to before",
+    "category": "content",
+    "source_issues": [
+      {
+        "source_id": "src_adb07a8f8aa95aa8427d6be5",
+        "aspect": "Ad frequency and quantity",
+        "description": "The number of ads has doubled compared to before and they appear much more often",
+        "descriptions": [
+          "The number of ads has doubled compared to before and they appear much more often"
+        ],
+        "evidence": [
+          "now there are twice as many and they appear much more often"
+        ],
+        "review_ids": [
+          "13877772672"
+        ]
+      },
+      {
+        "source_id": "src_b2b994f7321e72752a073577",
+        "aspect": "Ad frequency without premium",
+        "description": "Without premium, ads have become too frequent: previously one ad every 15 minutes, now every third song",
+        "descriptions": [
+          "Without premium, ads have become too frequent: previously one ad every 15 minutes, now every third song"
+        ],
+        "evidence": [
+          "Якщо раніше ролик був раз на 15 хвилин, то зараз кожну третю пісню"
+        ],
+        "review_ids": [
+          "14161557254"
+        ]
+      }
+    ],
+    "source_requests": [],
+    "review_ids": [
+      "13877772672",
+      "14161557254"
+    ]
+  },
+  {
+    "canonical_id": "issue_cdec12fe8a8eb796cc288e8a",
+    "canonical_name": "Offline listening missing on premium subscription",
+    "category": "features",
+    "source_issues": [
+      {
+        "source_id": "src_73ab780ae67b8c0f45568ca3",
+        "aspect": "Offline listening on premium subscription",
+        "description": "The offline listening function is not implemented on the premium subscription",
+        "descriptions": [
+          "The offline listening function is not implemented on the premium subscription"
+        ],
+        "evidence": [
+          "На преміум підписці не реалізована функція офлайн прослуховування"
+        ],
+        "review_ids": [
+          "14161557254"
+        ]
+      }
+    ],
+    "source_requests": [],
+    "review_ids": [
+      "14161557254"
+    ]
+  },
+  {
+    "canonical_id": "issue_e149aca29d98961487c1c6a6",
+    "canonical_name": "Free tier limits skips to 6 per hour",
+    "category": "ui_ux",
+    "source_issues": [
+      {
+        "source_id": "src_146833821feab84370faa9d7",
+        "aspect": "Skip limit",
+        "description": "Only 6 skips are allowed per hour",
+        "descriptions": [
+          "Only 6 skips are allowed per hour"
+        ],
+        "evidence": [
+          "only 6 skips in an hour?!"
+        ],
+        "review_ids": [
+          "11403128585"
+        ]
+      },
+      {
+        "source_id": "src_c7168ce5d7525e2fabe181e7",
+        "aspect": "Overall app experience",
+        "description": "Free tier restricts skips to only 6 per hour",
+        "descriptions": [
+          "Free tier restricts skips to only 6 per hour"
+        ],
+        "evidence": [
+          "only 6 skips in an hour?!"
+        ],
+        "review_ids": [
+          "11403128585"
+        ]
+      }
+    ],
+    "source_requests": [],
+    "review_ids": [
+      "11403128585"
+    ],
+    "category_reconciliation": "Both descriptions describe the same restriction of only 6 skips per hour; the free-tier context in one is consistent with the same user-observed limit."
+  },
+  {
+    "canonical_id": "issue_ea2b84803897475296f7e217",
+    "canonical_name": "Playback plays Spotify-added songs instead of user's playlist songs",
+    "category": "ui_ux",
+    "source_issues": [
+      {
+        "source_id": "src_82d968c0aed48dc0241e1928",
+        "aspect": "Overall app experience",
+        "description": "Playback of the playlist plays only the songs Spotify added, not the user's own songs; only one song from the user's playlist played",
+        "descriptions": [
+          "Playback of the playlist plays only the songs Spotify added, not the user's own songs; only one song from the user's playlist played"
+        ],
+        "evidence": [
+          "only one song played from all of my playlist and the rest of them was Spotify added"
+        ],
+        "review_ids": [
+          "11403128585"
+        ]
+      },
+      {
+        "source_id": "src_a7f3d08e415ea4c0ec5d18aa",
+        "aspect": "Overall app experience",
+        "description": "Spotify auto-adds many unwanted songs to playlists the user creates",
+        "descriptions": [
+          "Spotify auto-adds many unwanted songs to playlists the user creates"
+        ],
+        "evidence": [
+          "Spotify added a lot of songs I don’t want and plays ONLY them"
+        ],
+        "review_ids": [
+          "11403128585"
+        ]
+      }
+    ],
+    "source_requests": [],
+    "review_ids": [
+      "11403128585"
+    ]
+  }
+]

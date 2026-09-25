@@ -1,0 +1,77 @@
+[
+  {
+    "canonical_id": "feature_3ce69831c68b3ca06fb7c387",
+    "canonical_name": "Keep offline-added tracks from being deleted from downloads",
+    "category": "features",
+    "source_issues": [],
+    "source_requests": [
+      {
+        "source_id": "src_51911c2a50774ff6cfa5945e",
+        "aspect": "Offline downloads management",
+        "description": "Make it possible to add tracks offline so that they are not deleted from the downloaded tracks",
+        "descriptions": [
+          "Make it possible to add tracks offline so that they are not deleted from the downloaded tracks"
+        ],
+        "evidence": [
+          "If it were possible to add tracks offline so that they would not be deleted from the downloaded"
+        ],
+        "review_ids": [
+          "13949097365"
+        ]
+      }
+    ],
+    "review_ids": [
+      "13949097365"
+    ]
+  },
+  {
+    "canonical_id": "feature_441ecc08af6c771e2db018c3",
+    "canonical_name": "Add a downloaded tracks section listing downloads from playlists and favorites",
+    "category": "features",
+    "source_issues": [],
+    "source_requests": [
+      {
+        "source_id": "src_518a8a5c9f2027b3e0ffd088",
+        "aspect": "Offline downloads management",
+        "description": "Add a downloaded section listing all downloaded tracks from playlists and favorites",
+        "descriptions": [
+          "Add a downloaded section listing all downloaded tracks from playlists and favorites"
+        ],
+        "evidence": [
+          "or add a downloaded section where all downloaded tracks from playlists and favorites will be written"
+        ],
+        "review_ids": [
+          "13949097365"
+        ]
+      }
+    ],
+    "review_ids": [
+      "13949097365"
+    ]
+  },
+  {
+    "canonical_id": "feature_730070df17c1cfc6305a26b5",
+    "canonical_name": "Reduce number of ads",
+    "category": "content",
+    "source_issues": [],
+    "source_requests": [
+      {
+        "source_id": "src_7f7c7f54e7b38643510fa48c",
+        "aspect": "Ad frequency and quantity",
+        "description": "Reduce the number of ads",
+        "descriptions": [
+          "Reduce the number of ads"
+        ],
+        "evidence": [
+          "Reduce the number."
+        ],
+        "review_ids": [
+          "13877772672"
+        ]
+      }
+    ],
+    "review_ids": [
+      "13877772672"
+    ]
+  }
+]

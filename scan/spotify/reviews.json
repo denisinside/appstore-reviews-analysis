@@ -1,0 +1,186 @@
+[
+  {
+    "review_id": "11403128585",
+    "app_id": "324684580",
+    "country": "lt",
+    "observed_countries": [
+      "lt"
+    ],
+    "title": "A little bit annoying",
+    "text": "Then I created a playlist Spotify added a lot of songs I don’t want and plays ONLY them and plays songs that aren’t even shown on what they added.  Then too much ads and only 6 skips in an hour?! Then I started to listen to that playlist only one song played from all of my playlist and the rest of them was Spotify added.",
+    "rating": 2,
+    "app_version": "8.9.48",
+    "updated_at": "2024-06-20T15:17:44Z",
+    "language": "en",
+    "language_confidence": 0.9924993515014648,
+    "evaluation_sets": [
+      "multilingual"
+    ],
+    "source": {
+      "collection": "discovery_top10",
+      "storefront": "lt",
+      "rss_page_range": "1-10"
+    }
+  },
+  {
+    "review_id": "11694352262",
+    "app_id": "324684580",
+    "country": "lt",
+    "observed_countries": [
+      "lt"
+    ],
+    "title": "playlist",
+    "text": "i made a playlist on my laptop and it didnt save or what because its not there anymore, and it doesnt show on my phone",
+    "rating": 2,
+    "app_version": "8.9.70",
+    "updated_at": "2024-09-06T09:42:51Z",
+    "language": "en",
+    "language_confidence": 0.9966514706611633,
+    "evaluation_sets": [
+      "english"
+    ],
+    "source": {
+      "collection": "discovery_top10",
+      "storefront": "lt",
+      "rss_page_range": "1-10"
+    }
+  },
+  {
+    "review_id": "13877772672",
+    "app_id": "324684580",
+    "country": "kz",
+    "observed_countries": [
+      "kz"
+    ],
+    "title": "Ads",
+    "text": "There were already a lot of ads, now there are twice as many and they appear much more often. Reduce the number.",
+    "rating": 1,
+    "app_version": "9.1.28",
+    "updated_at": "2026-03-23T07:58:38Z",
+    "language": "en",
+    "language_confidence": 0.9970569610595703,
+    "evaluation_sets": [
+      "english"
+    ],
+    "source": {
+      "collection": "discovery_top10",
+      "storefront": "kz",
+      "rss_page_range": "1-10"
+    }
+  },
+  {
+    "review_id": "13949097365",
+    "app_id": "324684580",
+    "country": "kz",
+    "observed_countries": [
+      "kz"
+    ],
+    "title": "Add a shared playlist \"on device/downloaded\"",
+    "text": "If it were possible to add tracks offline so that they would not be deleted from the downloaded, it would be cool, or add a downloaded section where all downloaded tracks from playlists and favorites will be written, thus it will be possible to add songs.",
+    "rating": 4,
+    "app_version": "9.1.34",
+    "updated_at": "2026-04-12T06:33:15Z",
+    "language": "en",
+    "language_confidence": 0.9894542694091797,
+    "evaluation_sets": [
+      "english"
+    ],
+    "source": {
+      "collection": "discovery_top10",
+      "storefront": "kz",
+      "rss_page_range": "1-10"
+    }
+  },
+  {
+    "review_id": "13974032565",
+    "app_id": "324684580",
+    "country": "lt",
+    "observed_countries": [
+      "lt"
+    ],
+    "title": "Great app for music",
+    "text": "Everything is just perfect I can find my favourite songs creators even podcast my mood playlists you can search your country tops and it not always but will pick out a playlist were is your country most listened songs and recommends what to listen and on Friday their is like new drops of your favourite creators and new songs the perfect app for music",
+    "rating": 5,
+    "app_version": "9.1.36",
+    "updated_at": "2026-04-19T09:03:08Z",
+    "language": "en",
+    "language_confidence": 0.9915652275085449,
+    "evaluation_sets": [
+      "multilingual"
+    ],
+    "source": {
+      "collection": "discovery_top10",
+      "storefront": "lt",
+      "rss_page_range": "1-10"
+    }
+  },
+  {
+    "review_id": "14050499214",
+    "app_id": "324684580",
+    "country": "at",
+    "observed_countries": [
+      "at"
+    ],
+    "title": "Ads",
+    "text": "Too much ads",
+    "rating": 3,
+    "app_version": "9.1.44",
+    "updated_at": "2026-05-10T21:47:30Z",
+    "language": "en",
+    "language_confidence": 0.9986022710800171,
+    "evaluation_sets": [
+      "multilingual"
+    ],
+    "source": {
+      "collection": "discovery_top10",
+      "storefront": "at",
+      "rss_page_range": "1-10"
+    }
+  },
+  {
+    "review_id": "14161557254",
+    "app_id": "324684580",
+    "country": "ua",
+    "observed_countries": [
+      "ua"
+    ],
+    "title": "Забагато реклами",
+    "text": "Якщо слухати без преміум, стало занадто багато реклами. Якщо раніше ролик був раз на 15 хвилин, то зараз кожну третю пісню. Це не спонукає придбати преміум. \nНа преміум підписці не реалізована функція офлайн прослуховування. Тож можна вже не міняти значок. Це не змінить недоліків додатку.",
+    "rating": 1,
+    "app_version": "9.1.48",
+    "updated_at": "2026-06-09T09:40:12Z",
+    "language": "uk",
+    "language_confidence": 0.9771307110786438,
+    "evaluation_sets": [
+      "ukrainian"
+    ],
+    "source": {
+      "collection": "supplemental_ua",
+      "storefront": "ua",
+      "rss_page_range": "1-10"
+    }
+  },
+  {
+    "review_id": "14196723787",
+    "app_id": "324684580",
+    "country": "at",
+    "observed_countries": [
+      "at"
+    ],
+    "title": "Spotify ig",
+    "text": "Its very good but the ads get on my nerve but its cool tho",
+    "rating": 5,
+    "app_version": "9.1.56",
+    "updated_at": "2026-06-18T09:51:58Z",
+    "language": "en",
+    "language_confidence": 0.9967893958091736,
+    "evaluation_sets": [
+      "english"
+    ],
+    "source": {
+      "collection": "discovery_top10",
+      "storefront": "at",
+      "rss_page_range": "1-10"
+    }
+  }
+]

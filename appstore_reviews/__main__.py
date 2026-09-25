@@ -8,7 +8,7 @@ from pathlib import Path
 
 from . import AppStoreReviews, ModelLoadError
 from .analysis_pipeline import load_reviews, recalculate_saved_metrics, run_full_pipeline
-
+from .insights import run_saved_insights
 
 def main(argv=None) -> int:
     parser = argparse.ArgumentParser(prog="python -m appstore_reviews")
@@ -34,9 +34,66 @@ def main(argv=None) -> int:
     analyze.add_argument("--skip-local-nlp", action="store_true", help="run only LLM and deterministic stages")
     metrics = commands.add_parser("recalculate-nlp-metrics", help="recompute metrics from a saved scan")
     metrics.add_argument("--output-dir", required=True, type=Path)
+    insights = commands.add_parser(
+        "generate-insights",
+        help="Generate actionable insights from a completed NLP scan",
+    )
+    insights.add_argument(
+        "--output-dir",
+        required=True,
+        type=Path,
+        help="Directory containing the output of analyze step (required)",
+    )
+    insights.add_argument(
+        "--max-issues",
+        type=int,
+        default=8,
+        help="Maximum number of issues to include in insights (default: 8)",
+    )
+    insights.add_argument(
+        "--max-feature-requests",
+        type=int,
+        default=5,
+        help="Maximum number of feature requests to include (default: 5)",
+    )
+    insights.add_argument(
+        "--max-cost-usd",
+        type=float,
+        help="Maximum allowable cost in USD for LLM requests (optional)",
+    )
     args = parser.parse_args(argv)
     logging.basicConfig(level=logging.INFO, stream=sys.stderr, format="%(levelname)s: %(message)s")
     try:
+        if args.mode == "generate-insights":
+            result = run_saved_insights(
+                args.output_dir,
+                max_issues=args.max_issues,
+                max_feature_requests=args.max_feature_requests,
+                max_cost_usd=args.max_cost_usd,
+            )
+
+            summary = {
+                "model": result["model"],
+                "issue_insight_count": len(
+                    result["issue_insights"]
+                ),
+                "feature_request_insight_count": len(
+                    result["feature_request_insights"]
+                ),
+                "overall_summary": result[
+                    "overall_summary"
+                ],
+            }
+
+            print(
+                json.dumps(
+                    summary,
+                    ensure_ascii=False,
+                    indent=2,
+                )
+            )
+
+            return 0
         if args.mode == "recalculate-nlp-metrics":
             result = recalculate_saved_metrics(args.output_dir)
             print(json.dumps(result["analysis_summary"], ensure_ascii=True, indent=2))

@@ -1,0 +1,102 @@
+[
+  {
+    "review_id": "11403128585",
+    "keywords": [
+      {
+        "text": "only 6 skips in an hour",
+        "score": 0.872337,
+        "evidence_span": "only 6 skips in an hour",
+        "source_start": 191,
+        "source_end": 214
+      },
+      {
+        "text": "playlist only one song",
+        "score": 0.848272,
+        "evidence_span": "Then I started to listen to that playlist only one song played from all of my playlist",
+        "source_start": 250,
+        "source_end": 272
+      },
+      {
+        "text": "too much ads",
+        "score": 0.855845,
+        "evidence_span": "Then too much ads",
+        "source_start": 174,
+        "source_end": 186
+      },
+      {
+        "text": "created a playlist Spotify",
+        "score": 0.870963,
+        "evidence_span": "Then I created a playlist Spotify added a lot of songs I don’t want",
+        "source_start": 29,
+        "source_end": 55
+      },
+      {
+        "text": "plays songs that aren’t",
+        "score": 0.81478,
+        "evidence_span": "plays songs that aren’t even shown on what they added",
+        "source_start": 114,
+        "source_end": 137
+      }
+    ],
+    "keyword_model": {
+      "id": "intfloat/multilingual-e5-small",
+      "revision": "614241f622f53c4eeff9890bdc4f31cfecc418b3"
+    },
+    "error": null
+  },
+  {
+    "review_id": "11694352262",
+    "keywords": [
+      {
+        "text": "playlist on my laptop",
+        "score": 0.913782,
+        "evidence_span": "i made a playlist on my laptop",
+        "source_start": 18,
+        "source_end": 39
+      },
+      {
+        "text": "save",
+        "score": 0.8339,
+        "evidence_span": "it didnt save",
+        "source_start": 53,
+        "source_end": 57
+      },
+      {
+        "text": "phone",
+        "score": 0.82235,
+        "evidence_span": "it doesnt show on my phone",
+        "source_start": 122,
+        "source_end": 127
+      }
+    ],
+    "keyword_model": {
+      "id": "intfloat/multilingual-e5-small",
+      "revision": "614241f622f53c4eeff9890bdc4f31cfecc418b3"
+    },
+    "error": null
+  },
+  {
+    "review_id": "14050499214",
+    "keywords": [
+      {
+        "text": "Too much ads",
+        "score": 0.986338,
+        "evidence_span": "Too much ads",
+        "source_start": 4,
+        "source_end": 16
+      },
+      {
+        "text": "Ads",
+        "score": 0.887336,
+        "evidence_span": "Ads",
+        "source_start": 0,
+        "source_end": 3
+      }
+    ],
+    "keyword_model": {
+      "id": "intfloat/multilingual-e5-small",
+      "revision": "614241f622f53c4eeff9890bdc4f31cfecc418b3"
+    },
+    "error": null
+  }
+]
