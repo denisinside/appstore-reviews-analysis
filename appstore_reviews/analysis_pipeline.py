@@ -58,8 +58,8 @@ def recalculate_saved_metrics(output_dir: str | Path) -> dict:
 async def analyze_full_pipeline(reviews: list[dict], output_dir: str | Path, *,
                                 run_local_nlp: bool = True,
                                 sentiment_analyzer=None, keyword_extractor=None,
-                                batch_size: int = 8, concurrency: int = 2,
-                                requests_per_minute: int = 30,
+                                batch_size: int = 8, concurrency: int = 10,
+                                requests_per_minute: int = 120,
                                 max_cost_usd: float | None = None,
                                 client: OpenRouterClient | None = None) -> dict:
     """Run or resume a scan; all LLM results persist as JSON after each batch.

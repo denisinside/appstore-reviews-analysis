@@ -39,8 +39,8 @@ class APIUsage:
 
 
 class OpenRouterClient:
-    def __init__(self, *, api_key: str | None = None, concurrency: int = 2,
-                 requests_per_minute: int = 30, timeout: float = 90,
+    def __init__(self, *, api_key: str | None = None, concurrency: int = 10,
+                 requests_per_minute: int = 120, timeout: float = 90,
                  max_retries: int = 3, max_cost_usd: float | None = None,
                  prior_cost_usd: float = 0.0,
                  transport: httpx.AsyncBaseTransport | None = None,

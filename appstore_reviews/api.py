@@ -95,8 +95,8 @@ class CollectRequest(BaseModel):
 
 class AnalyzeRequest(BaseModel):
     batch_size: int = Field(default=8, ge=1, le=10)
-    concurrency: int = Field(default=2, ge=1, le=8)
-    requests_per_minute: int = Field(default=30, ge=1, le=120)
+    concurrency: int = Field(default=10, ge=1, le=10)
+    requests_per_minute: int = Field(default=120, ge=1, le=120)
     max_cost_usd: float | None = Field(default=1.0, gt=0)
     run_local_nlp: bool = True
 
