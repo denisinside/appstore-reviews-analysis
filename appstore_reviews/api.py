@@ -5,6 +5,7 @@ from __future__ import annotations
 import json
 import os
 import re
+import time
 from collections import Counter
 from datetime import datetime, timezone
 from pathlib import Path
@@ -40,9 +41,19 @@ def _read_json(path: Path, default: Any = None) -> Any:
 
 def _write_json(path: Path, value: Any) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
-    temp = path.with_name(path.name + ".tmp")
-    temp.write_text(json.dumps(value, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    os.replace(temp, path)
+    temp = path.with_name(f".{path.name}.{uuid4().hex}.tmp")
+    try:
+        temp.write_text(json.dumps(value, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        for attempt in range(5):
+            try:
+                os.replace(temp, path)
+                break
+            except PermissionError:
+                if attempt == 4:
+                    raise
+                time.sleep(0.02 * (attempt + 1))
+    finally:
+        temp.unlink(missing_ok=True)
 
 
 def _scan_dir(scan_id: str) -> Path:

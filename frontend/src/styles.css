@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { color: #211C17; background: #F6F1E8; font-synthesis: none; }
+* { box-sizing: border-box; }
+body { margin: 0; min-width: 320px; }
+button, input, select { font: inherit; }
+button { cursor: pointer; }
+::selection { background: #F2B84B; color: #211C17; }
+.eyebrow { @apply font-mono text-[11px] font-medium uppercase tracking-[0.18em] text-muted; }
+.panel { @apply border border-line bg-surface; }
+.field { @apply h-11 w-full rounded-none border border-line bg-surface px-3 text-sm text-ink outline-none transition-colors placeholder:text-muted/70 focus:border-orange; }
+.thin-button { @apply inline-flex items-center justify-center gap-2 border border-line bg-surface px-4 py-2 text-sm font-semibold text-ink transition-colors hover:border-orange hover:text-rust; }
+.accent-button { @apply inline-flex items-center justify-center gap-2 bg-orange px-5 py-3 text-sm font-bold text-white transition-colors hover:bg-rust disabled:cursor-not-allowed disabled:opacity-50; }
+.tabular { font-variant-numeric: tabular-nums; }
+.activity-line { height: 3px; background: #eadccc; overflow: hidden; }
+.activity-line::before { content: ''; display: block; width: 35%; height: 100%; background: #e86f21; animation: travel 1.7s ease-in-out infinite; }
+@keyframes travel { from { transform: translateX(-110%); } to { transform: translateX(320%); } }
+.section-heading { @apply font-serif text-[28px] leading-tight text-ink md:text-[34px]; }
+.data-table { @apply w-full min-w-[640px] border-collapse text-left text-sm; }
+.data-table th { @apply border-b border-ink/25 py-3 pr-4 font-mono text-[10px] font-medium uppercase tracking-[0.1em] text-muted; }
+.data-table td { @apply border-b border-line py-3 pr-4 align-top; }
+.data-table tbody tr:hover { @apply bg-sand/50; }

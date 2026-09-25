@@ -1,5 +1,8 @@
 """HTTP regression checks for API input errors."""
 
+import json
+from concurrent.futures import ThreadPoolExecutor
+
 import pytest
 from fastapi.testclient import TestClient
 
@@ -62,3 +65,11 @@ def test_discovery_endpoint_returns_collector_result(api_module, monkeypatch):
     response = TestClient(api_module.app).get("/api/apps/324684580/discovery?force_refresh=true")
     assert response.status_code == 200
     assert response.json() == {"app_id": "324684580", "mode": "discovery", "countries": [], "errors": []}
+
+
+def test_atomic_json_write_survives_parallel_status_updates(api_module, tmp_path):
+    path = tmp_path / "scan_state.json"
+    with ThreadPoolExecutor(max_workers=8) as pool:
+        list(pool.map(lambda value: api_module._write_json(path, {"value": value}), range(80)))
+    assert json.loads(path.read_text(encoding="utf-8"))["value"] in range(80)
+    assert not list(tmp_path.glob("*.tmp"))
