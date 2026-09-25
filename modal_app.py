@@ -13,6 +13,14 @@ FASTTEXT_MODEL_PATH = "/opt/models/lid.176.ftz"
 DATA_MOUNT = "/data"
 
 
+def _configure_runtime_paths() -> None:
+    """Keep deployment paths authoritative even if a Secret has local .env values."""
+    import os
+
+    os.environ["FASTTEXT_MODEL_PATH"] = FASTTEXT_MODEL_PATH
+    os.environ["APPSTORE_SCAN_DIR"] = f"{DATA_MOUNT}/scans"
+
+
 def _download_models(
     sentiment_model: str,
     sentiment_revision: str,
@@ -76,6 +84,7 @@ secrets = [modal.Secret.from_name("appstore-reviews-secrets")]
     max_containers=1,
 )
 def analyze_worker(scan_id: str, payload: dict) -> None:
+    _configure_runtime_paths()
     from appstore_reviews import scan_runtime
     from appstore_reviews.api import AnalyzeRequest, _run_analysis_job
 
@@ -94,6 +103,7 @@ def analyze_worker(scan_id: str, payload: dict) -> None:
 @modal.concurrent(max_inputs=1)
 @modal.asgi_app()
 def fastapi_app():
+    _configure_runtime_paths()
     from appstore_reviews import scan_runtime
     from appstore_reviews.api import app as web_app
 

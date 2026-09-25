@@ -250,10 +250,38 @@ def test_invalid_json_and_feed_are_not_cached(tmp_path):
     assert len(calls) == 3
 
 
-def test_missing_fasttext_model_has_install_hint(tmp_path):
+def test_missing_fasttext_model_reports_download_failure(tmp_path, monkeypatch):
+    from appstore_reviews import language
+
+    def fail_download(*_args, **_kwargs):
+        raise OSError("network unavailable")
+
+    monkeypatch.setattr(language, "urlopen", fail_download)
     detector = LanguageDetector(tmp_path / "missing.ftz")
-    with pytest.raises(ModelLoadError, match="Download lid.176.ftz"):
+    with pytest.raises(ModelLoadError, match="Could not download lid.176.ftz"):
         detector.ensure_loaded()
+    assert not detector.model_path.exists()
+    assert not list(tmp_path.glob("*.tmp"))
+
+
+def test_missing_fasttext_model_downloads_once(tmp_path, monkeypatch):
+    import io
+    import sys
+    from pathlib import Path
+    from types import SimpleNamespace
+
+    from appstore_reviews import language
+
+    downloads = []
+    monkeypatch.setattr(language, "urlopen", lambda url, timeout: (downloads.append((url, timeout)), io.BytesIO(b"model"))[1])
+    monkeypatch.setitem(sys.modules, "fasttext", SimpleNamespace(load_model=lambda path: Path(path).read_bytes()))
+    detector = LanguageDetector(tmp_path / "models" / "lid.176.ftz")
+    detector.ensure_loaded()
+    detector.ensure_loaded()
+    LanguageDetector(detector.model_path).ensure_loaded()
+    assert detector._model == b"model"
+    assert detector.model_path.read_bytes() == b"model"
+    assert downloads == [(language.FASTTEXT_MODEL_URL, 60)]
 
 
 def test_language_thresholds_without_changing_text(tmp_path):

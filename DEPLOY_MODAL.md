@@ -9,6 +9,8 @@ modal setup
 
 Create an ignored `.env.modal` file in the repository root with your values. `OPENROUTER_API_KEY` is required for full analysis. Supply both Upstash variables to share the existing six-hour RSS/discovery cache across containers. `CORS_ORIGINS` is a comma-separated list of exact frontend origins, including `http://localhost:5173` and your actual Vercel production origin. Do not add a trailing slash.
 
+Keep local path settings such as `FASTTEXT_MODEL_PATH` and `APPSTORE_SCAN_DIR` out of this Secret. The Modal entrypoint sets them to the baked model and persistent Volume paths even if an older Secret still contains local values. If the fastText file is unexpectedly absent, the application downloads it on first use.
+
 ```dotenv
 OPENROUTER_API_KEY=your-key
 UPSTASH_REDIS_REST_URL=your-upstash-rest-url

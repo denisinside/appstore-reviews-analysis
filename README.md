@@ -28,10 +28,9 @@ python -m venv .venv
 python -m pip install -r requirements.txt
 python -m pip install -e .
 New-Item -ItemType Directory -Force models
-Invoke-WebRequest https://dl.fbaipublicfiles.com/fasttext/supervised-models/lid.176.ftz -OutFile models/lid.176.ftz
 ```
 
-On macOS/Linux, activate with `source .venv/bin/activate` and download the model with `curl -L https://dl.fbaipublicfiles.com/fasttext/supervised-models/lid.176.ftz -o models/lid.176.ftz`. The model is downloaded once, manually, and is excluded from Git. Set `FASTTEXT_MODEL_PATH` if it is stored elsewhere. Discovery does not need the model; Country and Top do. If the model is missing or cannot load, those modes report a setup error.
+On macOS/Linux, activate with `source .venv/bin/activate`. If the file is missing, Country and Top modes download it automatically on first use. To pre-download it, use `Invoke-WebRequest https://dl.fbaipublicfiles.com/fasttext/supervised-models/lid.176.ftz -OutFile models/lid.176.ftz` on Windows or `curl -L https://dl.fbaipublicfiles.com/fasttext/supervised-models/lid.176.ftz -o models/lid.176.ftz` on macOS/Linux. The model is excluded from Git; set `FASTTEXT_MODEL_PATH` if it belongs elsewhere. Discovery does not need it. Download or model-load failures report a setup error.
 
 ## Use
 

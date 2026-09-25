@@ -3,13 +3,17 @@
 import logging
 import math
 import os
+import shutil
 import threading
 from pathlib import Path
+from urllib.request import urlopen
+from uuid import uuid4
 
 from .config import MIN_LANGUAGE_CHARS, MIN_LANGUAGE_CONFIDENCE
 
 LOGGER = logging.getLogger(__name__)
 DEFAULT_MODEL = Path(__file__).resolve().parent.parent / "models" / "lid.176.ftz"
+FASTTEXT_MODEL_URL = "https://dl.fbaipublicfiles.com/fasttext/supervised-models/lid.176.ftz"
 
 
 class ModelLoadError(RuntimeError):
@@ -29,10 +33,7 @@ class LanguageDetector:
             if self._model is not None:
                 return
             if not self.model_path.is_file():
-                raise ModelLoadError(
-                    f"fastText model missing: {self.model_path}. "
-                    "Download lid.176.ftz as described in README.md."
-                )
+                self._download_model()
             try:
                 import fasttext
 
@@ -40,8 +41,23 @@ class LanguageDetector:
             except Exception as exc:
                 raise ModelLoadError(
                     f"Could not load fastText model {self.model_path}: {exc}. "
-                    "Install the dependencies and download lid.176.ftz as described in README.md."
+                    "Install the dependencies or replace the model file."
                 ) from exc
+
+    def _download_model(self) -> None:
+        temporary = self.model_path.with_name(f".{self.model_path.name}.{uuid4().hex}.tmp")
+        try:
+            self.model_path.parent.mkdir(parents=True, exist_ok=True)
+            with urlopen(FASTTEXT_MODEL_URL, timeout=60) as response, temporary.open("wb") as output:
+                shutil.copyfileobj(response, output)
+            if temporary.stat().st_size == 0:
+                raise OSError("empty download")
+            os.replace(temporary, self.model_path)
+            LOGGER.info("Downloaded fastText language model to %s", self.model_path)
+        except (OSError, ValueError) as exc:
+            raise ModelLoadError(f"Could not download lid.176.ftz to {self.model_path}: {exc}") from exc
+        finally:
+            temporary.unlink(missing_ok=True)
 
     def detect(self, title: str | None, text: str | None):
         combined = " ".join(part for part in (title, text) if part)
