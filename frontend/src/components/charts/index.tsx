@@ -1,8 +1,8 @@
 import { useMemo } from 'react';
 import type { ReactNode } from 'react';
 import {
-  Bar, BarChart, CartesianGrid, Cell, ComposedChart, Line, LineChart, Pie, PieChart,
-  ReferenceLine, ResponsiveContainer, Scatter, ScatterChart, Tooltip, XAxis, YAxis, ZAxis,
+  Bar, BarChart, CartesianGrid, Cell, ComposedChart, LabelList, Line, LineChart, Pie, PieChart,
+  ReferenceLine, ResponsiveContainer, Scatter, ScatterChart, Tooltip, XAxis, YAxis, ZAxis, type YAxisTickContentProps,
 } from 'recharts';
 import {
   aspectChartRows, CHART_COLORS, DistributionRow, issueImpactRows, issuesOverTimeRows,
@@ -15,6 +15,15 @@ const grid = '#e8dfd4';
 const tooltipStyle = { background: '#fffcf6', border: '1px solid #ddd1c3', borderRadius: 4, color: '#211c17', fontSize: 12 };
 const compact = (n: number) => new Intl.NumberFormat().format(n);
 const shortLabel = (text: string, max = 22) => text.length > max ? `${text.slice(0, max - 1).trimEnd()}…` : text;
+const issueLabelLines = (text: string) => {
+  const words = text.split(' '); const lines: string[] = [''];
+  for (const word of words) {
+    const last = lines.length - 1;
+    if (lines[last] && `${lines[last]} ${word}`.length > 37) lines.push(word);
+    else lines[last] = lines[last] ? `${lines[last]} ${word}` : word;
+  }
+  return lines;
+};
 const pct = (n: number | null | undefined) => n == null ? 'No data' : `${(n * 100).toFixed(1)}%`;
 const rating = (n: number | null | undefined) => n == null ? 'No data' : `${n.toFixed(2)} ★`;
 
@@ -32,10 +41,10 @@ export function RatingDistribution({ data = [] }: { data?: RatingBucket[] }) {
   </BarChart></ResponsiveContainer> : <Empty />}</div></ChartFrame>;
 }
 
-export function SentimentDistribution({ distribution, reviewCount }: { distribution?: Partial<Record<'positive' | 'neutral' | 'negative', { count: number; share: number | null }>>; reviewCount?: number }) {
+export function SentimentDistribution({ distribution, reviewCount, staticChart = false }: { distribution?: Partial<Record<'positive' | 'neutral' | 'negative', { count: number; share: number | null }>>; reviewCount?: number; staticChart?: boolean }) {
   const rows = sentimentChartRows(distribution); const total = rows.reduce((n, row) => n + row.count, 0);
   return <ChartFrame title="Sentiment" subtitle="Overall sentiment classification"><div className="relative h-56">{total ? <><ResponsiveContainer><PieChart>
-    <Pie data={rows} dataKey="count" nameKey="name" innerRadius={60} outerRadius={86} paddingAngle={2} stroke="none">{rows.map((r) => <Cell key={r.name} fill={r.fill} />)}</Pie>
+    <Pie data={rows} dataKey="count" nameKey="name" innerRadius={60} outerRadius={86} paddingAngle={2} stroke="none" isAnimationActive={!staticChart}>{rows.map((r) => <Cell key={r.name} fill={r.fill} />)}</Pie>
     <Tooltip contentStyle={tooltipStyle} formatter={(value, name, item) => [`${compact(Number(value))} · ${pct(item.payload.share)}`, String(name)]} />
   </PieChart></ResponsiveContainer><div className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center"><span className="font-mono text-2xl text-[#211c17]">{compact(reviewCount ?? total)}</span><span className="text-[10px] uppercase tracking-widest text-[#756a5f]">reviews</span></div>
   <div className="mt-[-14px] flex justify-center gap-3 text-[10px] capitalize text-[#756a5f]">{rows.map((r) => <span key={r.name}><i className="mr-1 inline-block h-2 w-2" style={{ background: r.fill }} />{r.name}</span>)}</div></> : <Empty />}</div></ChartFrame>;
@@ -55,33 +64,39 @@ export function AspectSentiment({ data = [] }: { data?: AspectMetric[] }) {
   </BarChart></ResponsiveContainer> : <Empty />}</div></ChartFrame>;
 }
 
-export function TopIssues({ data = [], onSelectIssue, limit = 8 }: { data?: MetricIssue[]; onSelectIssue?: (issue: MetricIssue) => void; limit?: number }) {
-  const rows = useMemo(() => [...data].filter((x) => x.review_count > 0).sort((a, b) => b.review_count - a.review_count).slice(0, limit).map((x) => ({ ...x, label: shortLabel(x.canonical_name || x.canonical_id, 21) })), [data, limit]);
+export function TopIssues({ data = [], onSelectIssue, limit = 8, expandedLabels = false }: { data?: MetricIssue[]; onSelectIssue?: (issue: MetricIssue) => void; limit?: number; expandedLabels?: boolean }) {
+  const rows = useMemo(() => [...data].filter((x) => x.review_count > 0).sort((a, b) => b.review_count - a.review_count).slice(0, limit).map((x) => ({ ...x, label: expandedLabels ? (x.canonical_name || x.canonical_id) : shortLabel(x.canonical_name || x.canonical_id, 29) })), [data, limit, expandedLabels]);
   return <ChartFrame title="Top issues" subtitle="Click a bar to inspect its evidence"><div className="h-72">{rows.length ? <ResponsiveContainer><BarChart data={rows} layout="vertical" margin={{ left: 8, right: 26, top: 0, bottom: 0 }}>
-    <CartesianGrid stroke={grid} horizontal={false} /><XAxis type="number" allowDecimals={false} tick={axis} axisLine={false} tickLine={false} /><YAxis type="category" dataKey="label" width={138} tick={axis} axisLine={false} tickLine={false} />
+    <CartesianGrid stroke={grid} horizontal={false} /><XAxis type="number" allowDecimals={false} tick={axis} axisLine={false} tickLine={false} /><YAxis type="category" dataKey="label" width={expandedLabels ? 270 : 175} tick={expandedLabels ? ({ x, y, payload }: YAxisTickContentProps) => { const lines = issueLabelLines(String(payload.value)); return <text x={x} y={y} textAnchor="end" fill="#756a5f" fontSize={10}>{lines.map((line, i) => <tspan key={i} x={x} dy={i === 0 ? -3 * (lines.length - 1) : 12}>{line}</tspan>)}</text> } : axis} axisLine={false} tickLine={false} />
     <Tooltip contentStyle={tooltipStyle} labelFormatter={(_label, items) => items[0]?.payload.canonical_name || items[0]?.payload.canonical_id || ''} formatter={(v, _key, item) => [`${compact(Number(v))} · ${pct(item.payload.share_of_successful_reviews)}`, 'Reviews']} />
-    <Bar dataKey="review_count" fill="#e86f21" maxBarSize={24} cursor={onSelectIssue ? 'pointer' : 'default'} onClick={(entry) => { const row = (entry as unknown as { payload?: MetricIssue }).payload; if (row) onSelectIssue?.(row); }}>{rows.map((row, i) => <Cell key={row.canonical_id} fill={CHART_COLORS[i % CHART_COLORS.length]} />)}</Bar>
+    <Bar dataKey="review_count" fill="#e86f21" maxBarSize={24} isAnimationActive={!expandedLabels} cursor={onSelectIssue ? 'pointer' : 'default'} onClick={(entry) => { const row = (entry as unknown as { payload?: MetricIssue }).payload; if (row) onSelectIssue?.(row); }}>{rows.map((row, i) => <Cell key={row.canonical_id} fill={CHART_COLORS[i % CHART_COLORS.length]} />)}</Bar>
   </BarChart></ResponsiveContainer> : <Empty />}</div></ChartFrame>;
 }
 
-export function IssueImpactScatter({ data = [], onSelectIssue }: { data?: MetricIssue[]; onSelectIssue?: (issue: MetricIssue) => void }) {
-  const rows = issueImpactRows(data).filter((r) => r.frequency != null && r.average_rating != null);
+export function IssueImpactScatter({ data = [], onSelectIssue, numbered = false }: { data?: MetricIssue[]; onSelectIssue?: (issue: MetricIssue) => void; numbered?: boolean }) {
+  const sourceRows = issueImpactRows(data).filter((r) => r.frequency != null && r.average_rating != null).sort((a, b) => b.review_count - a.review_count);
+  const groups = new Map<string, typeof sourceRows>();
+  for (const row of sourceRows) {
+    const key = `${row.frequency}:${row.average_rating}`;
+    groups.set(key, [...(groups.get(key) ?? []), row]);
+  }
+  const rows = (numbered ? [...groups.values()].map((group) => ({ ...group[0], names: group.map((row) => row.name) })) : sourceRows.map((row) => ({ ...row, names: [row.name] }))).map((row, i) => ({ ...row, number: i + 1 }));
   return <ChartFrame title="Issue impact" subtitle="Frequency versus average rating · larger, redder points have more 1–2★ reviews"><div className="h-72">{rows.length ? <ResponsiveContainer><ScatterChart margin={{ left: 2, right: 14, top: 8, bottom: 5 }}>
-    <CartesianGrid stroke={grid} /><XAxis type="number" dataKey="frequency" name="Share" domain={[0, 'dataMax']} tickFormatter={(v) => `${(Number(v) * 100).toFixed(0)}%`} tick={axis} label={{ value: 'Issue share', position: 'insideBottom', offset: -1, fill: '#756a5f', fontSize: 11 }} />
+    <CartesianGrid stroke={grid} /><XAxis type="number" dataKey="frequency" name="Share" domain={[0, numbered ? 'dataMax + 0.01' : 'dataMax']} tickFormatter={(v) => `${(Number(v) * 100).toFixed(0)}%`} tick={axis} label={{ value: 'Issue share', position: 'insideBottom', offset: -1, fill: '#756a5f', fontSize: 11 }} />
     <YAxis type="number" dataKey="average_rating" name="Average rating" domain={[1, 5]} tick={axis} label={{ value: 'Avg rating', angle: -90, position: 'insideLeft', fill: '#756a5f', fontSize: 11 }} />
-    <ZAxis type="number" dataKey="size" range={[50, 480]} /><ReferenceLine y={3} stroke="#bd8c65" strokeDasharray="4 4" />
+    <ZAxis type="number" dataKey="size" range={numbered ? [160, 520] : [50, 480]} /><ReferenceLine y={3} stroke="#bd8c65" strokeDasharray="4 4" />
     <Tooltip cursor={{ strokeDasharray: '3 3' }} contentStyle={tooltipStyle} content={({ active, payload }) => {
       const p = payload?.[0]?.payload;
       if (!active || !p) return null;
       return <div className="border border-[#ddd1c3] bg-[#fffcf6] px-3 py-2 text-xs text-[#211c17]">
-        <p className="mb-1 max-w-64 font-semibold">{p.name}</p>
+        <p className="mb-1 max-w-64 font-semibold">{p.names.join('; ')}</p>
         <p>{compact(Number(p.review_count))} reviews · {pct(p.frequency)}</p>
         <p>Average rating: {rating(p.average_rating)}</p>
         <p>1–2★ rating share: {pct(p.negativeShare)}</p>
       </div>;
     }} />
-    <Scatter data={rows} name="Issues" onClick={(entry) => { const point = (entry as { payload?: { canonical_id?: string } }).payload; const issue = data.find((x) => x.canonical_id === point?.canonical_id); if (issue) onSelectIssue?.(issue); }} cursor={onSelectIssue ? 'pointer' : 'default'}>{rows.map((r) => <Cell key={r.canonical_id} fill={r.negativeShare != null && r.negativeShare >= 0.5 ? '#c74c36' : '#e86f21'} fillOpacity={0.8} />)}</Scatter>
-  </ScatterChart></ResponsiveContainer> : <Empty />}</div><p className="mt-2 text-[10px] text-[#756a5f]">Based on the collected App Store review sample.</p></ChartFrame>;
+    <Scatter data={rows} name="Issues" isAnimationActive={!numbered} onClick={(entry) => { const point = (entry as { payload?: { canonical_id?: string } }).payload; const issue = data.find((x) => x.canonical_id === point?.canonical_id); if (issue) onSelectIssue?.(issue); }} cursor={onSelectIssue ? 'pointer' : 'default'}>{rows.map((r) => <Cell key={r.canonical_id} fill={r.negativeShare != null && r.negativeShare >= 0.5 ? '#c74c36' : '#e86f21'} fillOpacity={0.8} />)}{numbered && <LabelList dataKey="number" position="center" fill="#fff" fontSize={9} fontWeight={700} />}</Scatter>
+  </ScatterChart></ResponsiveContainer> : <Empty />}</div>{numbered && <ol className="report-issue-key">{rows.map(row => <li key={row.canonical_id}><b>{row.number}</b><span>{row.names.join('; ')}</span></li>)}</ol>}<p className="mt-2 text-[10px] text-[#756a5f]">Based on the collected App Store review sample.{numbered && ' Issues with identical share and average rating share a numbered point.'}</p></ChartFrame>;
 }
 
 export interface FeatureMetric { canonical_id: string; canonical_name: string | null; category?: string | null; review_count: number; share_of_successful_reviews: number | null }

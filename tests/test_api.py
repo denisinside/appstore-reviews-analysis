@@ -1,7 +1,10 @@
 """HTTP regression checks for API input errors."""
 
 import json
+import sys
+import types
 from concurrent.futures import ThreadPoolExecutor
+from pathlib import Path
 
 import pytest
 from fastapi.testclient import TestClient
@@ -157,6 +160,75 @@ def test_download_analysis_report_uses_saved_artifacts_and_keeps_raw_download(ap
     raw_response = client.get("/api/scans/abcdef123456/reviews/download")
     assert raw_response.status_code == 200
     assert raw_response.json() == artifacts["reviews.json"]
+
+
+def test_pdf_report_uses_frontend_and_returns_named_pdf(api_module, tmp_path, monkeypatch):
+    folder = tmp_path / "abcdef123456"
+    folder.mkdir()
+    (folder / "scan.json").write_text(
+        json.dumps({"scan_id": "abcdef123456", "app_id": "123"}), encoding="utf-8"
+    )
+    observed = {}
+
+    class FakePage:
+        def goto(self, url, **kwargs):
+            observed["url"] = url
+            return types.SimpleNamespace(ok=True)
+
+        def wait_for_selector(self, selector, **kwargs):
+            observed["selector"] = selector
+
+        def evaluate(self, _script):
+            return None
+
+        def wait_for_function(self, _script, **kwargs):
+            return None
+
+        def pdf(self, *, path, **kwargs):
+            observed["pdf_options"] = kwargs
+            (folder / Path(path).name).write_bytes(b"%PDF-1.4 fake")
+
+    class FakeBrowser:
+        def new_page(self):
+            return FakePage()
+
+        def close(self):
+            pass
+
+    class FakeChromium:
+        def launch(self, **kwargs):
+            observed["launch"] = kwargs
+            return FakeBrowser()
+
+    class FakePlaywright:
+        chromium = FakeChromium()
+
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *_args):
+            pass
+
+    playwright_module = types.ModuleType("playwright")
+    sync_api_module = types.ModuleType("playwright.sync_api")
+    sync_api_module.Error = RuntimeError
+    sync_api_module.sync_playwright = lambda: FakePlaywright()
+    playwright_module.sync_api = sync_api_module
+    monkeypatch.setitem(sys.modules, "playwright", playwright_module)
+    monkeypatch.setitem(sys.modules, "playwright.sync_api", sync_api_module)
+    monkeypatch.setenv("FRONTEND_URL", "http://frontend.test/")
+
+    response = TestClient(api_module.app).get("/api/scans/abcdef123456/report/download.pdf")
+    assert response.status_code == 200
+    assert response.content.startswith(b"%PDF")
+    assert response.headers["content-type"] == "application/pdf"
+    assert response.headers["content-disposition"].endswith(
+        'filename="app_123_abcdef123456_analysis_report.pdf"'
+    )
+    assert observed["url"] == "http://frontend.test/scans/abcdef123456/report"
+    assert observed["selector"] == '[data-report-ready="true"]'
+    assert observed["pdf_options"]["format"] == "A4"
+    assert observed["pdf_options"]["print_background"] is True
 
 
 def test_remote_dispatch_commits_queued_before_worker_and_completion_is_readable(api_module, tmp_path, monkeypatch):

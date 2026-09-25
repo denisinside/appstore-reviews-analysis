@@ -564,3 +564,53 @@ def download_analysis_report(scan_id: str) -> FileResponse:
     report_path = folder / f"app_{meta.get('app_id', 'unknown')}_{scan_id}_analysis_report.json"
     _write_json(report_path, report)
     return FileResponse(report_path, media_type="application/json", filename=report_path.name)
+
+
+@app.get("/api/scans/{scan_id}/report/download.pdf")
+def download_analysis_report_pdf(scan_id: str) -> FileResponse:
+    """Print the frontend's report page using headless Chromium."""
+    folder = _scan_dir(scan_id)
+    meta = _load_meta(folder)
+    try:
+        from playwright.sync_api import Error as PlaywrightError
+        from playwright.sync_api import sync_playwright
+    except ImportError as exc:
+        raise HTTPException(
+            status_code=503,
+            detail="PDF export requires Playwright. Install the browser with 'playwright install chromium'.",
+        ) from exc
+
+    frontend_url = os.environ.get("FRONTEND_URL", "http://localhost:5173").rstrip("/")
+    report_url = f"{frontend_url}/scans/{scan_id}/report"
+    pdf_path = folder / f"app_{meta.get('app_id', 'unknown')}_{scan_id}_analysis_report.pdf"
+    try:
+        with sync_playwright() as playwright:
+            browser = playwright.chromium.launch(headless=True)
+            try:
+                page = browser.new_page()
+                response = page.goto(report_url, wait_until="networkidle", timeout=45_000)
+                if response is None or not response.ok:
+                    raise HTTPException(status_code=502, detail="Could not load the report page for PDF export")
+                page.wait_for_selector('[data-report-ready="true"]', timeout=45_000)
+                page.evaluate("document.fonts.ready")
+                page.wait_for_function(
+                    "Array.from(document.querySelectorAll('svg')).every(svg => svg.querySelector('*'))",
+                    timeout=15_000,
+                )
+                page.pdf(
+                    path=str(pdf_path),
+                    format="A4",
+                    print_background=True,
+                    margin={"top": "14mm", "right": "14mm", "bottom": "14mm", "left": "14mm"},
+                )
+            finally:
+                browser.close()
+    except HTTPException:
+        raise
+    except PlaywrightError as exc:
+        raise HTTPException(
+            status_code=503,
+            detail="PDF export could not start Chromium or render the report. Install Chromium with 'playwright install chromium'.",
+        ) from exc
+
+    return FileResponse(pdf_path, media_type="application/pdf", filename=pdf_path.name)

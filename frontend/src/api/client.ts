@@ -119,6 +119,10 @@ export function downloadReportUrl(scanId: string): string {
   return `${API_BASE_URL}/api/scans/${encodeURIComponent(scanId)}/report/download`;
 }
 
+export function downloadPdfReportUrl(scanId: string): string {
+  return `${API_BASE_URL}/api/scans/${encodeURIComponent(scanId)}/report/download.pdf`;
+}
+
 export function getDiscovery(appId: string, forceRefresh = false): Promise<DiscoveryResponse> {
   return request<DiscoveryResponse>(
     `/api/apps/${encodeURIComponent(appId)}/discovery${queryString({ force_refresh: forceRefresh || undefined })}`,
