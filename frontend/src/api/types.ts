@@ -50,6 +50,13 @@ export interface Scan {
   max_pages: number;
   collection_status: string | null;
   analysis_status: AnalysisStatus;
+  progress?: {
+    percent: number;
+    stage: string;
+    message: string;
+    completed?: number | null;
+    total?: number | null;
+  } | null;
   review_count: number;
   created_at: string;
   updated_at: string;

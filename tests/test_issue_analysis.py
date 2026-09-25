@@ -10,6 +10,7 @@ from appstore_reviews.normalization import normalize_signals
 from appstore_reviews.nlp_metrics import calculate_nlp_metrics
 from appstore_reviews.openrouter_client import OpenRouterClient, OpenRouterError
 from appstore_reviews.analysis_pipeline import analyze_full_pipeline, recalculate_saved_metrics
+from appstore_reviews.openrouter_client import split_input_records
 
 
 class FakeClient:
@@ -100,6 +101,141 @@ def test_missing_id_retries_only_missing_review():
     asyncio.run(run())
 
 
+def test_extraction_batches_can_run_concurrently():
+    async def run():
+        class ConcurrentClient:
+            active = 0
+            peak = 0
+
+            async def json_completion(self, **kwargs):
+                self.active += 1
+                self.peak = max(self.peak, self.active)
+                await asyncio.sleep(0)
+                self.active -= 1
+                reviews = json.loads(kwargs["user"])["reviews"]
+                return {"results": [{"review_id": row["review_id"], "aspects": []} for row in reviews]}
+
+        client = ConcurrentClient()
+        reviews = [{"review_id": str(i), "text": "Review text"} for i in range(24)]
+        result = await IssueAspectExtractor(client, batch_size=12).extract_reviews(reviews)
+        assert client.peak == 2
+        assert len(result) == 24
+
+    asyncio.run(run())
+
+
+def test_extraction_token_cap_and_large_review_batches_split():
+    class RecordingClient:
+        def __init__(self):
+            self.calls = []
+
+        async def json_completion(self, **kwargs):
+            self.calls.append(kwargs)
+            rows = json.loads(kwargs["user"])["reviews"]
+            return {"results": [{"review_id": row["review_id"], "aspects": []} for row in rows]}
+
+    client = RecordingClient()
+    reviews = [{"review_id": str(i), "title": ":)", "text": "x" * 27_000} for i in range(2)]
+    result = asyncio.run(IssueAspectExtractor(client).extract_reviews(reviews))
+    assert len(client.calls) == 2 and len(result) == 2
+    assert all(call["max_tokens"] == 25_000 and call["reasoning_max_tokens"] == 20_000
+               for call in client.calls)
+    assert {row["review_id"] for call in client.calls
+            for row in json.loads(call["user"])["reviews"]} == {"0", "1"}
+
+
+def test_openrouter_hard_caps_and_reasoning_fallback():
+    calls = []
+
+    def handler(request):
+        payload = json.loads(request.content)
+        calls.append(payload)
+        if len(calls) == 1:
+            return httpx.Response(400, text="reasoning.max_tokens unsupported")
+        return httpx.Response(200, json={"choices": [{"message": {"content": '{"results":[]}'}}]})
+
+    async def run():
+        client = OpenRouterClient(api_key="fake", max_retries=0, transport=httpx.MockTransport(handler))
+        try:
+            return await client.json_completion(schema_name="test", schema=EXTRACTION_SCHEMA,
+                                                system="", user='{"title": ":)", "text": ":)"}')
+        finally:
+            await client.http.aclose()
+
+    assert asyncio.run(run()) == {"results": []}
+    assert all(call["max_tokens"] == 25_000 for call in calls)
+    assert calls[0]["reasoning"] == {"max_tokens": 20_000}
+    assert "reasoning" not in calls[1]
+
+
+def test_normalization_token_cap_and_input_chunking(tmp_path):
+    analyses = {"one": {"status": "success", "aspects": [
+        aspect("ui_ux", "screen", "negative", "slow", [("Slow screen", "slow")])]}}
+    client = FakeClient([{"groups": []}])
+    # Stub source IDs to keep this test focused on request options.
+    import appstore_reviews.normalization as n
+    sources = {"src_one": {"id": "src_one", "category": "ui_ux", "aspect": "screen",
+                           "description": "Slow screen", "descriptions": ["Slow screen"],
+                           "evidence": ["slow"], "review_ids": ["one"]}}
+    original = n._collect
+    n._collect = lambda *_: (sources, {("one", 0, 0): "src_one"})
+    client.responses = [{"groups": [{"canonical_name": "Slow screen", "source_ids": ["src_one"]}]}]
+    try:
+        asyncio.run(normalize_signals("issues", analyses, client, tmp_path))
+    finally:
+        n._collect = original
+    assert client.calls[0]["max_tokens"] == 100_000
+    assert client.calls[0]["reasoning_max_tokens"] == 80_000
+    long_records = [{"id": str(i), "description": "x" * 130_000} for i in range(2)]
+    chunks = split_input_records(long_records, key="items", system="", limit=100_000, max_records=30)
+    assert [len(chunk) for chunk in chunks] == [1, 1]
+
+
+def test_insights_token_cap(tmp_path, monkeypatch):
+    import appstore_reviews.insights as insights
+
+    for name in ("reviews.json", "review_analyses.json", "nlp_metrics.json"):
+        (tmp_path / name).write_text("{}", encoding="utf-8")
+    monkeypatch.setattr(insights, "build_insights_input", lambda *_args, **_kwargs: {})
+    monkeypatch.setattr(insights, "_validate_generated_ids", lambda *_args: None)
+    monkeypatch.setattr(insights, "_merge_deterministic_metrics", lambda *_args: {})
+    client = FakeClient([{}])
+    asyncio.run(insights.generate_saved_insights(tmp_path, client=client))
+    assert client.calls[0]["max_tokens"] == 100_000
+    assert client.calls[0]["reasoning_max_tokens"] == 50_000
+
+
+def test_local_nlp_overlaps_issue_extraction(tmp_path):
+    import threading
+
+    extraction_started = threading.Event()
+
+    class Sentiment:
+        def analyze_reviews(self, reviews):
+            assert extraction_started.wait(timeout=2)
+            return [{"review_id": row["review_id"], "sentiment": "positive", "error": None} for row in reviews]
+
+    def handler(request):
+        extraction_started.set()
+        reviews = json.loads(json.loads(request.content)["messages"][1]["content"])["reviews"]
+        return httpx.Response(200, json={"choices": [{"message": {"content": json.dumps({
+            "results": [{"review_id": row["review_id"], "aspects": []} for row in reviews]
+        })}}]})
+
+    async def run():
+        client = OpenRouterClient(api_key="fake", transport=httpx.MockTransport(handler))
+        try:
+            result = await analyze_full_pipeline(
+                [{"review_id": "one", "text": "Useful app", "rating": 5}], tmp_path,
+                client=client, sentiment_analyzer=Sentiment(),
+            )
+            assert result["nlp_metrics"]["coverage_metrics"]["successful_review_count"] == 1
+        finally:
+            await client.http.aclose()
+
+    asyncio.run(run())
+
+
 def test_openrouter_rejects_malformed_and_incomplete_json_locally():
     async def exercise(body):
         def handler(request):
@@ -112,6 +248,33 @@ def test_openrouter_rejects_malformed_and_incomplete_json_locally():
             await client.http.aclose()
     asyncio.run(exercise("not json"))
     asyncio.run(exercise('{"results":[{}]}'))
+
+
+def test_openrouter_provider_preferences_from_environment(monkeypatch):
+    async def request_provider_payload():
+        captured = []
+        def handler(request):
+            captured.append(json.loads(request.content)["provider"])
+            return httpx.Response(200, json={"choices": [{"message": {"content": '{"results":[]}'}}]})
+        client = OpenRouterClient(api_key="fake", max_retries=0, transport=httpx.MockTransport(handler))
+        try:
+            await client.json_completion(schema_name="test", schema=EXTRACTION_SCHEMA, system="", user="")
+        finally:
+            await client.http.aclose()
+        return captured[0]
+
+    monkeypatch.delenv("OPENROUTER_PROVIDER_ORDER", raising=False)
+    assert asyncio.run(request_provider_payload()) == {
+        "order": ["parasail", "baseten", "together"],
+        "allow_fallbacks": False,
+        "require_parameters": True,
+    }
+    monkeypatch.setenv("OPENROUTER_PROVIDER_ORDER", " ")
+    assert asyncio.run(request_provider_payload()) == {"require_parameters": True}
+    monkeypatch.setenv("OPENROUTER_PROVIDER_ORDER", "foo, bar")
+    assert asyncio.run(request_provider_payload()) == {
+        "order": ["foo", "bar"], "allow_fallbacks": False, "require_parameters": True,
+    }
 
 
 def test_openrouter_retries_429_and_falls_back_from_unsupported_schema():

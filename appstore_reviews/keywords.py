@@ -309,16 +309,33 @@ class KeywordExtractor:
         if not work:
             return output
         self._ensure_loaded()
+        # Encode the query and candidate phrases for all reviews together. Keep
+        # each review's slice so ranking remains review-local and unchanged.
+        flattened, spans = [], []
         for index, text, phrases in work:
-            try:
-                vectors = self._model.encode([self.prefix + text] + [self.prefix + p["text"] for p in phrases],
-                                             batch_size=self.batch_size, normalize_embeddings=True,
-                                             show_progress_bar=False)
-                output[index]["keywords"] = _rank(phrases, vectors, top_k=self.max_keywords)
-            except KeywordModelError:
-                raise
-            except Exception as exc:
-                output[index]["error"] = str(exc)
+            start = len(flattened)
+            flattened.extend([self.prefix + text] + [self.prefix + p["text"] for p in phrases])
+            spans.append((index, phrases, start, len(flattened)))
+        try:
+            vectors = self._model.encode(flattened, batch_size=self.batch_size,
+                                         normalize_embeddings=True, show_progress_bar=False)
+            for index, phrases, start, end in spans:
+                output[index]["keywords"] = _rank(phrases, vectors[start:end], top_k=self.max_keywords)
+        except KeywordModelError:
+            raise
+        except Exception:
+            # Preserve the previous per-review error isolation if one combined
+            # inference call fails for a model/runtime-specific reason.
+            for index, text, phrases in work:
+                try:
+                    vectors = self._model.encode([self.prefix + text] + [self.prefix + p["text"] for p in phrases],
+                                                 batch_size=self.batch_size, normalize_embeddings=True,
+                                                 show_progress_bar=False)
+                    output[index]["keywords"] = _rank(phrases, vectors, top_k=self.max_keywords)
+                except KeywordModelError:
+                    raise
+                except Exception as exc:
+                    output[index]["error"] = str(exc)
         return output
 
     def extract_review(self, review: Mapping[str, object]) -> dict:

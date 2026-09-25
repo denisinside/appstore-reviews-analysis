@@ -259,17 +259,23 @@ def test_remote_dispatch_commits_queued_before_worker_and_completion_is_readable
     assert client.get(f"/api/scans/{scan_id}").json()["analysis_status"] == "queued"
     assert client.post(f"/api/scans/{scan_id}/analyze", json={}).status_code == 409
 
-    def pipeline(rows, folder, **_kwargs):
+    def pipeline(rows, folder, **kwargs):
         assert rows == reviews
         assert json.loads((folder / "scan.json").read_text())["analysis_status"] == "running"
         assert events[-1] == "commit:running"
+        kwargs["progress_callback"]("issue_extraction", 0.5, 1, 2)
+        running = client.get(f"/api/scans/{scan_id}").json()
+        assert running["progress"]["percent"] >= 25
+        assert running["progress"]["completed"] == 1
         api_module._write_json(folder / "nlp_metrics.json", {"processed": 1})
 
     monkeypatch.setattr(api_module, "run_full_pipeline", pipeline)
     monkeypatch.setattr(api_module, "run_saved_insights", lambda folder, **_kwargs: api_module._write_json(folder / "insights.json", {"summary": "Done"}))
     api_module._run_analysis_job(scan_id, api_module.AnalyzeRequest.model_validate(queued_job[0][1]))
     assert events[-1] == "commit:completed"
-    assert client.get(f"/api/scans/{scan_id}").json()["analysis_status"] == "completed"
+    completed = client.get(f"/api/scans/{scan_id}").json()
+    assert completed["analysis_status"] == "completed"
+    assert completed["progress"]["percent"] == 100
     assert client.get(f"/api/scans/{scan_id}/metrics").json()["nlp"] == {"processed": 1}
     assert client.get(f"/api/scans/{scan_id}/insights").json() == {"summary": "Done"}
     assert client.get(f"/api/scans/{scan_id}/reviews/download").json() == reviews

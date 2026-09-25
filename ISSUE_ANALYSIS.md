@@ -21,8 +21,8 @@ python -m appstore_reviews analyze --input spotify.jsonl --output-dir scan/spoti
 `--input` accepts JSONL reviews, a JSON array, or the collector's JSON object
 with a `reviews` array. Repeating the same command resumes successful review
 analyses and normalization batches from `--output-dir`. `--batch-size` defaults
-to 8 (allowed 1–10); `--concurrency` defaults to 2 and
-`--requests-per-minute` to 30. `--skip-local-nlp` runs only the new LLM and
+to 12 (allowed 1–12); `--concurrency` defaults to 48 and
+`--requests-per-minute` to 480. `--skip-local-nlp` runs only the new LLM and
 deterministic stages, useful when local model dependencies are unavailable.
 It does not alter the full pipeline's default behavior. The API key is read
 only from the process environment. The CLI does not load `.env` automatically.

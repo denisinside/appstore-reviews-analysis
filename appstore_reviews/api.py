@@ -5,6 +5,7 @@ from __future__ import annotations
 import json
 import os
 import re
+import threading
 import time
 import urllib.request
 from collections import Counter
@@ -171,9 +172,9 @@ class CollectRequest(BaseModel):
 
 
 class AnalyzeRequest(BaseModel):
-    batch_size: int = Field(default=8, ge=1, le=10)
-    concurrency: int = Field(default=10, ge=1, le=10)
-    requests_per_minute: int = Field(default=120, ge=1, le=120)
+    batch_size: int = Field(default=12, ge=1, le=12)
+    concurrency: int = Field(default=48, ge=1, le=48)
+    requests_per_minute: int = Field(default=480, ge=1, le=480)
     max_cost_usd: float | None = Field(default=1.0, gt=0)
     run_local_nlp: bool = True
 
@@ -322,13 +323,67 @@ def get_scan(scan_id: str) -> dict[str, Any]:
     }
 
 
+_PROGRESS_WEIGHTS = {
+    "sentiment": 10, "keywords": 10, "issue_extraction": 50,
+    "issue_normalization": 10, "feature_normalization": 5,
+    "metrics": 5, "insights": 10,
+}
+_PROGRESS_MESSAGES = {
+    "sentiment": "Analyzing sentiment",
+    "keywords": "Extracting keywords",
+    "issue_extraction": "Extracting issues and aspects",
+    "issue_normalization": "Normalizing issues",
+    "feature_normalization": "Normalizing feature requests",
+    "metrics": "Calculating metrics",
+    "insights": "Generating insights",
+}
+
+
+class _AnalysisProgress:
+    """Serialize progress from the CPU thread and async LLM branch."""
+
+    def __init__(self, folder: Path, meta: dict[str, Any]) -> None:
+        self.folder, self.meta = folder, meta
+        self.parts = {stage: 0.0 for stage in _PROGRESS_WEIGHTS}
+        self.lock = threading.Lock()
+        self.persisted_percent = 0
+        self.persisted_stage = "running"
+        self.persisted_at = time.monotonic()
+
+    def update(self, stage: str, fraction: float, completed: int | None = None,
+               total: int | None = None) -> None:
+        with self.lock:
+            self.parts[stage] = max(self.parts[stage], min(1.0, max(0.0, fraction)))
+            previous = self.meta.get("progress", {})
+            percent = max(previous.get("percent", 0),
+                          round(sum(_PROGRESS_WEIGHTS[name] * value for name, value in self.parts.items())))
+            # Keep showing extraction while a completed local branch reports
+            # its weight and the slower LLM branch is still active.
+            if (stage in {"sentiment", "keywords"} and previous.get("stage") == "issue_extraction"
+                    and self.parts["issue_extraction"] < 1):
+                progress = {**previous, "percent": percent}
+            else:
+                progress = {"percent": percent, "stage": stage, "message": _PROGRESS_MESSAGES[stage]}
+                if completed is not None and total is not None:
+                    progress.update({"completed": completed, "total": total})
+            self.meta["progress"] = progress
+            now = time.monotonic()
+            if (progress["stage"] != self.persisted_stage or percent - self.persisted_percent >= 3
+                    or now - self.persisted_at >= 5):
+                _save_meta(self.folder, self.meta)
+                scan_runtime.commit()
+                self.persisted_percent, self.persisted_stage, self.persisted_at = percent, progress["stage"], now
+
+
 def _run_analysis_job(scan_id: str, payload: AnalyzeRequest) -> None:
     scan_runtime.reload()
     folder = DATA_ROOT / scan_id
     meta = _read_json(folder / "scan.json", {})
+    progress = _AnalysisProgress(folder, meta)
     try:
         meta["analysis_status"] = "running"
         meta["error"] = None
+        meta["progress"] = {"percent": 0, "stage": "running", "message": "Starting analysis"}
         _save_meta(folder, meta)
         scan_runtime.commit()
 
@@ -341,18 +396,23 @@ def _run_analysis_job(scan_id: str, payload: AnalyzeRequest) -> None:
             concurrency=payload.concurrency,
             requests_per_minute=payload.requests_per_minute,
             max_cost_usd=payload.max_cost_usd,
+            progress_callback=progress.update,
         )
+        progress.update("insights", 0.0)
         run_saved_insights(folder, max_cost_usd=payload.max_cost_usd)
 
         meta = _read_json(folder / "scan.json", meta)
         meta["analysis_status"] = "completed"
         meta["error"] = None
+        meta["progress"] = {"percent": 100, "stage": "completed", "message": "Analysis complete"}
         _save_meta(folder, meta)
         scan_runtime.commit()
     except Exception as exc:
         meta = _read_json(folder / "scan.json", meta)
         meta["analysis_status"] = "failed"
         meta["error"] = f"{type(exc).__name__}: {exc}"
+        meta["progress"] = {"percent": meta.get("progress", {}).get("percent", 0),
+                            "stage": "failed", "message": "Analysis failed"}
         _save_meta(folder, meta)
         scan_runtime.commit()
 
@@ -370,6 +430,7 @@ def analyze_scan(
 
     meta["analysis_status"] = "queued"
     meta["error"] = None
+    meta["progress"] = {"percent": 0, "stage": "queued", "message": "Waiting to start"}
     _save_meta(folder, meta)
     scan_runtime.commit()
     if scan_runtime.dispatch_analysis is None:
@@ -380,6 +441,7 @@ def analyze_scan(
         except Exception as exc:
             meta["analysis_status"] = "failed"
             meta["error"] = f"{type(exc).__name__}: {exc}"
+            meta["progress"] = {"percent": 0, "stage": "failed", "message": "Analysis failed"}
             _save_meta(folder, meta)
             scan_runtime.commit()
             raise HTTPException(status_code=503, detail="Could not start analysis") from exc

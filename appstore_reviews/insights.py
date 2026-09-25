@@ -825,6 +825,8 @@ async def generate_saved_insights(
                 payload,
                 ensure_ascii=False,
             ),
+            max_tokens=100_000,
+            reasoning_max_tokens=50_000,
         )
 
         _validate_generated_ids(

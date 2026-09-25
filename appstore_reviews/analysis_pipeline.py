@@ -6,8 +6,9 @@ import asyncio
 import hashlib
 import json
 import os
+from contextvars import ContextVar
 from pathlib import Path
-from typing import Any
+from typing import Any, Callable
 
 from .issue_aspects import IssueAspectExtractor
 from .nlp_metrics import calculate_nlp_metrics
@@ -58,10 +59,11 @@ def recalculate_saved_metrics(output_dir: str | Path) -> dict:
 async def analyze_full_pipeline(reviews: list[dict], output_dir: str | Path, *,
                                 run_local_nlp: bool = True,
                                 sentiment_analyzer=None, keyword_extractor=None,
-                                batch_size: int = 8, concurrency: int = 10,
-                                requests_per_minute: int = 120,
+                                batch_size: int = 12, concurrency: int = 48,
+                                requests_per_minute: int = 480,
                                 max_cost_usd: float | None = None,
-                                client: OpenRouterClient | None = None) -> dict:
+                                client: OpenRouterClient | None = None,
+                                progress_callback: Callable[[str, float, int | None, int | None], None] | None = None) -> dict:
     """Run or resume a scan; all LLM results persist as JSON after each batch.
 
     The optional local stages retain the established sentiment->negative-keywords
@@ -82,29 +84,39 @@ async def analyze_full_pipeline(reviews: list[dict], output_dir: str | Path, *,
 
     sentiments = _read_json(folder / "sentiment_results.json", [])
     keywords = _read_json(folder / "keyword_results.json", [])
-    if run_local_nlp:
+
+    def report(stage: str, fraction: float, completed: int | None = None, total: int | None = None) -> None:
+        if progress_callback:
+            progress_callback(stage, fraction, completed, total)
+
+    def local_nlp() -> tuple[list[dict], list[dict], str]:
+        local_sentiments, local_keywords = sentiments, keywords
         local_digest = hashlib.sha256(json.dumps([
             {key: r.get(key) for key in ("review_id", "title", "text", "content", "language")}
             for r in reviews], ensure_ascii=False, sort_keys=True).encode("utf-8")).hexdigest()
         if state.get("local_input_hash") != local_digest:
-            sentiments, keywords = [], []
+            local_sentiments, local_keywords = [], []
         review_ids = {r.get("review_id") for r in reviews}
-        if len(sentiments) != len(reviews) or {r.get("review_id") for r in sentiments} != review_ids:
-            if sentiment_analyzer is None:
+        if len(local_sentiments) != len(reviews) or {r.get("review_id") for r in local_sentiments} != review_ids:
+            analyzer = sentiment_analyzer
+            if analyzer is None:
                 from .sentiment import SentimentAnalyzer
-                sentiment_analyzer = SentimentAnalyzer()
-            sentiments = sentiment_analyzer.analyze_reviews(reviews)
-            _write_json(folder / "sentiment_results.json", sentiments)
-        negative = [r for r in reviews if any(s.get("review_id") == r.get("review_id") and
-                    s.get("sentiment") == "negative" and not s.get("error") for s in sentiments)]
-        if len(keywords) != len(negative) or {r.get("review_id") for r in keywords} != {r.get("review_id") for r in negative}:
-            if keyword_extractor is None:
+                analyzer = SentimentAnalyzer()
+            local_sentiments = analyzer.analyze_reviews(reviews)
+            _write_json(folder / "sentiment_results.json", local_sentiments)
+        report("sentiment", 1.0)
+        negative_ids = {s.get("review_id") for s in local_sentiments
+                        if s.get("sentiment") == "negative" and not s.get("error")}
+        negative = [r for r in reviews if r.get("review_id") in negative_ids]
+        if len(local_keywords) != len(negative) or {r.get("review_id") for r in local_keywords} != negative_ids:
+            extractor = keyword_extractor
+            if extractor is None:
                 from .keywords import KeywordExtractor
-                keyword_extractor = KeywordExtractor()
-            keywords = keyword_extractor.extract_reviews(negative)
-            _write_json(folder / "keyword_results.json", keywords)
-        state["local_input_hash"] = local_digest
-        _write_json(state_path, state)
+                extractor = KeywordExtractor()
+            local_keywords = extractor.extract_reviews(negative)
+            _write_json(folder / "keyword_results.json", local_keywords)
+        report("keywords", 1.0)
+        return local_sentiments, local_keywords, local_digest
 
     own_client = client is None
     prior_cost = sum(float(v.get("cost_usd", 0)) for v in state["api_usage"].values())
@@ -121,36 +133,80 @@ async def analyze_full_pipeline(reviews: list[dict], output_dir: str | Path, *,
             recorded[field] = value
         _write_json(state_path, state)
 
-    current_stage = ["extraction"]
-    client.usage_callback = lambda: capture(current_stage[0])
+    current_stage: ContextVar[str] = ContextVar("analysis_stage", default="extraction")
+    client.usage_callback = lambda: capture(current_stage.get())
 
     async def run() -> dict:
+        async def local_branch() -> tuple[list[dict], list[dict]]:
+            if not run_local_nlp:
+                report("sentiment", 1.0)
+                report("keywords", 1.0)
+                return sentiments, keywords
+            local_sentiments, local_keywords, digest = await asyncio.to_thread(local_nlp)
+            state["local_input_hash"] = digest
+            _write_json(state_path, state)
+            return local_sentiments, local_keywords
+
         analyses = _read_json(folder / "review_analyses.json", {})
         if not isinstance(analyses, dict):
             raise ValueError("review_analyses.json must be an object keyed by review ID")
 
+        processed = {rid for rid, row in analyses.items() if isinstance(row, dict) and row.get("status") == "success"}
+        report("issue_extraction", len(processed) / max(1, len(reviews)), len(processed), len(reviews))
+        updates_since_save = 0
+
         def on_update(row: dict) -> None:
+            nonlocal updates_since_save
             analyses[row["review_id"]] = row
-            _write_json(folder / "review_analyses.json", analyses)
-            capture("extraction")
+            processed.add(row["review_id"])
+            updates_since_save += 1
+            if updates_since_save >= batch_size:
+                _write_json(folder / "review_analyses.json", analyses)
+                updates_since_save = 0
+            report("issue_extraction", len(processed) / max(1, len(reviews)), len(processed), len(reviews))
 
         extractor = IssueAspectExtractor(client, batch_size=batch_size)
-        analyses = await extractor.extract_reviews(reviews, existing=analyses, on_update=on_update)
+        extraction, local_result = await asyncio.gather(
+            extractor.extract_reviews(reviews, existing=analyses, on_update=on_update),
+            local_branch(),
+            return_exceptions=True,
+        )
+        if isinstance(extraction, BaseException):
+            raise extraction
+        analyses = extraction
         _write_json(folder / "review_analyses.json", analyses)
-        capture("extraction")
-        current_stage[0] = "issue_normalization"
-        analyses, issues = await normalize_signals("issues", analyses, client,
-            folder / "normalization_cache")
+        if isinstance(local_result, BaseException):
+            raise local_result
+        sentiments, keywords = local_result
+        report("issue_extraction", 1.0, len(reviews), len(reviews))
+
+        async def normalize(kind: str, stage: str) -> tuple[dict, list[dict]]:
+            token = current_stage.set(stage)
+            report(stage, 0.0)
+            try:
+                result = await normalize_signals(kind, analyses, client, folder / "normalization_cache")
+                report(stage, 1.0)
+                return result
+            finally:
+                current_stage.reset(token)
+
+        (issue_analyses, issues), (feature_analyses, features) = await asyncio.gather(
+            normalize("issues", "issue_normalization"),
+            normalize("feature_requests", "feature_normalization"),
+        )
+        # Both normalizers copy the same extraction results and only modify their
+        # respective signal field. Merge those fields before saving one artifact.
+        analyses = issue_analyses
+        for rid, result in analyses.items():
+            other_aspects = feature_analyses.get(rid, {}).get("aspects", [])
+            for aspect, other in zip(result.get("aspects", []), other_aspects):
+                aspect["feature_requests"] = other.get("feature_requests", [])
         _write_json(folder / "review_analyses.json", analyses)
         _write_json(folder / "issue_catalog.json", issues)
-        capture("issue_normalization")
-        current_stage[0] = "feature_normalization"
-        analyses, features = await normalize_signals("feature_requests", analyses, client,
-            folder / "normalization_cache")
-        _write_json(folder / "review_analyses.json", analyses)
         _write_json(folder / "feature_request_catalog.json", features)
-        capture("feature_normalization")
+        report("metrics", 0.0)
         metrics = recalculate_saved_metrics(folder)
+        report("metrics", 1.0)
         return {"review_analyses": analyses, "issue_catalog": issues,
                 "feature_request_catalog": features, "nlp_metrics": metrics,
                 "api_usage": state["api_usage"], "sentiment_results": sentiments,

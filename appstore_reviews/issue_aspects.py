@@ -10,7 +10,8 @@ import unicodedata
 from collections.abc import Callable, Mapping
 
 from .config import ASPECT_CATEGORIES, ASPECT_TAXONOMY_VERSION
-from .openrouter_client import MODEL_ID, OpenRouterClient, OpenRouterError
+from .openrouter_client import (EXTRACTION_INPUT_LIMIT, MODEL_ID, OpenRouterClient,
+                                OpenRouterError, split_input_records)
 
 TAXONOMY_VERSION = ASPECT_TAXONOMY_VERSION
 CATEGORIES = ASPECT_CATEGORIES
@@ -107,9 +108,9 @@ def validate_review_result(result: dict, review: Mapping[str, object]) -> dict:
 
 
 class IssueAspectExtractor:
-    def __init__(self, client: OpenRouterClient, *, batch_size: int = 8) -> None:
-        if not 1 <= batch_size <= 10:
-            raise ValueError("batch_size must be 1–10")
+    def __init__(self, client: OpenRouterClient, *, batch_size: int = 12) -> None:
+        if not 1 <= batch_size <= 12:
+            raise ValueError("batch_size must be 1–12")
         self.client = client
         self.batch_size = batch_size
 
@@ -152,7 +153,8 @@ class IssueAspectExtractor:
             try:
                 response = await self.client.json_completion(schema_name="review_aspects_v1",
                     schema=EXTRACTION_SCHEMA, system=SYSTEM_PROMPT,
-                    user=json.dumps(payload, ensure_ascii=False))
+                    user=json.dumps(payload, ensure_ascii=False),
+                    max_tokens=25_000, reasoning_max_tokens=20_000)
                 expected = {row["review_id"] for row in batch}
                 returned: set[str] = set()
                 for result in response["results"]:
@@ -180,7 +182,12 @@ class IssueAspectExtractor:
                         on_update(row)
                 return []
 
-        batches = [pending[i:i+self.batch_size] for i in range(0, len(pending), self.batch_size)]
+        request_records = [{"review_id": row["review_id"], "title": _source_text(row)[0],
+                            "text": _source_text(row)[1]} for row in pending]
+        id_to_review = {row["review_id"]: row for row in pending}
+        batches = [[id_to_review[row["review_id"]] for row in chunk] for chunk in
+                   split_input_records(request_records, key="reviews", system=SYSTEM_PROMPT,
+                                       limit=EXTRACTION_INPUT_LIMIT, max_records=self.batch_size)]
         missing = [row for part in await asyncio.gather(*(one_batch(batch) for batch in batches)) for row in part]
         # Retry only IDs omitted by otherwise valid batch responses.
         for review in missing:

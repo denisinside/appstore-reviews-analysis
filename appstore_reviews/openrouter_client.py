@@ -15,6 +15,42 @@ from jsonschema import Draft202012Validator
 
 MODEL_ID = "z-ai/glm-5.3-flash"
 URL = "https://openrouter.ai/api/v1/chat/completions"
+DEFAULT_PROVIDER_ORDER = "parasail,baseten,together"
+EXTRACTION_INPUT_LIMIT = 25_000
+NORMALIZATION_INPUT_LIMIT = 100_000
+
+
+def estimated_input_tokens(system: str, user: str) -> int:
+    """Conservative, dependency-free estimate including message overhead."""
+    return (len(system.encode("utf-8")) + len(user.encode("utf-8")) + 1) // 2 + 256
+
+
+def split_input_records(records: list[dict], *, key: str, system: str,
+                        limit: int, max_records: int) -> list[list[dict]]:
+    """Keep whole records while bounding each serialized request payload."""
+    chunks: list[list[dict]] = []
+    chunk: list[dict] = []
+    for record in records:
+        candidate = [*chunk, record]
+        user = json.dumps({key: candidate}, ensure_ascii=False)
+        if len(candidate) > max_records or estimated_input_tokens(system, user) > limit:
+            if chunk:
+                chunks.append(chunk)
+                candidate = [record]
+                user = json.dumps({key: candidate}, ensure_ascii=False)
+            if estimated_input_tokens(system, user) > limit:
+                raise ValueError(f"single {key} record exceeds the {limit}-token input limit")
+        chunk = candidate
+    if chunk:
+        chunks.append(chunk)
+    return chunks
+
+
+def _provider_preferences() -> list[str] | None:
+    """Return configured provider order, or None to use OpenRouter routing."""
+    raw_order = os.environ.get("OPENROUTER_PROVIDER_ORDER", DEFAULT_PROVIDER_ORDER)
+    providers = [provider.strip() for provider in raw_order.split(",") if provider.strip()]
+    return providers or None
 
 
 class OpenRouterError(RuntimeError):
@@ -39,8 +75,8 @@ class APIUsage:
 
 
 class OpenRouterClient:
-    def __init__(self, *, api_key: str | None = None, concurrency: int = 10,
-                 requests_per_minute: int = 120, timeout: float = 90,
+    def __init__(self, *, api_key: str | None = None, concurrency: int = 48,
+                 requests_per_minute: int = 480, timeout: float = 90,
                  max_retries: int = 3, max_cost_usd: float | None = None,
                  prior_cost_usd: float = 0.0,
                  transport: httpx.AsyncBaseTransport | None = None,
@@ -60,6 +96,7 @@ class OpenRouterClient:
         self.prior_cost_usd = prior_cost_usd
         self.usage = APIUsage()
         self.usage_callback = usage_callback
+        self.provider_order = _provider_preferences()
         self.http = httpx.AsyncClient(timeout=timeout, transport=transport)
 
     async def __aenter__(self) -> "OpenRouterClient":
@@ -99,28 +136,41 @@ class OpenRouterClient:
             self.usage_callback()
 
     async def json_completion(self, *, schema_name: str, schema: dict,
-                              system: str, user: str) -> dict[str, Any]:
+                              system: str, user: str, max_tokens: int = 25_000,
+                              reasoning_max_tokens: int = 20_000) -> dict[str, Any]:
         """Return locally schema-validated JSON; retry transient or invalid replies.
 
         When a provider rejects strict schema routing, one compatible JSON-object
         request is attempted. Local schema validation applies to both routes.
         """
         validator = Draft202012Validator(schema)
+        if max_tokens < 1 or reasoning_max_tokens < 1 or reasoning_max_tokens > max_tokens:
+            raise ValueError("invalid OpenRouter token limits")
+        input_limit = EXTRACTION_INPUT_LIMIT if max_tokens == 25_000 else NORMALIZATION_INPUT_LIMIT
+        if estimated_input_tokens(system, user) > input_limit:
+            raise ValueError(f"OpenRouter input exceeds the {input_limit}-token input limit")
         strict = True
+        reasoning_enabled = True
         last_error = "unknown error"
-        for attempt in range(self.max_retries + 2):
+        for attempt in range(self.max_retries + 3):
             await self._check_budget()
+            provider: dict[str, Any] = {"require_parameters": True}
+            if self.provider_order:
+                provider.update({"order": self.provider_order, "allow_fallbacks": False})
             payload: dict[str, Any] = {
                 "model": MODEL_ID,
                 "messages": [{"role": "system", "content": system}, {"role": "user", "content": user}],
                 "stream": False,
-                "provider": {"require_parameters": True},
+                "provider": provider,
                 "response_format": (
                     {"type": "json_schema", "json_schema": {"name": schema_name, "strict": True, "schema": schema}}
                     if strict else {"type": "json_object"}
                 ),
                 "usage": {"include": True},
+                "max_tokens": max_tokens,
             }
+            if reasoning_enabled:
+                payload["reasoning"] = {"max_tokens": reasoning_max_tokens}
             async with self.semaphore:
                 await self._rate_limit()
                 self.usage.requests += 1
@@ -134,6 +184,10 @@ class OpenRouterClient:
                     response = None
             if response is None:
                 pass
+            elif response.status_code in (400, 422) and reasoning_enabled and "reasoning" in response.text.lower():
+                # Some providers reject this optional parameter; max_tokens remains mandatory.
+                reasoning_enabled = False
+                continue
             elif response.status_code in (400, 404, 422) and strict:
                 # Only a parameter/schema rejection is eligible for JSON mode.
                 message = response.text.lower()[:1000]

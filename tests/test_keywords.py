@@ -59,6 +59,24 @@ def test_keyword_extractor_single_batch_empty_and_reuses_model():
     assert extractor.extract_review({"review_id": "d", "title": "", "text": "", "content": "Playlist crashes", "language": "en"})["keywords"]
 
 
+def test_keyword_extractor_batches_embeddings_across_reviews():
+    extractor = KeywordExtractor(max_candidates=20)
+    fake = FakeEncoder()
+    extractor._model = fake
+    reviews = [
+        {"review_id": "a", "title": "Playlist crashes", "text": "My playlist crashes again", "language": "en"},
+        {"review_id": "b", "title": "Songs disappear", "text": "Songs disappear from playlist", "language": "en"},
+    ]
+
+    result = extractor.extract_reviews(reviews)
+
+    assert fake.calls == 1
+    assert len(fake.texts[0]) == sum(1 + len(generate_candidate_records(
+        review["title"] + "\n" + review["text"], review["language"], limit=20)) for review in reviews)
+    assert [row["review_id"] for row in result] == ["a", "b"]
+    assert all(row["keywords"] and row["error"] is None for row in result)
+
+
 def test_invalid_input_and_no_model_needed_for_empty_text():
     extractor = KeywordExtractor()
     assert extractor.extract_review({"review_id": "x", "title": None, "text": None})["keywords"] == []

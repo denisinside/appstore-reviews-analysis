@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import asyncio
 import copy
 import hashlib
 import json
@@ -12,6 +13,8 @@ from pathlib import Path
 from typing import Any, Mapping
 
 from .config import ASPECT_CATEGORIES
+from .openrouter_client import (NORMALIZATION_INPUT_LIMIT, estimated_input_tokens,
+                                split_input_records)
 
 
 NORMALIZATION_SCHEMA = {
@@ -39,6 +42,14 @@ CROSS_CATEGORY_SCHEMA = {
     }}},
     "required": ["groups"],
 }
+
+CROSS_CATEGORY_PROMPT = (
+    "Review provisional canonical groups. Merge across categories ONLY if they are clearly "
+    "the same user-observed scenario. Preserve negation, numbers, and restrictions. "
+    "Keep uncertain groups separate. Give each input ID exactly once. Choose a category "
+    "from the merged inputs and explain any cross-category merge in justification. "
+    "Use an empty justification for singletons. Return valid JSON."
+)
 
 
 def _key(value: str) -> str:
@@ -206,20 +217,17 @@ async def _reconcile_cross_categories(kind: str, groups: list[dict], sources: di
     # because groups are sorted by canonical name.
     records.sort(key=lambda r: (_key(r["canonical_name"]), r["id"]))
     output = [g for i, g in enumerate(groups) if i not in candidates]
-    for start in range(0, len(records), 30):
-        chunk = records[start:start + 30]
+    for chunk in split_input_records(records, key="groups", system=CROSS_CATEGORY_PROMPT,
+                                     limit=NORMALIZATION_INPUT_LIMIT, max_records=30):
         path = cache_dir / f"{kind}_cross_{_hash(chunk, 64)}.json"
         if path.exists():
             answer = json.loads(path.read_text(encoding="utf-8"))
         else:
             answer = await client.json_completion(
                 schema_name=f"{kind}_cross_category", schema=CROSS_CATEGORY_SCHEMA,
-                system=("Review provisional canonical groups. Merge across categories ONLY if they are clearly "
-                        "the same user-observed scenario. Preserve negation, numbers, and restrictions. "
-                        "Keep uncertain groups separate. Give each input ID exactly once. Choose a category "
-                        "from the merged inputs and explain any cross-category merge in justification. "
-                        "Use an empty justification for singletons. Return valid JSON."),
-                user=json.dumps({"groups": chunk}, ensure_ascii=False))
+                system=CROSS_CATEGORY_PROMPT,
+                user=json.dumps({"groups": chunk}, ensure_ascii=False),
+                max_tokens=100_000, reasoning_max_tokens=80_000)
         expected = {r["id"] for r in chunk}
         seen: set[str] = set()
         merged: list[dict] = []
@@ -256,6 +264,18 @@ async def _reconcile_cross_categories(kind: str, groups: list[dict], sources: di
     return output
 
 
+def _group_system(kind: str, stage: str) -> str:
+    group_instructions = (
+        "Merge descriptions only when they describe the same user-visible scenario. Keep uncertain pairs separate. "
+        "Do not group merely because category or aspect matches. Preserve material distinctions such as negation, "
+        "numbers, billing-after-cancellation, inability-to-cancel, and price. Names must be concise and specific; "
+        "do not invent claims. Never combine records from different categories. Put every supplied ID into exactly one group."
+    )
+    if stage == "reconcile":
+        group_instructions += " These input records are provisional groups from separate batches; combine equivalent groups only."
+    return f"Normalize { _signal_label(kind) } descriptions. {group_instructions} Return schema-valid JSON."
+
+
 async def _cached_completion(client: Any, kind: str, records: list[dict], cache_dir: Path,
                              *, stage: str) -> list[dict]:
     fingerprint = _hash({"kind": kind, "stage": stage, "records": records}, 64)
@@ -267,18 +287,11 @@ async def _cached_completion(client: Any, kind: str, records: list[dict], cache_
             return _validate_groups(cached, set(categories), categories)
         except (OSError, ValueError, KeyError, TypeError, json.JSONDecodeError):
             pass
-    group_instructions = (
-        "Merge descriptions only when they describe the same user-visible scenario. Keep uncertain pairs separate. "
-        "Do not group merely because category or aspect matches. Preserve material distinctions such as negation, "
-        "numbers, billing-after-cancellation, inability-to-cancel, and price. Names must be concise and specific; "
-        "do not invent claims. Never combine records from different categories. Put every supplied ID into exactly one group."
-    )
-    if stage == "reconcile":
-        group_instructions += " These input records are provisional groups from separate batches; combine equivalent groups only."
-    system = f"Normalize { _signal_label(kind) } descriptions. {group_instructions} Return schema-valid JSON."
+    system = _group_system(kind, stage)
     user = json.dumps({"items": records}, ensure_ascii=False)
     answer = await client.json_completion(schema_name=f"{kind}_{stage}", schema=NORMALIZATION_SCHEMA,
-                                          system=system, user=user)
+                                          system=system, user=user,
+                                          max_tokens=100_000, reasoning_max_tokens=80_000)
     categories = {x["id"]: x["category"] for x in records}
     groups = _validate_groups(answer, set(categories), categories)
     cache_dir.mkdir(parents=True, exist_ok=True)
@@ -312,21 +325,25 @@ async def normalize_signals(kind: str, analyses: Mapping[str, Mapping[str, Any]]
     final_groups: list[dict] = []
     if len(sources) <= max_batch_size:
         all_records = [record for records in by_category.values() for record in records]
-        try:
-            final_groups = await _cached_completion(client, kind, all_records, cache_path, stage="all")
-        except ValueError:
-            # A malformed semantic grouping (often a cross-category merge)
-            # is retried in independent category batches, never trusted.
-            pass
+        if estimated_input_tokens(_group_system(kind, "all"),
+                                  json.dumps({"items": all_records}, ensure_ascii=False)) <= NORMALIZATION_INPUT_LIMIT:
+            try:
+                final_groups = await _cached_completion(client, kind, all_records, cache_path, stage="all")
+            except ValueError:
+                # A malformed semantic grouping (often a cross-category merge)
+                # is retried in independent category batches, never trusted.
+                pass
     if not final_groups:
-        for category, records in sorted(by_category.items()):
-            chunks = [records[i:i + max_batch_size] for i in range(0, len(records), max_batch_size)]
-            partial_groups = []
-            for chunk_index, chunk in enumerate(chunks):
-                groups = await _cached_completion(client, kind, chunk, cache_path, stage=f"batch_{chunk_index}")
-                partial_groups.extend(groups)
+        async def normalize_category(category: str, records: list[dict]) -> list[dict]:
+            chunks = split_input_records(records, key="items", system=_group_system(kind, "batch_0"),
+                                         limit=NORMALIZATION_INPUT_LIMIT, max_records=max_batch_size)
+            chunk_groups = await asyncio.gather(*(
+                _cached_completion(client, kind, chunk, cache_path, stage=f"batch_{chunk_index}")
+                for chunk_index, chunk in enumerate(chunks)
+            ))
+            partial_groups = [group for groups in chunk_groups for group in groups]
             if len(chunks) == 1:
-                final_groups.extend(partial_groups)
+                return partial_groups
             else:
                 provisional = []
                 for group in partial_groups:
@@ -334,12 +351,26 @@ async def normalize_signals(kind: str, analyses: Mapping[str, Mapping[str, Any]]
                     source_data = [sources[sid] for sid in group["source_ids"]]
                     provisional.append({"id": pid, "category": category, "aspect": source_data[0]["aspect"],
                                         "description": group["canonical_name"], "evidence": []})
-                reconciled = await _cached_completion(client, kind, provisional, cache_path, stage="reconcile_" + _hash(provisional, 12))
+                reconcile_chunks = split_input_records(
+                    provisional, key="items", system=_group_system(kind, "reconcile"),
+                    limit=NORMALIZATION_INPUT_LIMIT, max_records=len(provisional))
+                reconciled_parts = await asyncio.gather(*(
+                    _cached_completion(client, kind, part, cache_path,
+                                       stage="reconcile_" + _hash(part, 12))
+                    for part in reconcile_chunks))
+                reconciled = [group for part in reconciled_parts for group in part]
                 id_to_group = {"grp_" + _hash([kind, category, g["canonical_name"], sorted(g["source_ids"])], 24): g
                                for g in partial_groups}
+                category_groups = []
                 for merged in reconciled:
                     source_ids = [sid for pid in merged["source_ids"] for sid in id_to_group[pid]["source_ids"]]
-                    final_groups.append({"canonical_name": merged["canonical_name"], "source_ids": source_ids, "category": category})
+                    category_groups.append({"canonical_name": merged["canonical_name"], "source_ids": source_ids, "category": category})
+                return category_groups
+
+        category_groups = await asyncio.gather(*(
+            normalize_category(category, records) for category, records in sorted(by_category.items())
+        ))
+        final_groups = [group for groups in category_groups for group in groups]
 
     final_groups = await _reconcile_cross_categories(kind, final_groups, sources, client, cache_path)
     source_to_canonical: dict[str, str] = {}
