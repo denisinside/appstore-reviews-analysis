@@ -23,7 +23,7 @@ Copy-Item .env.example .env
 npm run dev
 ```
 
-Open `http://localhost:5173`. `VITE_API_URL` points to the API origin and defaults to `http://localhost:8000` if unset. The backend's `CORS_ORIGINS` must include the frontend origin (the backend default includes `http://localhost:5173`).
+Open `http://localhost:5173`. `VITE_API_URL` points to the API origin and defaults to `http://localhost:8000` during local development. Set `VITE_API_URL` to the Modal endpoint in the Vercel project's production environment before building; an unset production value uses the frontend's own origin. The backend's `CORS_ORIGINS` must include the frontend origin (the backend default includes `http://localhost:5173`).
 
 ```powershell
 npm test

@@ -2,6 +2,8 @@
 
 ## Web interface
 
+For the Modal backend deployment, see [DEPLOY_MODAL.md](DEPLOY_MODAL.md).
+
 The React frontend is in [`frontend/`](frontend/README.md). Start the API with `uvicorn appstore_reviews.api:app --reload --port 8000 --env-file .env` when your root `.env` contains `OPENROUTER_API_KEY`, then run `cd frontend`, `npm install`, and `npm run dev` in a second terminal. The UI opens at `http://localhost:5173`; set `VITE_API_URL` in `frontend/.env` if the API runs elsewhere. Full NLP analysis needs the optional sentiment and keyword dependencies, model files, and the backend's `OPENROUTER_API_KEY` described below.
 
 ## Issue, aspect, and feature request analysis

@@ -19,6 +19,7 @@ dependencies = [
 [project.optional-dependencies]
 sentiment = ["torch>=2.6,<3", "transformers>=4.57,<5", "sentencepiece>=0.2,<1"]
 keywords = ["sentence-transformers>=5.1,<6", "stopwordsiso>=0.6,<1", "scikit-learn>=1.5,<2"]
+deploy = ["modal>=1.5,<2"]
 
 [tool.setuptools.packages.find]
 include = ["appstore_reviews*"]

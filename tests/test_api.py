@@ -13,7 +13,26 @@ def api_module(tmp_path, monkeypatch):
     from appstore_reviews import api
 
     monkeypatch.setattr(api, "DATA_ROOT", tmp_path)
-    return api
+    yield api
+    api.scan_runtime.configure()
+
+
+def _stub_collection(api_module, monkeypatch):
+    reviews = [{"review_id": "r1", "app_id": "123", "rating": 2, "text": "Broken", "country": "us"}]
+
+    class StubScraper:
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *_):
+            pass
+
+        def get_top_reviews(self, *_args, **_kwargs):
+            return {"reviews": reviews, "status": "ok", "errors": []}
+
+    monkeypatch.setattr(api_module, "AppStoreReviews", StubScraper)
+    monkeypatch.setattr(api_module, "_lookup_app_name", lambda _app_id: "Test App")
+    return reviews
 
 
 def test_invalid_app_ids_and_country_return_client_errors(api_module):
@@ -138,3 +157,76 @@ def test_download_analysis_report_uses_saved_artifacts_and_keeps_raw_download(ap
     raw_response = client.get("/api/scans/abcdef123456/reviews/download")
     assert raw_response.status_code == 200
     assert raw_response.json() == artifacts["reviews.json"]
+
+
+def test_remote_dispatch_commits_queued_before_worker_and_completion_is_readable(api_module, tmp_path, monkeypatch):
+    reviews = _stub_collection(api_module, monkeypatch)
+    events = []
+    queued_job = []
+
+    def dispatch(scan_id, payload):
+        folder = tmp_path / scan_id
+        assert json.loads((folder / "scan.json").read_text())["analysis_status"] == "queued"
+        assert json.loads((folder / "reviews.json").read_text()) == reviews
+        assert events[-1] == "commit:queued"
+        queued_job.append((scan_id, payload))
+
+    def commit():
+        statuses = [json.loads(path.read_text())["analysis_status"] for path in tmp_path.glob("*/scan.json")]
+        events.append(f"commit:{statuses[-1]}")
+
+    api_module.scan_runtime.configure(reload_volume=lambda: events.append("reload"), commit_volume=commit, dispatch=dispatch)
+    client = TestClient(api_module.app)
+    created = client.post("/api/scans", json={"app_id": "123", "mode": "top"})
+    assert created.status_code == 201
+    scan_id = created.json()["scan_id"]
+    assert client.get(f"/api/scans/{scan_id}").json()["analysis_status"] == "not_started"
+    queued = client.post(f"/api/scans/{scan_id}/analyze", json={})
+    assert queued.status_code == 202
+    assert queued.json() == {"scan_id": scan_id, "analysis_status": "queued"}
+    assert client.get(f"/api/scans/{scan_id}").json()["analysis_status"] == "queued"
+    assert client.post(f"/api/scans/{scan_id}/analyze", json={}).status_code == 409
+
+    def pipeline(rows, folder, **_kwargs):
+        assert rows == reviews
+        assert json.loads((folder / "scan.json").read_text())["analysis_status"] == "running"
+        assert events[-1] == "commit:running"
+        api_module._write_json(folder / "nlp_metrics.json", {"processed": 1})
+
+    monkeypatch.setattr(api_module, "run_full_pipeline", pipeline)
+    monkeypatch.setattr(api_module, "run_saved_insights", lambda folder, **_kwargs: api_module._write_json(folder / "insights.json", {"summary": "Done"}))
+    api_module._run_analysis_job(scan_id, api_module.AnalyzeRequest.model_validate(queued_job[0][1]))
+    assert events[-1] == "commit:completed"
+    assert client.get(f"/api/scans/{scan_id}").json()["analysis_status"] == "completed"
+    assert client.get(f"/api/scans/{scan_id}/metrics").json()["nlp"] == {"processed": 1}
+    assert client.get(f"/api/scans/{scan_id}/insights").json() == {"summary": "Done"}
+    assert client.get(f"/api/scans/{scan_id}/reviews/download").json() == reviews
+
+
+def test_worker_failure_persists_failed_state(api_module, tmp_path, monkeypatch):
+    _stub_collection(api_module, monkeypatch)
+    commits = []
+    api_module.scan_runtime.configure(commit_volume=lambda: commits.append(True), dispatch=lambda *_: None)
+    client = TestClient(api_module.app)
+    scan_id = client.post("/api/scans", json={"app_id": "123"}).json()["scan_id"]
+    assert client.post(f"/api/scans/{scan_id}/analyze", json={}).status_code == 202
+
+    def fail(*_args, **_kwargs):
+        raise RuntimeError("pipeline stopped")
+
+    monkeypatch.setattr(api_module, "run_full_pipeline", fail)
+    api_module._run_analysis_job(scan_id, api_module.AnalyzeRequest())
+    scan = client.get(f"/api/scans/{scan_id}").json()
+    assert scan["analysis_status"] == "failed"
+    assert scan["error"] == "RuntimeError: pipeline stopped"
+    assert len(commits) == 4  # creation, queued, running, failed
+
+
+def test_local_background_tasks_still_process_analysis(api_module, monkeypatch):
+    _stub_collection(api_module, monkeypatch)
+    monkeypatch.setattr(api_module, "run_full_pipeline", lambda *_args, **_kwargs: None)
+    monkeypatch.setattr(api_module, "run_saved_insights", lambda *_args, **_kwargs: None)
+    client = TestClient(api_module.app)
+    scan_id = client.post("/api/scans", json={"app_id": "123"}).json()["scan_id"]
+    assert client.post(f"/api/scans/{scan_id}/analyze", json={}).status_code == 202
+    assert client.get(f"/api/scans/{scan_id}").json()["analysis_status"] == "completed"

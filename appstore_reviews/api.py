@@ -23,6 +23,7 @@ from .insights import run_saved_insights
 from .keywords import aggregate_keywords
 from .metrics import calculate_metrics
 from .scraper import AppStoreReviews
+from . import scan_runtime
 
 
 DATA_ROOT = Path(os.environ.get("APPSTORE_SCAN_DIR", "scans"))
@@ -60,6 +61,7 @@ def _write_json(path: Path, value: Any) -> None:
 def _scan_dir(scan_id: str) -> Path:
     if not _SCAN_ID_RE.fullmatch(scan_id):
         raise HTTPException(status_code=404, detail="Scan not found")
+    scan_runtime.reload()
     folder = DATA_ROOT / scan_id
     if not folder.exists():
         raise HTTPException(status_code=404, detail="Scan not found")
@@ -243,6 +245,7 @@ def create_scan(payload: CollectRequest) -> dict[str, Any]:
     if not isinstance(reviews, list):
         raise HTTPException(status_code=500, detail="Collector returned invalid review data")
 
+    scan_runtime.reload()
     scan_id = uuid4().hex[:12]
     folder = DATA_ROOT / scan_id
     folder.mkdir(parents=True, exist_ok=False)
@@ -269,6 +272,7 @@ def create_scan(payload: CollectRequest) -> dict[str, Any]:
     _write_json(folder / "collection.json", collection)
     _write_json(folder / "reviews.json", reviews)
     _write_json(folder / "basic_metrics.json", basic_metrics)
+    scan_runtime.commit()
 
     return {
         **meta,
@@ -279,6 +283,7 @@ def create_scan(payload: CollectRequest) -> dict[str, Any]:
 
 @app.get("/api/scans")
 def list_scans() -> dict[str, Any]:
+    scan_runtime.reload()
     items = []
     if DATA_ROOT.exists():
         for folder in DATA_ROOT.iterdir():
@@ -306,12 +311,14 @@ def get_scan(scan_id: str) -> dict[str, Any]:
 
 
 def _run_analysis_job(scan_id: str, payload: AnalyzeRequest) -> None:
+    scan_runtime.reload()
     folder = DATA_ROOT / scan_id
     meta = _read_json(folder / "scan.json", {})
     try:
         meta["analysis_status"] = "running"
         meta["error"] = None
         _save_meta(folder, meta)
+        scan_runtime.commit()
 
         reviews = _read_json(folder / "reviews.json", [])
         run_full_pipeline(
@@ -329,11 +336,13 @@ def _run_analysis_job(scan_id: str, payload: AnalyzeRequest) -> None:
         meta["analysis_status"] = "completed"
         meta["error"] = None
         _save_meta(folder, meta)
+        scan_runtime.commit()
     except Exception as exc:
         meta = _read_json(folder / "scan.json", meta)
         meta["analysis_status"] = "failed"
         meta["error"] = f"{type(exc).__name__}: {exc}"
         _save_meta(folder, meta)
+        scan_runtime.commit()
 
 
 @app.post("/api/scans/{scan_id}/analyze", status_code=status.HTTP_202_ACCEPTED)
@@ -350,7 +359,18 @@ def analyze_scan(
     meta["analysis_status"] = "queued"
     meta["error"] = None
     _save_meta(folder, meta)
-    background_tasks.add_task(_run_analysis_job, scan_id, payload)
+    scan_runtime.commit()
+    if scan_runtime.dispatch_analysis is None:
+        background_tasks.add_task(_run_analysis_job, scan_id, payload)
+    else:
+        try:
+            scan_runtime.dispatch_analysis(scan_id, payload.model_dump())
+        except Exception as exc:
+            meta["analysis_status"] = "failed"
+            meta["error"] = f"{type(exc).__name__}: {exc}"
+            _save_meta(folder, meta)
+            scan_runtime.commit()
+            raise HTTPException(status_code=503, detail="Could not start analysis") from exc
     return {"scan_id": scan_id, "analysis_status": "queued"}
 
 
@@ -362,6 +382,7 @@ def get_metrics(scan_id: str) -> dict[str, Any]:
         reviews = _read_json(folder / "reviews.json", [])
         basic = calculate_metrics(reviews)
         _write_json(folder / "basic_metrics.json", basic)
+        scan_runtime.commit()
 
     sentiment_rows = _read_json(folder / "sentiment_results.json", [])
     keyword_rows = _read_json(folder / "keyword_results.json", [])
