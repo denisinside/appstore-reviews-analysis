@@ -51,6 +51,46 @@ CROSS_CATEGORY_PROMPT = (
     "Use an empty justification for singletons. Return valid JSON."
 )
 
+GLOBAL_RECONCILE_PROMPT = """
+Perform the FINAL global deduplication of provisional product issues.
+
+The inputs are canonical groups produced by earlier normalization batches.
+At this stage, groups may still be duplicates because they were processed in
+different batches or assigned different broad categories.
+
+Merge groups when they describe the same user-observed problem, even if:
+- wording differs;
+- one description is more verbose;
+- the broad category differs;
+- singular/plural or synonymous wording differs.
+
+Examples that SHOULD merge:
+- "Too many ads"
+- "Too many ads in the game"
+- "Excessive ad volume in game"
+
+Examples that MUST remain separate:
+- "Too many ads" vs "Ads do not load"
+- "Too many ads" vs "Reward is not granted after watching an ad"
+- "Cannot cancel subscription" vs "Charged after cancellation"
+- "App crashes on launch" vs "App freezes during playback"
+
+A broader shared topic is NOT enough for a merge.
+The groups must describe effectively the same user-visible scenario.
+
+Prefer a concise canonical name that preserves the concrete complaint.
+
+If merged inputs have different categories, choose the most appropriate category
+ONLY from the categories present in those inputs. Never invent another category.
+
+Every supplied ID must appear exactly once.
+No ID may be omitted, duplicated, or invented.
+
+For every merge of two or more groups, provide a short justification.
+Singletons may use an empty justification.
+
+Return schema-valid JSON only.
+""".strip()
 
 def _key(value: str) -> str:
     """Fold case/spacing and insignificant punctuation, retaining negation and numbers."""
@@ -314,6 +354,357 @@ async def _reconcile_cross_categories(kind: str, groups: list[dict], sources: di
         output.extend(merged)
     return output
 
+def _global_record(
+    kind: str,
+    group: dict,
+    sources: Mapping[str, dict],
+) -> dict:
+    """Compact representation of a provisional canonical group."""
+
+    descriptions: list[str] = []
+    aspects: list[str] = []
+    review_ids: set[str] = set()
+
+    for sid in group["source_ids"]:
+        source = sources[sid]
+
+        aspect = str(source.get("aspect") or "").strip()
+        if aspect and aspect not in aspects:
+            aspects.append(aspect)
+
+        variants = source.get("descriptions") or [
+            source.get("description")
+        ]
+
+        for value in variants:
+            if not isinstance(value, str):
+                continue
+
+            value = value.strip()
+
+            if value and value not in descriptions:
+                descriptions.append(value)
+
+        review_ids.update(
+            str(rid)
+            for rid in source.get("review_ids", [])
+        )
+
+    pid = "global_" + _hash(
+        [
+            kind,
+            group["category"],
+            group["canonical_name"],
+            sorted(group["source_ids"]),
+        ],
+        24,
+    )
+
+    return {
+        "id": pid,
+        "category": group["category"],
+        "canonical_name": group["canonical_name"],
+        "aspects": aspects[:4],
+        "source_descriptions": descriptions[:8],
+        "review_count": len(review_ids),
+    }
+
+async def _reconcile_global_chunk(
+    kind: str,
+    groups: list[dict],
+    sources: Mapping[str, dict],
+    client: Any,
+    cache_dir: Path,
+    *,
+    stage: str,
+) -> list[dict]:
+    if len(groups) <= 1:
+        return groups
+
+    records = [
+        _global_record(kind, group, sources)
+        for group in groups
+    ]
+
+    lookup = {
+        record["id"]: group
+        for record, group in zip(records, groups)
+    }
+
+    fingerprint = _hash(
+        {
+            "kind": kind,
+            "stage": stage,
+            "records": records,
+        },
+        64,
+    )
+
+    path = cache_dir / f"{kind}_global_{fingerprint}.json"
+
+    if path.exists():
+        try:
+            answer = json.loads(
+                path.read_text(encoding="utf-8")
+            )
+        except (OSError, ValueError, json.JSONDecodeError):
+            answer = None
+    else:
+        answer = None
+
+    if answer is None:
+        answer = await client.json_completion(
+            schema_name=f"{kind}_global_reconcile",
+            schema=CROSS_CATEGORY_SCHEMA,
+            system=GLOBAL_RECONCILE_PROMPT,
+            user=json.dumps(
+                {"groups": records},
+                ensure_ascii=False,
+            ),
+            max_tokens=100_000,
+            reasoning_max_tokens=80_000,
+        )
+
+    expected = {
+        record["id"]
+        for record in records
+    }
+
+    seen: set[str] = set()
+    merged_groups: list[dict] = []
+
+    try:
+        for item in answer["groups"]:
+            provisional_ids = item["source_ids"]
+
+            if (
+                not isinstance(provisional_ids, list)
+                or not provisional_ids
+            ):
+                raise ValueError(
+                    "global reconciliation returned empty group"
+                )
+
+            if any(
+                pid not in expected or pid in seen
+                for pid in provisional_ids
+            ):
+                raise ValueError(
+                    "global reconciliation returned invalid IDs"
+                )
+
+            seen.update(provisional_ids)
+
+            originals = [
+                lookup[pid]
+                for pid in provisional_ids
+            ]
+
+            allowed_categories = {
+                group["category"]
+                for group in originals
+            }
+
+            if item["category"] not in allowed_categories:
+                raise ValueError(
+                    "global reconciliation invented a category"
+                )
+
+            justification = str(
+                item.get("justification") or ""
+            ).strip()
+
+            if (
+                len(provisional_ids) > 1
+                and len(justification) < 8
+            ):
+                raise ValueError(
+                    "global merge has no useful justification"
+                )
+
+            source_ids = [
+                sid
+                for group in originals
+                for sid in group["source_ids"]
+            ]
+
+            merged_groups.append(
+                {
+                    "canonical_name": (
+                        item["canonical_name"].strip()
+                    ),
+                    "category": item["category"],
+                    "source_ids": source_ids,
+                    "category_reconciliation": (
+                        justification or None
+                    ),
+                }
+            )
+
+        if seen != expected:
+            raise ValueError(
+                "global reconciliation omitted provisional groups"
+            )
+
+    except (KeyError, TypeError, ValueError):
+        # Never destroy a valid normalization because the final
+        # semantic dedup pass returned malformed data.
+        return groups
+
+    if not path.exists():
+        cache_dir.mkdir(
+            parents=True,
+            exist_ok=True,
+        )
+
+        temp = path.with_suffix(".tmp")
+
+        temp.write_text(
+            json.dumps(
+                answer,
+                ensure_ascii=False,
+                indent=2,
+            ),
+            encoding="utf-8",
+        )
+
+        temp.replace(path)
+
+    return merged_groups
+
+async def _reconcile_global_groups(
+    kind: str,
+    groups: list[dict],
+    sources: Mapping[str, dict],
+    client: Any,
+    cache_dir: Path,
+) -> list[dict]:
+    """
+    Final map-reduce reconciliation.
+
+    Normally all compact canonical groups fit into one request.
+    If they exceed the normalization input limit, reconcile chunks
+    and feed their results into another round.
+    """
+
+    if len(groups) <= 1:
+        return groups
+
+    current = list(groups)
+
+    # Usually round 0 is already the final global request.
+    # Extra rounds exist only for unusually large scans.
+    for round_index in range(3):
+        pairs = [
+            (
+                _global_record(kind, group, sources),
+                group,
+            )
+            for group in current
+        ]
+
+        # First round: lexical ordering makes obvious variants
+        # more likely to remain together if token splitting is needed.
+        if round_index == 0:
+            pairs.sort(
+                key=lambda pair: (
+                    _key(pair[0]["canonical_name"]),
+                    pair[0]["id"],
+                )
+            )
+
+        # Second round: group by extracted aspect vocabulary.
+        # This changes chunk boundaries and gives groups that were
+        # separated in round 0 another chance to meet.
+        elif round_index == 1:
+            pairs.sort(
+                key=lambda pair: (
+                    " ".join(
+                        sorted(
+                            set(
+                                _key(
+                                    " ".join(
+                                        pair[0].get(
+                                            "aspects",
+                                            [],
+                                        )
+                                    )
+                                ).split()
+                            )
+                        )
+                    ),
+                    _key(pair[0]["canonical_name"]),
+                    pair[0]["id"],
+                )
+            )
+
+        else:
+            pairs.sort(
+                key=lambda pair: (
+                    pair[0]["category"],
+                    _key(pair[0]["canonical_name"]),
+                    pair[0]["id"],
+                )
+            )
+
+        records = [
+            pair[0]
+            for pair in pairs
+        ]
+
+        group_by_record_id = {
+            record["id"]: group
+            for record, group in pairs
+        }
+
+        record_chunks = split_input_records(
+            records,
+            key="groups",
+            system=GLOBAL_RECONCILE_PROMPT,
+            limit=NORMALIZATION_INPUT_LIMIT,
+            max_records=500,
+        )
+
+        group_chunks = [
+            [
+                group_by_record_id[record["id"]]
+                for record in chunk
+            ]
+            for chunk in record_chunks
+        ]
+
+        parts = await asyncio.gather(
+            *(
+                _reconcile_global_chunk(
+                    kind,
+                    chunk,
+                    sources,
+                    client,
+                    cache_dir,
+                    stage=(
+                        f"global_round_{round_index}_"
+                        f"chunk_{chunk_index}"
+                    ),
+                )
+                for chunk_index, chunk
+                in enumerate(group_chunks)
+            )
+        )
+
+        merged = [
+            group
+            for part in parts
+            for group in part
+        ]
+
+        # Ideal case: every provisional group was visible in
+        # the same LLM request. Nothing else is needed.
+        if len(record_chunks) == 1:
+            return merged
+
+        current = merged
+
+    return current
 
 def _group_system(kind: str, stage: str) -> str:
     group_instructions = (
@@ -326,6 +717,9 @@ def _group_system(kind: str, stage: str) -> str:
         "must be unique within that category. "
         "Examples: 'App crashes on launch' and 'Crashes when opening the app' describe the same scenario and may merge; "
         "'Cannot cancel a subscription' and 'Charged after cancellation' describe different problems and must stay separate. "
+        "Surface variants such as 'Too many ads', 'Too many ads in the game', "
+        "and 'Excessive ad volume in game' represent the same excessive-ad-volume scenario and should merge. "
+        "However, 'Too many ads' and 'Ads fail to load' are different scenarios and must stay separate. "
         "Keep restrictions such as 'only on Wi-Fi', 'after update', and specific amounts when naming a group."
     )
     if stage.startswith("reconcile_"):
@@ -446,7 +840,13 @@ async def normalize_signals(kind: str, analyses: Mapping[str, Mapping[str, Any]]
         ))
         final_groups = [group for groups in category_groups for group in groups]
 
-    final_groups = await _reconcile_cross_categories(kind, final_groups, sources, client, cache_path)
+    final_groups = await _reconcile_global_groups(
+        kind,
+        final_groups,
+        sources,
+        client,
+        cache_path,
+    )
     source_to_canonical: dict[str, str] = {}
     catalog_by_id: dict[str, dict] = {}
     for group in final_groups:
