@@ -19,6 +19,7 @@ from fastapi.responses import FileResponse
 from pydantic import BaseModel, Field
 
 from .analysis_pipeline import run_full_pipeline
+from .config import COUNTRY_NAMES, MAX_RSS_PAGES, SUPPORTED_COUNTRIES
 from .insights import run_saved_insights
 from .keywords import aggregate_keywords
 from .metrics import calculate_metrics
@@ -164,8 +165,8 @@ class CollectRequest(BaseModel):
     app_id: str = Field(..., pattern=r"^[0-9]+$", description="Numeric Apple App Store application ID.")
     mode: Literal["country", "top"] = "top"
     country: str | None = Field(default=None, min_length=2, max_length=2)
-    top_n: int = Field(default=10, ge=1, le=32)
-    max_pages: int = Field(default=10, ge=1, le=10)
+    top_n: int = Field(default=10, ge=1, le=len(SUPPORTED_COUNTRIES))
+    max_pages: int = Field(default=MAX_RSS_PAGES, ge=1, le=MAX_RSS_PAGES)
     force_refresh: bool = False
 
 
@@ -206,6 +207,18 @@ app.add_middleware(
 @app.get("/health")
 def health() -> dict[str, str]:
     return {"status": "ok"}
+
+
+@app.get("/api/scan-options")
+def scan_options() -> dict[str, Any]:
+    return {
+        "countries": sorted(
+            ({"code": code, "name": COUNTRY_NAMES[code]} for code in SUPPORTED_COUNTRIES),
+            key=lambda item: item["name"],
+        ),
+        "max_pages": MAX_RSS_PAGES,
+        "max_top_countries": len(SUPPORTED_COUNTRIES),
+    }
 
 
 @app.get("/api/apps/{app_id}/discovery")

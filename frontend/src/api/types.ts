@@ -2,6 +2,12 @@ export type ScanMode = "country" | "top";
 export type AnalysisStatus = "not_started" | "queued" | "running" | "completed" | "failed";
 export type SentimentLabel = "positive" | "neutral" | "negative";
 
+export interface ScanOptions {
+  countries: Array<{ code: string; name: string }>;
+  max_pages: number;
+  max_top_countries: number;
+}
+
 export interface CollectScanRequest {
   app_id: string;
   mode?: ScanMode;

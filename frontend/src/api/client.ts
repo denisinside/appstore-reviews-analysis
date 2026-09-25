@@ -9,6 +9,7 @@ import type {
   ReviewsQuery,
   ReviewsPage,
   Scan,
+  ScanOptions,
   ScansResponse,
 } from "./types";
 
@@ -91,6 +92,10 @@ export function getScan(scanId: string): Promise<Scan> {
 
 export function getScans(): Promise<ScansResponse> {
   return request<ScansResponse>("/api/scans");
+}
+
+export function getScanOptions(): Promise<ScanOptions> {
+  return request<ScanOptions>("/api/scan-options");
 }
 
 export function getMetrics(scanId: string): Promise<MetricsResponse> {
