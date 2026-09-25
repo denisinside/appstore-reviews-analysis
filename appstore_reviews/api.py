@@ -84,7 +84,7 @@ def _lookup_app_name(app_id: str) -> str | None:
     """Best-effort name lookup; metadata outages must never block review collection."""
     try:
         request = urllib.request.Request(
-            f"https://itunes.apple.com/lookup?id={app_id}",
+            f"https://itunes.apple.com/lookup?id={app_id}&country=us",
             headers={"User-Agent": "AppStoreReviewsAnalyzer/1.0"},
         )
         with urllib.request.urlopen(request, timeout=3) as response:
@@ -222,6 +222,7 @@ def create_scan(payload: CollectRequest) -> dict[str, Any]:
     if payload.mode == "country" and not payload.country:
         raise HTTPException(status_code=422, detail="country is required when mode='country'")
 
+    app_name = _lookup_app_name(payload.app_id)
     try:
         with AppStoreReviews() as scraper:
             if payload.mode == "country":
@@ -250,8 +251,6 @@ def create_scan(payload: CollectRequest) -> dict[str, Any]:
     folder = DATA_ROOT / scan_id
     folder.mkdir(parents=True, exist_ok=False)
     basic_metrics = calculate_metrics(reviews)
-    app_name = _lookup_app_name(payload.app_id)
-
     meta = {
         "scan_id": scan_id,
         "app_id": payload.app_id,
