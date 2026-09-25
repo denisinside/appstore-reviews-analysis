@@ -163,7 +163,11 @@ async def analyze_full_pipeline(reviews: list[dict], output_dir: str | Path, *,
             if updates_since_save >= batch_size:
                 _write_json(folder / "review_analyses.json", analyses)
                 updates_since_save = 0
-            report("issue_extraction", len(processed) / max(1, len(reviews)), len(processed), len(reviews))
+            try:
+                report("issue_extraction", len(processed) / max(1, len(reviews)), len(processed), len(reviews))
+            except Exception:
+                _write_json(folder / "review_analyses.json", analyses)
+                raise
 
         extractor = IssueAspectExtractor(client, batch_size=batch_size)
         extraction, local_result = await asyncio.gather(
@@ -172,6 +176,7 @@ async def analyze_full_pipeline(reviews: list[dict], output_dir: str | Path, *,
             return_exceptions=True,
         )
         if isinstance(extraction, BaseException):
+            _write_json(folder / "review_analyses.json", analyses)
             raise extraction
         analyses = extraction
         _write_json(folder / "review_analyses.json", analyses)

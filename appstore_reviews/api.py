@@ -77,6 +77,35 @@ def _load_meta(folder: Path) -> dict[str, Any]:
     return meta
 
 
+class AnalysisInterrupted(Exception):
+    """A scan stop was requested from the API."""
+
+
+def _check_stop_requested(folder: Path) -> None:
+    scan_runtime.reload()
+    if (folder / "stop.requested").exists():
+        raise AnalysisInterrupted()
+
+
+def _available_results(folder: Path) -> dict[str, Any]:
+    """Describe saved artifacts without implying that analysis completed."""
+    sentiments = _read_json(folder / "sentiment_results.json", [])
+    keywords = _read_json(folder / "keyword_results.json", [])
+    analyses = _read_json(folder / "review_analyses.json", {})
+    issues = _read_json(folder / "issue_catalog.json", None)
+    features = _read_json(folder / "feature_request_catalog.json", None)
+    return {
+        "sentiment_reviews": len(sentiments) if isinstance(sentiments, list) else 0,
+        "keyword_reviews": len(keywords) if isinstance(keywords, list) else 0,
+        "extracted_reviews": sum(isinstance(row, dict) and row.get("status") == "success"
+                                 for row in analyses.values()) if isinstance(analyses, dict) else 0,
+        "issue_count": len(issues) if isinstance(issues, list) else None,
+        "feature_request_count": len(features) if isinstance(features, list) else None,
+        "metrics_available": (folder / "nlp_metrics.json").exists(),
+        "insights_available": (folder / "insights.json").exists(),
+    }
+
+
 def _save_meta(folder: Path, meta: dict[str, Any]) -> None:
     meta["updated_at"] = _utc_now()
     _write_json(folder / "scan.json", meta)
@@ -320,6 +349,7 @@ def get_scan(scan_id: str) -> dict[str, Any]:
     return {
         **meta,
         "api_usage": state.get("api_usage", {}) if isinstance(state, dict) else {},
+        "available_results": _available_results(folder) if meta.get("analysis_status") in {"cancelling", "interrupted"} else None,
     }
 
 
@@ -373,6 +403,7 @@ class _AnalysisProgress:
                 _save_meta(self.folder, self.meta)
                 scan_runtime.commit()
                 self.persisted_percent, self.persisted_stage, self.persisted_at = percent, progress["stage"], now
+                _check_stop_requested(self.folder)
 
 
 def _run_analysis_job(scan_id: str, payload: AnalyzeRequest) -> None:
@@ -381,11 +412,13 @@ def _run_analysis_job(scan_id: str, payload: AnalyzeRequest) -> None:
     meta = _read_json(folder / "scan.json", {})
     progress = _AnalysisProgress(folder, meta)
     try:
+        _check_stop_requested(folder)
         meta["analysis_status"] = "running"
         meta["error"] = None
         meta["progress"] = {"percent": 0, "stage": "running", "message": "Starting analysis"}
         _save_meta(folder, meta)
         scan_runtime.commit()
+        _check_stop_requested(folder)
 
         reviews = _read_json(folder / "reviews.json", [])
         run_full_pipeline(
@@ -398,13 +431,25 @@ def _run_analysis_job(scan_id: str, payload: AnalyzeRequest) -> None:
             max_cost_usd=payload.max_cost_usd,
             progress_callback=progress.update,
         )
+        scan_runtime.commit()
+        _check_stop_requested(folder)
         progress.update("insights", 0.0)
         run_saved_insights(folder, max_cost_usd=payload.max_cost_usd)
+        scan_runtime.commit()
+        _check_stop_requested(folder)
 
         meta = _read_json(folder / "scan.json", meta)
         meta["analysis_status"] = "completed"
         meta["error"] = None
         meta["progress"] = {"percent": 100, "stage": "completed", "message": "Analysis complete"}
+        _save_meta(folder, meta)
+        scan_runtime.commit()
+    except AnalysisInterrupted:
+        meta = _read_json(folder / "scan.json", meta)
+        meta["analysis_status"] = "interrupted"
+        meta["error"] = None
+        meta["progress"] = {"percent": meta.get("progress", {}).get("percent", 0),
+                            "stage": "interrupted", "message": "Analysis interrupted"}
         _save_meta(folder, meta)
         scan_runtime.commit()
     except Exception as exc:
@@ -425,8 +470,10 @@ def analyze_scan(
 ) -> dict[str, Any]:
     folder = _scan_dir(scan_id)
     meta = _load_meta(folder)
-    if meta.get("analysis_status") in {"queued", "running"}:
+    if meta.get("analysis_status") in {"queued", "running", "cancelling"}:
         raise HTTPException(status_code=409, detail="Analysis is already running")
+
+    (folder / "stop.requested").unlink(missing_ok=True)
 
     meta["analysis_status"] = "queued"
     meta["error"] = None
@@ -446,6 +493,23 @@ def analyze_scan(
             scan_runtime.commit()
             raise HTTPException(status_code=503, detail="Could not start analysis") from exc
     return {"scan_id": scan_id, "analysis_status": "queued"}
+
+
+@app.post("/api/scans/{scan_id}/stop", status_code=status.HTTP_202_ACCEPTED)
+def stop_scan(scan_id: str) -> dict[str, Any]:
+    folder = _scan_dir(scan_id)
+    meta = _load_meta(folder)
+    if meta.get("analysis_status") == "cancelling":
+        return {"scan_id": scan_id, "analysis_status": "cancelling"}
+    if meta.get("analysis_status") not in {"queued", "running"}:
+        raise HTTPException(status_code=409, detail="Analysis is not running")
+    (folder / "stop.requested").write_text(_utc_now(), encoding="utf-8")
+    meta["analysis_status"] = "cancelling"
+    meta["progress"] = {"percent": meta.get("progress", {}).get("percent", 0),
+                        "stage": "cancelling", "message": "Stopping analysis"}
+    _save_meta(folder, meta)
+    scan_runtime.commit()
+    return {"scan_id": scan_id, "analysis_status": "cancelling"}
 
 
 @app.get("/api/scans/{scan_id}/metrics")

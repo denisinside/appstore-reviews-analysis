@@ -262,7 +262,7 @@ def test_remote_dispatch_commits_queued_before_worker_and_completion_is_readable
     def pipeline(rows, folder, **kwargs):
         assert rows == reviews
         assert json.loads((folder / "scan.json").read_text())["analysis_status"] == "running"
-        assert events[-1] == "commit:running"
+        assert "commit:running" in events
         kwargs["progress_callback"]("issue_extraction", 0.5, 1, 2)
         running = client.get(f"/api/scans/{scan_id}").json()
         assert running["progress"]["percent"] >= 25
@@ -308,3 +308,47 @@ def test_local_background_tasks_still_process_analysis(api_module, monkeypatch):
     scan_id = client.post("/api/scans", json={"app_id": "123"}).json()["scan_id"]
     assert client.post(f"/api/scans/{scan_id}/analyze", json={}).status_code == 202
     assert client.get(f"/api/scans/{scan_id}").json()["analysis_status"] == "completed"
+
+
+def test_queued_scan_can_be_stopped_and_resumed(api_module, monkeypatch, tmp_path):
+    _stub_collection(api_module, monkeypatch)
+    dispatched = []
+    api_module.scan_runtime.configure(dispatch=lambda scan_id, payload: dispatched.append((scan_id, payload)))
+    client = TestClient(api_module.app)
+    scan_id = client.post("/api/scans", json={"app_id": "123"}).json()["scan_id"]
+    assert client.post(f"/api/scans/{scan_id}/analyze", json={}).status_code == 202
+    assert client.post(f"/api/scans/{scan_id}/stop").json()["analysis_status"] == "cancelling"
+    assert client.get(f"/api/scans/{scan_id}").json()["analysis_status"] == "cancelling"
+    monkeypatch.setattr(api_module, "run_full_pipeline", lambda *_args, **_kwargs: pytest.fail("queued scan ran"))
+    api_module._run_analysis_job(scan_id, api_module.AnalyzeRequest())
+    stopped = client.get(f"/api/scans/{scan_id}").json()
+    assert stopped["analysis_status"] == "interrupted"
+    assert stopped["progress"]["percent"] == 0
+    assert client.post(f"/api/scans/{scan_id}/stop").status_code == 409
+    assert client.post(f"/api/scans/{scan_id}/analyze", json={}).status_code == 202
+    assert not (tmp_path / scan_id / "stop.requested").exists()
+
+
+def test_running_scan_stop_preserves_partial_results(api_module, monkeypatch, tmp_path):
+    _stub_collection(api_module, monkeypatch)
+    api_module.scan_runtime.configure(dispatch=lambda *_args: None)
+    client = TestClient(api_module.app)
+    scan_id = client.post("/api/scans", json={"app_id": "123"}).json()["scan_id"]
+    client.post(f"/api/scans/{scan_id}/analyze", json={})
+
+    def pipeline(_reviews, folder, **kwargs):
+        api_module._write_json(folder / "review_analyses.json", {
+            "r1": {"review_id": "r1", "status": "success", "aspects": []}})
+        assert client.post(f"/api/scans/{scan_id}/stop").status_code == 202
+        kwargs["progress_callback"]("issue_extraction", 0.5, 1, 2)
+        pytest.fail("worker continued after stop")
+
+    monkeypatch.setattr(api_module, "run_full_pipeline", pipeline)
+    monkeypatch.setattr(api_module, "run_saved_insights", lambda *_args, **_kwargs: pytest.fail("insights ran"))
+    api_module._run_analysis_job(scan_id, api_module.AnalyzeRequest())
+    stopped = client.get(f"/api/scans/{scan_id}").json()
+    assert stopped["analysis_status"] == "interrupted"
+    assert stopped["progress"]["percent"] >= 25
+    assert stopped["available_results"]["extracted_reviews"] == 1
+    assert client.get(f"/api/scans/{scan_id}/reviews").json()["items"][0]["issue_analysis"]["status"] == "success"
+    assert client.get(f"/api/scans/{scan_id}/report/download").status_code == 200

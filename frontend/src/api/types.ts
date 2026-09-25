@@ -1,5 +1,5 @@
 export type ScanMode = "country" | "top";
-export type AnalysisStatus = "not_started" | "queued" | "running" | "completed" | "failed";
+export type AnalysisStatus = "not_started" | "queued" | "running" | "cancelling" | "interrupted" | "completed" | "failed";
 export type SentimentLabel = "positive" | "neutral" | "negative";
 
 export interface ScanOptions {
@@ -62,6 +62,15 @@ export interface Scan {
   updated_at: string;
   error: string | null;
   api_usage?: Record<string, unknown>;
+  available_results?: {
+    sentiment_reviews: number;
+    keyword_reviews: number;
+    extracted_reviews: number;
+    issue_count: number | null;
+    feature_request_count: number | null;
+    metrics_available: boolean;
+    insights_available: boolean;
+  } | null;
   basic_metrics?: BasicMetrics;
   collection_errors?: Array<Record<string, unknown>>;
 }

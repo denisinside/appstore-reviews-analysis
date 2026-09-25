@@ -86,6 +86,10 @@ export function analyzeScan(scanId: string, payload: AnalyzeScanRequest = {}): P
   });
 }
 
+export function stopScan(scanId: string): Promise<{ scan_id: string; analysis_status: "cancelling" }> {
+  return request(`/api/scans/${encodeURIComponent(scanId)}/stop`, { method: "POST" });
+}
+
 export function getScan(scanId: string): Promise<Scan> {
   return request<Scan>(`/api/scans/${encodeURIComponent(scanId)}`);
 }
