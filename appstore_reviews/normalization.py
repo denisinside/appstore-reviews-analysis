@@ -165,8 +165,36 @@ def _validate_groups(answer: Mapping[str, Any], ids: set[str], categories: Mappi
                       "category": next(iter(group_cats))})
     missing = ids - seen
     if missing:
-        raise ValueError(f"normalization omitted source IDs: {sorted(missing)}")
+        raise MissingSourceIDsError(missing)
     return valid
+
+
+class MissingSourceIDsError(ValueError):
+    def __init__(self, missing: set[str]) -> None:
+        self.missing = missing
+        super().__init__(f"normalization omitted source IDs: {sorted(missing)}")
+
+
+def _restore_missing_as_singletons(answer: Mapping[str, Any], records: list[dict]) -> dict:
+    """Conservative fallback: keep valid merges and cover each omitted record."""
+    groups = copy.deepcopy(answer["groups"])
+    by_id = {record["id"]: record for record in records}
+    present = {sid for group in groups for sid in group["source_ids"]}
+    used_names = {(by_id[group["source_ids"][0]]["category"], _key(group["canonical_name"]))
+                  for group in groups}
+    for record in records:
+        sid = record["id"]
+        if sid in present:
+            continue
+        name = record["description"]
+        if (record["category"], _key(name)) in used_names:
+            name = f"{name} ({record['aspect']})"
+        if (record["category"], _key(name)) in used_names:
+            name = f"{record['description']} [{sid}]"
+        groups.append({"canonical_name": name, "source_ids": [sid]})
+        used_names.add((record["category"], _key(name)))
+        present.add(sid)
+    return {"groups": groups}
 
 
 _COMMON = {"the", "a", "an", "to", "for", "of", "on", "in", "per", "and", "with", "user", "app", "is", "are"}
@@ -289,11 +317,28 @@ async def _cached_completion(client: Any, kind: str, records: list[dict], cache_
             pass
     system = _group_system(kind, stage)
     user = json.dumps({"items": records}, ensure_ascii=False)
-    answer = await client.json_completion(schema_name=f"{kind}_{stage}", schema=NORMALIZATION_SCHEMA,
-                                          system=system, user=user,
-                                          max_tokens=100_000, reasoning_max_tokens=80_000)
     categories = {x["id"]: x["category"] for x in records}
-    groups = _validate_groups(answer, set(categories), categories)
+    repair_note = ""
+    for attempt in range(3):
+        request_system = system + repair_note
+        if estimated_input_tokens(request_system, user) > NORMALIZATION_INPUT_LIMIT:
+            request_system = system
+        answer = await client.json_completion(schema_name=f"{kind}_{stage}", schema=NORMALIZATION_SCHEMA,
+                                              system=request_system, user=user,
+                                              max_tokens=100_000, reasoning_max_tokens=80_000)
+        try:
+            groups = _validate_groups(answer, set(categories), categories)
+            break
+        except MissingSourceIDsError as exc:
+            if attempt < 2:
+                repair_note = (" Previous response omitted these input IDs: "
+                               f"{', '.join(sorted(exc.missing))}. Return every supplied ID exactly once."
+                               " Preserve the distinctions in the input records.")
+            else:
+                # A missing record is safer as its own canonical group than as
+                # an unreviewed merge or a failed 2,000-review scan.
+                answer = _restore_missing_as_singletons(answer, records)
+                groups = _validate_groups(answer, set(categories), categories)
     cache_dir.mkdir(parents=True, exist_ok=True)
     temp = path.with_suffix(".tmp")
     temp.write_text(json.dumps({"groups": groups}, ensure_ascii=False, indent=2), encoding="utf-8")

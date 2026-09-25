@@ -6,7 +6,7 @@ import httpx
 import pytest
 
 from appstore_reviews.issue_aspects import IssueAspectExtractor, EXTRACTION_SCHEMA
-from appstore_reviews.normalization import normalize_signals
+from appstore_reviews.normalization import _cached_completion, normalize_signals
 from appstore_reviews.nlp_metrics import calculate_nlp_metrics
 from appstore_reviews.openrouter_client import OpenRouterClient, OpenRouterError
 from appstore_reviews.analysis_pipeline import analyze_full_pipeline, recalculate_saved_metrics
@@ -330,6 +330,32 @@ def test_normalization_groups_equivalent_but_keeps_distinct_and_preserves_forms(
     assert {s["description"] for s in merged["source_issues"]} == {"Cannot cancel my subscription", "Unable to cancel Premium"}
     assert merged["review_ids"] == ["r1", "r2"]
     assert all(x["canonical_id"].startswith("issue_") for x in catalog)
+
+
+def test_normalization_retries_omitted_source_id_and_caches_result(tmp_path):
+    records = [{"id": "src_one", "category": "stability", "aspect": "startup", "description": "App crashes on launch"},
+               {"id": "src_two", "category": "stability", "aspect": "login", "description": "Login freezes"}]
+    incomplete = {"groups": [{"canonical_name": "App crashes on launch", "source_ids": ["src_one"]}]}
+    complete = {"groups": [*incomplete["groups"],
+                           {"canonical_name": "Login freezes", "source_ids": ["src_two"]}]}
+    client = FakeClient([incomplete, complete])
+    groups = asyncio.run(_cached_completion(client, "issues", records, tmp_path, stage="batch_0"))
+    assert len(client.calls) == 2
+    assert "src_two" in client.calls[1]["system"]
+    assert {sid for group in groups for sid in group["source_ids"]} == {"src_one", "src_two"}
+    assert asyncio.run(_cached_completion(client, "issues", records, tmp_path, stage="batch_0")) == groups
+    assert len(client.calls) == 2
+
+
+def test_normalization_keeps_valid_groups_if_retries_still_omit_id(tmp_path):
+    records = [{"id": "src_one", "category": "stability", "aspect": "startup", "description": "App crashes on launch"},
+               {"id": "src_two", "category": "stability", "aspect": "login", "description": "Login freezes"}]
+    incomplete = {"groups": [{"canonical_name": "App crashes on launch", "source_ids": ["src_one"]}]}
+    client = FakeClient([incomplete, incomplete, incomplete])
+    groups = asyncio.run(_cached_completion(client, "issues", records, tmp_path, stage="batch_0"))
+    assert len(client.calls) == 3
+    assert groups == [{"canonical_name": "App crashes on launch", "source_ids": ["src_one"], "category": "stability"},
+                      {"canonical_name": "Login freezes", "source_ids": ["src_two"], "category": "stability"}]
 
 
 def test_metrics_dedupe_review_ids_and_saved_recalculation(tmp_path):
