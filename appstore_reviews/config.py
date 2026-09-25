@@ -20,3 +20,12 @@ CACHE_TTL_SECONDS = 21600
 EMPTY_PAGE_TTL_SECONDS = 300
 MIN_LANGUAGE_CHARS = 10
 MIN_LANGUAGE_CONFIDENCE = 0.5
+
+# Stable two-level taxonomy for LLM issue/aspect analysis. The second level
+# (specific aspect) is extracted dynamically from each original review.
+ASPECT_TAXONOMY_VERSION = "1.0"
+ASPECT_CATEGORIES = (
+    "stability", "performance", "ui_ux", "accounts_auth", "payments_billing",
+    "pricing_subscriptions", "features", "content", "notifications",
+    "privacy_security", "support", "localization_access", "other",
+)

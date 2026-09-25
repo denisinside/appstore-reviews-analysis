@@ -1,5 +1,13 @@
 # App Store reviews collector
 
+## Issue, aspect, and feature request analysis
+
+The one-off NLP scan now includes GLM-5.3-Flash issue/aspect extraction on all
+valid original reviews, separate batch normalization of issues and feature
+requests, and deterministic NLP metrics. See [ISSUE_ANALYSIS.md](ISSUE_ANALYSIS.md)
+for the schema, storage format, cost controls, and commands. The original
+sentiment and keyword models remain unchanged.
+
 A small Python 3.11+ package for one-off collection of public Apple App Store RSS reviews. It supports 32 fixed storefront countries and pages 1–10. It uses `httpx`, fastText language identification, and a six-hour cache.
 
 ## Install

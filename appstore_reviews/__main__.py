@@ -7,6 +7,7 @@ import sys
 from pathlib import Path
 
 from . import AppStoreReviews, ModelLoadError
+from .analysis_pipeline import load_reviews, recalculate_saved_metrics, run_full_pipeline
 
 
 def main(argv=None) -> int:
@@ -23,9 +24,34 @@ def main(argv=None) -> int:
         elif name == "top":
             command.add_argument("--top", type=int, default=10)
             command.add_argument("--max-pages", type=int, default=10)
+    analyze = commands.add_parser("analyze", help="run or resume the NLP scan on saved reviews")
+    analyze.add_argument("--input", required=True, type=Path)
+    analyze.add_argument("--output-dir", required=True, type=Path)
+    analyze.add_argument("--batch-size", type=int, default=8)
+    analyze.add_argument("--concurrency", type=int, default=2)
+    analyze.add_argument("--requests-per-minute", type=int, default=30)
+    analyze.add_argument("--max-cost-usd", type=float)
+    analyze.add_argument("--skip-local-nlp", action="store_true", help="run only LLM and deterministic stages")
+    metrics = commands.add_parser("recalculate-nlp-metrics", help="recompute metrics from a saved scan")
+    metrics.add_argument("--output-dir", required=True, type=Path)
     args = parser.parse_args(argv)
     logging.basicConfig(level=logging.INFO, stream=sys.stderr, format="%(levelname)s: %(message)s")
     try:
+        if args.mode == "recalculate-nlp-metrics":
+            result = recalculate_saved_metrics(args.output_dir)
+            print(json.dumps(result["analysis_summary"], ensure_ascii=True, indent=2))
+            return 0
+        if args.mode == "analyze":
+            reviews = load_reviews(args.input)
+            result = run_full_pipeline(reviews, args.output_dir,
+                run_local_nlp=not args.skip_local_nlp, batch_size=args.batch_size,
+                concurrency=args.concurrency, requests_per_minute=args.requests_per_minute,
+                max_cost_usd=args.max_cost_usd)
+            summary = {"analysis_summary": result["nlp_metrics"]["analysis_summary"],
+                       "coverage_metrics": result["nlp_metrics"]["coverage_metrics"],
+                       "api_usage": result["api_usage"]}
+            print(json.dumps(summary, ensure_ascii=True, indent=2))
+            return 1 if summary["coverage_metrics"]["error_count"] else 0
         with AppStoreReviews() as scraper:
             if args.mode == "discovery":
                 result = scraper.discovery(args.app_id, force_refresh=args.force_refresh)
