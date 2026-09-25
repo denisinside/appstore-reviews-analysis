@@ -393,6 +393,45 @@ def test_normalization_repairs_invalid_groups_without_losing_ids(tmp_path, inval
     assert len({(group["category"], group["canonical_name"].casefold()) for group in result}) == len(result)
 
 
+def test_reconciliation_prompt_explains_provisional_groups():
+    from appstore_reviews.normalization import _group_system
+    prompt = _group_system("issues", "reconcile_123")
+    assert "provisional groups from separate batches" in prompt
+    assert "must stay separate" in prompt
+
+
+def test_cross_category_reconciliation_chunks_run_concurrently(tmp_path, monkeypatch):
+    import appstore_reviews.normalization as n
+
+    monkeypatch.setattr(n, "_cross_candidate", lambda left, right: left["category"] != right["category"])
+    groups = []
+    sources = {}
+    for i in range(32):
+        sid = f"src_{i}"
+        category = "stability" if i % 2 else "performance"
+        groups.append({"canonical_name": f"Problem {i}", "category": category, "source_ids": [sid]})
+        sources[sid] = {"description": f"Problem {i}"}
+
+    class ConcurrentClient:
+        def __init__(self):
+            self.active = 0
+            self.peak = 0
+
+        async def json_completion(self, **kwargs):
+            self.active += 1
+            self.peak = max(self.peak, self.active)
+            await asyncio.sleep(0)
+            self.active -= 1
+            rows = json.loads(kwargs["user"])["groups"]
+            return {"groups": [{"canonical_name": row["canonical_name"], "category": row["category"],
+                                "source_ids": [row["id"]], "justification": ""} for row in rows]}
+
+    client = ConcurrentClient()
+    result = asyncio.run(n._reconcile_cross_categories("issues", groups, sources, client, tmp_path))
+    assert client.peak == 2
+    assert len(result) == len(groups)
+
+
 def test_metrics_dedupe_review_ids_and_saved_recalculation(tmp_path):
     reviews = [{"review_id":"a","rating":1,"country":"US"}, {"review_id":"b","rating":5,"country":"US"}, {"review_id":"c","rating":2}]
     analysis = {

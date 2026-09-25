@@ -263,17 +263,22 @@ async def _reconcile_cross_categories(kind: str, groups: list[dict], sources: di
     # because groups are sorted by canonical name.
     records.sort(key=lambda r: (_key(r["canonical_name"]), r["id"]))
     output = [g for i, g in enumerate(groups) if i not in candidates]
-    for chunk in split_input_records(records, key="groups", system=CROSS_CATEGORY_PROMPT,
-                                     limit=NORMALIZATION_INPUT_LIMIT, max_records=30):
+    chunks = split_input_records(records, key="groups", system=CROSS_CATEGORY_PROMPT,
+                                 limit=NORMALIZATION_INPUT_LIMIT, max_records=30)
+
+    async def fetch_chunk(chunk: list[dict]) -> dict:
         path = cache_dir / f"{kind}_cross_{_hash(chunk, 64)}.json"
         if path.exists():
-            answer = json.loads(path.read_text(encoding="utf-8"))
-        else:
-            answer = await client.json_completion(
-                schema_name=f"{kind}_cross_category", schema=CROSS_CATEGORY_SCHEMA,
-                system=CROSS_CATEGORY_PROMPT,
-                user=json.dumps({"groups": chunk}, ensure_ascii=False),
-                max_tokens=100_000, reasoning_max_tokens=80_000)
+            return json.loads(path.read_text(encoding="utf-8"))
+        return await client.json_completion(
+            schema_name=f"{kind}_cross_category", schema=CROSS_CATEGORY_SCHEMA,
+            system=CROSS_CATEGORY_PROMPT,
+            user=json.dumps({"groups": chunk}, ensure_ascii=False),
+            max_tokens=100_000, reasoning_max_tokens=80_000)
+
+    answers = await asyncio.gather(*(fetch_chunk(chunk) for chunk in chunks))
+    for chunk, answer in zip(chunks, answers):
+        path = cache_dir / f"{kind}_cross_{_hash(chunk, 64)}.json"
         expected = {r["id"] for r in chunk}
         seen: set[str] = set()
         merged: list[dict] = []
@@ -318,9 +323,12 @@ def _group_system(kind: str, stage: str) -> str:
         "do not invent claims. Never combine records from different categories. "
         "Before responding, check the input ID list against the output: every supplied ID must appear exactly once; "
         "no ID may be repeated or invented. Each group must contain IDs from one category, and canonical names "
-        "must be unique within that category."
+        "must be unique within that category. "
+        "Examples: 'App crashes on launch' and 'Crashes when opening the app' describe the same scenario and may merge; "
+        "'Cannot cancel a subscription' and 'Charged after cancellation' describe different problems and must stay separate. "
+        "Keep restrictions such as 'only on Wi-Fi', 'after update', and specific amounts when naming a group."
     )
-    if stage == "reconcile":
+    if stage.startswith("reconcile_"):
         group_instructions += " These input records are provisional groups from separate batches; combine equivalent groups only."
     return f"Normalize { _signal_label(kind) } descriptions. {group_instructions} Return schema-valid JSON."
 
