@@ -175,13 +175,31 @@ class MissingSourceIDsError(ValueError):
         super().__init__(f"normalization omitted source IDs: {sorted(missing)}")
 
 
-def _restore_missing_as_singletons(answer: Mapping[str, Any], records: list[dict]) -> dict:
-    """Conservative fallback: keep valid merges and cover each omitted record."""
-    groups = copy.deepcopy(answer["groups"])
+def _repair_groups(answer: Mapping[str, Any], records: list[dict]) -> dict:
+    """Keep only unambiguous groups; preserve every other source as a singleton."""
     by_id = {record["id"]: record for record in records}
-    present = {sid for group in groups for sid in group["source_ids"]}
-    used_names = {(by_id[group["source_ids"][0]]["category"], _key(group["canonical_name"]))
-                  for group in groups}
+    groups: list[dict] = []
+    present: set[str] = set()
+    used_names: set[tuple[str, str]] = set()
+    proposed = answer.get("groups") if isinstance(answer, Mapping) else None
+    for group in proposed if isinstance(proposed, list) else []:
+        if not isinstance(group, Mapping):
+            continue
+        name, source_ids = group.get("canonical_name"), group.get("source_ids")
+        if not isinstance(name, str) or not name.strip() or not isinstance(source_ids, list) or not source_ids:
+            continue
+        if (any(not isinstance(sid, str) or sid not in by_id or sid in present for sid in source_ids)
+                or len(source_ids) != len(set(source_ids))):
+            continue
+        categories = {by_id[sid]["category"] for sid in source_ids}
+        if len(categories) != 1:
+            continue
+        category = next(iter(categories))
+        if (category, _key(name)) in used_names:
+            continue
+        groups.append({"canonical_name": name.strip(), "source_ids": list(source_ids)})
+        present.update(source_ids)
+        used_names.add((category, _key(name)))
     for record in records:
         sid = record["id"]
         if sid in present:
@@ -297,7 +315,10 @@ def _group_system(kind: str, stage: str) -> str:
         "Merge descriptions only when they describe the same user-visible scenario. Keep uncertain pairs separate. "
         "Do not group merely because category or aspect matches. Preserve material distinctions such as negation, "
         "numbers, billing-after-cancellation, inability-to-cancel, and price. Names must be concise and specific; "
-        "do not invent claims. Never combine records from different categories. Put every supplied ID into exactly one group."
+        "do not invent claims. Never combine records from different categories. "
+        "Before responding, check the input ID list against the output: every supplied ID must appear exactly once; "
+        "no ID may be repeated or invented. Each group must contain IDs from one category, and canonical names "
+        "must be unique within that category."
     )
     if stage == "reconcile":
         group_instructions += " These input records are provisional groups from separate batches; combine equivalent groups only."
@@ -329,15 +350,15 @@ async def _cached_completion(client: Any, kind: str, records: list[dict], cache_
         try:
             groups = _validate_groups(answer, set(categories), categories)
             break
-        except MissingSourceIDsError as exc:
+        except ValueError as exc:
             if attempt < 2:
-                repair_note = (" Previous response omitted these input IDs: "
-                               f"{', '.join(sorted(exc.missing))}. Return every supplied ID exactly once."
-                               " Preserve the distinctions in the input records.")
+                repair_note = (f" Your previous response failed validation: {str(exc)[:400]}. "
+                               "Return the complete corrected grouping. Check each input ID exactly once, "
+                               "without omissions, duplicates, unknown IDs, or cross-category groups.")
             else:
-                # A missing record is safer as its own canonical group than as
-                # an unreviewed merge or a failed 2,000-review scan.
-                answer = _restore_missing_as_singletons(answer, records)
+                # Keep only safe groups; isolated sources are preferable to
+                # stopping a large scan or trusting an ambiguous merge.
+                answer = _repair_groups(answer, records)
                 groups = _validate_groups(answer, set(categories), categories)
     cache_dir.mkdir(parents=True, exist_ok=True)
     temp = path.with_suffix(".tmp")

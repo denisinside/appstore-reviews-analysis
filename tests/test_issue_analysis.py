@@ -358,6 +358,41 @@ def test_normalization_keeps_valid_groups_if_retries_still_omit_id(tmp_path):
                       {"canonical_name": "Login freezes", "source_ids": ["src_two"], "category": "stability"}]
 
 
+def test_normalization_retries_duplicate_source_id(tmp_path):
+    records = [{"id": "src_one", "category": "stability", "aspect": "startup", "description": "Crash"},
+               {"id": "src_two", "category": "stability", "aspect": "login", "description": "Freeze"}]
+    duplicate = {"groups": [{"canonical_name": "Crash", "source_ids": ["src_one"]},
+                            {"canonical_name": "Freeze", "source_ids": ["src_one", "src_two"]}]}
+    corrected = {"groups": [{"canonical_name": "Crash", "source_ids": ["src_one"]},
+                            {"canonical_name": "Freeze", "source_ids": ["src_two"]}]}
+    client = FakeClient([duplicate, corrected])
+    result = asyncio.run(_cached_completion(client, "issues", records, tmp_path, stage="batch_0"))
+    assert len(client.calls) == 2
+    assert "src_one" in client.calls[1]["system"]
+    assert [sid for group in result for sid in group["source_ids"]] == ["src_one", "src_two"]
+
+
+@pytest.mark.parametrize("invalid", [
+    {"groups": [{"canonical_name": "Crash", "source_ids": ["src_one"]},
+                {"canonical_name": "Freeze", "source_ids": ["src_one", "src_two"]}]},
+    {"groups": [{"canonical_name": "Crash", "source_ids": ["src_one", "invented"]}]},
+    {"groups": [{"canonical_name": "General issue", "source_ids": ["src_one", "src_three"]}]},
+    {"groups": [{"canonical_name": "Same name", "source_ids": ["src_one"]},
+                {"canonical_name": "Same name", "source_ids": ["src_two"]}]},
+])
+def test_normalization_repairs_invalid_groups_without_losing_ids(tmp_path, invalid):
+    records = [{"id": "src_one", "category": "stability", "aspect": "startup", "description": "Crash"},
+               {"id": "src_two", "category": "stability", "aspect": "login", "description": "Freeze"},
+               {"id": "src_three", "category": "performance", "aspect": "loading", "description": "Slow"}]
+    client = FakeClient([invalid, invalid, invalid])
+    result = asyncio.run(_cached_completion(client, "issues", records, tmp_path, stage="batch_0"))
+    ids = [sid for group in result for sid in group["source_ids"]]
+    assert len(client.calls) == 3
+    assert sorted(ids) == sorted(record["id"] for record in records)
+    assert len(ids) == len(set(ids))
+    assert len({(group["category"], group["canonical_name"].casefold()) for group in result}) == len(result)
+
+
 def test_metrics_dedupe_review_ids_and_saved_recalculation(tmp_path):
     reviews = [{"review_id":"a","rating":1,"country":"US"}, {"review_id":"b","rating":5,"country":"US"}, {"review_id":"c","rating":2}]
     analysis = {
